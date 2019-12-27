@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -210,7 +210,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> LoginForm <span class="comment"># 위에서 생성한 forms를 불러옴</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(request)</span>:</span></span><br><span class="line">    form = LoginForm()  <span class="comment"># 클래스 변수 생성</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'user/login.html'</span>, &#123;<span class="string">'form'</span>: form&#125;)  <span class="comment"># 생성한 클래스 변수를 템플릿에 전달</span></span><br></pre></td></tr></table></figure>
 
 <div style="width: 90%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/django23.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django23.png" style="width: 90%
     ; height: 250px;">
 </div>
 
@@ -219,7 +219,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% extends "./base.html" %&#125;</span><br><span class="line"><span class="comment">&lt;!--현재 디렉토리에 있는 base.html 파일을 상속받음 --&gt;</span></span><br><span class="line">&#123;% block contents %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12 text-center"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>로그인<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12"</span>&gt;</span></span><br><span class="line">        &#123;&#123; error &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"."</span>&gt;</span></span><br><span class="line">            &#123;% csrf_token %&#125;</span><br><span class="line">            &#123;% for field in form %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"&#123;&#123; field.id_for_label &#125;&#125;"</span>&gt;</span>&#123;&#123; field.label &#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"&#123;&#123; field.field.widget.input_type &#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"&#123;&#123; field.id_for_label &#125;&#125;"</span></span></span><br><span class="line"><span class="tag">                       <span class="attr">placeholder</span>=<span class="string">"&#123;&#123; field.label &#125;&#125;"</span> <span class="attr">name</span>=<span class="string">"&#123;&#123; field.name &#125;&#125;"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>로그인<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
 <p>위와 같이 작성한 뒤 로그인화면을 확인해보면</p>
 <div style="width: 90%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/django24.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django24.png" style="width: 90%
     ; height: 250px;">
 </div>
 
@@ -228,7 +228,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginForm</span><span class="params">(forms.Form)</span>:</span></span><br><span class="line">    username = forms.CharField(max_length=<span class="number">100</span>, label=<span class="string">"사용자 이름"</span>)</span><br><span class="line">    password = forms.CharField(widget=forms.PasswordInput, label=<span class="string">"비밀번호"</span>) <span class="comment"># 비밀번호를 표시할 위젯을 지정</span></span><br></pre></td></tr></table></figure>
 
 <div style="width: 90%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/django25.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django25.png" style="width: 90%
     ; height: 250px;">
 </div>
 
@@ -241,7 +241,7 @@
 
 <p>form.is_valid()함수에는 비정상적인 로그인인 경우 자동으로 상황에 맞는 에러메시지가 저장되어 있습니다. 그 메시지가 위의 코드를 통해 실행이 되는 것입니다.</p>
 <div style="width: 90%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/django26.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django26.png" style="width: 90%
     ; height: 250px;">
 </div>
 
@@ -251,7 +251,7 @@
 
 <p>위와 같이 코드를 추가한 후 로그인 화면에서 비밀번호를 다르게 입력해보겠습니다.</p>
 <div style="width: 90%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/django27.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django27.png" style="width: 90%
     ; height: 250px;">
 </div>
 
@@ -259,7 +259,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> User</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.hashers <span class="keyword">import</span> check_password</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginForm</span><span class="params">(forms.Form)</span>:</span></span><br><span class="line">    username = forms.CharField(</span><br><span class="line">        error_messages=&#123;</span><br><span class="line">            <span class="string">'required'</span> : <span class="string">'아이디를 입력해주세요.'</span> <span class="comment"># 입력하지 않은 경우('required'키에 저장) 에러메시지 지정</span></span><br><span class="line">        &#125;,</span><br><span class="line">        max_length=<span class="number">100</span>, label=<span class="string">"사용자 이름"</span>)</span><br><span class="line">    password = forms.CharField(</span><br><span class="line">        error_messages=&#123;</span><br><span class="line">            <span class="string">'required'</span> : <span class="string">'비밀번호를 입력해주세요'</span> <span class="comment"># 입력하지 않은 경우('required'키에 저장) 에러메시지 지정</span></span><br><span class="line">        &#125;,</span><br><span class="line">        widget=forms.PasswordInput, label=<span class="string">"비밀번호"</span>) <span class="comment"># 비밀번호를 표시할 위젯을 지정</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clean</span><span class="params">(self)</span>:</span></span><br><span class="line">        cleaned_data = super().clean() <span class="comment"># super을 통해 기존의 form안에 들어있는 clean함수를 호출 값이 들어있지 않다면 이부분에서 실패처리되어 나가짐</span></span><br><span class="line">        username = cleaned_data.get(<span class="string">'username'</span>) <span class="comment"># 값이 존재한다면 값들을 가져옴</span></span><br><span class="line">        password = cleaned_data.get(<span class="string">'password'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> check_password(password, user.password): <span class="comment"># 입력된 비밀번호와 데이터베이스에서 가져온 비밀번호 비교</span></span><br><span class="line">            self.add_error(<span class="string">'password'</span>, <span class="string">'비밀번호를 틀렸습니다.'</span>) <span class="comment"># 특정 필드에 에러를 넣는 함수</span></span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># 비밀번호가 일치하는 경우</span></span><br><span class="line">            self.user_id = user.id <span class="comment"># self를 통해 클래스 변수 안에 저장되므로 밖에서 접근가능</span></span><br></pre></td></tr></table></figure>
 
 <div style="width: 90%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/django28.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django28.png" style="width: 90%
     ; height: 250px;">
 </div>
 
@@ -269,7 +269,7 @@
 
 <p>이렇게 세션까지 form을 이용하여 작성을 완료하였습니다. 이제 로그인을 수행하게 되면</p>
 <div style="width: 130%; height: 100px;">
-    <img src="https://kyu9341.github.io/assets/django18.png" style="width: 130%
+    <img src="https://kyu9341.github.io/img/django18.png" style="width: 130%
     ; height: 100px;">
 </div>
 

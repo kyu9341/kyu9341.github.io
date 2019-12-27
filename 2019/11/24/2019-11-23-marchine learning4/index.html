@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -202,13 +202,13 @@
 <h3 id="Convolutional-Neural-Network-CNN"><a href="#Convolutional-Neural-Network-CNN" class="headerlink" title="Convolutional Neural Network(CNN)"></a>Convolutional Neural Network(CNN)</h3><p>딥러닝이나 머신러닝 관련 자료들을 보면 자주 등장하던 CNN이다. 주로 이미지를 학습시킨다고 하면 제일 먼저 떠오르는 단어이다.</p>
 <p>CNN(합성곱 신경망)은 필터링 기법을 인공신경망에 적용함으로써 이미지를 더욱 효과적으로 처리하기 위해 고안되었다. 이미지를 Dense(fully connected) Layer로 처리하려 한다면 feature가 너무 많아져 불필요한 weight가 많아지고 효율이 떨어지게 된다. 또한 Dense Layer는 1차원 데이터만 input으로 받을 수 있기 때문에 3차원 데이터를 평탄화하여 입력해야 한다. 여기서 3차원 데이터의 공간적 정보가 소실되는 문제가 발생한다. 반면 Convolutional Layer에서는 형상을 유지한다. 입/출력 모두 3차원 데이터로 처리하기 때문에 공간적 정보를 유지할 수 있다.</p>
 <div style="width: 100%; height: 400px;">
-    <img src="https://kyu9341.github.io/assets/cnn.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/cnn.png" style="width: 100%
     ; height: 400px;">
 </div>
 
 <h4 id="Convolutional-Layer"><a href="#Convolutional-Layer" class="headerlink" title="Convolutional Layer"></a>Convolutional Layer</h4><p>Convolution은 합성곱이라는 뜻이다. 최근에 영상처리 수업을 들으며 등장했던 단어이기 때문에 이해가 잘 되었다. 특정한 크기의 필터를 사용하여 이미지의 각 픽셀을 지나가며 필터의 위치에 해당하는 픽셀과 모두 곱한 후 그 곱한 값을 모두 더하여 현재 중앙 픽셀 값에 넣어주는 것이다.</p>
 <div style="width: 100%; height: 400px;">
-    <img src="https://kyu9341.github.io/assets/convolution.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/convolution.png" style="width: 100%
     ; height: 400px;">
 </div>
 위의 그림처럼 이미지에서 합성곱이란 필터를 이동시켜가며 이미지와 곱한 결과를 모두 더하는 것인데, 이러한 필터를 어떤 값을 넣어 사용하느냐에 따라 이미지의 색상, 밝기, 엣지 추출등 여러가지 기능을 수행할 수 있다. 또한 필터는 주로 커널이라고 부르기도 한다.
@@ -216,7 +216,7 @@
 <h4 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h4><p>1만큼 패딩했다고 한다면, 입력 데이터 사방 1픽셀을 특정 값으로 채워 늘리는 것을 말한다. 주로 출력 크기를 조정할 목적으로 사용되는데 이를테면 (5, 5)데이터에 (3, 3)필터를 적용하면 출력이 (3, 3)이 된다. 이처럼 합성곱 연산을 거칠 때 마다 크기가 작아지게 되는데 출력 크기가 너무 줄어드는 것을 막기 위해 패딩을 사용한다. 패딩을 사용하면 그만큼 입력 데이터를 그게 만들어 출력 데이터를 입력 데이터와 동일한 형상으로 조정할 수 있으므로 입력 데이터의 공간적 크기를 고정한 채로 다음 계층에 전달할 수 있다.</p>
 <h4 id="Pooling-layer"><a href="#Pooling-layer" class="headerlink" title="Pooling layer"></a>Pooling layer</h4><p>풀링은 가로/세로 방향의 공간을 줄이는 연산이다. 풀링의 종류로는 Max Pooling과 Average Pooling이 있는데 이미지 인식 분야에서는 주로 Max Pooling을 사용한다.</p>
 <div style="width: 100%; height: 400px;">
-    <img src="https://kyu9341.github.io/assets/pooling.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/pooling.png" style="width: 100%
     ; height: 400px;">
 </div>
 
@@ -258,7 +258,7 @@
   [144 116  86]]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 이미지 시각화</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.imshow(image_array, cmap=plt.cm.gray) <span class="comment"># gray scale를 정상적으로 띄우려면 color map 을 지정해야함</span></span><br><span class="line">plt.imshow(image_array_color)</span><br><span class="line"><span class="comment"># plt.imshow(image_array_jet)</span></span><br></pre></td></tr></table></figure>
 
 <pre><code>&lt;matplotlib.image.AxesImage at 0x1405c59de48&gt;</code></pre><div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_6_1.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_6_1.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -273,7 +273,7 @@
 (10000,)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 데이터 확인하기 🖼</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">image = X_train[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">plt.imshow(image, cmap=plt.cm.gray)</span><br></pre></td></tr></table></figure>
 
 <pre><code>&lt;matplotlib.image.AxesImage at 0x12a2b101c48&gt;</code></pre><div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_3_1.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_3_1.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -357,17 +357,17 @@ Epoch 10/10
 0.2771936253398657 0.9223999977111816</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index].reshape(<span class="number">28</span>, <span class="number">28</span>), cmap = <span class="string">'Greys'</span>, interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_14_0.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_14_0.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_14_1.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_14_1.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_14_2.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_14_2.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -375,7 +375,7 @@ Epoch 10/10
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'val_accuracy'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'accuracy'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(history.history['val_accuracy'])</span></span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_15_0.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_15_0.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -391,7 +391,7 @@ Epoch 10/10
 (10000,)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 데이터 확인하기 🖼</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">image = X_train[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">plt.imshow(image, cmap=plt.cm.gray)</span><br></pre></td></tr></table></figure>
 
 <pre><code>&lt;matplotlib.image.AxesImage at 0x240c6b78c48&gt;</code></pre><div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_3_1a.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_3_1a.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -470,18 +470,18 @@ Epoch 10/10
 <pre><code>10000/10000 [==============================] - 1s 83us/step</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index].reshape(<span class="number">28</span>, <span class="number">28</span>), cmap = <span class="string">'Greys'</span>, interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_0a.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_0a.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_1a.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_1a.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_2a.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_2a.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -489,13 +489,13 @@ Epoch 10/10
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'val_accuracy'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'accuracy'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'loss'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_loss'</span>])</span><br><span class="line">plt.title(<span class="string">'Loss'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'loss'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_12_0a.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_12_0a.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_12_1a.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_12_1a.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -513,7 +513,7 @@ Epoch 10/10
 
 
 <pre><code>&lt;matplotlib.image.AxesImage at 0x2ab820aac08&gt;</code></pre><div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_3_1b.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_3_1b.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -590,19 +590,19 @@ Epoch 10/10
 <pre><code>10000/10000 [==============================] - 2s 206us/step</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index].reshape(<span class="number">28</span>, <span class="number">28</span>), cmap = <span class="string">'Greys'</span>, interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_0b.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_0b.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_1b.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_1b.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_2b.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_2b.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -612,12 +612,12 @@ Epoch 10/10
 
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_12_0b.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_12_0b.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_12_1b.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_12_1b.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -626,7 +626,7 @@ Epoch 10/10
 <p>CIFAR-10은 이미지 인식 분야에서 널리 쓰이는 벤치마크 데이터셋 중 하나이다. CIFAR-10 데이터셋은 아래와 같이 총 10개의 레이블로 이루어져 있다.</p>
 <p>airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck.</p>
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/cifar.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/cifar.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -643,7 +643,7 @@ Epoch 10/10
 (10000, 1)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 데이터 확인하기 🖼</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">image = X_train[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">plt.imshow(image)</span><br></pre></td></tr></table></figure>
 
 <pre><code>&lt;matplotlib.image.AxesImage at 0x2a31e4ed948&gt;</code></pre><div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_3_1c.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_3_1c.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -720,17 +720,17 @@ Epoch 10/10
 <pre><code>10000/10000 [==============================] - 5s 517us/step</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index], interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_10_0c.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_10_0c.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_10_1c.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_10_1c.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_10_2c.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_10_2c.png" style="width: 50%
     ; height: 300px;">
 </div>
 
@@ -739,13 +739,13 @@ Epoch 10/10
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'accuracy'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_accuracy'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'loss'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_loss'</span>])</span><br><span class="line">plt.title(<span class="string">'Loss'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'loss'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_0c.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_0c.png" style="width: 50%
     ; height: 300px;">
 </div>
 
 
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/output_11_1c.png" style="width: 50%
+    <img src="https://kyu9341.github.io/img/output_11_1c.png" style="width: 50%
     ; height: 300px;">
 </div>
 

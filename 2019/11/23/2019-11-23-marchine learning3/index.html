@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -204,13 +204,13 @@
 <h4 id="perceptron"><a href="#perceptron" class="headerlink" title="perceptron"></a>perceptron</h4><p>인공 신경망의 한 종류.</p>
 <p><strong>단층 퍼셉트론</strong> 은 다수의 신호(Input)을 받아서 하나의 신호(Output)를 출력한다. 이 동작은 뉴런과 아주 유사하고 그 과정은 다음과 같다. 다수의 입력을 받았을 때, 퍼셉트론은 각 입력 신호의 세기에 따라 다른 가중치를 부여한다. 그 결과를 고유한 방식으로 처리한 후, 입력 신호의 합이 일정 값을 초과한다면 그 결과를 다른 뉴련으로 전달한다.</p>
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/perceptron.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/perceptron.png" style="width: 90%
     ; height: 250px;">
 </div>
 
 <p>과거에는 이 퍼셉트론을 하드웨어를 이용하여 구현했다. 이 방식으로도 AND와 OR 문제를 해결이 가능했다. 그러나 이러한 단층 퍼셉트론으로는 XOR문제를 해결할 수 없었다.</p>
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/xor.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/xor.png" style="width: 100%
     ; height: 250px;">
 </div>
 
@@ -278,14 +278,14 @@
 </ul>
 <p>예측 값과 실제 값의 차이를 기반으로 모델의 정확도(성능)을 판단하기 위한 함수로 아래의 수식을 따른다.</p>
 <div style="width: 30%; height: 50px;">
-    <img src="https://kyu9341.github.io/assets/lossfunction.png" style="width:100%
+    <img src="https://kyu9341.github.io/img/lossfunction.png" style="width:100%
     ; height: 50px;">
 </div>
 
 <p>오차를 구하여 모델의 정확도를 판단하는데 이 값이 작을수록 모델의 성능이 좋다는 것을 뜻한다. 그래프로 본다면 아래와 같은데 이 오차를 줄이는 방법으로 경사하강법이 있다.</p>
 <h4 id="Gradient-Descent-경사하강법"><a href="#Gradient-Descent-경사하강법" class="headerlink" title="Gradient Descent(경사하강법)"></a>Gradient Descent(경사하강법)</h4><p>해당 함수의 최소값 위치를 찾기 위해 비용함수(Cost Function)의 기울기가 (-)가 되는 방향으로 이동하여 최소값(=기울기 0)을 찾는 알고리즘이다.</p>
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/Descent.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/Descent.png" style="width: 100%
     ; height: 250px;">
 </div>
 
@@ -293,45 +293,45 @@
 <h4 id="Optimizer-최적화기"><a href="#Optimizer-최적화기" class="headerlink" title="Optimizer(최적화기)"></a>Optimizer(최적화기)</h4><p>위에서 말한 최소값을 찾기 위한 방법으로 SGD, Momentum, NAG, Adagrad, Adadelta, Rmsprop, Adam 등의 여러가지 방법이 있는데, SGD는 layer가 늦은 경우 빠르게 찾아주고 데이터가 간단한 경우에 주로 사용한다. Adam은 정확도가 가장 높아서 일반적으로 가장 많이 사용한다고 한다.</p>
 <p><strong>optimizer의 발전과정</strong></p>
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/optimizer.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/optimizer.png" style="width: 90%
     ; height: 250px;">
 </div>
 
 
 <h4 id="Vanishing-Gradient"><a href="#Vanishing-Gradient" class="headerlink" title="Vanishing Gradient"></a>Vanishing Gradient</h4><p>Vanishing Gradient Problem(기울기 값이 사라지는 문제)는 인공신경망을 기울기 값을 베이스로 하는  mothod(backpropagation)로 학습시키려고 할 때 발생하는 문제이다.</p>
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/vanishing.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/vanishing.png" style="width: 90%
     ; height: 250px;">
 </div>
 
 <p>Vanishing Gradient Problem은 activate function을 의존적으로 일어난다. sigmoid함수나 tanh함수를 사용함으로써 발생하는 문제인데 layer가 깊어질수록 전달이 약해진다.<br>이 문제를 해결하기 위해서는 sigmoid함수 대신 ReLU 함수나 Leakey ReLU 등의 함수를 사용하면 된다.</p>
 <h4 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h4><p>저번 머신러닝 교육 내용에도 있었지만 역시 딥러닝에도 Overfittin이 존재한다. overfitting은 훈련 데이터에만 정확도가 높아져 새로운 데이터에는 성능이 떨어지는 현상을 말하는데 이를 위한 해결방안으로 다음과 같은 것들이 있다.</p>
 <div style="width: 100%; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/regularization.png" style="width: 80%
+    <img src="https://kyu9341.github.io/img/regularization.png" style="width: 80%
     ; height: 350px;">
 </div>
 
 <p>–    L1 Regularization  :  세세한 값들은 무시하고 큰 특징들만 추출</p>
 <p>–    L2 Regularization  :  세부적인 값들을 약하게 해줌</p>
 <div style="width: 100%; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/dropout.png" style="width: 80%
+    <img src="https://kyu9341.github.io/img/dropout.png" style="width: 80%
     ; height: 350px;">
 </div>
 
 <dl><dt>–    Dropout : hidden node 중 몇 개를 끊어 냄 -&gt; 똑같은 것만 학습하는 것을 방지</dt><dd>성능이 좋고 많이 사용 (20~50% 노드를 꺼줌)</dd></dl><h4 id="신경망-구조"><a href="#신경망-구조" class="headerlink" title="신경망 구조"></a>신경망 구조</h4><div style="width: 100%; height: 460px;">
-    <img src="https://kyu9341.github.io/assets/hidden.png" style="width: 80%
+    <img src="https://kyu9341.github.io/img/hidden.png" style="width: 80%
     ; height: 450px;">
 </div>
 
 <div style="width: 100%; height: 450px;">
-    <img src="https://kyu9341.github.io/assets/output.png" style="width: 80%
+    <img src="https://kyu9341.github.io/img/output.png" style="width: 80%
     ; height: 450px;">
 </div>
 #### 케라스
 다음은 딥러닝 프레임워크 중 하나인 케라스를 사용해서 jupyter notebook상에서 실습을 진행하였다. 케라스는 파이썬으로 구현된 high-level deep learning API이며 내부적으로는 TensorFlow로 동작한다. 쉬운 사용법과 간단한 문법으로 빠른 설계가 가능하고 입문자들이 사용해보기 좋다.
 
 <div style="width: 100%; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/mlt.png" style="width: 80%
+    <img src="https://kyu9341.github.io/img/mlt.png" style="width: 80%
     ; height: 350px;">
 </div>
 
@@ -396,7 +396,7 @@ Epoch 1000/1000
 <pre><code>0.24.0</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 데이터 불러오기</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'diabetes_data.csv'</span>)</span><br><span class="line">dataset.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/head.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/head.png" style="width: 90%
     ; height: 250px;">
 </div>
 
@@ -465,12 +465,12 @@ Train Acc: [0.5100221896970738, 0.7541899434681045]
 Test Acc: [0.725729592915239, 0.6724137972141134]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'acc'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_acc'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>,<span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'loss'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_loss'</span>])</span><br><span class="line">plt.title(<span class="string">'Loss'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'loss'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>,<span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 400px;">
-    <img src="https://kyu9341.github.io/assets/output_11_0.png" style="width: 80%
+    <img src="https://kyu9341.github.io/img/output_11_0.png" style="width: 80%
     ; height: 350px;">
 </div>
 
 <div style="width: 100%; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/output_11_1.png" style="width: 80%
+    <img src="https://kyu9341.github.io/img/output_11_1.png" style="width: 80%
     ; height: 350px;">
 </div>
 

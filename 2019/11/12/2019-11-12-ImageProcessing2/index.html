@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -199,7 +199,7 @@
                 post-container">
 
                 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/ImageProcessing6.png" style="width: 512px
+    <img src="https://kyu9341.github.io/img/ImageProcessing6.png" style="width: 512px
     ; height: 512px;">
 </div>
 
@@ -209,7 +209,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> uchar;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Negative</span><span class="params">(uchar** img, uchar** Result, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col)</span> <span class="comment">// Nagative 효과 넣기 (반전)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++)</span><br><span class="line">			Result[i][j] = <span class="number">255</span> - img[i][j];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>이미지를 반전시켜주는 즉, Negative효과를 주는 함수이다. 입력 이미지의 각 값들을 255에서 빼서 결과 이미지에 넣어주면 된다. 이러한 과정을 거쳐 lena이미지를 처리하면 다음과 같은 결과가 나오게 된다.</p>
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/Negative.png" style="width: 512px
+    <img src="https://kyu9341.github.io/img/Negative.png" style="width: 512px
     ; height: 512px;">
 </div>
 
@@ -219,13 +219,13 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mosaic</span><span class="params">(uchar** img, uchar** out, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col, <span class="keyword">int</span> Block)</span> <span class="comment">// 이미지 모자이크 처리</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, x, y, tmp, count;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i += Block) <span class="comment">// 입력 받은 블록 크기만큼 증가하며 반복</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j += Block)</span><br><span class="line">		&#123;</span><br><span class="line">			tmp = <span class="number">0</span>;</span><br><span class="line">			count = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; Block; y++) <span class="comment">// 블록 크기만큼 반복</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; Block; x++) &#123;</span><br><span class="line">					tmp += img[i + y][j + x]; <span class="comment">// uchar형에서는 0~255 값밖에 처리 못하므로 정수형 변수에 각 픽셀값을 누적</span></span><br><span class="line">					count++; <span class="comment">// 몇번 누적했는지 측정</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			tmp /= count; <span class="comment">// 블록 내의 평균을 구함</span></span><br><span class="line">			<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; Block; y++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; Block; x++) &#123;</span><br><span class="line">					out[i + y][j + x] = tmp; <span class="comment">// 해당 블록의 각 위치에 모두 평균값을 대입</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>위와 같이 구현할 수 있으며 다음 이미지는 lena를 각각 블록 크기를 8, 16으로 하여 모자이크 처리를 한 이미지이다.</p>
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/mosaic8.png" style="width: 512px
+    <img src="https://kyu9341.github.io/img/mosaic8.png" style="width: 512px
     ; height: 512px;">
 </div>
 
 
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/mosaic16.png" style="width: 512px
+    <img src="https://kyu9341.github.io/img/mosaic16.png" style="width: 512px
     ; height: 512px;">
 </div>
 

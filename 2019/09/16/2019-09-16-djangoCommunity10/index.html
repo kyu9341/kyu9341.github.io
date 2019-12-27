@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -213,7 +213,7 @@
 
 <p>이제 <a href="http://127.0.0.1:8000/board/write/" target="_blank" rel="external nofollow noopener noreferrer">http://127.0.0.1:8000/board/write/</a> 로 이동하여 확인해보면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django34.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django34.png" style="width: 100%
     ; height: 200px;">
 </div>
 
@@ -221,7 +221,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% extends "./base.html" %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block contents %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"."</span>&gt;</span></span><br><span class="line">            &#123;% csrf_token %&#125;</span><br><span class="line">            &#123;% for field in form %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"&#123;&#123; field.id_for_label &#125;&#125;"</span>&gt;</span>&#123;&#123; field.label &#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                &#123;&#123; field.field.widget.name &#125;&#125;</span><br><span class="line">                &#123;% ifequal field.name 'contents' %&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span> = <span class="string">"&#123;&#123; field.name &#125;&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"&#123;&#123; field.label &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">                &#123;% else %&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"&#123;&#123; field.field.widget.input_type &#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"&#123;&#123; field.id_for_label &#125;&#125;"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">placeholder</span>=<span class="string">"&#123;&#123; field.label &#125;&#125;"</span> <span class="attr">name</span>=<span class="string">"&#123;&#123; field.name &#125;&#125;"</span> /&gt;</span></span><br><span class="line">                &#123;% endifequal %&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            &#123;% if field.errors %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color : red"</span>&gt;</span>&#123;&#123; field.errors &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            &#123;% endif %&#125;</span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>글쓰기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
 <p>이제 다시 확인해보면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django35.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django35.png" style="width: 100%
     ; height: 200px;">
 </div>
 
@@ -231,13 +231,13 @@
 
 <p>이제 로그인화면으로 이동해 로그인을 한 뒤 사용자이름이 홈 화면에 출력되는 것을 확인하고 <a href="http://127.0.0.1:8000/board/write/" target="_blank" rel="external nofollow noopener noreferrer">http://127.0.0.1:8000/board/write/</a> 로 이동하여</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django36.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django36.png" style="width: 100%
     ; height: 200px;">
 </div>
 
 <p>위와 같이 작성하고 글쓰기 버튼을 누르면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django37.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django37.png" style="width: 100%
     ; height: 200px;">
 </div>
 
@@ -251,7 +251,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% extends "./base.html" %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block contents %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"title"</span>&gt;</span>제목<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'text'</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"title"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; board.title &#125;&#125;"</span> <span class="attr">readonly</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"contents"</span>&gt;</span>내용<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">readonly</span>&gt;</span>&#123;&#123; board.contents &#125;&#125;<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>돌아가기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
 <p>여기까지 작성이 완료되었다면 첫번째 글을 확인해보기 위해 <a href="http://127.0.0.1:8000/board/detail/1" target="_blank" rel="external nofollow noopener noreferrer">http://127.0.0.1:8000/board/detail/1</a> 로 이동해보면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django38.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django38.png" style="width: 100%
     ; height: 200px;">
 </div>
 

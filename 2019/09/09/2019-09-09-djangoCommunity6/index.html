@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -210,7 +210,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'register/'</span>, views.register),</span><br><span class="line">    path(<span class="string">'login/'</span>, views.login),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>여기까지 완료되었다면 정상적으로 로그인화면이 출력되는지 한번 확인해보도록 하겠습니다.<br><a href="http://127.0.0.1:8000/user/login/" target="_blank" rel="external nofollow noopener noreferrer">http://127.0.0.1:8000/user/login/</a>을 입력하고 확인해보면</p>
 <div style="width: 90%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django16.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django16.png" style="width: 90%
     ; height: 300px;">
 </div>
 
@@ -222,25 +222,25 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"><span class="keyword">from</span> user.views <span class="keyword">import</span> home</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">'user/'</span>, include(<span class="string">'user.urls'</span>)),</span><br><span class="line">    path(<span class="string">''</span>, home)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>위와 같이 추가가 완료되었다면 로그인화면으로 이동해 확인해보도록 합니다.</p>
 <div style="width: 350px; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/home.png" style="width: 350px
+    <img src="https://kyu9341.github.io/img/home.png" style="width: 350px
     ; height: 250px;">
 </div>
 
 <p>로그인을 하지 않고 url만 입력하여 접속한 경우 위와 같이 Home!만 표시가 되는 것을 볼 수 있습니다.</p>
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django17.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django17.png" style="width: 100%
     ; height: 300px;">
 </div>
 
 <p>반면 정상적으로 로그인이 수행된 경우</p>
 <div style="width: 350px; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/home1.png" style="width: 350px
+    <img src="https://kyu9341.github.io/img/home1.png" style="width: 350px
     ; height: 250px;">
 </div>
 
 <p>위와 같이 사용자 아이디를 출력하게 되는 것을 볼 수 있습니다. 또한 개발자도구를 들어가 확인해보면 위에서 언급했던 세션ID가 쿠키 내부에 발급된 것을 확인할 수 있습니다.</p>
 <div style="width: 350px; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/session.png" style="width: 350px
+    <img src="https://kyu9341.github.io/img/session.png" style="width: 350px
     ; height: 250px;">
 </div>
 

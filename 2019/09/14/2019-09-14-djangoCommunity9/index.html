@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -210,7 +210,7 @@
 <p>간단하게 연결만 시킨 뒤 한번 확인해보도록 하겠습니다.</p>
 <p><a href="http://127.0.0.1:8000/board/list/" target="_blank" rel="external nofollow noopener noreferrer">http://127.0.0.1:8000/board/list/</a> 로이동하여 확인해보면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django30.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django30.png" style="width: 100%
     ; height: 200px;">
 </div>
 
@@ -221,7 +221,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Board</span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">board_list</span><span class="params">(request)</span>:</span></span><br><span class="line">    boards = Board.objects.all().order_by(<span class="string">'-id'</span>) <span class="comment"># Board모델의 모든 필드를 가져와 id의 역순으로 가져옴(최신글을 맨위로 올림)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'board/board_list.html'</span>, &#123;<span class="string">'boards'</span> : boards&#125;)</span><br></pre></td></tr></table></figure>
 <p>이제 다시 확인해 보면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django31.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django31.png" style="width: 100%
     ; height: 200px;">
 </div>
 
@@ -230,13 +230,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Board</span><br><span class="line"></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoardAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display = (<span class="string">'title'</span>, )</span><br><span class="line">admin.site.register(Board, BoardAdmin) <span class="comment"># 등록</span></span><br></pre></td></tr></table></figure>
 
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/admin8.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/admin8.png" style="width: 100%
     ; height: 200px;">
 </div>
 
 <p>이제 장고admin으로 이동하여 테스트 글을 하나 작성해보도록 하겠습니다. 위와 같이 작성을 하고 다시한변 리스트를 확인해보면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django32.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django32.png" style="width: 100%
     ; height: 200px;">
 </div>
 
@@ -245,7 +245,7 @@
 
 <p>위와 같이 수정해준뒤 다시 확인해보도록 하면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django33.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django33.png" style="width: 100%
     ; height: 200px;">
 </div>
 

@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -205,7 +205,7 @@
 <p>모델에 추가를 완료하였다면 데이터베이스에 적용시키기 위해 makemigrations과 migrate를 해주도록 합니다.</p>
 <p>이 때, <em>python manage.py makemigrations</em> 명령어를 입력하게 되면</p>
 <div style="width: 100%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/django13.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django13.png" style="width: 100%
     ; height: 200px;">
 </div>
 
@@ -217,13 +217,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> User</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.hashers <span class="keyword">import</span> make_password</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        username = request.POST.get(<span class="string">'username'</span>, <span class="literal">None</span>) <span class="comment"># 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴</span></span><br><span class="line">        password = request.POST.get(<span class="string">'password'</span>, <span class="literal">None</span>) <span class="comment"># 받아온 키값에 값이 없는경우 None값으로 기본값으로 지정</span></span><br><span class="line">        re_password = request.POST.get(<span class="string">'re-password'</span>, <span class="literal">None</span>)</span><br><span class="line">        useremail = request.POST.get(<span class="string">'useremail'</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        res_data = &#123;&#125; <span class="comment"># 응답 메세지를 담을 변수(딕셔너리)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (usernameand <span class="keyword">and</span> useremail <span class="keyword">and</span> password <span class="keyword">and</span> re_password):</span><br><span class="line">            res_data[<span class="string">'error'</span>] = <span class="string">'모든 값을 입력해야 합니다.'</span></span><br><span class="line">        <span class="keyword">elif</span> password != re_password:</span><br><span class="line">            res_data[<span class="string">'error'</span>] = <span class="string">'비밀번호가 다릅니다.'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            user = User( <span class="comment"># 모델에서 생성한 클래스를 가져와 객체를 생성</span></span><br><span class="line">                username=username,</span><br><span class="line">                useremail=useremail,</span><br><span class="line">                password=make_password(password) <span class="comment"># 비밀번호를 암호화하여 저장</span></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            user.save() <span class="comment"># 데이터베이스에 저장</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>, res_data) <span class="comment"># res_data가 html코드로 전달이 됨</span></span><br></pre></td></tr></table></figure>
 <p>추가가 완료되었으니 서버를 실행시킨 후 확인을 해보면</p>
 <div style="width: 90%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django14.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django14.png" style="width: 90%
     ; height: 300px;">
 </div>
 
 <p>위와 같이 정상적으로 추가가 된 것을 확인할 수 있습니다. 한번 입력을 해보면</p>
 <div style="width: 300px; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/admin7.png" style="width: 300px
+    <img src="https://kyu9341.github.io/img/admin7.png" style="width: 300px
     ; height: 300px;">
 </div>
 
@@ -238,7 +238,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Required meta tags --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, shrink-to-fit=no"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/bootstrap.min.css"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://codpye.jquery.com/jquery-3.3.1.slim.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>완료되었다면 위와 같을 것입니다. 이제 한번 테마가 제대로 적용이 되었는지 확인해보겠습니다.</p>
 <div style="width: 90%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django15.png" style="width: 90%
+    <img src="https://kyu9341.github.io/img/django15.png" style="width: 90%
     ; height: 300px;">
 </div>
 

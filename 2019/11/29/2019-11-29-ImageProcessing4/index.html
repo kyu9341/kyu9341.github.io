@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -203,7 +203,7 @@
 
 <p>위의 코드는 position값에 따라 해당하는 bit palne의 이미지를 생성하는 코드이다.</p>
 <div style="width: 700px; height: 800px;">
-    <img src="https://kyu9341.github.io/assets/lenabitplane.png" style="width: 700px
+    <img src="https://kyu9341.github.io/img/lenabitplane.png" style="width: 700px
     ; height: 800px;">
 </div>
 
@@ -212,19 +212,19 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ImageCombine</span><span class="params">(uchar** img, uchar** tmpimg, uchar** outimg, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col, <span class="keyword">int</span> <span class="built_in">position</span>, <span class="keyword">int</span> direction)</span> <span class="comment">// 7부터 position까지의 비트이미지를 합성</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, k;</span><br><span class="line">	uchar mask = <span class="number">0x01</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (direction == <span class="number">1</span>) <span class="comment">// 7부터 position까지 합성</span></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (k = <span class="number">7</span>; k &gt; <span class="number">7</span> - <span class="built_in">position</span>; k--) <span class="comment">// 7부터 입력받은 장수까지 반복</span></span><br><span class="line">		&#123;</span><br><span class="line">			mask &lt;&lt;= k;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++) <span class="comment">// BitSlicing</span></span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					<span class="keyword">if</span> ((mask &amp; img[i][j]) == mask) <span class="comment">//pow(2, position) = mask</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">255</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++)</span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					outimg[i][j] += tmpimg[i][j] &amp; mask;</span><br><span class="line">				&#125;</span><br><span class="line">			mask = <span class="number">0x01</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		average(outimg, Row, Col);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">/*	 비트슬라이싱된 이미지에 해당 mask를 and연산 하는 이유</span></span><br><span class="line"><span class="comment">	 해당 비트값만 255로 변환하고 나머지는 0으로 변환했기 때문에</span></span><br><span class="line"><span class="comment">	 즉 255 : 0b1111111 &amp; 0b1000000 =&gt; 0b1000000</span></span><br><span class="line"><span class="comment">			    &amp; 0b0100000 =&gt; 0b0100000</span></span><br><span class="line"><span class="comment">						와 같이 변환 후 모두 더해줘야 정상적인 값이 나옴.</span></span><br><span class="line"><span class="comment">\*/</span></span><br><span class="line">	<span class="keyword">if</span> (direction == <span class="number">2</span>) <span class="comment">// 1부터 position까지 합성</span></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (k = <span class="number">1</span>; k &lt;= <span class="built_in">position</span>; k++) <span class="comment">// 1부터 입력받은 장수까지 반복</span></span><br><span class="line">		&#123;</span><br><span class="line">			mask &lt;&lt;= k;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++) <span class="comment">// BitSlicing</span></span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					<span class="keyword">if</span> ((mask &amp; img[i][j]) == mask) <span class="comment">//pow(2, position) = mask</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">255</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++) <span class="comment">// BitMasking, MaskAdd</span></span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					outimg[i][j] += tmpimg[i][j] &amp; mask; <span class="comment">// 비트슬라이싱된 tmpimg를 해당 비트의 마스크 값으로 마스킹 후 누적</span></span><br><span class="line">				&#125;</span><br><span class="line">			mask = <span class="number">0x01</span>; <span class="comment">// 초기화</span></span><br><span class="line">		&#125;</span><br><span class="line">		average(outimg, Row, Col);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>위의 코드는 입력 받은 direction과 position값에 따라 상위 비트 혹은 하위 비트부터 원하는 장수를 더한 이미지를 생성해주는 함수이다. 일일이 각 비트의 이미지를 생성해 더하지 않도록 하기 위해 위와 같이 mask를 쉬프트 연산을 통해 변경하며 각각의 bit에 해당하는 이미지를 누적시켰다. 아래는 위의 함수를 통해 생성한 이미지를 출력한 결과이다.</p>
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/lena876.png" style="width: 512px
+    <img src="https://kyu9341.github.io/img/lena876.png" style="width: 512px
     ; height: 512px;">
 </div>
 8, 7, 6bit 합성 영상
 
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/lena8765.png" style="width: 512px
+    <img src="https://kyu9341.github.io/img/lena8765.png" style="width: 512px
     ; height: 512px;">
 </div>
 8, 7, 6, 5bit 합성 영상
 
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/lena12345.png" style="width: 512px
+    <img src="https://kyu9341.github.io/img/lena12345.png" style="width: 512px
     ; height: 512px;">
 </div>
 1, 2, 3, 4, 5bit 합성 영상

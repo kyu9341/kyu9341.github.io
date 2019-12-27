@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -207,7 +207,7 @@
 <p>이는 만약 복수의 App들이 동일한 이름의 템플릿을 가진 경우, View에서 잘못된 템플릿을 가져올 수 있기 때문인데, 예를 들어, App1에 create.html이 있고, App2에 동일한 create.html 템플릿이 있는 경우, App2의 View에서 create.html를 지정하면, 처음 App1의 create.html을 사용하게 됩니다. 이는 템플릿을 찾을 때 자신의 App 내의 템플릿을 먼저 찾는 것이 아니라, 전체 App들의 템플릿 폴더들을 처음부터 순서대로 찾기 때문입니다. View에서 “App2/create.html” 과 같이 템플릿명을 지정하면 이런 혼동은 없어지게 됩니다.</p>
 <p>따라서 먼저 이전에 만들어두었던 user의 templates폴더 아래에 user이라는 이름의 폴더를 하나 더 생성하고 그 안에 register.html이라는 html5파일을 하나 생성해보도록 하겠습니다.</p>
  <div style="width: 250px; height: 350px;">
-     <img src="https://kyu9341.github.io/assets/django8.png" style="width: 250px
+     <img src="https://kyu9341.github.io/img/django8.png" style="width: 250px
      ; height: 350px;">
  </div>
 
@@ -226,7 +226,7 @@
 <p>프로젝트 url의 ‘user/‘ 를 include(‘user.urls’)에 매핑 하게 되고 user.urls를 따라가면  path(‘register/‘, views.register)가 있으므로 register은 views.register함수에 연결되어 127.0.0.1:8000/user/register 라고 입력해주게 되면 templates/user에 작성한 register.html파일에 접근하게 됩니다.</p>
 <p>여기까지 완료되었다면 이제 <em>python manage.py runserver</em> 명령어를 통해 서버를 실행시킨 이후에<br><em>127.0.0.1:8000/user/register</em> 로 접속하여 확인해보도록 합니다.</p>
 <div style="width: 100%; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/django9.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django9.png" style="width: 100%
     ; height: 350px;">
 </div>
 
@@ -235,14 +235,14 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        username = request.POST[<span class="string">'username'</span>]  <span class="comment"># 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴</span></span><br><span class="line">        password = request.POST[<span class="string">'password'</span>]</span><br><span class="line">        re_password = request.POST[<span class="string">'re-password'</span>]</span><br><span class="line"></span><br><span class="line">        user = User( <span class="comment"># 모델에서 생성한 클래스를 가져와 객체를 생성</span></span><br><span class="line">            username=username,</span><br><span class="line">            password=password</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        user.save() <span class="comment"># 데이터베이스에 저장</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>)</span><br></pre></td></tr></table></figure>
 <p>입력받은 값으로 객체가 생성이되고 실제로 데이터베이스에 저장이 되는지 먼저 간단히 확인해보도록 하겠습니다.</p>
 <div style="width: 100%; height:350px;">
-    <img src="https://kyu9341.github.io/assets/django10.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django10.png" style="width: 100%
     ; height: 350px;">
 </div>
 
 <p>이렇게 정보를 입력하고 등록 버튼을 누르면 다시 같은 페이지가 표시됩니다 이유는 POST로 들어와 처리를 해준 뒤 다시 register.html을 리턴받았기 때문이죠. 이 부분은 잠시 후 수정해보도록 하겠습니다.</p>
 <p>mysql에서 확인할 수도 있지만 이번에는 admin으로 이동하여 정상적으로 저장이 완료되었는지 확인해보면</p>
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/admin5.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/admin5.png" style="width: 100%
     ; height: 300px;">
 </div>
 
@@ -252,20 +252,20 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> User</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.hashers <span class="keyword">import</span> make_password</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        username = request.POST.get(<span class="string">'username'</span>, <span class="literal">None</span>) <span class="comment"># 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴</span></span><br><span class="line">        password = request.POST.get(<span class="string">'password'</span>, <span class="literal">None</span>) <span class="comment"># 받아온 키값에 값이 없는경우 None값으로 기본값으로 지정</span></span><br><span class="line">        re_password = request.POST.get(<span class="string">'re-password'</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        res_data = &#123;&#125; <span class="comment"># 응답 메세지를 담을 변수(딕셔너리)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (username <span class="keyword">and</span> password <span class="keyword">and</span> re_password):</span><br><span class="line">            res_data[<span class="string">'error'</span>] = <span class="string">'모든 값을 입력해야 합니다.'</span></span><br><span class="line">        <span class="keyword">elif</span> password != re_password:</span><br><span class="line">            res_data[<span class="string">'error'</span>] = <span class="string">'비밀번호가 다릅니다.'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            user = User( <span class="comment"># 모델에서 생성한 클래스를 가져와 객체를 생성</span></span><br><span class="line">                username=username,</span><br><span class="line">                password=make_password(password)  <span class="comment"># 비밀번호를 암호화하여 저장</span></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            user.save() <span class="comment"># 데이터베이스에 저장</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>, res_data) <span class="comment"># res_data가 html코드로 전달이 됨</span></span><br></pre></td></tr></table></figure>
 <p>이제 회원가입 화면에서 비밀번호를 다르게 입력하였다면</p>
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django12.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django12.png" style="width: 100%
     ; height: 300px;">
 </div>
 
 <p>위와 같이 상단에 메시지가 표시되고 빈칸이 있는 상태로 등록버튼을 눌렀다면</p>
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django11.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/django11.png" style="width: 100%
     ; height: 300px;">
 </div>
 
 <p>위와 같이 메시지가 표시됩니다.</p>
 <p>또한 회원가입을 정상적으로 진행하여 완료한 후 admin에서 확인을 해보면</p>
 <div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/admin6.png" style="width: 100%
+    <img src="https://kyu9341.github.io/img/admin6.png" style="width: 100%
     ; height: 300px;">
 </div>
 
