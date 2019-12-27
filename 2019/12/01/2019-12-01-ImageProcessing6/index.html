@@ -17,7 +17,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/hexoBlog/2019/12/01/2019-12-01-ImageProcessing6/">
+    <link rel="canonical" href="https://kyu9341.github.io/hexoBlog/2019/12/01/2019-12-01-ImageProcessing6/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -96,6 +96,13 @@
 
                         
                         <li>
+                            <a href="/hexoBlog/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/hexoBlog/about/">About</a>
                         </li>
                         
@@ -104,13 +111,6 @@
                         
                         <li>
                             <a href="/hexoBlog/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/hexoBlog/archives/">Archives</a>
                         </li>
                         
                     
@@ -158,7 +158,7 @@
     <!-- Main Content -->
     
 <!-- Image to hack wechat -->
-<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/hexoBlog/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="https://kyu9341.github.io/hexoBlog/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
 <!-- Post Header -->
@@ -222,7 +222,7 @@
 
 <p>이를 응용하면 원하는 부분만 모자이크 처리를 수행하는 것이 가능하다. 먼저 lena와 circle이미지를 OR연산을 수행한 뒤 앞서 해보았던 mosaic 함수를 이용하여 모자이크된 lena영상과 AND연산을 수행하면 된다. 하지만 위와 같은 방법을 사용하면 메모리를 여러 개 할당해야하는 불편함과 위치를 원하는 곳으로 지정할 수 없는 불편함 있기 때문에 다음과 같은 함수를 작성하였다.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CircleMosaic</span><span class="params">(uchar** img, uchar** outimg, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">double</span> diameter, <span class="keyword">int</span> block)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, a, b;</span><br><span class="line">	<span class="keyword">double</span> tmp, xSquare, ySquare, avg = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> mtmp, count;</span><br><span class="line"></span><br><span class="line">	mosaic(img, outimg, Row, Col, block); <span class="comment">// outimg에 모자이크된 이미지 저장</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; Row; i++)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			ySquare = (y - j) * (y - j);</span><br><span class="line">			xSquare = (x - i) * (x - i);</span><br><span class="line"></span><br><span class="line">			tmp = <span class="built_in">sqrt</span>(ySquare + xSquare); <span class="comment">// 피타고라스 정리 -&gt; 중심과의 거리 찾기</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (tmp &lt; diameter) outimg[i][j]; <span class="comment">// 현재 픽셀의 위치가 입력받은 반지름보다 작으면 모자이크된 이미지를 유지</span></span><br><span class="line">			<span class="keyword">else</span> outimg[i][j] = img[i][j]; <span class="comment">// 그렇지 않으면 원본이미지를 대입</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>위의 함수는 원하는 좌표와 반지름을 매개변수로 받아 해당하는 위치에 모자이크 처리를 수행하는 함수이다. mosaic함수는<a href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/12/ImageProcessing2.html" target="_blank" rel="noopener">이전 포스팅</a>에서 사용했던 함수이고 circle이미지를 제작할 때 사용했던 방식으로 작성하였다. 위의 함수를 이용하면 다음과 같은 이미지도 출력이 가능하다.</p>
+<p>위의 함수는 원하는 좌표와 반지름을 매개변수로 받아 해당하는 위치에 모자이크 처리를 수행하는 함수이다. mosaic함수는<a href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/12/ImageProcessing2.html">이전 포스팅</a>에서 사용했던 함수이고 circle이미지를 제작할 때 사용했던 방식으로 작성하였다. 위의 함수를 이용하면 다음과 같은 이미지도 출력이 가능하다.</p>
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/partMosaic.png" style="width: 512px
     ; height: 512px;">
@@ -255,12 +255,12 @@ Square Image (diameter=200)
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/hexoBlog/2019/12/01/2019-12-01-ImageProcessing5/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - Add Noise">&larr; Previous Post</a>
+                            <a href="/hexoBlog/2019/12/01/2019-12-05-ImageProcessing8/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - 콘트라스트 스트레칭(Contrast Streching)">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/hexoBlog/2019/12/01/2019-12-05-ImageProcessing8/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - 콘트라스트 스트레칭(Contrast Streching)">Next Post &rarr;</a>
+                            <a href="/hexoBlog/2019/12/01/2019-12-01-ImageProcessing7/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - 히스토그램">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -331,8 +331,8 @@ Square Image (diameter=200)
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2019/12/01/2019-12-01-ImageProcessing6/";
-    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2019/12/01/2019-12-01-ImageProcessing6/";
+    var disqus_identifier = "https://kyu9341.github.io/2019/12/01/2019-12-01-ImageProcessing6/";
+    var disqus_url = "https://kyu9341.github.io/2019/12/01/2019-12-01-ImageProcessing6/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -525,7 +525,7 @@ Square Image (diameter=200)
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://kaijun.rocks/hexo-theme-huxblog/hexoBlog/js/jquery.tagcloud.js",function(){
+        async("https://kyu9341.github.io/hexoBlog/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -589,7 +589,7 @@ Square Image (diameter=200)
 
 
 <!-- Image to hack wechat -->
-<img src="http://kaijun.rocks/hexo-theme-huxblog/hexoBlog/img/icon_wechat.png" width="0" height="0" />
+<img src="https://kyu9341.github.io/hexoBlog/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
