@@ -13,11 +13,11 @@
 
     <title>
         
-          kwon | kwon&#39;s Blog
+          선택정렬(Selection Sort) 알고리즘 - kwon | kwon&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://kyu9341.github.io/page/3/">
+    <link rel="canonical" href="https://kyu9341.github.io/2019/12/21/2019-12-21-algorithmSelectionSort/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -156,416 +156,127 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>kwon&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">To Be A Lean Developer!</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>선택정렬(Selection Sort) 알고리즘</h1>
+                    <h2 class="subheading">Algorithm</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-12-21
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                <p>이제 종강도 했으니 알고리즘 공부를 다시 시작해보려 한다. 유튜버 나동빈님의 강의를 보면서 하나씩 천천히 정리해 나가도록 해보자. 일반적으로 알고리즘을 공부할 때 가장 먼저 풀어보는 문제는 정렬 문제인데, 왜냐면 정렬만큼 알고리즘의 효율성 차이를 극명하게 보여주기 때문이라고 한다. 그래서 여러가지의 정렬 알고리즘을 먼저 배우고 알고리즘의 시간 복잡도에 대해 단계적으로 이해해 보자.</p>
+<h2 id="선택-정렬-Selection-Sort"><a href="#선택-정렬-Selection-Sort" class="headerlink" title="선택 정렬(Selection Sort)"></a>선택 정렬(Selection Sort)</h2><blockquote>
+<h3 id="선택-정렬"><a href="#선택-정렬" class="headerlink" title="선택 정렬"></a>선택 정렬</h3><p>선택 정렬은 제자리 정렬 알고리즘의 하나로, 다음와 같은 순서로 이루어진다.</p>
+<ol>
+<li>주어진 리스트 중에 최소값을 찾는다</li>
+<li>그 값을 맨 앞에 위치한 값과 교체한다.(패스)</li>
+<li>맨 처음 위치를 뺀 나머지 리스트를 같은 방법으로 교체한다.</li>
+</ol>
+<p>출처 - 위키백과</p>
+</blockquote>
+<p>위의 설명처럼 선택 정렬은 가장 작은 것을 선택해서 제일 앞으로 보내는 알고리즘이다. 예를 들어, 3 1 2 5 4 라는 순서의 숫자들을 오름차순으로 정렬한다고 생각해보자. 먼저 리스트의 최솟값을 구하여 가장 앞의 숫자와 위치를 바꾸게 되면 1이 최솟값이므로 3과 자리를 바꾸어 1 3 2 5 4 가 된다. 다음 1을 뺀 나머지의 리스트의 최솟값은 2 이므로 3과 자리를 바꾸어 1 2 3 5 4가 되고, 다음은 3이 최솟값이므로 넘어가서 같은 과정을 반복하면 1 2 3 4 5 로 오름차순 정렬이 끝나게 된다.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, <span class="built_in">min</span>, index, temp; <span class="comment">// min : 최솟값, index : 최솟값의 인덱스</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">10</span>] = &#123; <span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">9</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">min</span> = <span class="number">9999</span>;</span><br><span class="line">		<span class="keyword">for</span> (j = i; j &lt; <span class="number">10</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">array</span>[j] &lt; <span class="built_in">min</span>) <span class="comment">// 최솟값을 구함</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">min</span> = <span class="built_in">array</span>[j];</span><br><span class="line">				index = j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		temp = <span class="built_in">array</span>[i]; <span class="comment">// 최솟값과 자리 바꾸기</span></span><br><span class="line">		<span class="built_in">array</span>[i] = <span class="built_in">min</span>;</span><br><span class="line">		<span class="built_in">array</span>[index] = temp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="built_in">array</span>[j] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"결과 :"</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">array</span>[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<div class="post-preview">
-
-    <a href="/2019/10/17/2019-10-17-python6/">
-        <h2 class="post-title">
-            파이썬 문자열 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 문자열 함수에 대해 알아보자
-문자열문자열 생성 방법문자열은 “” 또는 ‘’를 이용하여 만들 수 있다. “”안에는 ‘가 들어갈 수 있고, ‘’안에는 “가 들어갈 수 있다.
-“”” “”” 또는 ‘’’ ‘’’ 을 이용해서 여러 줄의 문자열도 표현이 가능하다.
-123str = """Life is short,you need python"""print(......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-17
-    </p>
-
+<p>위와 같이 선택정렬을 작성할 수 있다. 또한 아래와 같이 정렬이 진행되는 과정을 확인할 수 있다. 선택 정렬은 앞쪽부터 정렬이 수행되는 것을 확인할 수 있다.</p>
+<div style="width: 250px; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/selectionsort.png" style="width: 250px
+    ; height: 200px;">
 </div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/15/2019-10-15-algorithm2748/">
-        <h2 class="post-title">
-            백준 2748번 피보나치 수 2
-        </h2>
-        <h3 class="post-subtitle">
-            Baekjoon algorithm
-        </h3>
-        <div class="post-content-preview">
-            2748번
-피보나치 수 2
-문제
-피보나치 수는 0과 1로 시작한다. 0번째 피보나치 수는 0이고, 1번째 피보나치 수는 1이다. 그 다음 2번째 부터는 바로 앞 두 피보나치 수의 합이 된다.
-이를 식으로 써보면 Fn = Fn-1 + Fn-2 (n&gt;=2)가 된다.
-n=17일때 까지 피보나치 수를 써보면 다음과 같다.
-0, 1, 1, 2, 3, 5,......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-15
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python5/">
-        <h2 class="post-title">
-            파이썬 람다(Lambda)식
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 람다식에 대해 알아보자
-람다식을 활용하면 코드를 좀 더 간단하고 효율적으로 작성이 가능하다.
-lambda람다 표현식은 식 형태로 되어 있다고 해서 람다 표현(lambda expression)이라고 부른다. 특히 람다식은 함수를 간편하게 작성할 수 있어서 다른 함수의 인수로 넣을 때 주로 사용한다.
-사용법    - lambda 인자 : 표현식
-......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python4/">
-        <h2 class="post-title">
-            파이썬 딕셔너리(dictionary), set(집합) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            딕셔너리딕셔너리는 key값과 value값의 한 쌍의 원소들의 순서가 없는 집합이다. 딕셔너리는 보통 특정 주제에 대해 연관된 값들을 모아둘 때 주로 사용.
-일반적인 딕셔너리의 모습 : {‘a’: 1, ‘b’: 2}
-
-순서가 없기 때문에 key로 접근
-키 이름이 중복되면 가장 뒤에 있는 값만 사용
-키에는 문자열 뿐 아니라 정수, 실수, 부울도 사용할 수......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python3/">
-        <h2 class="post-title">
-            파이썬 리스트(list) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            리스트 관련 함수
-index(item) : 리스트 안에서 해당 item의 index번호를 리턴, 없는 경우 ValueError
-
-12a = ['수학', '과학', '영어', '국어']print(a.index('영어'))
--&gt; 결과 : 2
-
-count(item) : 매칭되는 갯수를 리턴
-
-ex)
-12a = [1, 5, 4, 4, 1, 2, 9]pr......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/11/2019-10-11-C2/">
-        <h2 class="post-title">
-            (C) 동적 메모리 할당
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번에는 동적 메모리 할당에 대해 알아보겠다.
-동적 메모리 할당이란?정적 메모리 할당모든 변수, 배열, 구조체 등에 대해 프로그램 실행 전에 필요한 만큼의 변수를 선언하여 사용 -&gt; 프로그램 실행 전에 변수의 메모리 할당 크기가 정해짐
-
-컴파일 과정에서 메모리 크기가 결정되는 메모리 할당 방법
-프로그램 실행 전에, 어떤 종류의 변수를 얼마나 많이......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/11/2019-10-11-C1/">
-        <h2 class="post-title">
-            (C) 포인터 사용법
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번 학기에 배우는 영상처리에서 C언어를 이용하여 작업을 진행하다가 포인터에 대한 추가적인 이해가 필요하다고 생각되어 내가 C언어에서 부족하다고 생각했던 부분들을 다시 공부해 볼 생각이다. C언어 하면 포인터이기 때문에 포인터의 기초부터 다시 리뷰해보자.
-포인터란?메모리
-
-프로그램이 실행되기 위해 필요한 정보(값)을 저장하는 공간
-1byte(8 bit......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/01/2019-10-01-android1/">
-        <h2 class="post-title">
-            안드로이드(android) 다이얼로그 띄우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            다이얼로그 출력1234567private AlertDialog dialog; // 알림창AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);dialog = builder.setMessage("원하는 메세지 출력.")        .setPositiveButton("확인......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/01/2019-10-03-android2/">
-        <h2 class="post-title">
-            안드로이드(android) Title Bar 지우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            Title Bar 지우기style.xml
-123456789101112&lt;resources&gt;    &lt;!-- Base application theme. --&gt;    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;        &lt;item name=......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/09/16/2019-09-16-djangoCommunity10/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기10 [게시판 만들기2]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            이번 포스팅에서는 글쓰기 기능과 글 상세보기 기능을 추가해보도록 하겠습니다.
-먼저 templates/board/board_write.html 파일을 생성한 뒤 다음과 같이 작성해주도록 합니다.
-1234567891011121314151617181920212223242526&#123;% raw %&#125;&#123;% extends "./base.htm......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-16
-    </p>
-
-</div>
-<hr>
 
 
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-        <li class="previous">
-            <a href="/page/2/">&larr; Newer Posts</a>
-        </li>
-    
-    
-        <li class="next">
-            <a href="/page/4/">Older Posts &rarr;</a>
-        </li>
-    
-</ul>
+<p>이제 선택 정렬을 수행하는데에 얼마만큼의 시간이 걸리는지를 시간복잡도로 표현할 수 있는데 계산 방법은 다음과 같다.</p>
+<p> 1 2 3 4 5 6 7 8 9 10 의 10개의 수를 정렬한다고 생각하면</p>
+<p> 10 + 9 + 8 + … + 1 의 수 만큼 비교연산을 수행해야 한다. 즉, 10 * (10 + 1) / 2 = 55</p>
+<p> 이것을 등차수열의 식에 의해 표현하면 <strong>N * (N + 1) / 2</strong> 로 표현할 수 있다. 즉, 이 알고리즘의 수행시간을 앞의 수식처럼 표현할 수가 있다는 것이다. 이때 일반적으로 컴퓨터에서는 2로 나눈다거나 1을 더한다거나 하는 것은 N이 매우 커지는 경우에는 무시할 수 있기 때문에 간단하게 더하거나 나누거나 하는 연산들은 모두 무시를 하게 된다.(가장 큰 차수만 보고 판단) 따라서 위의 수식이 <strong>N * N</strong> 으로 표현 할 수 가있다는 것이다.</p>
+<p> 이것을 O(N * N) =&gt; O(N^2)이라고 표시할 수 있는데 이와 같은 표기법은 특정한 알고리즘의 수행시간을 간략하게 표현하는 방법이며 O(Big-O) 표기법이라 한다.</p>
+<p>일반적으로 정렬 알고리즘에서 N^2의 복잡도는 아주 비효율적이고 느린 속도라고 할 수 있다.</p>
+<p>참조 : <a href="https://blog.naver.com/ndb796/221226800661" target="_blank" rel="noopener">https://blog.naver.com/ndb796/221226800661</a></p>
+<p><a href="https://ko.wikipedia.org/wiki/%EC%84%A0%ED%83%9D_%EC%A0%95%EB%A0%AC" target="_blank" rel="noopener">https://ko.wikipedia.org/wiki/%EC%84%A0%ED%83%9D_%EC%A0%95%EB%A0%AC</a></p>
 
 
+                <hr>
 
-                <!-- 如果开启评论功能 -->
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/12/21/2019-12-21-algorithmBubbleSort/" data-toggle="tooltip" data-placement="top" title="버블정렬(Bubble Sort) 알고리즘">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/12/01/2019-12-01-ImageProcessing5/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - Add Noise">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+                       
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="//img/avatar.jpg" />
-                        
-
-                        
-                            <p>我要成为魔法师!</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/Kaijun">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                                    <a target="_blank"  href="https://www.linkedin.com/in/kaijun-chen-42089354">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -588,9 +299,66 @@ ex)
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "https://kyu9341.github.io/2019/12/21/2019-12-21-algorithmSelectionSort/";
+    var disqus_url = "https://kyu9341.github.io/2019/12/21/2019-12-21-algorithmSelectionSort/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->

@@ -13,11 +13,11 @@
 
     <title>
         
-          kwon | kwon&#39;s Blog
+          디지털 영상처리 - Negative, Mosaic - kwon | kwon&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://kyu9341.github.io/page/3/">
+    <link rel="canonical" href="https://kyu9341.github.io/2019/11/12/2019-11-12-ImageProcessing2/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -156,416 +156,131 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>kwon&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">To Be A Lean Developer!</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>디지털 영상처리 - Negative, Mosaic</h1>
+                    <h2 class="subheading">ImageProcessing</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-11-12
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-<div class="post-preview">
-
-    <a href="/2019/10/17/2019-10-17-python6/">
-        <h2 class="post-title">
-            파이썬 문자열 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 문자열 함수에 대해 알아보자
-문자열문자열 생성 방법문자열은 “” 또는 ‘’를 이용하여 만들 수 있다. “”안에는 ‘가 들어갈 수 있고, ‘’안에는 “가 들어갈 수 있다.
-“”” “”” 또는 ‘’’ ‘’’ 을 이용해서 여러 줄의 문자열도 표현이 가능하다.
-123str = """Life is short,you need python"""print(......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-17
-    </p>
-
+                <div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/ImageProcessing6.png" style="width: 512px
+    ; height: 512px;">
 </div>
-<hr>
 
-<div class="post-preview">
-
-    <a href="/2019/10/15/2019-10-15-algorithm2748/">
-        <h2 class="post-title">
-            백준 2748번 피보나치 수 2
-        </h2>
-        <h3 class="post-subtitle">
-            Baekjoon algorithm
-        </h3>
-        <div class="post-content-preview">
-            2748번
-피보나치 수 2
-문제
-피보나치 수는 0과 1로 시작한다. 0번째 피보나치 수는 0이고, 1번째 피보나치 수는 1이다. 그 다음 2번째 부터는 바로 앞 두 피보나치 수의 합이 된다.
-이를 식으로 써보면 Fn = Fn-1 + Fn-2 (n&gt;=2)가 된다.
-n=17일때 까지 피보나치 수를 써보면 다음과 같다.
-0, 1, 1, 2, 3, 5,......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-15
-    </p>
-
+<p>저번 포스팅에서 위와 같이 레나 영상을 띄우는 것 까지 해보았다. 이번 포스팅부터는 여러 이미지에 대해 다양한 효과를 적용시키고 가공하는 방법에 대해 다루어볼 것이다. 우리는 그레이 스케일의 0~255 까지의 값을 가지는 이미지만 활용할 것이다.</p>
+<h2 id="Negative-반전-효과"><a href="#Negative-반전-효과" class="headerlink" title="Negative(반전 효과)"></a>Negative(반전 효과)</h2><p>먼저 첫번째로는 가장 기본적인 이미지 반전 효과를 주는 것에 대해 알아보겠다.</p>
+<p>이미지를 반전시키는 방법은 간단하다. 이미지는 0~255의 값을 가지는데 각 픽셀의 가지는 값들을 모두 255에서 빼주면 된다. 다음 코드를 보자.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> uchar;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Negative</span><span class="params">(uchar** img, uchar** Result, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col)</span> <span class="comment">// Nagative 효과 넣기 (반전)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++)</span><br><span class="line">			Result[i][j] = <span class="number">255</span> - img[i][j];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이미지를 반전시켜주는 즉, Negative효과를 주는 함수이다. 입력 이미지의 각 값들을 255에서 빼서 결과 이미지에 넣어주면 된다. 이러한 과정을 거쳐 lena이미지를 처리하면 다음과 같은 결과가 나오게 된다.</p>
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/Negative.png" style="width: 512px
+    ; height: 512px;">
 </div>
-<hr>
 
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python5/">
-        <h2 class="post-title">
-            파이썬 람다(Lambda)식
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 람다식에 대해 알아보자
-람다식을 활용하면 코드를 좀 더 간단하고 효율적으로 작성이 가능하다.
-lambda람다 표현식은 식 형태로 되어 있다고 해서 람다 표현(lambda expression)이라고 부른다. 특히 람다식은 함수를 간편하게 작성할 수 있어서 다른 함수의 인수로 넣을 때 주로 사용한다.
-사용법    - lambda 인자 : 표현식
-......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
+<p>위와 같이 이미지가 반전되어 출력되는 것을 확인할 수 있다.</p>
+<h2 id="Mosaic-모자이크"><a href="#Mosaic-모자이크" class="headerlink" title="Mosaic(모자이크)"></a>Mosaic(모자이크)</h2><p>다음은 이미지에 모자이크 효과를 주는 방법을 알아보겠다.</p>
+<p>모자이크는 먼저 모자이크 블록의 크기를 입력받아 그 크기만큼 증가하며 이미지의 한 블록 내의 값들의 평균을 내어 그 블록의 값을 모두 평균값으로 바꿔주면 된다. 아래의 코드를 보자.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mosaic</span><span class="params">(uchar** img, uchar** out, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col, <span class="keyword">int</span> Block)</span> <span class="comment">// 이미지 모자이크 처리</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, x, y, tmp, count;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i += Block) <span class="comment">// 입력 받은 블록 크기만큼 증가하며 반복</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j += Block)</span><br><span class="line">		&#123;</span><br><span class="line">			tmp = <span class="number">0</span>;</span><br><span class="line">			count = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; Block; y++) <span class="comment">// 블록 크기만큼 반복</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; Block; x++) &#123;</span><br><span class="line">					tmp += img[i + y][j + x]; <span class="comment">// uchar형에서는 0~255 값밖에 처리 못하므로 정수형 변수에 각 픽셀값을 누적</span></span><br><span class="line">					count++; <span class="comment">// 몇번 누적했는지 측정</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			tmp /= count; <span class="comment">// 블록 내의 평균을 구함</span></span><br><span class="line">			<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; Block; y++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; Block; x++) &#123;</span><br><span class="line">					out[i + y][j + x] = tmp; <span class="comment">// 해당 블록의 각 위치에 모두 평균값을 대입</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위와 같이 구현할 수 있으며 다음 이미지는 lena를 각각 블록 크기를 8, 16으로 하여 모자이크 처리를 한 이미지이다.</p>
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/mosaic8.png" style="width: 512px
+    ; height: 512px;">
 </div>
-<hr>
 
-<div class="post-preview">
 
-    <a href="/2019/10/13/2019-10-13-python4/">
-        <h2 class="post-title">
-            파이썬 딕셔너리(dictionary), set(집합) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            딕셔너리딕셔너리는 key값과 value값의 한 쌍의 원소들의 순서가 없는 집합이다. 딕셔너리는 보통 특정 주제에 대해 연관된 값들을 모아둘 때 주로 사용.
-일반적인 딕셔너리의 모습 : {‘a’: 1, ‘b’: 2}
-
-순서가 없기 때문에 key로 접근
-키 이름이 중복되면 가장 뒤에 있는 값만 사용
-키에는 문자열 뿐 아니라 정수, 실수, 부울도 사용할 수......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/mosaic16.png" style="width: 512px
+    ; height: 512px;">
 </div>
-<hr>
 
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python3/">
-        <h2 class="post-title">
-            파이썬 리스트(list) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            리스트 관련 함수
-index(item) : 리스트 안에서 해당 item의 index번호를 리턴, 없는 경우 ValueError
-
-12a = ['수학', '과학', '영어', '국어']print(a.index('영어'))
--&gt; 결과 : 2
-
-count(item) : 매칭되는 갯수를 리턴
-
-ex)
-12a = [1, 5, 4, 4, 1, 2, 9]pr......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/11/2019-10-11-C2/">
-        <h2 class="post-title">
-            (C) 동적 메모리 할당
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번에는 동적 메모리 할당에 대해 알아보겠다.
-동적 메모리 할당이란?정적 메모리 할당모든 변수, 배열, 구조체 등에 대해 프로그램 실행 전에 필요한 만큼의 변수를 선언하여 사용 -&gt; 프로그램 실행 전에 변수의 메모리 할당 크기가 정해짐
-
-컴파일 과정에서 메모리 크기가 결정되는 메모리 할당 방법
-프로그램 실행 전에, 어떤 종류의 변수를 얼마나 많이......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/11/2019-10-11-C1/">
-        <h2 class="post-title">
-            (C) 포인터 사용법
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번 학기에 배우는 영상처리에서 C언어를 이용하여 작업을 진행하다가 포인터에 대한 추가적인 이해가 필요하다고 생각되어 내가 C언어에서 부족하다고 생각했던 부분들을 다시 공부해 볼 생각이다. C언어 하면 포인터이기 때문에 포인터의 기초부터 다시 리뷰해보자.
-포인터란?메모리
-
-프로그램이 실행되기 위해 필요한 정보(값)을 저장하는 공간
-1byte(8 bit......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/01/2019-10-01-android1/">
-        <h2 class="post-title">
-            안드로이드(android) 다이얼로그 띄우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            다이얼로그 출력1234567private AlertDialog dialog; // 알림창AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);dialog = builder.setMessage("원하는 메세지 출력.")        .setPositiveButton("확인......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/01/2019-10-03-android2/">
-        <h2 class="post-title">
-            안드로이드(android) Title Bar 지우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            Title Bar 지우기style.xml
-123456789101112&lt;resources&gt;    &lt;!-- Base application theme. --&gt;    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;        &lt;item name=......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/09/16/2019-09-16-djangoCommunity10/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기10 [게시판 만들기2]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            이번 포스팅에서는 글쓰기 기능과 글 상세보기 기능을 추가해보도록 하겠습니다.
-먼저 templates/board/board_write.html 파일을 생성한 뒤 다음과 같이 작성해주도록 합니다.
-1234567891011121314151617181920212223242526&#123;% raw %&#125;&#123;% extends "./base.htm......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-16
-    </p>
-
-</div>
-<hr>
+<p>위와 같이 지정한 블록 크기에 따라 모자이크의 정도가 달라지는 것을 볼 수 있다.</p>
 
 
+                <hr>
 
-<!-- Pager -->
+                
 
-<ul class="pager">
-    
-        <li class="previous">
-            <a href="/page/2/">&larr; Newer Posts</a>
-        </li>
-    
-    
-        <li class="next">
-            <a href="/page/4/">Older Posts &rarr;</a>
-        </li>
-    
-</ul>
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/11/16/2019-11-16-marchine learning1/" data-toggle="tooltip" data-placement="top" title="ICT멘토링 머신러닝 교육 1일차">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/11/11/2019-11-11-ImageProcessing1/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
+                
 
-
-                <!-- 如果开启评论功能 -->
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+                       
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="//img/avatar.jpg" />
-                        
-
-                        
-                            <p>我要成为魔法师!</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/Kaijun">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                                    <a target="_blank"  href="https://www.linkedin.com/in/kaijun-chen-42089354">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -588,9 +303,66 @@ ex)
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "https://kyu9341.github.io/2019/11/12/2019-11-12-ImageProcessing2/";
+    var disqus_url = "https://kyu9341.github.io/2019/11/12/2019-11-12-ImageProcessing2/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
