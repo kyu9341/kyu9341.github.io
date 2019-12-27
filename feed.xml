@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://kyu9341.github.io/"/>
-  <updated>2019-12-27T06:41:40.439Z</updated>
+  <updated>2019-12-27T11:45:22.831Z</updated>
   <id>https://kyu9341.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>병합 정렬(Merge Sort) 알고리즘</title>
+    <link href="https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/"/>
+    <id>https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/</id>
+    <published>2019-12-27T11:44:19.000Z</published>
+    <updated>2019-12-27T11:45:22.831Z</updated>
+    
+    <content type="html"><![CDATA[<p>이번 포스팅에서는 <strong>병합 정렬(Merge Sort)</strong> 에 대해 알아보겠다. 병합 정렬도 퀵 정렬과 마찬가지로 ‘분할 정복’방법을 채택한 알고르즘이며 결과적으로 퀵 정렬과 동일하게 O(N*logN)의 시간복잡도를 가진다.</p><p>퀵 정렬은 피벗 값에 따라서 편향되게 분할할 가능성이 있다는 점에서 최악의 경우 O(N^2)의 시간 복잡도를 가지지만 병합 정렬은 정확히 반절씩 나눈다는 점에서 최악의 경우에도 O(N*logN)을 보장한다.</p><h2 id="병합-정렬-Merge-Sort"><a href="#병합-정렬-Merge-Sort" class="headerlink" title="병합 정렬(Merge Sort)"></a>병합 정렬(Merge Sort)</h2><blockquote><p>합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘이다. 일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나이다. 존 폰 노이만이 1945년에 개발했다. 하향식 합병 정렬에 대한 자세한 설명과 분석은 1948년 초 헤르만 골드스타인과 폰 노이만의 보고서에 등장하였다.<br>합병 정렬은 다음과 같이 작동한다.</p><ol><li>리스트의 길이가 1 이하이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는</li><li>분할(divide) : 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다.</li><li>정복(conquer) : 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.</li><li>결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.</li><li>복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.</li></ol><p>출처 - 위키백과</p></blockquote><p>병합 정렬은 하나의 큰 문제를 두 개의 작은 문제로 분할한 뒤에 각자계산하고</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>참조 : <a href="https://blog.naver.com/ndb796/221242106787" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221242106787</a></p><p><a href="https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;이번 포스팅에서는 &lt;strong&gt;병합 정렬(Merge Sort)&lt;/strong&gt; 에 대해 알아보겠다. 병합 정렬도 퀵 정렬과 마찬가지로 ‘분할 정복’방법을 채택한 알고르즘이며 결과적으로 퀵 정렬과 동일하게 O(N*logN)의 시간복잡도를 가진다.
+      
+    
+    </summary>
+    
+    
+      <category term="algorithm" scheme="https://kyu9341.github.io/categories/algorithm/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>삽입 정렬(Insertion Sort) 알고리즘</title>
@@ -55,30 +79,6 @@
       
       
         &lt;p&gt;이제까지 공부했던 정렬 알고리즘은 모두 시간복잡도 O(N^2)를 가지는 알고리즘이었다. 이러한 시간복잡도를 가지는 알고리즘은 사실상 데이터의 갯수가 커지면 일반적인 상황에서 사용하기가 매우 어렵다.  그렇기 때문에 더욱 빠른 알고리즘이 필요한데 
-      
-    
-    </summary>
-    
-    
-      <category term="algorithm" scheme="https://kyu9341.github.io/categories/algorithm/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>병합 정렬(Merge Sort) 알고리즘</title>
-    <link href="https://kyu9341.github.io/algorithm/2019/12/22/algorithmMergeSort/"/>
-    <id>https://kyu9341.github.io/algorithm/2019/12/22/algorithmMergeSort/</id>
-    <published>2019-12-22T02:44:19.000Z</published>
-    <updated>2019-12-23T03:57:06.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>이번 포스팅에서는 <strong>병합 정렬(Merge Sort)</strong> 에 대해 알아보겠다. 병합 정렬도 퀵 정렬과 마찬가지로 ‘분할 정복’방법을 채택한 알고르즘이며 결과적으로 퀵 정렬과 동일하게 O(N*logN)의 시간복잡도를 가진다.</p><p>퀵 정렬은 피벗 값에 따라서 편향되게 분할할 가능성이 있다는 점에서 최악의 경우 O(N^2)의 시간 복잡도를 가지지만 병합 정렬은 정확히 반절씩 나눈다는 점에서 최악의 경우에도 O(N*logN)을 보장한다.</p><h2 id="병합-정렬-Merge-Sort"><a href="#병합-정렬-Merge-Sort" class="headerlink" title="병합 정렬(Merge Sort)"></a>병합 정렬(Merge Sort)</h2><blockquote><p>합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘이다. 일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나이다. 존 폰 노이만이 1945년에 개발했다. 하향식 합병 정렬에 대한 자세한 설명과 분석은 1948년 초 헤르만 골드스타인과 폰 노이만의 보고서에 등장하였다.<br>합병 정렬은 다음과 같이 작동한다.</p><ol><li>리스트의 길이가 1 이하이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는</li><li>분할(divide) : 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다.</li><li>정복(conquer) : 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.</li><li>결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.</li><li>복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.</li></ol><p>출처 - 위키백과</p></blockquote><p>병합 정렬은 하나의 큰 문제를 두 개의 작은 문제로 분할한 뒤에 각자계산하고</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>참조 : <a href="https://blog.naver.com/ndb796/221242106787" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221242106787</a></p><p><a href="https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;이번 포스팅에서는 &lt;strong&gt;병합 정렬(Merge Sort)&lt;/strong&gt; 에 대해 알아보겠다. 병합 정렬도 퀵 정렬과 마찬가지로 ‘분할 정복’방법을 채택한 알고르즘이며 결과적으로 퀵 정렬과 동일하게 O(N*logN)의 시간복잡도를 가진다.
       
     
     </summary>

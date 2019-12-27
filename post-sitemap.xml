@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/</loc>
+        <lastmod>2019-12-27T11:45:22.831Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmQuickSort/</loc>
         <lastmod>2019-12-27T06:41:43.115Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -250,14 +258,6 @@
     <url>
         <loc>https://kyu9341.github.io/django/2019/09/16/djangoCommunity10/</loc>
         <lastmod>2019-12-27T06:39:42.996Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmMergeSort/</loc>
-        <lastmod>2019-12-23T03:57:06.167Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
