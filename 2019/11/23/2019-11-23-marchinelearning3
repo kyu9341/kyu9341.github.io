@@ -17,7 +17,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://kyu9341.github.io/2019/11/23/2019-11-23-marchine learning3">
+    <link rel="canonical" href="https://kyu9341.github.io/2019/11/23/2019-11-23-marchinelearning3">
 
     <!-- Bootstrap Core CSS -->
     
@@ -96,7 +96,7 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -110,7 +110,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -490,7 +490,7 @@ Test Acc: [0.725729592915239, 0.6724137972141134]</code></pre><figure class="hig
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2019/11/24/2019-11-23-marchine learning4" data-toggle="tooltip" data-placement="top" title="ICT멘토링 딥러닝 교육 2일차">&larr; Previous Post</a>
+                            <a href="/2019/11/24/2019-11-23-marchinelearning4" data-toggle="tooltip" data-placement="top" title="ICT멘토링 딥러닝 교육 2일차">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -566,8 +566,8 @@ Test Acc: [0.725729592915239, 0.6724137972141134]</code></pre><figure class="hig
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/2019/11/23/2019-11-23-marchine%20learning3";
-    var disqus_url = "https://kyu9341.github.io/2019/11/23/2019-11-23-marchine%20learning3";
+    var disqus_identifier = "https://kyu9341.github.io/2019/11/23/2019-11-23-marchinelearning3";
+    var disqus_url = "https://kyu9341.github.io/2019/11/23/2019-11-23-marchinelearning3";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -17,7 +17,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://kyu9341.github.io/2019/11/24/2019-11-23-marchine learning4">
+    <link rel="canonical" href="https://kyu9341.github.io/2019/11/24/2019-11-23-marchinelearning4">
 
     <!-- Bootstrap Core CSS -->
     
@@ -96,7 +96,7 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -110,7 +110,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -766,7 +766,7 @@ Epoch 10/10
                     
                     
                         <li class="next">
-                            <a href="/2019/11/23/2019-11-23-marchine learning3" data-toggle="tooltip" data-placement="top" title="ICT멘토링 딥러닝 교육 1일차">Next Post &rarr;</a>
+                            <a href="/2019/11/23/2019-11-23-marchinelearning3" data-toggle="tooltip" data-placement="top" title="ICT멘토링 딥러닝 교육 1일차">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -837,8 +837,8 @@ Epoch 10/10
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/2019/11/24/2019-11-23-marchine%20learning4";
-    var disqus_url = "https://kyu9341.github.io/2019/11/24/2019-11-23-marchine%20learning4";
+    var disqus_identifier = "https://kyu9341.github.io/2019/11/24/2019-11-23-marchinelearning4";
+    var disqus_url = "https://kyu9341.github.io/2019/11/24/2019-11-23-marchinelearning4";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
