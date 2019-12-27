@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="DccZuuiZ9TibZPtIaFy53R0h-H4tYt01uuNFgpAariI">
+    <meta name="naver-site-verification" content="5e23bdf515b07e9f67d160f17584530e5971e0ab">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <title>
+        
+          ICT멘토링 딥러닝 교육 2일차 - kwon | kwon&#39;s Blog
+        
+    </title>
+    <link rel="canonical" href="https://kyu9341.github.io/machinelearning/2019/11/24/marchinelearning4/">
+
+    <link rel="canonical" href="https://kyu9341.github.io/MachineLearning/2019/11/24/marchinelearning4/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="kwon's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">kwon&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Posts</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>ICT멘토링 딥러닝 교육 2일차</h1>
+                    <h2 class="subheading">Machine Learning</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-11-24
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>이번에는 둘째 날 배운 내용을 리뷰해보겠다. 둘째 날에는 이미지 분류 이론, Azure Cloud GPU활용, Cifar10 이미지 분류에 대해서 배웠다.</p>
+<h3 id="Convolutional-Neural-Network-CNN"><a href="#Convolutional-Neural-Network-CNN" class="headerlink" title="Convolutional Neural Network(CNN)"></a>Convolutional Neural Network(CNN)</h3><p>딥러닝이나 머신러닝 관련 자료들을 보면 자주 등장하던 CNN이다. 주로 이미지를 학습시킨다고 하면 제일 먼저 떠오르는 단어이다.</p>
+<p>CNN(합성곱 신경망)은 필터링 기법을 인공신경망에 적용함으로써 이미지를 더욱 효과적으로 처리하기 위해 고안되었다. 이미지를 Dense(fully connected) Layer로 처리하려 한다면 feature가 너무 많아져 불필요한 weight가 많아지고 효율이 떨어지게 된다. 또한 Dense Layer는 1차원 데이터만 input으로 받을 수 있기 때문에 3차원 데이터를 평탄화하여 입력해야 한다. 여기서 3차원 데이터의 공간적 정보가 소실되는 문제가 발생한다. 반면 Convolutional Layer에서는 형상을 유지한다. 입/출력 모두 3차원 데이터로 처리하기 때문에 공간적 정보를 유지할 수 있다.</p>
+<div style="width: 100%; height: 400px;">
+    <img src="https://kyu9341.github.io/img/cnn.png" style="width: 100%
+    ; height: 400px;">
+</div>
+
+<h4 id="Convolutional-Layer"><a href="#Convolutional-Layer" class="headerlink" title="Convolutional Layer"></a>Convolutional Layer</h4><p>Convolution은 합성곱이라는 뜻이다. 최근에 영상처리 수업을 들으며 등장했던 단어이기 때문에 이해가 잘 되었다. 특정한 크기의 필터를 사용하여 이미지의 각 픽셀을 지나가며 필터의 위치에 해당하는 픽셀과 모두 곱한 후 그 곱한 값을 모두 더하여 현재 중앙 픽셀 값에 넣어주는 것이다.</p>
+<div style="width: 100%; height: 400px;">
+    <img src="https://kyu9341.github.io/img/convolution.png" style="width: 100%
+    ; height: 400px;">
+</div>
+위의 그림처럼 이미지에서 합성곱이란 필터를 이동시켜가며 이미지와 곱한 결과를 모두 더하는 것인데, 이러한 필터를 어떤 값을 넣어 사용하느냐에 따라 이미지의 색상, 밝기, 엣지 추출등 여러가지 기능을 수행할 수 있다. 또한 필터는 주로 커널이라고 부르기도 한다.
+
+<h4 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h4><p>1만큼 패딩했다고 한다면, 입력 데이터 사방 1픽셀을 특정 값으로 채워 늘리는 것을 말한다. 주로 출력 크기를 조정할 목적으로 사용되는데 이를테면 (5, 5)데이터에 (3, 3)필터를 적용하면 출력이 (3, 3)이 된다. 이처럼 합성곱 연산을 거칠 때 마다 크기가 작아지게 되는데 출력 크기가 너무 줄어드는 것을 막기 위해 패딩을 사용한다. 패딩을 사용하면 그만큼 입력 데이터를 그게 만들어 출력 데이터를 입력 데이터와 동일한 형상으로 조정할 수 있으므로 입력 데이터의 공간적 크기를 고정한 채로 다음 계층에 전달할 수 있다.</p>
+<h4 id="Pooling-layer"><a href="#Pooling-layer" class="headerlink" title="Pooling layer"></a>Pooling layer</h4><p>풀링은 가로/세로 방향의 공간을 줄이는 연산이다. 풀링의 종류로는 Max Pooling과 Average Pooling이 있는데 이미지 인식 분야에서는 주로 Max Pooling을 사용한다.</p>
+<div style="width: 100%; height: 400px;">
+    <img src="https://kyu9341.github.io/img/pooling.png" style="width: 100%
+    ; height: 400px;">
+</div>
+
+<ul>
+<li><p>Average pooling : 지정된 구역의 평균값을 가져와 대체함</p>
+</li>
+<li><p>Max pooling layer: 지정된 구역의 가장 큰 값을 가져와 대체함(사소한 정보 차이는 무시)</p>
+<p>    이미지가 가지는 큰 특징을 유지하며 사이즈를 줄임 (특징 일반화 가능)</p>
+<p>    예를 들어 강아지의 종이 다른 경우에도 큰 특징만 가지고 커버가능</p>
+<p>    데이터가 지역적으로 학습되지 않도록 함</p>
+</li>
+</ul>
+<h2 id="실습1"><a href="#실습1" class="headerlink" title="실습1"></a>실습1</h2><p>첫번째는 간단하게 이미지만 불러와서 확인하는 과정이다.</p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN"><a href="#2019-11-24-딥-러닝-과정-CNN" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="준비-실습-Image-살펴보기"><a href="#준비-실습-Image-살펴보기" class="headerlink" title="준비 실습. Image 살펴보기"></a>준비 실습. Image 살펴보기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. package 가져오기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 가져오기</span></span><br><span class="line"></span><br><span class="line">image_gray = Image.open(<span class="string">'01image.png'</span>)</span><br><span class="line">image_color = Image.open(<span class="string">'02image.png'</span>)</span><br><span class="line">image_jet = Image.open(<span class="string">'jet.png'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(image_gray.size)</span><br><span class="line">print(image_gray)</span><br><span class="line"><span class="comment"># print(image_jet)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(image_color.size) <span class="comment"># size만 뽑으면 가로 세로만 나옴</span></span><br><span class="line">print(image_gray.size)</span><br><span class="line"><span class="comment"># print(image_jet.size)</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(28, 28)
+&lt;PIL.PngImagePlugin.PngImageFile image mode=L size=28x28 at 0x1405C55AE08&gt;
+(32, 32)
+(28, 28)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3. 이미지 array로 변환하기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">image_array = np.array(image_gray)</span><br><span class="line">image_array_color = np.array(image_color)</span><br><span class="line"><span class="comment"># image_array_jet = np.array(image_jet)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(image_array.shape) <span class="comment"># 학습 시킬때 항상 numpy data로 변환하며 shape를 확인해야함</span></span><br><span class="line">print(image_array_color.shape) <span class="comment"># numpy array로 변환하여 출력하면 (32, 32, 3)처럼 뎁스도 출력 가능</span></span><br><span class="line"><span class="comment"># 3차원 데이터여야만 CNN에 넣어서 학습이 가능 따라서 gray scale은 reshape해줘야함</span></span><br><span class="line"><span class="comment"># print(image_array_jet.shape)</span></span><br><span class="line">reshpaed_1d = image_array.reshape(<span class="number">28</span>*<span class="number">28</span>) <span class="comment"># gray image -&gt;reshape</span></span><br><span class="line">reshaped_3d = image_array.reshape(<span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>) <span class="comment"># gray image -&gt; 3d로 변경하여 cnn이 가능하도록 함</span></span><br><span class="line"></span><br><span class="line">print(reshpaed_1d.shape)</span><br><span class="line">print(reshaped_3d.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(28, 28)
+(32, 32, 3)
+(784,)
+(28, 28, 1)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4. 이미지 살펴보기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(image_array)</span></span><br><span class="line">print(image_array_color)</span><br><span class="line"><span class="comment"># print(image_array_jet)</span></span><br><span class="line"><span class="comment"># print(reshaped_3d)</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[[[125 125 116]
+  [110 101  91]
+  [102  90  83]
+  ...
+  [202 207 214]
+  [200 205 212]
+  [202 208 214]]
+  ...
+  [143 117  82]
+  [143 116  84]
+  [144 116  86]]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 이미지 시각화</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.imshow(image_array, cmap=plt.cm.gray) <span class="comment"># gray scale를 정상적으로 띄우려면 color map 을 지정해야함</span></span><br><span class="line">plt.imshow(image_array_color)</span><br><span class="line"><span class="comment"># plt.imshow(image_array_jet)</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;matplotlib.image.AxesImage at 0x1405c59de48&gt;</code></pre><div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_6_1.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<h2 id="실습2"><a href="#실습2" class="headerlink" title="실습2"></a>실습2</h2><p>두번째 실습은 CNN모델을 적용하기 전에 MLT만 사용하여 이미지를 학습시켜보았다. MLT는 1차원 데이터만 input으로 받을 수 있기 때문에 gray scale의 2차원 데이터는 1차원으로 reshape을 해주어야 학습이 가능하다.</p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-1"><a href="#2019-11-24-딥-러닝-과정-CNN-1" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="첫번째-실습-Keras-모델-생성-학습-MNIST-MLP"><a href="#첫번째-실습-Keras-모델-생성-학습-MNIST-MLP" class="headerlink" title="첫번째 실습. Keras 모델 생성/학습 - MNIST : MLP"></a>첫번째 실습. Keras 모델 생성/학습 - MNIST : MLP</h3><p><a href="https://keras.io/ko/datasets/#mnist" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist  <span class="comment"># 많이 쓰이는 데이터 케라스에서 제공</span></span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(60000, 28, 28)
+(60000,)
+(10000, 28, 28)
+(10000,)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 데이터 확인하기 🖼</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">image = X_train[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">plt.imshow(image, cmap=plt.cm.gray)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;matplotlib.image.AxesImage at 0x12a2b101c48&gt;</code></pre><div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_3_1.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(X_train.shape) <span class="comment"># 28*28 이미지 (2차원) 6만개 -&gt; 1차원 6만개</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(60000, 28, 28)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3-1. 이미지 데이터 전처리 : 2차원-&gt;1차원 🌟🌟🌟</span></span><br><span class="line"></span><br><span class="line">X_train = X_train.reshape((<span class="number">60000</span>, <span class="number">28</span> * <span class="number">28</span>)) <span class="comment"># -&gt; 1차원 6만개로 변환</span></span><br><span class="line">X_test = X_test.reshape((<span class="number">10000</span>, <span class="number">28</span> * <span class="number">28</span>))</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line"></span><br><span class="line">print(X_train)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(60000, 784)
+(10000, 784)
+[[0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ ...
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3-2. 이미지 데이터 전처리 : Normalzation</span></span><br><span class="line">X_train = X_train / <span class="number">255.0</span></span><br><span class="line">X_test = X_test / <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line">print(X_train[<span class="number">9</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4. Label 전처리 (one-hot encoding)</span></span><br><span class="line">print(y_train[:<span class="number">10</span>]) <span class="comment"># 앞에서 10개, label : 숫자가 어떤 숫자인지</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[5 0 4 1 9 2 1 3 1 4]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4. Label 전처리 (one-hot encoding)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</span><br><span class="line">y_train = to_categorical(y_train)</span><br><span class="line">y_test = to_categorical(y_test)</span><br><span class="line"></span><br><span class="line">print(y_train[:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4-1 Validation 셋 나누기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,</span><br><span class="line">                                                    test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                    random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line"></span><br><span class="line">print(X_val.shape)</span><br><span class="line">print(y_val.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(48000, 784)
+(48000, 10)
+(12000, 784)
+(12000, 10)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 모델 생성 : MLP</span></span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">512</span>, input_dim=<span class="number">784</span>, activation=<span class="string">'relu'</span>)) <span class="comment"># 다음 노드의 수 : 512(inputdata가 784이므로 적당히 크게)</span></span><br><span class="line">model.add(Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>)) <span class="comment"># 출력 층 10개중 어떤건지 알기 위해 10으로 지정</span></span><br><span class="line"></span><br><span class="line">print(model.summary())</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential_6&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+dense_9 (Dense)              (None, 512)               401920    
+_________________________________________________________________
+dense_10 (Dense)             (None, 10)                5130      
+=================================================================
+Total params: 407,050
+Trainable params: 407,050
+Non-trainable params: 0
+_________________________________________________________________
+None</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 6. Compile - Optimizer, Loss function 설정</span></span><br><span class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">              optimizer=<span class="string">'sgd'</span>,</span><br><span class="line">              metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 7. 모델 학습시키기</span></span><br><span class="line"></span><br><span class="line">batch_size=<span class="number">128</span></span><br><span class="line">epochs=<span class="number">10</span></span><br><span class="line"></span><br><span class="line">history = model.fit(X_train, y_train,</span><br><span class="line">         epochs=epochs,</span><br><span class="line">         batch_size=batch_size,</span><br><span class="line">         validation_data=(X_val, y_val), <span class="comment"># validation_set 적용 (꼭 같이 해주는게 좋음)</span></span><br><span class="line">         verbose=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Train on 48000 samples, validate on 12000 samples
+Epoch 1/10
+48000/48000 [==============================] - 2s 37us/step - loss: 1.2137 - accuracy: 0.7386 - val_loss: 0.6995 - val_accuracy: 0.8526
+Epoch 2/10
+48000/48000 [==============================] - 2s 34us/step - loss: 0.5725 - accuracy: 0.8683 - val_loss: 0.4960 - val_accuracy: 0.8789
+Epoch 3/10
+48000/48000 [==============================] - 2s 42us/step - loss: 0.4501 - accuracy: 0.8855 - val_loss: 0.4243 - val_accuracy: 0.8904
+Epoch 4/10
+48000/48000 [==============================] - 2s 40us/step - loss: 0.3967 - accuracy: 0.8948 - val_loss: 0.3847 - val_accuracy: 0.8984
+Epoch 5/10
+48000/48000 [==============================] - 2s 40us/step - loss: 0.3648 - accuracy: 0.9019 - val_loss: 0.3599 - val_accuracy: 0.9035
+Epoch 6/10
+48000/48000 [==============================] - 2s 40us/step - loss: 0.3425 - accuracy: 0.9064 - val_loss: 0.3419 - val_accuracy: 0.9077
+Epoch 7/10
+48000/48000 [==============================] - 2s 38us/step - loss: 0.3257 - accuracy: 0.9103 - val_loss: 0.3276 - val_accuracy: 0.9109
+Epoch 8/10
+48000/48000 [==============================] - 2s 40us/step - loss: 0.3121 - accuracy: 0.9145 - val_loss: 0.3155 - val_accuracy: 0.9133
+Epoch 9/10
+48000/48000 [==============================] - 2s 41us/step - loss: 0.3006 - accuracy: 0.9174 - val_loss: 0.3064 - val_accuracy: 0.9160
+Epoch 10/10
+48000/48000 [==============================] - 2s 40us/step - loss: 0.2906 - accuracy: 0.9201 - val_loss: 0.2977 - val_accuracy: 0.9183</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 8. 모델 평가하기</span></span><br><span class="line">test_loss, test_acc = model.evaluate(X_test, y_test)</span><br><span class="line"></span><br><span class="line">print(test_loss, test_acc)</span><br></pre></td></tr></table></figure>
+
+<pre><code>10000/10000 [==============================] - 0s 25us/step
+0.2771936253398657 0.9223999977111816</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index].reshape(<span class="number">28</span>, <span class="number">28</span>), cmap = <span class="string">'Greys'</span>, interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_14_0.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_14_1.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_14_2.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'val_accuracy'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'accuracy'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(history.history['val_accuracy'])</span></span><br></pre></td></tr></table></figure>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_15_0.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+
+<h2 id="실습3"><a href="#실습3" class="headerlink" title="실습3"></a>실습3</h2><p>이번에는 실제로 CNN을 사용하여 딥러닝을 수행했다. MLT를 수행하기 이전에 Convolution Layer 및 Pooling Layer를 거쳐 학습이 진행된다.</p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-2"><a href="#2019-11-24-딥-러닝-과정-CNN-2" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="두번째-실습-Keras-모델-생성-학습-MNIST-CNN"><a href="#두번째-실습-Keras-모델-생성-학습-MNIST-CNN" class="headerlink" title="두번째 실습. Keras 모델 생성/학습 - MNIST : CNN"></a>두번째 실습. Keras 모델 생성/학습 - MNIST : CNN</h3><p><a href="https://keras.io/ko/datasets/#mnist" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,</span><br><span class="line">                                                 test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                 random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(48000, 28, 28)
+(48000,)
+(10000, 28, 28)
+(10000,)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 데이터 확인하기 🖼</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">image = X_train[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">plt.imshow(image, cmap=plt.cm.gray)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;matplotlib.image.AxesImage at 0x240c6b78c48&gt;</code></pre><div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_3_1a.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3-1. 이미지 데이터 전처리 : 2차원-&gt;3차원 🌟🌟🌟</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># w=h=28            </span></span><br><span class="line"><span class="comment"># X_train = X_train.reshape(X_train.shape[0], w, h, 1)</span></span><br><span class="line"><span class="comment"># 위의 두줄로 대체 가능 위의 방식이 재사용에 용이</span></span><br><span class="line"></span><br><span class="line">X_train = X_train.reshape(<span class="number">48000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)</span><br><span class="line">X_val = X_val.reshape(<span class="number">12000</span>, <span class="number">28</span>,<span class="number">28</span>,<span class="number">1</span>)</span><br><span class="line">X_test = X_test.reshape((<span class="number">10000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(X_val.shape)</span><br><span class="line"></span><br><span class="line">print(X_test.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(48000, 28, 28, 1)
+(12000, 28, 28, 1)
+(10000, 28, 28, 1)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3-2. 이미지 데이터 전처리 : Normalzation</span></span><br><span class="line">X_train = X_train / <span class="number">255.0</span></span><br><span class="line">X_val = X_val / <span class="number">255.0</span></span><br><span class="line">X_test = X_test / <span class="number">255.0</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4. Label 전처리 (one-hot encoding)</span></span><br><span class="line"></span><br><span class="line">print(y_train[:<span class="number">10</span>]) <span class="comment"># 앞에서 10개, label : 숫자가 어떤 숫자인지</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</span><br><span class="line">y_train = to_categorical(y_train)</span><br><span class="line">y_val = to_categorical(y_val)</span><br><span class="line">y_test = to_categorical(y_test)</span><br><span class="line"></span><br><span class="line">print(y_train[:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[9 9 9 5 3 2 0 4 2 7]
+[[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 모델 생성 : CNN 🌟🌟🌟</span></span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Conv2D, MaxPooling2D, Flatten</span><br><span class="line"></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Conv2D(filters=<span class="number">32</span>,</span><br><span class="line">                kernel_size=(<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">                padding=<span class="string">'same'</span>,</span><br><span class="line">                activation=<span class="string">'relu'</span>,</span><br><span class="line">                input_shape=(<span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)))</span><br><span class="line">model.add(MaxPooling2D(pool_size=(<span class="number">2</span>,<span class="number">2</span>)))</span><br><span class="line">model.add(Flatten())</span><br><span class="line">model.add(Dense(<span class="number">128</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>))</span><br><span class="line"></span><br><span class="line">print(model.summary())</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential_10&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_9 (Conv2D)            (None, 28, 28, 32)        320       
+_________________________________________________________________
+max_pooling2d_7 (MaxPooling2 (None, 14, 14, 32)        0         
+_________________________________________________________________
+flatten_6 (Flatten)          (None, 6272)              0         
+_________________________________________________________________
+dense_9 (Dense)              (None, 128)               802944    
+_________________________________________________________________
+dense_10 (Dense)             (None, 10)                1290      
+=================================================================
+Total params: 804,554
+Trainable params: 804,554
+Non-trainable params: 0
+_________________________________________________________________
+None</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 6. Compile - Optimizer, Loss function 설정</span></span><br><span class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">              optimizer=<span class="string">'sgd'</span>,</span><br><span class="line">              metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 7. 모델 학습시키기</span></span><br><span class="line"></span><br><span class="line">batch_size=<span class="number">128</span></span><br><span class="line">epochs=<span class="number">10</span></span><br><span class="line"></span><br><span class="line">history = model.fit(X_train, y_train,</span><br><span class="line">         epochs=epochs,</span><br><span class="line">         batch_size=batch_size,</span><br><span class="line">         validation_data=(X_val, y_val), <span class="comment"># validation_set 적용 (꼭 같이 해주는게 좋음)</span></span><br><span class="line">         verbose=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>W1124 16:01:22.815376 23724 deprecation_wrapper.py:119] From c:\users\kyu93\appdata\local\programs\python\python37\lib\site-packages\keras\backend\tensorflow_backend.py:422: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+
+
+Train on 48000 samples, validate on 12000 samples
+Epoch 1/10
+48000/48000 [==============================] - 10s 203us/step - loss: 1.1062 - accuracy: 0.7491 - val_loss: 0.4400 - val_accuracy: 0.8799
+Epoch 2/10
+48000/48000 [==============================] - 10s 207us/step - loss: 0.3706 - accuracy: 0.8950 - val_loss: 0.3396 - val_accuracy: 0.9028
+Epoch 3/10
+48000/48000 [==============================] - 12s 242us/step - loss: 0.3099 - accuracy: 0.9095 - val_loss: 0.3000 - val_accuracy: 0.9153
+Epoch 4/10
+48000/48000 [==============================] - 12s 245us/step - loss: 0.2787 - accuracy: 0.9186 - val_loss: 0.2750 - val_accuracy: 0.9217
+Epoch 5/10
+48000/48000 [==============================] - 12s 244us/step - loss: 0.2548 - accuracy: 0.9252 - val_loss: 0.2543 - val_accuracy: 0.9284
+Epoch 6/10
+48000/48000 [==============================] - 12s 252us/step - loss: 0.2348 - accuracy: 0.9316 - val_loss: 0.2379 - val_accuracy: 0.9331
+Epoch 7/10
+48000/48000 [==============================] - 12s 251us/step - loss: 0.2173 - accuracy: 0.9372 - val_loss: 0.2233 - val_accuracy: 0.9353
+Epoch 8/10
+48000/48000 [==============================] - 13s 269us/step - loss: 0.2025 - accuracy: 0.9405 - val_loss: 0.2106 - val_accuracy: 0.9405
+Epoch 9/10
+48000/48000 [==============================] - 13s 265us/step - loss: 0.1898 - accuracy: 0.9446 - val_loss: 0.1987 - val_accuracy: 0.9421
+Epoch 10/10
+48000/48000 [==============================] - 12s 251us/step - loss: 0.1782 - accuracy: 0.9475 - val_loss: 0.1957 - val_accuracy: 0.9433</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 8. 모델 평가하기</span></span><br><span class="line">test_loss, test_acc = model.evaluate(X_test, y_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>10000/10000 [==============================] - 1s 83us/step</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index].reshape(<span class="number">28</span>, <span class="number">28</span>), cmap = <span class="string">'Greys'</span>, interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_0a.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_1a.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_2a.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'val_accuracy'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'accuracy'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'loss'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_loss'</span>])</span><br><span class="line">plt.title(<span class="string">'Loss'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'loss'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_12_0a.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_12_1a.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<h2 id="실습4"><a href="#실습4" class="headerlink" title="실습4"></a>실습4</h2><p>위에서 학습한 방식을 그대로 사용하여 Fashion MNIST 데이터에 적용하여 딥러닝을 수행해보았다.</p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-3"><a href="#2019-11-24-딥-러닝-과정-CNN-3" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="세번째-실습-Keras-모델-생성-학습-Fashion-MNIST-CNN"><a href="#세번째-실습-Keras-모델-생성-학습-Fashion-MNIST-CNN" class="headerlink" title="세번째 실습. Keras 모델 생성/학습 - Fashion MNIST : CNN"></a>세번째 실습. Keras 모델 생성/학습 - Fashion MNIST : CNN</h3><p><a href="https://keras.io/ko/datasets/#-mnist" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> fashion_mnist</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = fashion_mnist.load_data()</span><br><span class="line"></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,</span><br><span class="line">                                                 test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                 random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_val.shape)</span><br><span class="line">print(y_val.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(48000, 28, 28)
+(48000,)
+(12000, 28, 28)
+(12000,)
+(10000, 28, 28)
+(10000,)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 데이터 확인하기 🖼</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">image = X_train[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">plt.imshow(image, cmap = plt.cm.gray)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>&lt;matplotlib.image.AxesImage at 0x2ab820aac08&gt;</code></pre><div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_3_1b.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3-1. 이미지 데이터 전처리 : 2차원-&gt;3차원 🌟🌟🌟</span></span><br><span class="line">X_train = X_train.reshape(<span class="number">48000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)</span><br><span class="line">X_val = X_val.reshape(<span class="number">12000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)</span><br><span class="line">X_test = X_test.reshape(<span class="number">10000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(X_val.shape)</span><br><span class="line">print(X_test.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(48000, 28, 28, 1)
+(12000, 28, 28, 1)
+(10000, 28, 28, 1)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3-2. 이미지 데이터 전처리 : Normalzation</span></span><br><span class="line"></span><br><span class="line">X_train = X_train / <span class="number">255.0</span></span><br><span class="line">X_val = X_val / <span class="number">255.0</span></span><br><span class="line">X_test = X_test / <span class="number">255.0</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4. Label categorical (one-hot encoding)</span></span><br><span class="line">print(y_train[:<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</span><br><span class="line">y_train = to_categorical(y_train)</span><br><span class="line">y_val = to_categorical(y_val)</span><br><span class="line">y_test = to_categorical(y_test)</span><br><span class="line"></span><br><span class="line">print(y_train[:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[3 1 2 6 7 3 5 1 1 5]
+[[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 모델 생성 : CNN</span></span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Conv2D, MaxPool2D, Flatten, Dropout</span><br><span class="line"></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Conv2D(filters=<span class="number">32</span>,  <span class="comment"># 필터의 개수</span></span><br><span class="line">                kernel_size=(<span class="number">3</span>,<span class="number">3</span>),  <span class="comment"># 필터 사이즈</span></span><br><span class="line">                padding=<span class="string">'same'</span>,  <span class="comment"># padding</span></span><br><span class="line">                activation=<span class="string">'relu'</span>,  <span class="comment"># activation 함수 설정</span></span><br><span class="line">                input_shape=(<span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>))) <span class="comment"># (input_dim)</span></span><br><span class="line"></span><br><span class="line">model.add(MaxPool2D(pool_size=(<span class="number">2</span>, <span class="number">2</span>))) <span class="comment"># 보통 (2,2)를 넣음</span></span><br><span class="line">model.add(Flatten())</span><br><span class="line">model.add(Dense(<span class="number">128</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dropout(<span class="number">0.3</span>))<span class="comment"># Dropout 설정</span></span><br><span class="line">model.add(Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>)) <span class="comment"># 다중 분류 문제이기 때문에 softmax</span></span><br><span class="line"></span><br><span class="line">print(model.summary())</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential_5&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_5 (Conv2D)            (None, 28, 28, 32)        320       
+_________________________________________________________________
+max_pooling2d_5 (MaxPooling2 (None, 14, 14, 32)        0         
+_________________________________________________________________
+flatten_5 (Flatten)          (None, 6272)              0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 128)               802944    
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 10)                1290      
+=================================================================
+Total params: 804,554
+Trainable params: 804,554
+Non-trainable params: 0
+_________________________________________________________________
+None</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 6. Compile - Optimizer, Loss function 설정</span></span><br><span class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">             optimizer=<span class="string">'adam'</span>,</span><br><span class="line">             metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 7. 모델 학습시키기</span></span><br><span class="line">batch_size = <span class="number">128</span></span><br><span class="line">epochs = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">history = model.fit(X_train, y_train,</span><br><span class="line">                    epochs=epochs,</span><br><span class="line">                    batch_size=batch_size,</span><br><span class="line">                    validation_data=(X_val, y_val), <span class="comment"># validation_set 적용 (꼭 같이 해주는게 좋음)</span></span><br><span class="line">                    verbose=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Train on 48000 samples, validate on 12000 samples
+Epoch 1/10
+48000/48000 [==============================] - 25s 511us/step - loss: 0.5189 - accuracy: 0.8164 - val_loss: 0.3606 - val_accuracy: 0.8741
+Epoch 2/10
+48000/48000 [==============================] - 23s 488us/step - loss: 0.3464 - accuracy: 0.8777 - val_loss: 0.3015 - val_accuracy: 0.8932
+Epoch 3/10
+48000/48000 [==============================] - 23s 487us/step - loss: 0.2950 - accuracy: 0.8942 - val_loss: 0.2767 - val_accuracy: 0.9023
+Epoch 4/10
+48000/48000 [==============================] - 23s 484us/step - loss: 0.2648 - accuracy: 0.9041 - val_loss: 0.2626 - val_accuracy: 0.9061
+Epoch 5/10
+48000/48000 [==============================] - 23s 480us/step - loss: 0.2444 - accuracy: 0.9106 - val_loss: 0.2510 - val_accuracy: 0.9106
+Epoch 6/10
+48000/48000 [==============================] - 23s 479us/step - loss: 0.2241 - accuracy: 0.9170 - val_loss: 0.2577 - val_accuracy: 0.9068
+Epoch 7/10
+48000/48000 [==============================] - 24s 503us/step - loss: 0.2093 - accuracy: 0.9236 - val_loss: 0.2417 - val_accuracy: 0.9126
+Epoch 8/10
+48000/48000 [==============================] - 24s 509us/step - loss: 0.1926 - accuracy: 0.9288 - val_loss: 0.2380 - val_accuracy: 0.9153
+Epoch 9/10
+48000/48000 [==============================] - 24s 504us/step - loss: 0.1821 - accuracy: 0.9325 - val_loss: 0.2352 - val_accuracy: 0.9190
+Epoch 10/10
+48000/48000 [==============================] - 24s 506us/step - loss: 0.1699 - accuracy: 0.9368 - val_loss: 0.2329 - val_accuracy: 0.9191</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 8. 모델 평가하기</span></span><br><span class="line">test_loss, test_acc = model.evaluate(X_test, y_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>10000/10000 [==============================] - 2s 206us/step</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index].reshape(<span class="number">28</span>, <span class="number">28</span>), cmap = <span class="string">'Greys'</span>, interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_0b.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_1b.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_2b.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'accuracy'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_accuracy'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'loss'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_loss'</span>])</span><br><span class="line">plt.title(<span class="string">'Loss'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'loss'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_12_0b.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_12_1b.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<h2 id="실습5"><a href="#실습5" class="headerlink" title="실습5"></a>실습5</h2><p>마지막으로 cifar10 데이터셋에 대한 이미지 분류(Image Classification)를 수행하는 Convolutional Neural Networks(CNNs)을 만드는 예제를 수행하였다..</p>
+<p>CIFAR-10은 이미지 인식 분야에서 널리 쓰이는 벤치마크 데이터셋 중 하나이다. CIFAR-10 데이터셋은 아래와 같이 총 10개의 레이블로 이루어져 있다.</p>
+<p>airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck.</p>
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/cifar.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<p>각각의 레이블마다 32×32 크기 이미지인 50,000개의 training 데이터셋, 10,000개의 test 데이터셋이 존재하고, 결과적으로 총 60,000개의 32×32 크기의 이미지로 데이터셋이 구성되어 있다.</p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-4"><a href="#2019-11-24-딥-러닝-과정-CNN-4" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="네번째-실습-Keras-모델-생성-학습-cifar10-CNN"><a href="#네번째-실습-Keras-모델-생성-학습-cifar10-CNN" class="headerlink" title="네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN"></a>네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN</h3><p><a href="https://keras.io/ko/datasets/#-cifar10" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> cifar10</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = cifar10.load_data()</span><br><span class="line"></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,</span><br><span class="line">                                                 test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                 random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_val.shape)</span><br><span class="line">print(y_val.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(40000, 32, 32, 3)
+(40000, 1)
+(10000, 32, 32, 3)
+(10000, 1)
+(10000, 32, 32, 3)
+(10000, 1)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2. 이미지 데이터 확인하기 🖼</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">image = X_train[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">plt.imshow(image)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;matplotlib.image.AxesImage at 0x2a31e4ed948&gt;</code></pre><div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_3_1c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3. 이미지 데이터 전처리</span></span><br><span class="line">X_train = X_train / <span class="number">255.0</span></span><br><span class="line">X_val = X_val / <span class="number">255.0</span></span><br><span class="line">X_test = X_test / <span class="number">255.0</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4. Label categorical (one-hot encoding)</span></span><br><span class="line"><span class="comment"># print(y_train[:10])</span></span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</span><br><span class="line"></span><br><span class="line">y_train = to_categorical(y_train)</span><br><span class="line">y_val = to_categorical(y_val)</span><br><span class="line">y_test = to_categorical(y_test)</span><br><span class="line"></span><br><span class="line">print(y_train[:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 모델 생성 : CNN</span></span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dropout, Dense, Conv2D, MaxPooling2D, Flatten</span><br><span class="line"></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Conv2D(filters=<span class="number">32</span>,</span><br><span class="line">                kernel_size=(<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">                padding=<span class="string">'same'</span>,</span><br><span class="line">                activation=<span class="string">'relu'</span>,</span><br><span class="line">                input_shape=(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>)))</span><br><span class="line"></span><br><span class="line">model.add(Conv2D(<span class="number">64</span>, (<span class="number">3</span>,<span class="number">3</span>), padding=<span class="string">'same'</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(MaxPooling2D(pool_size=(<span class="number">2</span>,<span class="number">2</span>)))</span><br><span class="line">model.add(Flatten())</span><br><span class="line"></span><br><span class="line">model.add(Dense(<span class="number">128</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dropout(<span class="number">0.3</span>))</span><br><span class="line">model.add(Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line">model.add(Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>))</span><br><span class="line"></span><br><span class="line">print(model.summary())</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential_7&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_10 (Conv2D)           (None, 32, 32, 32)        896       
+_________________________________________________________________
+conv2d_11 (Conv2D)           (None, 32, 32, 64)        18496     
+_________________________________________________________________
+max_pooling2d_7 (MaxPooling2 (None, 16, 16, 64)        0         
+_________________________________________________________________
+flatten_7 (Flatten)          (None, 16384)             0         
+_________________________________________________________________
+dense_16 (Dense)             (None, 128)               2097280   
+_________________________________________________________________
+dropout_11 (Dropout)         (None, 128)               0         
+_________________________________________________________________
+dense_17 (Dense)             (None, 64)                8256      
+_________________________________________________________________
+dropout_12 (Dropout)         (None, 64)                0         
+_________________________________________________________________
+dense_18 (Dense)             (None, 10)                650       
+=================================================================
+Total params: 2,125,578
+Trainable params: 2,125,578
+Non-trainable params: 0
+_________________________________________________________________
+None</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 6. Compile - Optimizer, Loss function 설정</span></span><br><span class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">             optimizer=<span class="string">'adam'</span>,</span><br><span class="line">             metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 7. 모델 학습시키기</span></span><br><span class="line">batch_size = <span class="number">128</span></span><br><span class="line">epochs = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">history = model.fit(X_train, y_train,</span><br><span class="line">                    epochs=epochs,</span><br><span class="line">                    batch_size=batch_size,</span><br><span class="line">                    validation_data=(X_val, y_val), <span class="comment"># validation_set 적용 (꼭 같이 해주는게 좋음)</span></span><br><span class="line">                    verbose=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Train on 40000 samples, validate on 10000 samples
+Epoch 1/10
+40000/40000 [==============================] - 67s 2ms/step - loss: 1.7432 - accuracy: 0.3568 - val_loss: 1.3433 - val_accuracy: 0.5201
+Epoch 2/10
+40000/40000 [==============================] - 72s 2ms/step - loss: 1.3271 - accuracy: 0.5257 - val_loss: 1.1500 - val_accuracy: 0.5906
+Epoch 3/10
+40000/40000 [==============================] - 77s 2ms/step - loss: 1.1586 - accuracy: 0.5886 - val_loss: 1.0559 - val_accuracy: 0.6271
+Epoch 4/10
+40000/40000 [==============================] - 79s 2ms/step - loss: 1.0281 - accuracy: 0.6375 - val_loss: 0.9819 - val_accuracy: 0.6544
+Epoch 5/10
+40000/40000 [==============================] - 77s 2ms/step - loss: 0.9405 - accuracy: 0.6692 - val_loss: 0.9503 - val_accuracy: 0.6616
+Epoch 6/10
+40000/40000 [==============================] - 74s 2ms/step - loss: 0.8635 - accuracy: 0.6951 - val_loss: 0.9583 - val_accuracy: 0.6658
+Epoch 7/10
+40000/40000 [==============================] - 80s 2ms/step - loss: 0.7953 - accuracy: 0.7214 - val_loss: 0.9359 - val_accuracy: 0.6790
+Epoch 8/10
+40000/40000 [==============================] - 74s 2ms/step - loss: 0.7194 - accuracy: 0.7470 - val_loss: 0.9354 - val_accuracy: 0.6783
+Epoch 9/10
+40000/40000 [==============================] - 79s 2ms/step - loss: 0.6575 - accuracy: 0.7661 - val_loss: 0.9470 - val_accuracy: 0.6804
+Epoch 10/10
+40000/40000 [==============================] - 76s 2ms/step - loss: 0.6005 - accuracy: 0.7867 - val_loss: 1.0215 - val_accuracy: 0.6707</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 8. 모델 평가하기</span></span><br><span class="line">test_loss, test_acc = model.evaluate(X_test, y_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>10000/10000 [==============================] - 5s 517us/step</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> numpy.random.choice(len(y_test), <span class="number">3</span>, replace = <span class="literal">False</span>):</span><br><span class="line">    predicted = model.predict(X_test[index:index + <span class="number">1</span>])[<span class="number">0</span>]</span><br><span class="line">    label = y_test[index]</span><br><span class="line">    result_label = numpy.where(label == numpy.amax(label))</span><br><span class="line">    result_predicted = numpy.where(predicted == numpy.amax(predicted))</span><br><span class="line">    title = <span class="string">"Label value = %s  Predicted value = %s "</span> % (result_label[<span class="number">0</span>], result_predicted[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, figsize = (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    ax1 = fig.add_axes((<span class="number">0</span>,<span class="number">0</span>,<span class="number">.8</span>,<span class="number">.8</span>))</span><br><span class="line">    ax1.set_title(title)</span><br><span class="line">    images = X_test</span><br><span class="line">    plt.imshow(images[index], interpolation = <span class="string">'nearest'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_10_0c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_10_1c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_10_2c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10. 학습 시각화하기</span></span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'accuracy'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_accuracy'</span>])</span><br><span class="line">plt.title(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'accuracy'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">'loss'</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">'val_loss'</span>])</span><br><span class="line">plt.title(<span class="string">'Loss'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'loss'</span>)</span><br><span class="line">plt.legend([<span class="string">'train'</span>, <span class="string">'test'</span>], loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_0c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/output_11_1c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+
+<p>참조<br><a href="https://umbum.tistory.com/223" target="_blank" rel="external nofollow noopener noreferrer">https://umbum.tistory.com/223</a><br><a href="https://untitledtblog.tistory.com/150" target="_blank" rel="external nofollow noopener noreferrer">https://untitledtblog.tistory.com/150</a><br><a href="https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/" target="_blank" rel="external nofollow noopener noreferrer">https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/</a><br><a href="http://solarisailab.com/archives/1700" target="_blank" rel="external nofollow noopener noreferrer">http://solarisailab.com/archives/1700</a></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/영상처리/2019/11/29/ImageProcessing4/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - Bit Plane">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/MachineLearning/2019/11/23/marchinelearning3/" data-toggle="tooltip" data-placement="top" title="ICT멘토링 딥러닝 교육 1일차">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/MachineLearning/2019/11/24/marchinelearning4/";
+    var disqus_url = "https://kyu9341.github.io/MachineLearning/2019/11/24/marchinelearning4/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; kwon&#39;s Blog 2019 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://kyu9341.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-146069634-1';
+    var _gaDomain = 'kyu9341.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

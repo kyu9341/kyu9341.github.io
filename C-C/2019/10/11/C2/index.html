@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <title>
         
-          파이썬 리스트 원소 랜덤추출 - kwon | kwon&#39;s Blog
+          (C) 동적 메모리 할당 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/python/2019/08/19/python1/">
+    <link rel="canonical" href="https://kyu9341.github.io/c-c/2019/10/11/c2/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/python/2019/08/19/python1/">
+    <link rel="canonical" href="https://kyu9341.github.io/C-C/2019/10/11/C2/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>파이썬 리스트 원소 랜덤추출</h1>
-                    <h2 class="subheading">Python</h2>
+                    <h1>(C) 동적 메모리 할당</h1>
+                    <h2 class="subheading">C</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2019-08-19
+                        2019-10-11
                     </span>
                 </div>
             </div>
@@ -200,7 +200,227 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="리스트-원소-랜덤추출"><a href="#리스트-원소-랜덤추출" class="headerlink" title="리스트 원소 랜덤추출"></a>리스트 원소 랜덤추출</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#중복 허용</span></span><br><span class="line">count = <span class="number">2</span></span><br><span class="line">sampleList = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]</span><br><span class="line"><span class="keyword">print</span> [random.choice(sampleList) <span class="keyword">for</span> i <span class="keyword">in</span> range(count)]</span><br><span class="line"></span><br><span class="line"><span class="comment">#중복 허용 X</span></span><br><span class="line"><span class="keyword">print</span> random.sample(sampleList, count)</span><br></pre></td></tr></table></figure>
+                <p>이번에는 동적 메모리 할당에 대해 알아보겠다.</p>
+<h3 id="동적-메모리-할당이란"><a href="#동적-메모리-할당이란" class="headerlink" title="동적 메모리 할당이란?"></a>동적 메모리 할당이란?</h3><h4 id="정적-메모리-할당"><a href="#정적-메모리-할당" class="headerlink" title="정적 메모리 할당"></a><strong>정적 메모리 할당</strong></h4><p>모든 변수, 배열, 구조체 등에 대해 프로그램 실행 전에 필요한 만큼의 변수를 선언하여 사용 -&gt; 프로그램 실행 전에 변수의 메모리 할당 크기가 정해짐</p>
+<ul>
+<li>컴파일 과정에서 메모리 크기가 결정되는 메모리 할당 방법</li>
+<li>프로그램 실행 전에, 어떤 종류의 변수를 얼마나 많이 필요로 하는지를 개발자가 미리 알아야함</li>
+<li>프로그램 실행 전에 반드시 모든 변수, 배열, 구조체를 선언해야함</li>
+</ul>
+<p><em>문제점</em></p>
+<ul>
+<li>프로그램 실행 중에 필요에 따라 메모리 할당 크기를 늘리거나 줄일 수 없음</li>
+<li>프로그램 실행 전, 메모리를 얼마나 필요로 할 것인지 정확하게 알 수 없는 경우, 메모리를 효율적으로 사용하기 어려움</li>
+</ul>
+<h4 id="동적-메모리-할당"><a href="#동적-메모리-할당" class="headerlink" title="동적 메모리 할당"></a><strong>동적 메모리 할당</strong></h4><ul>
+<li><p>프로그램을 실행하는 동안 필요한 시점에 필요한 만큼만 메모리를 할당하는 방법</p>
+<ul>
+<li><p>변수 이름이 없음</p>
+</li>
+<li><p>컴파일 과정에서는 할당할 메모리 크기를 알 수 없음</p>
+</li>
+</ul>
+</li>
+<li><p>메모리를 효율적으로 사용 가능</p>
+</li>
+<li><p>힙(heap) 메모리 영역 사용</p>
+</li>
+<li><p>C 프로그래밍에서의 메모리 구성</p>
+</li>
+</ul>
+<div style="width: 90%; height: 350px;">
+    <img src="https://kyu9341.github.io/img/cpointer6.png" style="width: 90%
+    ; height: 350px;">
+</div>
+
+<h4 id="동적-메모리-할당-절차"><a href="#동적-메모리-할당-절차" class="headerlink" title="동적 메모리 할당 절차"></a>동적 메모리 할당 절차</h4><ul>
+<li>동적 메모리 할당을 위해서는 &lt;stdlib.h&gt; 파일을 include 선언해야함</li>
+<li>동적 메모리 할당 : malloc() 함수</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>함수 원형</th>
+<th>void * malloc(unsigend int size);</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>함수 인자</td>
+<td>할당 받을 메모리 크기(byte 단위, sizeof()함수 이용)</td>
+</tr>
+<tr>
+<td>반환 값</td>
+<td>반환 값 유형 : void형 포인터 / 할당 받은 메모리의 시작 주소를 반환 / 요청한 메모리 공간을 할당할 수 없는 경우 -&gt; NULL 반환</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>malloc()함수 사용 예</p>
+<pre><code>- 정수 4개를 저장할 수 있는 공간을 할당
+
+- 일반적인 호출 형태 : malloc(4*sizeof(int));
+
+  -&gt; 실질적인 호출 : malloc(16);</code></pre></li>
+</ul>
+<div style="width: 70%; height: 200px;">
+    <img src="https://kyu9341.github.io/img/cpointer7.png" style="width: 70%
+    ; height: 200px;">
+</div>
+
+<pre><code>- 문자 3개를 저장할 수 있는 공간을 할당
+
+- 일반적인 호출 형태 : malloc(3*sizeof(char));
+
+  -&gt; 실질적인 호출 : malloc(3);</code></pre><div style="width: 70%; height: 200px;">
+    <img src="https://kyu9341.github.io/img/cpointer8.png" style="width: 70%
+    ; height: 200px;">
+</div>
+
+<p><strong>동적 메모리 사용 : 포인터 변수 사용</strong></p>
+<ul>
+<li>힙에 할당된 메모리 공간은 포인터 변수를 이용해서 접근하는 방법 밖에 없음</li>
+<li>동적으로 할당 받은 메모리의 시작 주소를 저장하는데 사용</li>
+<li>실제 포인터 변수 혹은 일반 배열명처럼 활용</li>
+<li>사용 형태<div style="width: 90%; height: 200px;">
+  <img src="https://kyu9341.github.io/img/cpointer9.png" style="width: 90%
+  ; height: 200px;">
+</div>
+
+
+</li>
+</ul>
+<ul>
+<li>포인터 변수 사용 예<div style="width: 90%; height: 300px;">
+  <img src="https://kyu9341.github.io/img/cpointer10.png" style="width: 90%
+  ; height: 300px;">
+</div>
+
+</li>
+</ul>
+<p><strong>동적 메모리 반남 : free() 함수</strong></p>
+<ul>
+<li>동적으로 할당 받은 메모리는 자동으로 해제되지 않음</li>
+<li>더 이상 동적 할당 메모리를 사용할 필요가 없는 경우, 명시적으로 시스템에 반납(해제)해야 함</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>함수 원형</th>
+<th>void free(void * ptr)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>함수 인자</td>
+<td>해제할 메모리 공간을 가리키는 포인터 변수</td>
+</tr>
+</tbody></table>
+<p>ex)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p = <span class="literal">NULL</span>;</span><br><span class="line">p = (<span class="keyword">int</span> * )<span class="built_in">malloc</span>(<span class="number">4</span> * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line">p = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>동적 메모리를 안전하게 사용하기</strong></p>
+<ul>
+<li>메모리 해제 이후, 반드시 포인터 변수를 NULL로 초기화</li>
+</ul>
+<p>-&gt; 댕글링 포인터(dangling pointer) 방지</p>
+<p>댕글링 포인터 : 여전히 해제된 메모리 영역을 가리키고 있는 포인터</p>
+<ul>
+<li>malloc()을 호출한 후에는 그 반환 값을 검사하여 메모리 할당의 성공 여부를 확인하는 부분이 필요</li>
+</ul>
+<p>-&gt; NULL포인터를 반환하는 이유 : 요청한 메모리 크기만큼 연속된 메모리 공간을 확보하지 못할 때</p>
+<ul>
+<li>일반적으로 다음과 같이 메모리 할당의 성공 여부를 검사</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p = <span class="literal">NULL</span>;</span><br><span class="line">p = (<span class="keyword">int</span> * )<span class="built_in">malloc</span>(<span class="number">10</span> * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"> <span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">printf</span>(“Not enough memory!”);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="기타-동적-메모리-할당-함수"><a href="#기타-동적-메모리-할당-함수" class="headerlink" title="기타 동적 메모리 할당 함수"></a>기타 동적 메모리 할당 함수</h4><ul>
+<li>calloc() 함수</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>함수 원형</th>
+<th>void* calloc(unsigned int num, unsigned int size);</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>함수 인자</td>
+<td>num : 동적으로 할당 받을 원소의 개수 / size : 원소 한 개의 크기 (바이트 단위)</td>
+</tr>
+<tr>
+<td>반환 값</td>
+<td>반환 값의 유형 : void형 포인터 / (num*size) 바이트 수 만큼 할당하고, 0으로 초기화 후 시작 위치 반환 / 요청한 메모리 공간을 할당할 수 없는 경우 -&gt; NULL 반환</td>
+</tr>
+</tbody></table>
+<p>ex)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">p = (<span class="keyword">int</span> * )<span class="built_in">calloc</span>(<span class="number">5</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>realloc() 함수</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>함수 원형</th>
+<th>void* realloc(void * ptr, unsigned int size);</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>함수 인자</td>
+<td>ptr : 확장할 메모리의 시작 주소 / size : 확장할 메모리의 전체 크기 ( 바이트 단위 )</td>
+</tr>
+<tr>
+<td>반환 값</td>
+<td>반환 값의 유형 : void형 포인터 / ptr이 가리키는 메모리의 크기를 size 바이트 크기로 조정하고 시작 위치 반환 / 요청한 메모리 공간을 할당할 수 없는 경우 -&gt; NULL 반환</td>
+</tr>
+</tbody></table>
+<ul>
+<li>realloc() 함수의 3가지 경우</li>
+</ul>
+<p>1) 기존 메모리 주소를 기반으로 메모리 크기를 줄이는 경우</p>
+<ul>
+<li><p>기존에 입력되어 있던 데이터는 잘려나감</p>
+</li>
+<li><p>기존 메모리 주소와 동일한 주소가 반환됨</p>
+</li>
+</ul>
+<div style="width: 90%; height: 200px;">
+    <img src="https://kyu9341.github.io/img/realloc1.png" style="width: 90%
+    ; height: 200px;">
+</div>
+2) 기존 메모리 주소를 기반으로 메모리 크기 확장이 가능한 경우
+
+<ul>
+<li>기존 메모리 주소와 동일한 주소가 반환됨</li>
+</ul>
+<div style="width: 90%; height: 200px;">
+    <img src="https://kyu9341.github.io/img/realloc2.png" style="width: 90%
+    ; height: 200px;">
+</div>
+3) 기존 메모리 주소를 기반으로 메모리 크기 확장이 불가능한 경우
+
+<ul>
+<li><p>새로운 메모리를 할당하고, 기존 메모리 내용을 복사함</p>
+</li>
+<li><p>이전 메모리 주소(p1)는 자동 해제됨</p>
+</li>
+<li><p>기존 메모리 주소와 다른 주소(p2)가 반환됨</p>
+<div style="width: 90%; height: 200px;">
+ <img src="https://kyu9341.github.io/img/realloc3.png" style="width: 90%
+ ; height: 200px;">
+</div>
+
+
+</li>
+</ul>
+<ul>
+<li><p><strong>malloc() vs calloc() vs realloc()</strong></p>
+<ul>
+<li>malloc() : 메모리 할당</li>
+<li>calloc() : 메모리 할당 + 메모리 초기화</li>
+<li>realloc() : 기존에 할당된 메모리 크기를 자유롭게 조절</li>
+</ul>
+</li>
+</ul>
 
 
                 <hr>
@@ -210,12 +430,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/python/2019/08/20/python2/" data-toggle="tooltip" data-placement="top" title="파이썬 리스트의 모든 조합 구하기">&larr; Previous Post</a>
+                            <a href="/python/2019/10/13/python3/" data-toggle="tooltip" data-placement="top" title="파이썬 리스트(list) 정리">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/django/2019/08/19/django1/" data-toggle="tooltip" data-placement="top" title="Django(장고) 가상환경 설정 및 프로젝트 생성">Next Post &rarr;</a>
+                            <a href="/C-C/2019/10/11/C1/" data-toggle="tooltip" data-placement="top" title="(C) 포인터 사용법">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -286,8 +506,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/python/2019/08/19/python1/";
-    var disqus_url = "https://kyu9341.github.io/python/2019/08/19/python1/";
+    var disqus_identifier = "https://kyu9341.github.io/C-C/2019/10/11/C2/";
+    var disqus_url = "https://kyu9341.github.io/C-C/2019/10/11/C2/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

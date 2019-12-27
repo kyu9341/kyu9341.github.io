@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <title>
         
-          파이썬 리스트 원소 랜덤추출 - kwon | kwon&#39;s Blog
+          디지털 영상처리 - Bit Plane - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/python/2019/08/19/python1/">
+    <link rel="canonical" href="https://kyu9341.github.io/영상처리/2019/11/29/imageprocessing4/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/python/2019/08/19/python1/">
+    <link rel="canonical" href="https://kyu9341.github.io/영상처리/2019/11/29/ImageProcessing4/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>파이썬 리스트 원소 랜덤추출</h1>
-                    <h2 class="subheading">Python</h2>
+                    <h1>디지털 영상처리 - Bit Plane</h1>
+                    <h2 class="subheading">ImageProcessing</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2019-08-19
+                        2019-11-29
                     </span>
                 </div>
             </div>
@@ -200,7 +200,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="리스트-원소-랜덤추출"><a href="#리스트-원소-랜덤추출" class="headerlink" title="리스트 원소 랜덤추출"></a>리스트 원소 랜덤추출</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#중복 허용</span></span><br><span class="line">count = <span class="number">2</span></span><br><span class="line">sampleList = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]</span><br><span class="line"><span class="keyword">print</span> [random.choice(sampleList) <span class="keyword">for</span> i <span class="keyword">in</span> range(count)]</span><br><span class="line"></span><br><span class="line"><span class="comment">#중복 허용 X</span></span><br><span class="line"><span class="keyword">print</span> random.sample(sampleList, count)</span><br></pre></td></tr></table></figure>
+                <h2 id="Bit-Plane"><a href="#Bit-Plane" class="headerlink" title="Bit Plane"></a>Bit Plane</h2><p>표준 디지털 영상은 8bits로 구성되어 0부터 255까지의 값을 가지고 있는 구조이다. 256레벨의 그레이 스케일 값이라고 표현하기도 하는데 이진영상을 위에서 구성한 것과 같이 각 bit위치에서의 영상을 독립된 영상으로 표현하는 방법을 알아본다. 영상은 8개의 bit plane으로 구성되어 있으며 최상위 비트가 1인 경우 128보다 큰 값을 가지게 되고 바로 하위 비트가 1인 경우는 64보다 큰 값을 갖는 구조를 가지고 있다. 각 위치에서의 비트가 1인 경우 영상 값이 존재하는 표시인 255로 표시하여 화면에 보여주고 0인 경우 0으로 표현하여 이진 영상으로 각 bit plane을 표현한다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BitSlicing</span><span class="params">(uchar** img, uchar** Result, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col, <span class="keyword">int</span> <span class="built_in">position</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 해당 position 값에 맞는 mask값을 통해 이미지를 구함</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line">	uchar mask = <span class="number">0x01</span>;</span><br><span class="line">	mask &lt;&lt;= <span class="built_in">position</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;Row;i++)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> ((mask &amp; img[i][j]) == <span class="built_in">pow</span>(<span class="number">2</span>, <span class="built_in">position</span>)) <span class="comment">//pow(2, position) = mask</span></span><br><span class="line">			&#123;</span><br><span class="line">				Result[i][j] = <span class="number">255</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				Result[i][j] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 코드는 position값에 따라 해당하는 bit palne의 이미지를 생성하는 코드이다.</p>
+<div style="width: 700px; height: 800px;">
+    <img src="https://kyu9341.github.io/img/lenabitplane.png" style="width: 700px
+    ; height: 800px;">
+</div>
+
+<p>위의 이미지는 Bit Plane 8장에 대한 영상결과를 보여준다. 각각의 비트가 1인 경우 255로 표현하여 이진화된 영상을 보여준다.</p>
+<h2 id="ImageCombine"><a href="#ImageCombine" class="headerlink" title="ImageCombine"></a>ImageCombine</h2><p>이진화된 비트 영상은 비트의 정보만으로 영상이 얼마나 많은 정보를 가지고 있는지를 알 수 있다. 이러한 비트 정보를 몇 개를 모아야 사람이 보기에 지장이 없는지 확인해보자.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ImageCombine</span><span class="params">(uchar** img, uchar** tmpimg, uchar** outimg, <span class="keyword">int</span> Row, <span class="keyword">int</span> Col, <span class="keyword">int</span> <span class="built_in">position</span>, <span class="keyword">int</span> direction)</span> <span class="comment">// 7부터 position까지의 비트이미지를 합성</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, k;</span><br><span class="line">	uchar mask = <span class="number">0x01</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (direction == <span class="number">1</span>) <span class="comment">// 7부터 position까지 합성</span></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (k = <span class="number">7</span>; k &gt; <span class="number">7</span> - <span class="built_in">position</span>; k--) <span class="comment">// 7부터 입력받은 장수까지 반복</span></span><br><span class="line">		&#123;</span><br><span class="line">			mask &lt;&lt;= k;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++) <span class="comment">// BitSlicing</span></span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					<span class="keyword">if</span> ((mask &amp; img[i][j]) == mask) <span class="comment">//pow(2, position) = mask</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">255</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++)</span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					outimg[i][j] += tmpimg[i][j] &amp; mask;</span><br><span class="line">				&#125;</span><br><span class="line">			mask = <span class="number">0x01</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		average(outimg, Row, Col);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">/*	 비트슬라이싱된 이미지에 해당 mask를 and연산 하는 이유</span></span><br><span class="line"><span class="comment">	 해당 비트값만 255로 변환하고 나머지는 0으로 변환했기 때문에</span></span><br><span class="line"><span class="comment">	 즉 255 : 0b1111111 &amp; 0b1000000 =&gt; 0b1000000</span></span><br><span class="line"><span class="comment">			    &amp; 0b0100000 =&gt; 0b0100000</span></span><br><span class="line"><span class="comment">						와 같이 변환 후 모두 더해줘야 정상적인 값이 나옴.</span></span><br><span class="line"><span class="comment">\*/</span></span><br><span class="line">	<span class="keyword">if</span> (direction == <span class="number">2</span>) <span class="comment">// 1부터 position까지 합성</span></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (k = <span class="number">1</span>; k &lt;= <span class="built_in">position</span>; k++) <span class="comment">// 1부터 입력받은 장수까지 반복</span></span><br><span class="line">		&#123;</span><br><span class="line">			mask &lt;&lt;= k;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++) <span class="comment">// BitSlicing</span></span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					<span class="keyword">if</span> ((mask &amp; img[i][j]) == mask) <span class="comment">//pow(2, position) = mask</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">255</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					&#123;</span><br><span class="line">						tmpimg[i][j] = <span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Row; i++) <span class="comment">// BitMasking, MaskAdd</span></span><br><span class="line">				<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Col; j++) &#123;</span><br><span class="line">					outimg[i][j] += tmpimg[i][j] &amp; mask; <span class="comment">// 비트슬라이싱된 tmpimg를 해당 비트의 마스크 값으로 마스킹 후 누적</span></span><br><span class="line">				&#125;</span><br><span class="line">			mask = <span class="number">0x01</span>; <span class="comment">// 초기화</span></span><br><span class="line">		&#125;</span><br><span class="line">		average(outimg, Row, Col);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 코드는 입력 받은 direction과 position값에 따라 상위 비트 혹은 하위 비트부터 원하는 장수를 더한 이미지를 생성해주는 함수이다. 일일이 각 비트의 이미지를 생성해 더하지 않도록 하기 위해 위와 같이 mask를 쉬프트 연산을 통해 변경하며 각각의 bit에 해당하는 이미지를 누적시켰다. 아래는 위의 함수를 통해 생성한 이미지를 출력한 결과이다.</p>
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/img/lena876.png" style="width: 512px
+    ; height: 512px;">
+</div>
+8, 7, 6bit 합성 영상
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/img/lena8765.png" style="width: 512px
+    ; height: 512px;">
+</div>
+8, 7, 6, 5bit 합성 영상
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/img/lena12345.png" style="width: 512px
+    ; height: 512px;">
+</div>
+1, 2, 3, 4, 5bit 합성 영상
+
+<p>상위 비트부터 많은 비트를 합성할수록 원 영상과 비슷한 결과를 보여주는 것을 알 수 있다. 또한 하위 비트부터 더하면 높은 값을 가지는 bit가 빠져있으므로 전체적으로 어두운 영상을 보여주게 된다.</p>
 
 
                 <hr>
@@ -210,12 +241,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/python/2019/08/20/python2/" data-toggle="tooltip" data-placement="top" title="파이썬 리스트의 모든 조합 구하기">&larr; Previous Post</a>
+                            <a href="/영상처리/2019/12/01/ImageProcessing7/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - 히스토그램">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/django/2019/08/19/django1/" data-toggle="tooltip" data-placement="top" title="Django(장고) 가상환경 설정 및 프로젝트 생성">Next Post &rarr;</a>
+                            <a href="/MachineLearning/2019/11/24/marchinelearning4/" data-toggle="tooltip" data-placement="top" title="ICT멘토링 딥러닝 교육 2일차">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -286,8 +317,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/python/2019/08/19/python1/";
-    var disqus_url = "https://kyu9341.github.io/python/2019/08/19/python1/";
+    var disqus_identifier = "https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/29/ImageProcessing4/";
+    var disqus_url = "https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/29/ImageProcessing4/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

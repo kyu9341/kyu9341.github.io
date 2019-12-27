@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <title>
         
-          파이썬 리스트 원소 랜덤추출 - kwon | kwon&#39;s Blog
+          파이썬 문자열 정리 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/python/2019/08/19/python1/">
+    <link rel="canonical" href="https://kyu9341.github.io/python/2019/10/17/python6/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/python/2019/08/19/python1/">
+    <link rel="canonical" href="https://kyu9341.github.io/python/2019/10/17/python6/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>파이썬 리스트 원소 랜덤추출</h1>
+                    <h1>파이썬 문자열 정리</h1>
                     <h2 class="subheading">Python</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2019-08-19
+                        2019-10-17
                     </span>
                 </div>
             </div>
@@ -200,7 +200,102 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="리스트-원소-랜덤추출"><a href="#리스트-원소-랜덤추출" class="headerlink" title="리스트 원소 랜덤추출"></a>리스트 원소 랜덤추출</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#중복 허용</span></span><br><span class="line">count = <span class="number">2</span></span><br><span class="line">sampleList = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]</span><br><span class="line"><span class="keyword">print</span> [random.choice(sampleList) <span class="keyword">for</span> i <span class="keyword">in</span> range(count)]</span><br><span class="line"></span><br><span class="line"><span class="comment">#중복 허용 X</span></span><br><span class="line"><span class="keyword">print</span> random.sample(sampleList, count)</span><br></pre></td></tr></table></figure>
+                <p>파이썬의 문자열 함수에 대해 알아보자</p>
+<h2 id="문자열"><a href="#문자열" class="headerlink" title="문자열"></a>문자열</h2><h3 id="문자열-생성-방법"><a href="#문자열-생성-방법" class="headerlink" title="문자열 생성 방법"></a>문자열 생성 방법</h3><p>문자열은 “” 또는 ‘’를 이용하여 만들 수 있다. “”안에는 ‘가 들어갈 수 있고, ‘’안에는 “가 들어갈 수 있다.</p>
+<p>“”” “”” 또는 ‘’’ ‘’’ 을 이용해서 여러 줄의 문자열도 표현이 가능하다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"""Life is short,</span></span><br><span class="line"><span class="string">you need python"""</span></span><br><span class="line">print(str)</span><br></pre></td></tr></table></figure>
+<p>결과 : Life is short,</p>
+<p>you need python</p>
+<h3 id="문자열-연산"><a href="#문자열-연산" class="headerlink" title="문자열 연산"></a>문자열 연산</h3><ul>
+<li><p><strong>문자열 합치기 (str1 + str2)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">"python is "</span></span><br><span class="line">str2 = <span class="string">"good!"</span></span><br><span class="line">print(str1 + str2)</span><br></pre></td></tr></table></figure>
+<p>결과 : python is good!</p>
+</li>
+<li><p><strong>문자 반복</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'='</span>*<span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+<p>결과 : ==================================================</p>
+</li>
+</ul>
+<h3 id="문자열-인덱싱과-슬라이싱"><a href="#문자열-인덱싱과-슬라이싱" class="headerlink" title="문자열 인덱싱과 슬라이싱"></a>문자열 인덱싱과 슬라이싱</h3><p>인덱싱은 해당 번호의 순서에 있는 데이터를 가져오는 것이고, 슬라이싱은 해당 범위 내의 데이터를 모두 가져오는 것이다.</p>
+<p>리스트와 마찬가지로 사용하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"Life is too short, You need Python."</span></span><br><span class="line"></span><br><span class="line">print(str[<span class="number">0</span>]) <span class="comment"># 인덱스 0번 출력</span></span><br><span class="line">print(str[<span class="number">12</span>]) <span class="comment"># 인덱스 12번 출력</span></span><br><span class="line">print(str[<span class="number">0</span>:<span class="number">12</span>]) <span class="comment"># 0부터 11까지 출력, 12는 출력 X</span></span><br><span class="line">print(str[:<span class="number">12</span>]) <span class="comment"># 처음부터 인덱스 11까지 출력</span></span><br><span class="line">print(str[<span class="number">12</span>:]) <span class="comment"># 인덱스 12 부터 끝까지 출력</span></span><br><span class="line">print(str[<span class="number">-2</span>]) <span class="comment"># 뒤에서 두 번째 인덱스 출력</span></span><br><span class="line">print(str[:<span class="number">-2</span>]) <span class="comment"># 처음부터 뒤에서 세 번째 인덱스까지 출력, 두번째는 출력 X</span></span><br></pre></td></tr></table></figure>
+<p>결과 :</p>
+<p>L</p>
+<p>s</p>
+<p>Life is too</p>
+<p>Life is too</p>
+<p>short, You need Python.</p>
+<p>n</p>
+<p>Life is too short, You need Pytho</p>
+<h3 id="문자열-함수"><a href="#문자열-함수" class="headerlink" title="문자열 함수"></a>문자열 함수</h3><ul>
+<li><strong>문자열 포맷팅</strong> : <strong>format()</strong><br>format() 함수를 이용하면 서식문자와 같이 대입이 가능하다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"number : &#123;0&#125;"</span>.format(<span class="number">10</span>)) <span class="comment"># 숫자 대입</span></span><br><span class="line">num = <span class="number">10</span></span><br><span class="line">print(<span class="string">"number : &#123;0&#125;"</span>.format(num)) <span class="comment"># 숫자 변수 대입</span></span><br><span class="line">print(<span class="string">"number : &#123;0&#125;, string : &#123;1&#125;"</span>.format(<span class="number">100</span>, <span class="string">'test'</span>)) <span class="comment"># 두 개의 값 대입</span></span><br><span class="line">print(<span class="string">"number : &#123;num&#125;, string : &#123;str&#125;"</span>.format(num=<span class="number">100</span>, str=<span class="string">'test'</span>)) <span class="comment"># 이름으로 대입</span></span><br></pre></td></tr></table></figure>
+<p>결과 :</p>
+<p>number : 10</p>
+<p>number : 10</p>
+<p>number : 100, string : test</p>
+<p>number : 100, string : test</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pos = [<span class="number">12.5</span>, <span class="number">35</span>, <span class="number">90</span>]</span><br><span class="line">print(<span class="string">"A의 좌표는 x = &#123;p[0]&#125;, y = &#123;p[1]&#125;, z = &#123;p[2]&#125;"</span>.format(p=pos))</span><br></pre></td></tr></table></figure>
+
+<p>결과 : A의 좌표는 x = 12.5, y = 35, z = 90</p>
+<ul>
+<li><strong>대소문자 변환</strong> : <strong>upper(), lower()</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"aBcdEFg"</span></span><br><span class="line">print(str.upper()) <span class="comment"># str의 모든 문자를 대문자로 변환</span></span><br><span class="line">print(str.lower()) <span class="comment"># str의 모든 문자를 소문자</span></span><br></pre></td></tr></table></figure>
+<p>결과 :</p>
+<p>ABCDEFG</p>
+<p>abcdefg</p>
+<ul>
+<li>첫 글자만 대문자, 나머지는 소문자로 변환 : <strong>capitalize()</strong></li>
+</ul>
+<p>a가 변하지는 않음.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"abcDef"</span></span><br><span class="line">print(a.capitalize())</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<p>결과 :</p>
+<p> Abcdef</p>
+<p> abcDef</p>
+<ul>
+<li><strong>문자 위치 반환</strong> : <strong>find(), index()</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'hello world!'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># str의 문자 중 'w'의 위치 반환</span></span><br><span class="line">print(str.find(<span class="string">'w'</span>))</span><br><span class="line">print(str.index(<span class="string">'w'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#find는 존재하지 않는 문자 검색시 -1반환</span></span><br><span class="line">print(str.find(<span class="string">'x'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># index는 존재하지 않는 문자 검색시 에러 발생!!</span></span><br><span class="line">print(str.index(<span class="string">'x'</span>))</span><br></pre></td></tr></table></figure>
+<p>결과 :<br>6</p>
+<p>6</p>
+<p>-1</p>
+<ul>
+<li><strong>문자 수 세기, 삽입</strong> : <strong>count(), join()</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'hello world!'</span></span><br><span class="line">pick = <span class="string">','</span></span><br><span class="line"></span><br><span class="line">print(str.count(<span class="string">'l'</span>)) <span class="comment"># str의 해당 문자 수 반환</span></span><br><span class="line">print(pick.join(str)) <span class="comment"># str을 pick의 구분자를 포함하여 문자열 반환</span></span><br></pre></td></tr></table></figure>
+<p>결과 :<br>3</p>
+<p>h,e,l,l,o, ,w,o,r,l,d,!</p>
+<ul>
+<li><strong>공백 삭제</strong> : <strong>lstrip(), rstrip(), strip()</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'\t hello world! \t'</span></span><br><span class="line"></span><br><span class="line">print(str)</span><br><span class="line">print(str.lstrip()) <span class="comment"># 왼쪽 공백 삭제</span></span><br><span class="line">print(str.rstrip()) <span class="comment"># 오른쪽 공백 삭제</span></span><br><span class="line">print(str.strip()) <span class="comment"># 양쪽 공백 삭제</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">결과 :</span></span><br><span class="line"><span class="string">	 hello world! 	</span></span><br><span class="line"><span class="string">hello world! 	</span></span><br><span class="line"><span class="string">	 hello world!</span></span><br><span class="line"><span class="string">hello world!</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>문자열 치환, 나누기</strong> : <strong>replace(), split()</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'hello world!'</span></span><br><span class="line"></span><br><span class="line">print(str.replace(<span class="string">'world'</span>, <span class="string">'kwon'</span>)) <span class="comment"># str의 world를 kwon으로 치환</span></span><br><span class="line"></span><br><span class="line">print(str.split()) <span class="comment"># str을 공백으로 나누어 리스트로 반환</span></span><br><span class="line">print(str.split(<span class="string">'o'</span>)) <span class="comment"># str을 'o'를 기준으로 나누어 리스트로 반환</span></span><br></pre></td></tr></table></figure>
+<p>결과 :</p>
+<p>hello kwon!</p>
+<p>[‘hello’, ‘world!’]</p>
+<p>[‘hell’, ‘ w’, ‘rld!’]</p>
+<h3 id="문자열과-리스트-변환"><a href="#문자열과-리스트-변환" class="headerlink" title="문자열과 리스트 변환"></a>문자열과 리스트 변환</h3><h4 id="리스트-List-를-특정-구분자를-포함에-문자열-String-로-반환"><a href="#리스트-List-를-특정-구분자를-포함에-문자열-String-로-반환" class="headerlink" title="리스트(List)를 특정 구분자를 포함에 문자열(String)로 반환"></a>리스트(List)를 특정 구분자를 포함에 문자열(String)로 반환</h4><ul>
+<li><strong>join()</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="string">'k'</span>, <span class="string">'w'</span>, <span class="string">'o'</span>, <span class="string">'n'</span>]</span><br><span class="line">print(<span class="string">''</span>.join(list)) <span class="comment"># list를 공백없이 붙여 문자열로 변환</span></span><br><span class="line">print(<span class="string">'/'</span>.join(list)) <span class="comment"># list를 /를 구분자로 하여 문자열로 변환</span></span><br></pre></td></tr></table></figure>
+<p>결과 :</p>
+<p>kwon</p>
+<p>k/w/o/n</p>
+<h4 id="문자열-String-을-특정-‘구분자’를-기준으로-리스트-List-로-변환"><a href="#문자열-String-을-특정-‘구분자’를-기준으로-리스트-List-로-변환" class="headerlink" title="문자열(String)을 특정 ‘구분자’를 기준으로 리스트(List)로 변환"></a>문자열(String)을 특정 ‘구분자’를 기준으로 리스트(List)로 변환</h4><ul>
+<li><strong>split()</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'python java c c++ c#'</span></span><br><span class="line">print(str.split()) <span class="comment"># 공백을 구분자로 하여 리스트로 변환</span></span><br><span class="line">strlist = str.split()</span><br><span class="line">print(<span class="string">'/'</span>.join(strlist)) <span class="comment"># strlist를 /를 구분자로 하여 문자열로 변환</span></span><br><span class="line">str = <span class="string">'/'</span>.join(strlist)</span><br><span class="line">print(str.split(<span class="string">'/'</span>)) <span class="comment"># /를 구분자로 하여 리스트로 변환</span></span><br></pre></td></tr></table></figure>
+<p>결과 :</p>
+<p>[‘python’, ‘java’, ‘c’, ‘c++’, ‘c#’]</p>
+<p>python/java/c/c++/c#</p>
+<p>[‘python’, ‘java’, ‘c’, ‘c++’, ‘c#’]</p>
+<p>참조 :<br><a href="https://ledgku.tistory.com/44" target="_blank" rel="external nofollow noopener noreferrer">https://ledgku.tistory.com/44</a><br><a href="https://wikidocs.net/16034" target="_blank" rel="external nofollow noopener noreferrer">https://wikidocs.net/16034</a></p>
 
 
                 <hr>
@@ -210,12 +305,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/python/2019/08/20/python2/" data-toggle="tooltip" data-placement="top" title="파이썬 리스트의 모든 조합 구하기">&larr; Previous Post</a>
+                            <a href="/algorithm/2019/10/17/algorithmGreedy/" data-toggle="tooltip" data-placement="top" title="그리디(Greedy) 알고리즘">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/django/2019/08/19/django1/" data-toggle="tooltip" data-placement="top" title="Django(장고) 가상환경 설정 및 프로젝트 생성">Next Post &rarr;</a>
+                            <a href="/algorithm/2019/10/15/algorithm2748/" data-toggle="tooltip" data-placement="top" title="백준 2748번 피보나치 수 2">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -286,8 +381,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/python/2019/08/19/python1/";
-    var disqus_url = "https://kyu9341.github.io/python/2019/08/19/python1/";
+    var disqus_identifier = "https://kyu9341.github.io/python/2019/10/17/python6/";
+    var disqus_url = "https://kyu9341.github.io/python/2019/10/17/python6/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

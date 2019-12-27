@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <title>
         
-          kwon | kwon&#39;s Blog
+          디지털 영상처리 - 히스토그램 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/page/3/">
+    <link rel="canonical" href="https://kyu9341.github.io/영상처리/2019/12/01/imageprocessing7/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/page/3/">
+    <link rel="canonical" href="https://kyu9341.github.io/영상처리/2019/12/01/ImageProcessing7/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -158,416 +158,112 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>kwon&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">개발 블로그</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>디지털 영상처리 - 히스토그램</h1>
+                    <h2 class="subheading">ImageProcessing</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-12-01
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-<div class="post-preview">
-
-    <a href="/python/2019/10/17/python6/">
-        <h2 class="post-title">
-            파이썬 문자열 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 문자열 함수에 대해 알아보자
-문자열문자열 생성 방법문자열은 “” 또는 ‘’를 이용하여 만들 수 있다. “”안에는 ‘가 들어갈 수 있고, ‘’안에는 “가 들어갈 수 있다.
-“”” “”” 또는 ‘’’ ‘’’ 을 이용해서 여러 줄의 문자열도 표현이 가능하다.
-123str = """Life is short,you need python"""print(......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-17
-    </p>
-
+                <h2 id="히스토그램"><a href="#히스토그램" class="headerlink" title="히스토그램"></a>히스토그램</h2><p>영상에서의 히스토그램은 그레이레벨 값 k개의 개수가 영상 전체 안에서 몇 개가 존재하는지를 알려주는 값이다. 즉, 그레이레벨 값 0부터 255까지가 영상 전체에서 몇 개씩 존재하는가를 알려주는 지표 값이다. 히스토그램은 영상의 그레이레벨의 프로파일(profile)을 보여주는 기능을 한다고 생각하면 된다. 그러나 영상의 크기가 다양하기 때문에 개수만으로 표현하는 경우 그 개수의 정확성에 문제가 발생할 수 있으므로 영상전체 화소수로 나누어 확률적인 표현으로 나타낸다. 즉, k번째 개수가 Nk개인 경우 Nk/(Row*Col)와 같이 전체 화소수로 나누어 k 의 그레이 레벨이 갖는 개수를 표현한 것을 히스토그램이라 한다.</p>
+<div style="width: 600px; height: 1000px;">
+    <img src="https://kyu9341.github.io/img/his.png" style="width: 600px
+    ; height: 1000px;">
 </div>
-<hr>
 
-<div class="post-preview">
-
-    <a href="/algorithm/2019/10/15/algorithm2748/">
-        <h2 class="post-title">
-            백준 2748번 피보나치 수 2
-        </h2>
-        <h3 class="post-subtitle">
-            Baekjoon algorithm
-        </h3>
-        <div class="post-content-preview">
-            2748번
-피보나치 수 2
-문제
-피보나치 수는 0과 1로 시작한다. 0번째 피보나치 수는 0이고, 1번째 피보나치 수는 1이다. 그 다음 2번째 부터는 바로 앞 두 피보나치 수의 합이 된다.
-이를 식으로 써보면 Fn = Fn-1 + Fn-2 (n&gt;=2)가 된다.
-n=17일때 까지 피보나치 수를 써보면 다음과 같다.
-0, 1, 1, 2, 3, 5,......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-15
-    </p>
-
+<p>위의 이미지들은 각각 lena.512의 원본과 각각 gamma collection을 통해 gamma값을 3, 0.45로 지정하여 밝고 어둡게 만든 영상들의 히스토그램이다. 원본의 히스토그램을 보면 0부터 255까지의 값이 존재하나 0과 255의 근처에는 값이 거의 없는 것을 볼 수 있으며 전체적으로 고르게 히스토그램이 분포한 것을 확인할 수 있다. 반면, 밝은 영상에서는 밝은 값들이 많기 때문에 우측으로 치우친 것을 확인할 수 있고 어두운 영상에서는 밝은 값들이 적고 상대적으로 어두운 값들이 많기 때문에 주로 좌측으로 분포한 것을 확인할 수 있다.</p>
+<div style="width: 600px; height: 1000px;">
+    <img src="https://kyu9341.github.io/img/his1.png" style="width: 600px
+    ; height: 1000px;">
 </div>
-<hr>
 
-<div class="post-preview">
-
-    <a href="/python/2019/10/13/python5/">
-        <h2 class="post-title">
-            파이썬 람다(Lambda)식
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 람다식에 대해 알아보자
-람다식을 활용하면 코드를 좀 더 간단하고 효율적으로 작성이 가능하다.
-lambda람다 표현식은 식 형태로 되어 있다고 해서 람다 표현(lambda expression)이라고 부른다. 특히 람다식은 함수를 간편하게 작성할 수 있어서 다른 함수의 인수로 넣을 때 주로 사용한다.
-사용법    - lambda 인자 : 표현식
-......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/python/2019/10/13/python4/">
-        <h2 class="post-title">
-            파이썬 딕셔너리(dictionary), set(집합) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            딕셔너리딕셔너리는 key값과 value값의 한 쌍의 원소들의 순서가 없는 집합이다. 딕셔너리는 보통 특정 주제에 대해 연관된 값들을 모아둘 때 주로 사용.
-일반적인 딕셔너리의 모습 : {‘a’: 1, ‘b’: 2}
-
-순서가 없기 때문에 key로 접근
-키 이름이 중복되면 가장 뒤에 있는 값만 사용
-키에는 문자열 뿐 아니라 정수, 실수, 부울도 사용할 수......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/python/2019/10/13/python3/">
-        <h2 class="post-title">
-            파이썬 리스트(list) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            리스트 관련 함수
-index(item) : 리스트 안에서 해당 item의 index번호를 리턴, 없는 경우 ValueError
-
-12a = ['수학', '과학', '영어', '국어']print(a.index('영어'))
--&gt; 결과 : 2
-
-count(item) : 매칭되는 갯수를 리턴
-
-ex)
-12a = [1, 5, 4, 4, 1, 2, 9]pr......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/C-C/2019/10/11/C2/">
-        <h2 class="post-title">
-            (C) 동적 메모리 할당
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번에는 동적 메모리 할당에 대해 알아보겠다.
-동적 메모리 할당이란?정적 메모리 할당모든 변수, 배열, 구조체 등에 대해 프로그램 실행 전에 필요한 만큼의 변수를 선언하여 사용 -&gt; 프로그램 실행 전에 변수의 메모리 할당 크기가 정해짐
-
-컴파일 과정에서 메모리 크기가 결정되는 메모리 할당 방법
-프로그램 실행 전에, 어떤 종류의 변수를 얼마나 많이......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/C-C/2019/10/11/C1/">
-        <h2 class="post-title">
-            (C) 포인터 사용법
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번 학기에 배우는 영상처리에서 C언어를 이용하여 작업을 진행하다가 포인터에 대한 추가적인 이해가 필요하다고 생각되어 내가 C언어에서 부족하다고 생각했던 부분들을 다시 공부해 볼 생각이다. C언어 하면 포인터이기 때문에 포인터의 기초부터 다시 리뷰해보자.
-포인터란?메모리
-
-프로그램이 실행되기 위해 필요한 정보(값)을 저장하는 공간
-1byte(8 bit......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/android/2019/10/01/android2/">
-        <h2 class="post-title">
-            안드로이드(android) Title Bar 지우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            Title Bar 지우기style.xml
-123456789101112&lt;resources&gt;    &lt;!-- Base application theme. --&gt;    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;        &lt;item name=......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/android/2019/10/01/android1/">
-        <h2 class="post-title">
-            안드로이드(android) 다이얼로그 띄우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            다이얼로그 출력1234567private AlertDialog dialog; // 알림창AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);dialog = builder.setMessage("원하는 메세지 출력.")        .setPositiveButton("확인......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/django/2019/09/16/djangoCommunity10/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기10 [게시판 만들기2]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            이번 포스팅에서는 글쓰기 기능과 글 상세보기 기능을 추가해보도록 하겠습니다.
-먼저 templates/board/board_write.html 파일을 생성한 뒤 다음과 같이 작성해주도록 합니다.
-1234567891011121314151617181920212223242526&#123;% raw %&#125;&#123;% extends "./base.htm......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-16
-    </p>
-
-</div>
-<hr>
+<p>위의 이미지들은 각각 카메라맨, 페퍼, 페이스 이미지들과 히스토그램이다. 각각의 이미지와 히스토그램을 보면 이미지의 값들에 따른 히스토그램이 나타나는 것을 알 수 있다. Camera Man의 경우에는 밝은 배경과 어두운 사람의 옷 때문에 밝은 부분의 값과 어두운 부분의 값이 각각 많이 분포해 독특하게 나타나는 것을 볼 수 있다. 이런 영상의 경우에는 전체적인 콘트라스트를 개선하는데 어려움이 존재한다. 다음으로 Pepper는 보는 것과 같이 고르게 분포되어 있는 것을 알 수 있고 Face는 전체적으로 밝은 영상이므로 밝은 부분에 몰려있는 것을 확인 할 수 있다.</p>
 
 
+                <hr>
 
-<!-- Pager -->
+                
 
-<ul class="pager">
-    
-        <li class="previous">
-            <a href="/page/2/">&larr; Newer Posts</a>
-        </li>
-    
-    
-        <li class="next">
-            <a href="/page/4/">Older Posts &rarr;</a>
-        </li>
-    
-</ul>
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/영상처리/2019/12/01/ImageProcessing8/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - 콘트라스트 스트레칭(Contrast Streching)">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/영상처리/2019/11/29/ImageProcessing4/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - Bit Plane">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
+                
 
-
-                <!-- 如果开启评论功能 -->
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+                       
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="//img/avatar.jpg">
-                        
-
-                        
-                            <p>kwon</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -590,9 +286,66 @@ ex)
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/";
+    var disqus_url = "https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
