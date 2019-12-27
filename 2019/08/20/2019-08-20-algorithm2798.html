@@ -13,11 +13,11 @@
 
     <title>
         
-          kwon | kwon&#39;s Blog
+          백준 2798번 블랙잭 - kwon | kwon&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://kyu9341.github.io/page/3/">
+    <link rel="canonical" href="https://kyu9341.github.io/2019/08/20/2019-08-20-algorithm2798.html">
 
     <!-- Bootstrap Core CSS -->
     
@@ -156,416 +156,118 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>kwon&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">개발 블로그</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>백준 2798번 블랙잭</h1>
+                    <h2 class="subheading">Baekjoon algorithm</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-08-20
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>2798번</p>
+<p><strong>블랙잭</strong></p>
+<p><strong>문제</strong></p>
+<p>카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한 규정이 있다.</p>
+<p>한국 최고의 블랙잭 고수 김정인은 새로운 블랙잭 규칙을 만들어 상근, 창영이와 게임하려고 한다.</p>
+<p>김정인 버젼의 블랙잭에서 각 카드에는 양의 정수가 쓰여 있다. 그 다음, 딜러는 N장의 카드를 모두 숫자가 보이도록 바닥에 놓는다. 그런 후에 딜러는 숫자 M을 크게 외친다.</p>
+<p>이제 플레이어는 제한된 시간 안에 N장의 카드 중에서 3장의 카드를 골라야 한다. 블랙잭 변형 게임이기 때문에, 플레이어가 고른 카드의 합은 M을 넘지 않으면서 M과 최대한 가깝게 만들어야 한다.</p>
+<p>N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.</p>
+<p><strong>입력</strong></p>
+<p>첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는다.</p>
+<p>합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.</p>
+<p><strong>출력</strong></p>
+<p>첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.</p>
+<p>예제 입력 1</p>
+<p>5 21<br>5 6 7 8 9</p>
+<p>예제 출력 1</p>
+<p>21</p>
+<p><a href="https://www.acmicpc.net/problem/2798" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/2798</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line"></span><br><span class="line">N, M = map(int, input().split())</span><br><span class="line">nums = []</span><br><span class="line">nums = input().split()</span><br><span class="line">nums = list(map(int, nums))</span><br><span class="line"></span><br><span class="line">cards = list(combinations(nums, <span class="number">3</span>)) <span class="comment"># nums의 3개로 이루어진 중복하지 않는 모든 조합을 구함</span></span><br><span class="line"><span class="comment"># [(5, 6, 7), (5, 6, 8), (5, 6, 9), (5, 7, 8), (5, 7, 9), (5, 8, 9), (6, 7, 8), (6, 7, 9), (6, 8, 9), (7, 8, 9)]</span></span><br><span class="line">cards_lists = [list(i) <span class="keyword">for</span> i <span class="keyword">in</span> cards] <span class="comment"># 리스트 내의 튜플의 형태를 리스트 내의 리스트로 변환</span></span><br><span class="line"><span class="comment"># [[5, 6, 7], [5, 6, 8], [5, 6, 9], [5, 7, 8], [5, 7, 9], [5, 8, 9], [6, 7, 8], [6, 7, 9], [6, 8, 9], [7, 8, 9]]</span></span><br><span class="line">cards_sum = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(cards_lists)): <span class="comment"># 각 리스트의 합을 원소로 하는 리스트 cards_sum</span></span><br><span class="line">    cards_sum.append(sum(cards_lists[i]))</span><br><span class="line"></span><br><span class="line">M_list = [M <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(cards_sum))] <span class="comment"># 모든 원소가 M인 cards_sum과 크기가 같은 리스트 생성</span></span><br><span class="line">sub_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(cards_sum)):</span><br><span class="line">    <span class="keyword">if</span> M_list[i]-cards_sum[i] &lt; <span class="number">0</span>: <span class="comment"># 차가 0보다 작아지는 경우 최소값으로 나오지 않도록 지정</span></span><br><span class="line">        sub_list.append(<span class="number">30000000</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        sub_list.append(M_list[i]-cards_sum[i]) <span class="comment"># 각 원소의 차이를 저장하는 리스트 sub_list</span></span><br><span class="line"></span><br><span class="line">min_num = min(sub_list)</span><br><span class="line">print(cards_sum[sub_list.index(min_num)])</span><br></pre></td></tr></table></figure>
 
 
-<div class="post-preview">
+                <hr>
 
-    <a href="/2019/10/17/2019-10-17-python6.html">
-        <h2 class="post-title">
-            파이썬 문자열 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 문자열 함수에 대해 알아보자
-문자열문자열 생성 방법문자열은 “” 또는 ‘’를 이용하여 만들 수 있다. “”안에는 ‘가 들어갈 수 있고, ‘’안에는 “가 들어갈 수 있다.
-“”” “”” 또는 ‘’’ ‘’’ 을 이용해서 여러 줄의 문자열도 표현이 가능하다.
-123str = """Life is short,you need python"""print(......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-17
-    </p>
+                
 
-</div>
-<hr>
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/08/20/2019-08-20-algorithm2231.html" data-toggle="tooltip" data-placement="top" title="백준 2231번 분해합">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/08/20/2019-08-20-algorithm1085.html" data-toggle="tooltip" data-placement="top" title="백준 1085번 직사각형에서 탈출">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-<div class="post-preview">
+                
 
-    <a href="/2019/10/15/2019-10-15-algorithm2748.html">
-        <h2 class="post-title">
-            백준 2748번 피보나치 수 2
-        </h2>
-        <h3 class="post-subtitle">
-            Baekjoon algorithm
-        </h3>
-        <div class="post-content-preview">
-            2748번
-피보나치 수 2
-문제
-피보나치 수는 0과 1로 시작한다. 0번째 피보나치 수는 0이고, 1번째 피보나치 수는 1이다. 그 다음 2번째 부터는 바로 앞 두 피보나치 수의 합이 된다.
-이를 식으로 써보면 Fn = Fn-1 + Fn-2 (n&gt;=2)가 된다.
-n=17일때 까지 피보나치 수를 써보면 다음과 같다.
-0, 1, 1, 2, 3, 5,......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-15
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python5.html">
-        <h2 class="post-title">
-            파이썬 람다(Lambda)식
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            파이썬의 람다식에 대해 알아보자
-람다식을 활용하면 코드를 좀 더 간단하고 효율적으로 작성이 가능하다.
-lambda람다 표현식은 식 형태로 되어 있다고 해서 람다 표현(lambda expression)이라고 부른다. 특히 람다식은 함수를 간편하게 작성할 수 있어서 다른 함수의 인수로 넣을 때 주로 사용한다.
-사용법    - lambda 인자 : 표현식
-......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python4.html">
-        <h2 class="post-title">
-            파이썬 딕셔너리(dictionary), set(집합) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            딕셔너리딕셔너리는 key값과 value값의 한 쌍의 원소들의 순서가 없는 집합이다. 딕셔너리는 보통 특정 주제에 대해 연관된 값들을 모아둘 때 주로 사용.
-일반적인 딕셔너리의 모습 : {‘a’: 1, ‘b’: 2}
-
-순서가 없기 때문에 key로 접근
-키 이름이 중복되면 가장 뒤에 있는 값만 사용
-키에는 문자열 뿐 아니라 정수, 실수, 부울도 사용할 수......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/13/2019-10-13-python3.html">
-        <h2 class="post-title">
-            파이썬 리스트(list) 정리
-        </h2>
-        <h3 class="post-subtitle">
-            Python
-        </h3>
-        <div class="post-content-preview">
-            리스트 관련 함수
-index(item) : 리스트 안에서 해당 item의 index번호를 리턴, 없는 경우 ValueError
-
-12a = ['수학', '과학', '영어', '국어']print(a.index('영어'))
--&gt; 결과 : 2
-
-count(item) : 매칭되는 갯수를 리턴
-
-ex)
-12a = [1, 5, 4, 4, 1, 2, 9]pr......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/11/2019-10-11-C2.html">
-        <h2 class="post-title">
-            (C) 동적 메모리 할당
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번에는 동적 메모리 할당에 대해 알아보겠다.
-동적 메모리 할당이란?정적 메모리 할당모든 변수, 배열, 구조체 등에 대해 프로그램 실행 전에 필요한 만큼의 변수를 선언하여 사용 -&gt; 프로그램 실행 전에 변수의 메모리 할당 크기가 정해짐
-
-컴파일 과정에서 메모리 크기가 결정되는 메모리 할당 방법
-프로그램 실행 전에, 어떤 종류의 변수를 얼마나 많이......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/11/2019-10-11-C1.html">
-        <h2 class="post-title">
-            (C) 포인터 사용법
-        </h2>
-        <h3 class="post-subtitle">
-            C
-        </h3>
-        <div class="post-content-preview">
-            이번 학기에 배우는 영상처리에서 C언어를 이용하여 작업을 진행하다가 포인터에 대한 추가적인 이해가 필요하다고 생각되어 내가 C언어에서 부족하다고 생각했던 부분들을 다시 공부해 볼 생각이다. C언어 하면 포인터이기 때문에 포인터의 기초부터 다시 리뷰해보자.
-포인터란?메모리
-
-프로그램이 실행되기 위해 필요한 정보(값)을 저장하는 공간
-1byte(8 bit......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-11
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/01/2019-10-03-android2.html">
-        <h2 class="post-title">
-            안드로이드(android) Title Bar 지우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            Title Bar 지우기style.xml
-123456789101112&lt;resources&gt;    &lt;!-- Base application theme. --&gt;    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;        &lt;item name=......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/10/01/2019-10-01-android1.html">
-        <h2 class="post-title">
-            안드로이드(android) 다이얼로그 띄우기
-        </h2>
-        <h3 class="post-subtitle">
-            Android
-        </h3>
-        <div class="post-content-preview">
-            다이얼로그 출력1234567private AlertDialog dialog; // 알림창AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);dialog = builder.setMessage("원하는 메세지 출력.")        .setPositiveButton("확인......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-10-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/09/16/2019-09-16-djangoCommunity10.html">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기10 [게시판 만들기2]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            이번 포스팅에서는 글쓰기 기능과 글 상세보기 기능을 추가해보도록 하겠습니다.
-먼저 templates/board/board_write.html 파일을 생성한 뒤 다음과 같이 작성해주도록 합니다.
-1234567891011121314151617181920212223242526&#123;% raw %&#125;&#123;% extends "./base.htm......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-16
-    </p>
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-        <li class="previous">
-            <a href="/page/2/">&larr; Newer Posts</a>
-        </li>
-    
-    
-        <li class="next">
-            <a href="/page/4/">Older Posts &rarr;</a>
-        </li>
-    
-</ul>
-
-
-
-                <!-- 如果开启评论功能 -->
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+                       
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="//img/avatar.jpg">
-                        
-
-                        
-                            <p>kwon</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://github.com/Kaijun" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -588,9 +290,66 @@ ex)
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "https://kyu9341.github.io/2019/08/20/2019-08-20-algorithm2798.html";
+    var disqus_url = "https://kyu9341.github.io/2019/08/20/2019-08-20-algorithm2798.html";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->

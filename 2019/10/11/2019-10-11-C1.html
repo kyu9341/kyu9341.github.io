@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          (C) 포인터 사용법 - kwon | kwon&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://kyu9341.github.io/2019/10/11/2019-10-11-C1.html">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">kwon&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>(C) 포인터 사용법</h1>
+                    <h2 class="subheading">C</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-10-11
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>이번 학기에 배우는 영상처리에서 C언어를 이용하여 작업을 진행하다가 포인터에 대한 추가적인 이해가 필요하다고 생각되어 내가 C언어에서 부족하다고 생각했던 부분들을 다시 공부해 볼 생각이다. C언어 하면 포인터이기 때문에 포인터의 기초부터 다시 리뷰해보자.</p>
+<h3 id="포인터란"><a href="#포인터란" class="headerlink" title="포인터란?"></a>포인터란?</h3><p><strong>메모리</strong></p>
+<ul>
+<li>프로그램이 실행되기 위해 필요한 정보(값)을 저장하는 공간</li>
+<li>1byte(8 bit) 단위로 물리 주소가 부여되어 있음</li>
+<li>개념적으로, 메모리는 일렬로 연속되어 있는 크기가 1byte인 방들의 모음이라고 볼 수 있음</li>
+<li>일반적으로 주소의 길이는 4bytes이고, 주소는 16진수로 표현</li>
+</ul>
+<div style="width: 90%; height: 200px;">
+    <img src="https://kyu9341.github.io/img/cpointer1.png" style="width: 90%
+    ; height: 200px;">
+</div>
+
+<p><strong>포인터</strong></p>
+<ul>
+<li><p>주소를 나타내는 특수 자료형</p>
+</li>
+<li><p>일반적으로 변수의 주소를 저장하며, “변수를 가리킨다”라고 표현함</p>
+</li>
+<li><p>주소는 숫자이므로, 기본적으로 정수로 표현됨. 하지만, int(정수형 자료형)와 구별되어 처리됨(다른 자료형)</p>
+</li>
+<li><p>따라서 선언할 때 포인터임을 명시해야 한다.</p>
+</li>
+<li><p>선언 방법 : 변수 명 앞에 *(참조연산자)만 붙이면 된다.</p>
+</li>
+</ul>
+<p>ex) char * pch;</p>
+<pre><code>int * pnum;</code></pre><p>-&gt; pch와 pnum은 똑같이 주소를 저장하는 변수지만 자료형이 다르므로 다른 자료형으로 취급</p>
+<p><strong><em>대입</em></strong></p>
+<ul>
+<li>포인터 (변수)에는 <span style="color:red">주소</span><br>만 대입될 수 있다.</li>
+<li>포인터 (변수)에 주소를 대입하여 특정 변수와 연결시키는 것을 “가리킨다”라고 표현하고, 그림에서는 화살표 -&gt;로 표시</li>
+</ul>
+<div style="width: 80%; height: 200px;">
+    <img src="https://kyu9341.github.io/img/cpointer2.png" style="width: 80%
+    ; height: 200px;">
+</div>
+
+<ul>
+<li>참조 연산 : 포인터 (변수)가 가리키는 변수에 접근하는 것</li>
+<li>참조연산자 * (간접연산자, 포인터연산자 라고도 부름)를 사용</li>
+</ul>
+<p>ex) *pch : 포인터 pch가 가리키는 변수, 0x3C번지에 저장된 값</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch = <span class="string">'A'</span>, * pch;</span><br><span class="line"><span class="keyword">int</span> num = <span class="number">3</span>, * pnum;</span><br><span class="line"></span><br><span class="line">pch = &amp;ch; <span class="comment">// 포인터 pch에 변수 ch를 연결시킴</span></span><br><span class="line">pnum = &amp;num; <span class="comment">// 포인터 pnum에 변수 num을 연결시킴</span></span><br><span class="line"><span class="comment">// 반드시 어떤 변수에 연결 후 사용</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c %p\n"</span>, *pch, pch);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d %p\n"</span>, *pnum, pnum);</span><br><span class="line"><span class="comment">// %p는 printf 에서 16진수로 주소를 출력해준다.</span></span><br></pre></td></tr></table></figure>
+
+<p>결과:<br>  A 001EA03C</p>
+<p>  3 001EA042</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> num1, num2, * p = &amp;num1; <span class="comment">//int 변수 num1, num2 선언, int 포인터 변수 p 선언 및 num1의 주소로 초기화</span></span><br><span class="line"></span><br><span class="line">*p = <span class="number">3000</span>; <span class="comment">// p가 가리키는 변수에 3000 대입</span></span><br><span class="line">num2 = *p; <span class="comment">// num2에 p가 가리키는 변수값 대입</span></span><br><span class="line">p = &amp;num2; <span class="comment">// p가 num2를 가리키도록 변경</span></span><br><span class="line"></span><br><span class="line">*p = *p <span class="number">-1000</span>; <span class="comment">// p에 연결된 변수에 p가 가리키는 변수 값 – 1000 대입</span></span><br><span class="line">num1 = *p * <span class="number">2</span>; <span class="comment">// num1에 p가 가리키는 변수 값의 2배 대입</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"num1 = %d num2 = %d p = %p\n"</span>, num1, num2, p); <span class="comment">// num1, num2, p를 출력핚다.</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"num1 = %p num2 = %p p = %p\n"</span>, &amp;num1, &amp;num2, &amp;p); <span class="comment">// num1의 주소, num2의 주소, p의 주소를 출력핚다</span></span><br></pre></td></tr></table></figure>
+
+<p>결과 :<br>num1 = 4000 num2 = 2000 p = 004FF940</p>
+<p>num1 = 004FF94C num2 = 004FF940 p = 004FF934</p>
+<h3 id="배열과-포인터"><a href="#배열과-포인터" class="headerlink" title="배열과 포인터"></a>배열과 포인터</h3><p>배열의 이름은 배열의 시작 주소를 의미한다. 즉, int ar[10] = {0}; 이라는 배열이 있을때 ar = &amp;ar 과 같은 의미이다.</p>
+<ul>
+<li>주소를 이용한 배열 참조<br>배열 이름은 주소를 의미하므로, 참조 연산자와 함께 사용이 가능하다.</li>
+</ul>
+<p>ar : 배열의 시작 주소</p>
+<p>*ar : 배열의 시작 주소에 저장된 값, 즉 0번째 원소를 의미</p>
+<ul>
+<li><p>배열 주소에 대한 증감 연산 (ar의 값이 0xB4일 때)</p>
+<p>ar + 1 의 결과는? 0xB5? 0xB8?</p>
+<p>*(ar + 1)의 결과는 ?</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ar[<span class="number">5</span>] = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p %d %d\n"</span>, ar+<span class="number">1</span>, ar[<span class="number">1</span>], *(ar+<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>결과 : 001E40B8 3 3</p>
+<p><strong>주소에 1을 더하면, 변수의 크기만큼 주소가 증가한다.</strong></p>
+<div style="width: 70%; height: 120px;">
+    <img src="https://kyu9341.github.io/img/cpointer.png" style="width: 70%
+    ; height: 120px;">
+</div>
+
+<ul>
+<li>배열 주소에 대한 증감 연산은  <span style="color:red">배열 원소 하나의 크기 만큼</span> 증가 or 감소</li>
+</ul>
+<p>int 배열의 경우 : 4</p>
+<p>ar + i : 배열 ar의 i번째 원소의 주소</p>
+<p>*(ar + i) : 배열 ar의 i번째 원소의 값, 즉, ar[i]</p>
+<ul>
+<li><p>배열의 시작 주소를 이용하여 배열을 포인터 형태로 사용할 수 있다.</p>
+<div style="width: 80%; height: 200px;">
+<img src="https://kyu9341.github.io/img/cpointer3.png" style="width: 80%
+; height: 200px;">
+</div></li>
+<li><p>주소의 증감 단위가 변수의 크기에 의해 결정되므로 배열의 자료형에 관계없이 *(ar + i) = ar[i] 가 성립한다.</p>
+</li>
+<li><p>배열을 포인터 변수에 연결하여 사용<br>배열 이름은 주소를 의미하므로, 포인터 변수에 대입이 가능</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ar[<span class="number">5</span>] = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> *p = ar;</span><br></pre></td></tr></table></figure>
+<p>위와 같이 사용이 가능하며 포인터 변수도 배열의 첨자 형태로 값을 참조 할 수 있다. 즉 p[0] = *p이고 p[1] = *(p + 1) 이다.</p>
+</li>
+</ul>
+<h3 id="포인터-인자와-주소-반환"><a href="#포인터-인자와-주소-반환" class="headerlink" title="포인터 인자와 주소 반환"></a>포인터 인자와 주소 반환</h3><ul>
+<li>두 변수를 교환하는 swap함수를 만들어보자<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="keyword">int</span> tmp;</span><br><span class="line">      tmp = x;</span><br><span class="line">      x = y;</span><br><span class="line">      y = tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">10</span>, y = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">  swap(x, y);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d %d"</span>, x, y);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+실행 결과 : 10 20</li>
+</ul>
+<p>main 함수의 변수가 왜 안 바뀌는 지 메모리 그림을 확인해보자.</p>
+<div style="width: 70%; height: 300px;">
+<img src="https://kyu9341.github.io/img/cpointer4.png" style="width: 70%
+; height: 300px;">
+</div>
+- 포인터를 swap함수의 인자로 사용하도록 수정해보자
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *px, <span class="keyword">int</span> *py)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">  <span class="keyword">int</span> tmp;   </span><br><span class="line">  tmp = * px;    </span><br><span class="line">  px = * py;    </span><br><span class="line">  * py = tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">10</span>, y = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">  swap(&amp;x, &amp;y);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d %d"</span>, x, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>실행 결과 : 20 10</p>
+<p>이렇게, 함수의 인자로 변수의 주소값을 넘겨주고 swap함수에서 포인터 변수로 처리를 하게 되면 값이 정상적으로 바뀌는 것을 확인할 수 있다.</p>
+<ul>
+<li>main함수의 값이 왜 바뀌는 지 메모리 그림을 확인해보자</li>
+</ul>
+<div style="width: 90%; height: 350px;">
+<img src="https://kyu9341.github.io/img/cpointer5.png" style="width: 90%
+; height: 350px;">
+</div>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/10/11/2019-10-11-C2.html" data-toggle="tooltip" data-placement="top" title="(C) 동적 메모리 할당">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/10/01/2019-10-03-android2.html" data-toggle="tooltip" data-placement="top" title="안드로이드(android) Title Bar 지우기">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "https://kyu9341.github.io/2019/10/11/2019-10-11-C1.html";
+    var disqus_url = "https://kyu9341.github.io/2019/10/11/2019-10-11-C1.html";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Kaijun" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; kwon&#39;s Blog 2019 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://kyu9341.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

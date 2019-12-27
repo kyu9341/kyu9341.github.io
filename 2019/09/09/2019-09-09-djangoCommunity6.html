@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Django(장고)를 이용한 커뮤니티 만들기6 [로그인 기능 구현] - kwon | kwon&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://kyu9341.github.io/2019/09/09/2019-09-09-djangoCommunity6.html">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">kwon&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Django(장고)를 이용한 커뮤니티 만들기6 [로그인 기능 구현]</h1>
+                    <h2 class="subheading">Django</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-09-09
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>로그인 기능을 구현하기 위해서는 세션에 대해 알아야 합니다. 세션이란, 웹사이트에 로그인을 하고나면 그 사이트에서는 다시 로그인할 필요 없이 여러 페이지의 기능을 이용할 수 있게 하기 위해 사용됩니다.</p>
+<p>일반적으로 웹에서 클라이언트와 서버가 있는데 클라이언트 안에는 쿠키라는게 들어있습니다. 쿠키란 하나의 저장소라고 보시면 되고 클라이언트는 지금 웹사이트를 만들고 있기 때문에 웹 브라우저라고 보면 됩니다. 이 브라우저 안에 쿠키라는 저장공간이 있는데 이 저장공간을 활용해서 데이터를 유지하는 것입니다.</p>
+<p> 예를 들어 어떤 웹사이트에 접속을 한다고 하면, 서버에 요청을 보내게 되겠죠? 그러면 서버는 헤더에 쿠키 정보를 넣어서 줍니다. 이 쿠키에는 어떤 클라이언트가 로그인 하였는지 구분하기 위한 세션ID라는 것이 들어있습니다. 따라서 클라이언트는 쿠키에 세션ID를 가지고 있게 되고 이후 서버에 요청을 보낼 때 이 쿠키의 세션ID를 서버에 전달하면, 서버는 세션ID를 전달받아 세션ID로 세션에 있는 클라이언트 정보를 가져와 요청을 처리하여 응답을 보내게 됩니다.</p>
+<p>세션은 이러한 구조로 동작을 합니다. 조금 복잡하게 느껴질 수도 있지만 장고에서는 이런 작업을 모두 알아서 처리해줍니다. 따라서 실제로 사용하기에는 그렇게 어렵지 않습니다.</p>
+<p>먼저 로그인 기능을 구현하기 위해 로그인 페이지에 사용될 템플릿 파일을 만들어보도록 하겠습니다. 이전에 만들어두었던 회원가입 화면에서 이메일과 비밀번호 확인부분만 지워주고 조금만 수정하면 로그인화면으로 이용이 가능하므로 다음과 같이 templates/user에 login.html파일을 만들어보도록 하겠습니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Required meta tags --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, shrink-to-fit=no"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/bootstrap.min.css"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://codpye.jquery.com/jquery-3.3.1.slim.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12 text-center"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>로그인<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12"</span>&gt;</span></span><br><span class="line">            &#123;&#123; error &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row mt-5"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-12"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"."</span>&gt;</span></span><br><span class="line">              &#123;% raw %&#125;</span><br><span class="line">              &#123;% csrf_token %&#125;</span><br><span class="line">              &#123;%endraw%&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"username"</span>&gt;</span>사용자 이름<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">class</span>=<span class="string">"form-control"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">id</span>=<span class="string">"username"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">placeholder</span>=<span class="string">"사용자 이름"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">name</span>=<span class="string">"username"</span></span></span><br><span class="line"><span class="tag">                    &gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"password"</span>&gt;</span>비밀번호<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">class</span>=<span class="string">"form-control"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">id</span>=<span class="string">"password"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">placeholder</span>=<span class="string">"비밀번호"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">name</span>=<span class="string">"password"</span></span></span><br><span class="line"><span class="tag">                    &gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>로그인<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>템플릿 파일을 만들었으므로 연결시켜주기 위해 user/views.py로 이동하여 먼저 login함수를 추가해주도록 하겠습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'user/login.html'</span>)</span><br></pre></td></tr></table></figure>
+<p>이제 user/urls.py로 이동하여 다음과 같이 경로를 추가해주도록 합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'register/'</span>, views.register),</span><br><span class="line">    path(<span class="string">'login/'</span>, views.login),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>여기까지 완료되었다면 정상적으로 로그인화면이 출력되는지 한번 확인해보도록 하겠습니다.<br><a href="http://127.0.0.1:8000/user/login/" target="_blank" rel="external nofollow noopener noreferrer">http://127.0.0.1:8000/user/login/</a>을 입력하고 확인해보면</p>
+<div style="width: 90%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/django16.png" style="width: 90%
+    ; height: 300px;">
+</div>
+
+<p>위와 같이 로그인화면이 잘 나오는 것을 확인할 수 있습니다. 이제 로그인 기능을 구현하기 위해서 views.py의 login함수를 다음과 같이 수정해주도록 하겠습니다. 또한 home함수도 추가해보겠습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect <span class="comment"># 리다이렉트 함수 import</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> User</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.hashers <span class="keyword">import</span> make_password, check_password</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">    user_id = request.session.get(<span class="string">'user'</span>) <span class="comment"># 세션으로부터 사용자 ID를 가져옴</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> user_id:</span><br><span class="line">        user = User.objects.get(pk=user_id) <span class="comment"># 모델에서 id를 기본키로해서 가져옴</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(user.username) <span class="comment"># 모델의 username을 출력 (로그인이 된경우)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Home!"</span>) <span class="comment"># 로그인이 되지 않은 경우 Home!출력</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/login.html'</span>)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        username = request.POST.get(<span class="string">'username'</span>, <span class="literal">None</span>)</span><br><span class="line">        password = request.POST.get(<span class="string">'password'</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        res_data = &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (username <span class="keyword">and</span> password):</span><br><span class="line">            res_data[<span class="string">'error'</span>] = <span class="string">'모든 값을 입력해야합니다.'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            user = User.objects.get(username=username) <span class="comment"># username필드의 값이 username인 사용자 정보를 가져옴</span></span><br><span class="line">            <span class="keyword">if</span> check_password(password, user.password): <span class="comment"># 비밀번호 확인하는 함수 (입력받은 비밀번호, 데이터베이스에서 가져온 비밀번호)</span></span><br><span class="line">                <span class="comment"># 비밀번호가 일치, 로그인처리</span></span><br><span class="line">                <span class="comment"># 세션, 홈으로 이동(리다이렉트)</span></span><br><span class="line">                request.session[<span class="string">'user'</span>] = user.id <span class="comment"># request.session의 user라는 키에 로그인한 user의 id값을 저장</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> redirect(<span class="string">'/'</span>) <span class="comment"># '/' : root로 이동 (홈으로 이동)</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res_data[<span class="string">'error'</span>] = <span class="string">'비밀번호가 틀렸습니다.'</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/login.html'</span>, res_data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        username = request.POST.get(<span class="string">'username'</span>, <span class="literal">None</span>) <span class="comment"># 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴</span></span><br><span class="line">        password = request.POST.get(<span class="string">'password'</span>, <span class="literal">None</span>) <span class="comment"># 받아온 키값에 값이 없는경우 None값으로 기본값으로 지정</span></span><br><span class="line">        re_password = request.POST.get(<span class="string">'re-password'</span>, <span class="literal">None</span>)</span><br><span class="line">        useremail = request.POST.get(<span class="string">'useremail'</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        res_data = &#123;&#125; <span class="comment"># 응답 메세지를 담을 변수(딕셔너리)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (username <span class="keyword">and</span> useremail <span class="keyword">and</span> password <span class="keyword">and</span> re_password <span class="keyword">and</span> useremail):</span><br><span class="line">            res_data[<span class="string">'error'</span>] = <span class="string">'모든 값을 입력해야 합니다.'</span></span><br><span class="line">        <span class="keyword">elif</span> password != re_password:</span><br><span class="line">            res_data[<span class="string">'error'</span>] = <span class="string">'비밀번호가 다릅니다.'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            user = User( <span class="comment"># 모델에서 생성한 클래스를 가져와 객체를 생성</span></span><br><span class="line">                username=username,</span><br><span class="line">                useremail=useremail,</span><br><span class="line">                password=make_password(password) <span class="comment"># 비밀번호를 암호화하여 저장</span></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            user.save() <span class="comment"># 데이터베이스에 저장</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'user/register.html'</span>, res_data) <span class="comment"># res_data가 html코드로 전달이 됨</span></span><br></pre></td></tr></table></figure>
+<p>register함수를 구현했던 것과 비슷하게 login함수를 구현할 수 있습니다. 그냥 url로 접근한 경우와(GET방식) 로그인 버튼을 눌러 접근한 경우로(POST방식)으로 나누어 주고 POST인 경우 사용자 아이디와 비밀번호를 받아 입력받지 않은 경우에 예외처리를 진행하고 정상적으로 입력받은 경우 입력받은 id에 맞는 사용자 정보를 가져와 user라는 객체를 생성합니다. 이후, 비밀번호가 일치하는지를 검사하게 되는데 새로 import한 check_password라는 함수를 사용하여 검사를 수행합니다. 비밀번호가 일치하다면 세션의 ‘user’라는 키값에 사용자의 id를 저장해주고 홈페이지로 redirect하게됩니다. 반면 비밀번호가 일치하지 않는다면 에러메세지를 출력하게 되죠.</p>
+<p>home함수는 로그인에 성공하게 되면 사용자의 id를 출력하고, 로그인이 되지 않은 경우에는 Home!를 출력하게 되어있습니다.</p>
+<p>이제 community/urls.py에 다음과 같이 root(홈페이지)경로를 추가해주도록 합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"><span class="keyword">from</span> user.views <span class="keyword">import</span> home</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">'user/'</span>, include(<span class="string">'user.urls'</span>)),</span><br><span class="line">    path(<span class="string">''</span>, home)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>위와 같이 추가가 완료되었다면 로그인화면으로 이동해 확인해보도록 합니다.</p>
+<div style="width: 350px; height: 250px;">
+    <img src="https://kyu9341.github.io/img/home.png" style="width: 350px
+    ; height: 250px;">
+</div>
+
+<p>로그인을 하지 않고 url만 입력하여 접속한 경우 위와 같이 Home!만 표시가 되는 것을 볼 수 있습니다.</p>
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/img/django17.png" style="width: 100%
+    ; height: 300px;">
+</div>
+
+<p>반면 정상적으로 로그인이 수행된 경우</p>
+<div style="width: 350px; height: 250px;">
+    <img src="https://kyu9341.github.io/img/home1.png" style="width: 350px
+    ; height: 250px;">
+</div>
+
+<p>위와 같이 사용자 아이디를 출력하게 되는 것을 볼 수 있습니다. 또한 개발자도구를 들어가 확인해보면 위에서 언급했던 세션ID가 쿠키 내부에 발급된 것을 확인할 수 있습니다.</p>
+<div style="width: 350px; height: 250px;">
+    <img src="https://kyu9341.github.io/img/session.png" style="width: 350px
+    ; height: 250px;">
+</div>
+
+<p>여기까지 간단한 로그인 기능까지 구현해 보았습니다.</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/09/14/2019-09-14-djangoCommunity7.html" data-toggle="tooltip" data-placement="top" title="Django(장고)를 이용한 커뮤니티 만들기7 [로그아웃 기능 및 템플릿 상속받기]">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/09/06/2019-09-07-djangoCommunity5.html" data-toggle="tooltip" data-placement="top" title="Django(장고)를 이용한 커뮤니티 만들기5 [이메일 필드 추가 및 부트스트랩 테마 적용]">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "https://kyu9341.github.io/2019/09/09/2019-09-09-djangoCommunity6.html";
+    var disqus_url = "https://kyu9341.github.io/2019/09/09/2019-09-09-djangoCommunity6.html";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Kaijun" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; kwon&#39;s Blog 2019 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://kyu9341.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
