@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/hexo-theme-huxblog/img/favicon.ico">
+
+    <title>
+        
+          Kaijun的博客 | Kaijun&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/page/2/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/hexo-theme-huxblog/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/hexo-theme-huxblog/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/hexo-theme-huxblog/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/hexo-theme-huxblog/">Kaijun&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/hexo-theme-huxblog/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/hexo-theme-huxblog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Kaijun&#39;s Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">To Be A Lean Developer!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/12/01/2019-12-05-ImageProcessing9/">
+        <h2 class="post-title">
+            디지털 영상처리 - 공간 필터링
+        </h2>
+        <h3 class="post-subtitle">
+            ImageProcessing
+        </h3>
+        <div class="post-content-preview">
+            Spatial Filtering (공간 필터링)영상처리에서 필터링은 영상 내에서 특별히 원하는 성분을 추출해내는 과정에 대한 용어이다. 필터링은 크게 두 가지로 나뉘는데 하나는 저주파 필터링이고 하나는 고주파 필터링이다. 필터링의 용어는 모두 주파수 영역에서 다루는 용어를 그대로 사용한다. 공간필터링이라는 용어는 영상을 입력으로 하여 출력을 영상으로 ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-12-01
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/29/2019-11-29-ImageProcessing4/">
+        <h2 class="post-title">
+            디지털 영상처리 - Bit Plane
+        </h2>
+        <h3 class="post-subtitle">
+            ImageProcessing
+        </h3>
+        <div class="post-content-preview">
+            Bit Plane표준 디지털 영상은 8bits로 구성되어 0부터 255까지의 값을 가지고 있는 구조이다. 256레벨의 그레이 스케일 값이라고 표현하기도 하는데 이진영상을 위에서 구성한 것과 같이 각 bit위치에서의 영상을 독립된 영상으로 표현하는 방법을 알아본다. 영상은 8개의 bit plane으로 구성되어 있으며 최상위 비트가 1인 경우 128보다 ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-29
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/24/2019-11-23-marchine learning4/">
+        <h2 class="post-title">
+            ICT멘토링 딥러닝 교육 2일차
+        </h2>
+        <h3 class="post-subtitle">
+            Machine Learning
+        </h3>
+        <div class="post-content-preview">
+            이번에는 둘째 날 배운 내용을 리뷰해보겠다. 둘째 날에는 이미지 분류 이론, Azure Cloud GPU활용, Cifar10 이미지 분류에 대해서 배웠다.
+Convolutional Neural Network(CNN)딥러닝이나 머신러닝 관련 자료들을 보면 자주 등장하던 CNN이다. 주로 이미지를 학습시킨다고 하면 제일 먼저 떠오르는 단어이다.
+CNN(합......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-24
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/23/2019-11-23-marchine learning3/">
+        <h2 class="post-title">
+            ICT멘토링 딥러닝 교육 1일차
+        </h2>
+        <h3 class="post-subtitle">
+            Machine Learning
+        </h3>
+        <div class="post-content-preview">
+            저번주에 한이음에서 주최한 머신러닝 ICT멘토링 AI머신러닝(기초) 교육에 이어 이번에는 AI딥러닝 교육에 참가하게 되었다. 이번주도 토일 10:00 ~ 18:00까지 진행되는데 첫째 날은 딥러닝 이론, 케라스, Azure Cloud 설정, MLP 설정에 대해 배웠다.
+딥러닝이란?Deep Learning = Deep Neural Network = Ar......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-23
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/22/2019-11-22-ImageProcessing3/">
+        <h2 class="post-title">
+            디지털 영상처리 - Binary Image, Gamma Correction
+        </h2>
+        <h3 class="post-subtitle">
+            ImageProcessing
+        </h3>
+        <div class="post-content-preview">
+            Binary Image영상정보는 0에서 255까지의 값을 가지고 있어서 필요에 따라 영상의 값들을 조작하거나 변경하는 영상처리를 수행한다. 그러나 컴퓨터 시스템의 특성과 영상처리의 단순화를 위하여 이진화 하는 작업이 필요한 경우가 많이 존재한다. 영상 이진화는 0에서 255까지의 값을 0과 1의 값으로 변환하는 작업이다. 실제 영상에서는 0과 1 모두......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-22
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/17/2019-11-17-marchine learning2/">
+        <h2 class="post-title">
+            ICT멘토링 머신러닝 교육 2일차
+        </h2>
+        <h3 class="post-subtitle">
+            Machine Learning
+        </h3>
+        <div class="post-content-preview">
+            이번에는 둘째 날에 배웠던 내용에 대해 리뷰해보도록 하겠다. 둘째 날은 Regression모델, 머신러닝 알고리즘, python라이브러리인 scikit-learn을 이용하여 실습을 진행하였다.
+오전에는 어제 했던 Classification모델에 이어서 Azure ML Studio에서 Regression모델을 실습해보았다.
+
+    
+
+Regressio......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-17
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/16/2019-11-16-marchine learning1/">
+        <h2 class="post-title">
+            ICT멘토링 머신러닝 교육 1일차
+        </h2>
+        <h3 class="post-subtitle">
+            Machine Learning
+        </h3>
+        <div class="post-content-preview">
+            이번에 한이음에서 주최하는 ICT멘토링 MS AI머신러닝(기초)교육에 참여하게 되었다. 토일 10:00 ~ 18:00까지 2일에 걸쳐서 진행되는데 첫째 날에는 인공지능 개론/사례, 머신러닝 이론, Classification모델에 대해서 배웠다. 이번 포스팅에서는 첫째 날 배운 내용에 대해 리뷰해보도록 하겠다.
+인공지능이란?기계를 인간과 비슷하게 동작하......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-16
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/12/2019-11-12-ImageProcessing2/">
+        <h2 class="post-title">
+            디지털 영상처리 - Negative, Mosaic
+        </h2>
+        <h3 class="post-subtitle">
+            ImageProcessing
+        </h3>
+        <div class="post-content-preview">
+            
+    
+
+
+저번 포스팅에서 위와 같이 레나 영상을 띄우는 것 까지 해보았다. 이번 포스팅부터는 여러 이미지에 대해 다양한 효과를 적용시키고 가공하는 방법에 대해 다루어볼 것이다. 우리는 그레이 스케일의 0~255 까지의 값을 가지는 이미지만 활용할 것이다.
+Negative(반전 효과)먼저 첫번째로는 가장 기본적인 이미지 반전 효과를 주는 것에 대해......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-12
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/11/2019-11-11-ImageProcessing1/">
+        <h2 class="post-title">
+            디지털 영상처리
+        </h2>
+        <h3 class="post-subtitle">
+            ImageProcessing
+        </h3>
+        <div class="post-content-preview">
+            이번 학기에 배우고 있는 과목인 디지털 영상처리를 리뷰해보겠다. 원래는 영상처리를 블로그에 리뷰할지 말지 고민을 했었는데 점점 재미있고 더 깊이 알아보고 싶어서 앞으로 지금까지 해왔던 과정이나 앞으로 진행하는 과정을 하나씩 리뷰해볼 생각이다.
+우선 교수님이 이 수업의 목적은 C 프로그래밍 능력 향상이라 하셨다. 그 목적에 맞게 영상을 보기 위한 프로그......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-11
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/hexo-theme-huxblog/2019/11/10/2019-11-10-python7/">
+        <h2 class="post-title">
+            파이썬 소켓 통신
+        </h2>
+        <h3 class="post-subtitle">
+            Python
+        </h3>
+        <div class="post-content-preview">
+            파이썬 소켓 통신이번 한이음 공모전에서 서버로 Django를 사용하고 있는데 안드로이드와 유니티 사이에 리모컨과 같은 통신 기능을 구현하기 위해 안드로이드와 장고 사이에는 기존에 사용하던 http통신을 유지하고 장고와 유니티(C#)간의 통신을 소켓을 이용하여 구현해보기로 하였다.
+이전에 공개S/W개발자 대회에서 안드로이드와 라즈베리파이간의 통신을 구현......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by kwon on
+        2019-11-10
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/hexo-theme-huxblog/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/hexo-theme-huxblog/page/3/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/hexo-theme-huxblog/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/hexo-theme-huxblog/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="/hexo-theme-huxblog//img/avatar.jpg" />
+                        
+
+                        
+                            <p>我要成为魔法师!</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/Demonbane_x">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                                <li>
+                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="http://weibo.com/Demonbane">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+                                <li>
+                                    <a target="_blank"  href="https://github.com/Kaijun">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                            
+                            
+                                <li>
+                                    <a target="_blank"  href="https://www.linkedin.com/in/kaijun-chen-42089354">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Demonbane_x">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Demonbane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Kaijun">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/kaijun-chen-42089354">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Kaijun&#39;s Blog 2019 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/hexo-theme-huxblog/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/hexo-theme-huxblog/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/hexo-theme-huxblog/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
