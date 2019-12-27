@@ -22,14 +22,14 @@
     </url>
     
     <url>
-        <loc>https://kyu9341.github.io/archives/</loc>
+        <loc>https://kyu9341.github.io/tags/</loc>
         <lastmod>2017-07-18T19:14:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://kyu9341.github.io/tags/</loc>
+        <loc>https://kyu9341.github.io/archives/</loc>
         <lastmod>2017-07-18T19:14:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
