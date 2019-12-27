@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
+    <meta name="description" content>
+    <meta name="keyword" content>
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <title>
@@ -60,7 +60,7 @@
 
 
 <!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+<body ontouchstart>
 
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -96,13 +96,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -111,6 +104,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -167,7 +167,7 @@
         background-image: url('/img/home-bg.jpg')
     }
 </style>
-<header class="intro-header" >
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -215,7 +215,7 @@
 <p>5 21<br>5 6 7 8 9</p>
 <p>예제 출력 1</p>
 <p>21</p>
-<p><a href="https://www.acmicpc.net/problem/2798" target="_blank" rel="noopener">https://www.acmicpc.net/problem/2798</a></p>
+<p><a href="https://www.acmicpc.net/problem/2798" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/2798</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line"></span><br><span class="line">N, M = map(int, input().split())</span><br><span class="line">nums = []</span><br><span class="line">nums = input().split()</span><br><span class="line">nums = list(map(int, nums))</span><br><span class="line"></span><br><span class="line">cards = list(combinations(nums, <span class="number">3</span>)) <span class="comment"># nums의 3개로 이루어진 중복하지 않는 모든 조합을 구함</span></span><br><span class="line"><span class="comment"># [(5, 6, 7), (5, 6, 8), (5, 6, 9), (5, 7, 8), (5, 7, 9), (5, 8, 9), (6, 7, 8), (6, 7, 9), (6, 8, 9), (7, 8, 9)]</span></span><br><span class="line">cards_lists = [list(i) <span class="keyword">for</span> i <span class="keyword">in</span> cards] <span class="comment"># 리스트 내의 튜플의 형태를 리스트 내의 리스트로 변환</span></span><br><span class="line"><span class="comment"># [[5, 6, 7], [5, 6, 8], [5, 6, 9], [5, 7, 8], [5, 7, 9], [5, 8, 9], [6, 7, 8], [6, 7, 9], [6, 8, 9], [7, 8, 9]]</span></span><br><span class="line">cards_sum = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(cards_lists)): <span class="comment"># 각 리스트의 합을 원소로 하는 리스트 cards_sum</span></span><br><span class="line">    cards_sum.append(sum(cards_lists[i]))</span><br><span class="line"></span><br><span class="line">M_list = [M <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(cards_sum))] <span class="comment"># 모든 원소가 M인 cards_sum과 크기가 같은 리스트 생성</span></span><br><span class="line">sub_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(cards_sum)):</span><br><span class="line">    <span class="keyword">if</span> M_list[i]-cards_sum[i] &lt; <span class="number">0</span>: <span class="comment"># 차가 0보다 작아지는 경우 최소값으로 나오지 않도록 지정</span></span><br><span class="line">        sub_list.append(<span class="number">30000000</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        sub_list.append(M_list[i]-cards_sum[i]) <span class="comment"># 각 원소의 차이를 저장하는 리스트 sub_list</span></span><br><span class="line"></span><br><span class="line">min_num = min(sub_list)</span><br><span class="line">print(cards_sum[sub_list.index(min_num)])</span><br></pre></td></tr></table></figure>
 
 
@@ -275,9 +275,9 @@
                 <ul class="list-inline">
 
                     
-                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
                     
-                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
                     
                         <li><a href="#" target="_blank">Foo</a></li>
                     
@@ -362,7 +362,7 @@
                 
                 
                     <li>
-                        <a target="_blank" href="https://twitter.com/Demonbane_x">
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -372,7 +372,7 @@
                 
                 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane">
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -383,7 +383,7 @@
 
                 
                     <li>
-                        <a target="_blank" href="http://weibo.com/Demonbane">
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -394,7 +394,7 @@
 
                 
                     <li>
-                        <a target="_blank" href="https://www.facebook.com/demonbane.cn">
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -405,7 +405,7 @@
 
                 
                     <li>
-                        <a target="_blank"  href="https://github.com/Kaijun">
+                        <a target="_blank" href="https://github.com/Kaijun" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -416,7 +416,7 @@
 
                 
                     <li>
-                        <a target="_blank"  href="https://www.linkedin.com/in/kaijun-chen-42089354">
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -429,15 +429,12 @@
                 <p class="copyright text-muted">
                     Copyright &copy; kwon&#39;s Blog 2019 
                     <br>
-                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
                         <i class="fa fa-heart"></i>
                     </span> 
-                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -560,7 +557,7 @@
 
 
 <!-- Image to hack wechat -->
-<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0" />
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

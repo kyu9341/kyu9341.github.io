@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
+    <meta name="description" content>
+    <meta name="keyword" content>
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <title>
@@ -60,7 +60,7 @@
 
 
 <!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+<body ontouchstart>
 
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -96,13 +96,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -111,6 +104,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -167,7 +167,7 @@
         background-image: url('/img/home-bg.jpg')
     }
 </style>
-<header class="intro-header" >
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -264,7 +264,7 @@
 
 
 <h2 id="실습2"><a href="#실습2" class="headerlink" title="실습2"></a>실습2</h2><p>두번째 실습은 CNN모델을 적용하기 전에 MLT만 사용하여 이미지를 학습시켜보았다. MLT는 1차원 데이터만 input으로 받을 수 있기 때문에 gray scale의 2차원 데이터는 1차원으로 reshape을 해주어야 학습이 가능하다.</p>
-<h4 id="2019-11-24-딥-러닝-과정-CNN-1"><a href="#2019-11-24-딥-러닝-과정-CNN-1" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="첫번째-실습-Keras-모델-생성-학습-MNIST-MLP"><a href="#첫번째-실습-Keras-모델-생성-학습-MNIST-MLP" class="headerlink" title="첫번째 실습. Keras 모델 생성/학습 - MNIST : MLP"></a>첫번째 실습. Keras 모델 생성/학습 - MNIST : MLP</h3><p><a href="https://keras.io/ko/datasets/#mnist" target="_blank" rel="noopener">Keras Dataset</a></p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-1"><a href="#2019-11-24-딥-러닝-과정-CNN-1" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="첫번째-실습-Keras-모델-생성-학습-MNIST-MLP"><a href="#첫번째-실습-Keras-모델-생성-학습-MNIST-MLP" class="headerlink" title="첫번째 실습. Keras 모델 생성/학습 - MNIST : MLP"></a>첫번째 실습. Keras 모델 생성/학습 - MNIST : MLP</h3><p><a href="https://keras.io/ko/datasets/#mnist" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist  <span class="comment"># 많이 쓰이는 데이터 케라스에서 제공</span></span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
 
 <pre><code>(60000, 28, 28)
@@ -382,7 +382,7 @@ Epoch 10/10
 
 
 <h2 id="실습3"><a href="#실습3" class="headerlink" title="실습3"></a>실습3</h2><p>이번에는 실제로 CNN을 사용하여 딥러닝을 수행했다. MLT를 수행하기 이전에 Convolution Layer 및 Pooling Layer를 거쳐 학습이 진행된다.</p>
-<h4 id="2019-11-24-딥-러닝-과정-CNN-2"><a href="#2019-11-24-딥-러닝-과정-CNN-2" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="두번째-실습-Keras-모델-생성-학습-MNIST-CNN"><a href="#두번째-실습-Keras-모델-생성-학습-MNIST-CNN" class="headerlink" title="두번째 실습. Keras 모델 생성/학습 - MNIST : CNN"></a>두번째 실습. Keras 모델 생성/학습 - MNIST : CNN</h3><p><a href="https://keras.io/ko/datasets/#mnist" target="_blank" rel="noopener">Keras Dataset</a></p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-2"><a href="#2019-11-24-딥-러닝-과정-CNN-2" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="두번째-실습-Keras-모델-생성-학습-MNIST-CNN"><a href="#두번째-실습-Keras-모델-생성-학습-MNIST-CNN" class="headerlink" title="두번째 실습. Keras 모델 생성/학습 - MNIST : CNN"></a>두번째 실습. Keras 모델 생성/학습 - MNIST : CNN</h3><p><a href="https://keras.io/ko/datasets/#mnist" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,</span><br><span class="line">                                                 test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                 random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
 
 <pre><code>(48000, 28, 28)
@@ -501,7 +501,7 @@ Epoch 10/10
 
 
 <h2 id="실습4"><a href="#실습4" class="headerlink" title="실습4"></a>실습4</h2><p>위에서 학습한 방식을 그대로 사용하여 Fashion MNIST 데이터에 적용하여 딥러닝을 수행해보았다.</p>
-<h4 id="2019-11-24-딥-러닝-과정-CNN-3"><a href="#2019-11-24-딥-러닝-과정-CNN-3" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="세번째-실습-Keras-모델-생성-학습-Fashion-MNIST-CNN"><a href="#세번째-실습-Keras-모델-생성-학습-Fashion-MNIST-CNN" class="headerlink" title="세번째 실습. Keras 모델 생성/학습 - Fashion MNIST : CNN"></a>세번째 실습. Keras 모델 생성/학습 - Fashion MNIST : CNN</h3><p><a href="https://keras.io/ko/datasets/#-mnist" target="_blank" rel="noopener">Keras Dataset</a></p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-3"><a href="#2019-11-24-딥-러닝-과정-CNN-3" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="세번째-실습-Keras-모델-생성-학습-Fashion-MNIST-CNN"><a href="#세번째-실습-Keras-모델-생성-학습-Fashion-MNIST-CNN" class="headerlink" title="세번째 실습. Keras 모델 생성/학습 - Fashion MNIST : CNN"></a>세번째 실습. Keras 모델 생성/학습 - Fashion MNIST : CNN</h3><p><a href="https://keras.io/ko/datasets/#-mnist" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> fashion_mnist</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = fashion_mnist.load_data()</span><br><span class="line"></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,</span><br><span class="line">                                                 test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                 random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_val.shape)</span><br><span class="line">print(y_val.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
 
 <pre><code>(48000, 28, 28)
@@ -632,7 +632,7 @@ Epoch 10/10
 
 
 <p>각각의 레이블마다 32×32 크기 이미지인 50,000개의 training 데이터셋, 10,000개의 test 데이터셋이 존재하고, 결과적으로 총 60,000개의 32×32 크기의 이미지로 데이터셋이 구성되어 있다.</p>
-<h4 id="2019-11-24-딥-러닝-과정-CNN-4"><a href="#2019-11-24-딥-러닝-과정-CNN-4" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="네번째-실습-Keras-모델-생성-학습-cifar10-CNN"><a href="#네번째-실습-Keras-모델-생성-학습-cifar10-CNN" class="headerlink" title="네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN"></a>네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN</h3><p><a href="https://keras.io/ko/datasets/#-cifar10" target="_blank" rel="noopener">Keras Dataset</a></p>
+<h4 id="2019-11-24-딥-러닝-과정-CNN-4"><a href="#2019-11-24-딥-러닝-과정-CNN-4" class="headerlink" title="2019.11.24. 딥-러닝 과정 CNN"></a>2019.11.24. 딥-러닝 과정 CNN</h4><h3 id="네번째-실습-Keras-모델-생성-학습-cifar10-CNN"><a href="#네번째-실습-Keras-모델-생성-학습-cifar10-CNN" class="headerlink" title="네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN"></a>네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN</h3><p><a href="https://keras.io/ko/datasets/#-cifar10" target="_blank" rel="external nofollow noopener noreferrer">Keras Dataset</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 데이터 불러오기</span></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> cifar10</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(X_train, y_train), (X_test, y_test) = cifar10.load_data()</span><br><span class="line"></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,</span><br><span class="line">                                                 test_size=<span class="number">0.2</span>,</span><br><span class="line">                                                 random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape)</span><br><span class="line">print(y_train.shape)</span><br><span class="line">print(X_val.shape)</span><br><span class="line">print(y_val.shape)</span><br><span class="line">print(X_test.shape)</span><br><span class="line">print(y_test.shape)</span><br></pre></td></tr></table></figure>
 
 <pre><code>(40000, 32, 32, 3)
@@ -751,7 +751,7 @@ Epoch 10/10
 
 
 
-<p>참조<br><a href="https://umbum.tistory.com/223" target="_blank" rel="noopener">https://umbum.tistory.com/223</a><br><a href="https://untitledtblog.tistory.com/150" target="_blank" rel="noopener">https://untitledtblog.tistory.com/150</a><br><a href="https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/" target="_blank" rel="noopener">https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/</a><br><a href="http://solarisailab.com/archives/1700" target="_blank" rel="noopener">http://solarisailab.com/archives/1700</a></p>
+<p>참조<br><a href="https://umbum.tistory.com/223" target="_blank" rel="external nofollow noopener noreferrer">https://umbum.tistory.com/223</a><br><a href="https://untitledtblog.tistory.com/150" target="_blank" rel="external nofollow noopener noreferrer">https://untitledtblog.tistory.com/150</a><br><a href="https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/" target="_blank" rel="external nofollow noopener noreferrer">https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/</a><br><a href="http://solarisailab.com/archives/1700" target="_blank" rel="external nofollow noopener noreferrer">http://solarisailab.com/archives/1700</a></p>
 
 
                 <hr>
@@ -810,9 +810,9 @@ Epoch 10/10
                 <ul class="list-inline">
 
                     
-                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
                     
-                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
                     
                         <li><a href="#" target="_blank">Foo</a></li>
                     
@@ -897,7 +897,7 @@ Epoch 10/10
                 
                 
                     <li>
-                        <a target="_blank" href="https://twitter.com/Demonbane_x">
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -907,7 +907,7 @@ Epoch 10/10
                 
                 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane">
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -918,7 +918,7 @@ Epoch 10/10
 
                 
                     <li>
-                        <a target="_blank" href="http://weibo.com/Demonbane">
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -929,7 +929,7 @@ Epoch 10/10
 
                 
                     <li>
-                        <a target="_blank" href="https://www.facebook.com/demonbane.cn">
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -940,7 +940,7 @@ Epoch 10/10
 
                 
                     <li>
-                        <a target="_blank"  href="https://github.com/Kaijun">
+                        <a target="_blank" href="https://github.com/Kaijun" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -951,7 +951,7 @@ Epoch 10/10
 
                 
                     <li>
-                        <a target="_blank"  href="https://www.linkedin.com/in/kaijun-chen-42089354">
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -964,15 +964,12 @@ Epoch 10/10
                 <p class="copyright text-muted">
                     Copyright &copy; kwon&#39;s Blog 2019 
                     <br>
-                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
                         <i class="fa fa-heart"></i>
                     </span> 
-                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -1095,7 +1092,7 @@ Epoch 10/10
 
 
 <!-- Image to hack wechat -->
-<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0" />
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
