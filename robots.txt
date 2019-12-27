@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kyu9341.github.io/sitemap.xml
