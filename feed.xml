@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://kyu9341.github.io/"/>
-  <updated>2019-12-28T07:21:34.530Z</updated>
+  <updated>2019-12-28T11:22:58.326Z</updated>
   <id>https://kyu9341.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>힙 정렬(Heap Sort) 알고리즘</title>
+    <link href="https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/"/>
+    <id>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</id>
+    <published>2019-12-28T09:53:12.000Z</published>
+    <updated>2019-12-28T11:22:58.326Z</updated>
+    
+    <content type="html"><![CDATA[<p>이번 포스팅에서는 <strong>힙 정렬(Heap Sort)</strong> 에 대해 알아보겠다. 힙 정렬은 병합 정렬과 퀵 정렬만큼 빠른 정렬 알고리즘이다. 또한 고급 프로그래밍 기법으로 갈수록 힙(Heap)의 개념이 자주 등장하기 때문에 반드시 알고 넘어가야 하는 정렬 알고리즘이라고 한다. 힙 정렬은 힙 트리 구조(Heap Tree Structure)를 이용하는 정렬 방법이다.</p><h2 id="힙-정렬-Heap-Sort"><a href="#힙-정렬-Heap-Sort" class="headerlink" title="힙 정렬(Heap Sort)"></a>힙 정렬(Heap Sort)</h2><blockquote><p>힙 정렬(Heapsort)이란 최대 힙 트리나 최소 힙 트리를 구성해 정렬을 하는 방법으로서, 내림차순 정렬을 위해서는 최대 힙을 구성하고 오름차순 정렬을 위해서는 최소 힙을 구성하면 된다. 최대 힙을 구성하여 정렬하는 방법은 아래 예와 같다.</p><ol><li>n개의 노드에 대한 완전 이진 트리를 구성한다. 이때 루트 노드부터 부모노드, 왼쪽 자식노드, 오른쪽 자식노드 순으로 구성한다.</li><li>최대 힙을 구성한다. 최대 힙이란 부모노드가 자식노드보다 큰 트리를 말하는데, 단말 노드를 자식노드로 가진 부모노드부터 구성하며 아래부터 루트까지 올라오며 순차적으로 만들어 갈 수 있다.</li><li>가장 큰 수(루트에 위치)를 가장 작은 수와 교환한다.</li><li>2와 3을 반복한다.<br>출처 - 위키백과</li></ol></blockquote><p>우선 힙(Heap)이 무엇인지 알아야 한다.</p><div style="width: 750px; height: 500px;">    <img src="https://kyu9341.github.io/img/heapsort.png" style="width: 750px    ; height: 500px;"></div><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><div style="width: 250px; height: 200px;">    <img src="https://kyu9341.github.io/img/merge.png" style="width: 250px    ; height: 200px;"></div><p>참조 : <a href="https://blog.naver.com/ndb796/221228342808" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221228342808</a></p><p><a href="https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC</a></p><p><a href="https://gmlwjd9405.github.io/2018/05/08/algorithm-merge-sort.html" target="_blank" rel="external nofollow noopener noreferrer">https://gmlwjd9405.github.io/2018/05/08/algorithm-merge-sort.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;이번 포스팅에서는 &lt;strong&gt;힙 정렬(Heap Sort)&lt;/strong&gt; 에 대해 알아보겠다. 힙 정렬은 병합 정렬과 퀵 정렬만큼 빠른 정렬 알고리즘이다. 또한 고급 프로그래밍 기법으로 갈수록 힙(Heap)의 개념이 자주 등장하기 때문에 반드
+      
+    
+    </summary>
+    
+    
+      <category term="algorithm" scheme="https://kyu9341.github.io/categories/algorithm/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>병합 정렬(Merge Sort) 알고리즘</title>
@@ -163,30 +187,6 @@
   </entry>
   
   <entry>
-    <title>디지털 영상처리 - 히스토그램</title>
-    <link href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/"/>
-    <id>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/</id>
-    <published>2019-12-01T07:05:53.000Z</published>
-    <updated>2019-12-27T06:41:18.367Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="히스토그램"><a href="#히스토그램" class="headerlink" title="히스토그램"></a>히스토그램</h2><p>영상에서의 히스토그램은 그레이레벨 값 k개의 개수가 영상 전체 안에서 몇 개가 존재하는지를 알려주는 값이다. 즉, 그레이레벨 값 0부터 255까지가 영상 전체에서 몇 개씩 존재하는가를 알려주는 지표 값이다. 히스토그램은 영상의 그레이레벨의 프로파일(profile)을 보여주는 기능을 한다고 생각하면 된다. 그러나 영상의 크기가 다양하기 때문에 개수만으로 표현하는 경우 그 개수의 정확성에 문제가 발생할 수 있으므로 영상전체 화소수로 나누어 확률적인 표현으로 나타낸다. 즉, k번째 개수가 Nk개인 경우 Nk/(Row*Col)와 같이 전체 화소수로 나누어 k 의 그레이 레벨이 갖는 개수를 표현한 것을 히스토그램이라 한다.</p><div style="width: 600px; height: 1000px;">    <img src="https://kyu9341.github.io/img/his.png" style="width: 600px    ; height: 1000px;"></div><p>위의 이미지들은 각각 lena.512의 원본과 각각 gamma collection을 통해 gamma값을 3, 0.45로 지정하여 밝고 어둡게 만든 영상들의 히스토그램이다. 원본의 히스토그램을 보면 0부터 255까지의 값이 존재하나 0과 255의 근처에는 값이 거의 없는 것을 볼 수 있으며 전체적으로 고르게 히스토그램이 분포한 것을 확인할 수 있다. 반면, 밝은 영상에서는 밝은 값들이 많기 때문에 우측으로 치우친 것을 확인할 수 있고 어두운 영상에서는 밝은 값들이 적고 상대적으로 어두운 값들이 많기 때문에 주로 좌측으로 분포한 것을 확인할 수 있다.</p><div style="width: 600px; height: 1000px;">    <img src="https://kyu9341.github.io/img/his1.png" style="width: 600px    ; height: 1000px;"></div><p>위의 이미지들은 각각 카메라맨, 페퍼, 페이스 이미지들과 히스토그램이다. 각각의 이미지와 히스토그램을 보면 이미지의 값들에 따른 히스토그램이 나타나는 것을 알 수 있다. Camera Man의 경우에는 밝은 배경과 어두운 사람의 옷 때문에 밝은 부분의 값과 어두운 부분의 값이 각각 많이 분포해 독특하게 나타나는 것을 볼 수 있다. 이런 영상의 경우에는 전체적인 콘트라스트를 개선하는데 어려움이 존재한다. 다음으로 Pepper는 보는 것과 같이 고르게 분포되어 있는 것을 알 수 있고 Face는 전체적으로 밝은 영상이므로 밝은 부분에 몰려있는 것을 확인 할 수 있다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;히스토그램&quot;&gt;&lt;a href=&quot;#히스토그램&quot; class=&quot;headerlink&quot; title=&quot;히스토그램&quot;&gt;&lt;/a&gt;히스토그램&lt;/h2&gt;&lt;p&gt;영상에서의 히스토그램은 그레이레벨 값 k개의 개수가 영상 전체 안에서 몇 개가 존재하는지를 알려주는 값이
-      
-    
-    </summary>
-    
-    
-      <category term="영상처리" scheme="https://kyu9341.github.io/categories/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>디지털 영상처리 - 부분 Mosaic</title>
     <link href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing6/"/>
     <id>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing6/</id>
@@ -211,30 +211,6 @@
   </entry>
   
   <entry>
-    <title>디지털 영상처리 - 콘트라스트 스트레칭(Contrast Streching)</title>
-    <link href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing8/"/>
-    <id>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing8/</id>
-    <published>2019-12-01T07:05:53.000Z</published>
-    <updated>2019-12-27T06:41:22.856Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="콘트라스트-스트레칭"><a href="#콘트라스트-스트레칭" class="headerlink" title="콘트라스트 스트레칭"></a>콘트라스트 스트레칭</h2><p>콘트라스트 스트레칭은 히스토그램의 분포가 얼마나 넓게 퍼져 있는가에 따라 인간의 시각 체계가 선명하게 영상을 인식하는 과정에 대한 작업이다. 밝은 화소와 어두운 화소들의 분포가 고르게 퍼져 있어야 인간은 영상을 선명하게 인식하므로 영상의 화소 분포가 좀 더 넓은 영역에 걸쳐서 퍼지도록 스트레칭 시키는 작업이다. 히스토그램 평활화는 히스토그램의 전체적인 분포를 중심으로 동작하나 콘트라스트 스트레칭은 콘트라스트가 너무 높거나 낮은 영상에 대하여 콘트라스트를 넓게 펴주는 작업을 수행하는 히스토그램 평활화의 일종이라고 보면 된다.<br>콘트라스트 스트레칭을 수행하는 수식은 아래와 같이 정의한다.</p><div style="width: 512px; height: 80px;">    <img src="https://kyu9341.github.io/img/contrast.png" style="width: 512px    ; height: 80px;"></div><p>새로운 화소 값은 영상내의 히스토그램을 구한 결과 값에서 가장 큰 값과 가장 작은 값을 구한 후, 기존의 화소 값에서 가장 작은 값을 뺀 결과에 최댓값을 곱해서 구한다. 이 때 최댓값과 최솟값의 범위가 좁을수록 콘트라스트 스트레칭이 잘 일어난다. 콘트라스트 스트레칭은 일반 영상에 적용하는 경우, 즉 최솟값이 0이고 최댓값이 255인 경우 효과를 보기 어려운 기법이다.</p><div style="width: 512px; height: 512px;">    <img src="https://kyu9341.github.io/img/light.png" style="width: 512px    ; height: 512px;"></div><div style="width: 512px; height: 512px;">    <img src="https://kyu9341.github.io/img/lightcontrast.png" style="width: 512px    ; height: 512px;"></div>위의 영상은 밝은 레나 영상에 콘트라스트 스트레칭을 적용한 결과이다. 밝은 레나 영상의 최솟값은 115, 최댓값은 248이다. 최솟값이 큰 값을 가지고 있어 히스토그램이 밝은 영역으로 치우친 영상의 모양으로 콘트라스트 스트레칭 결과 영상이 보기에도 선명하고 좋은 결과를 보여주는 것을 알 수 있다.<div style="width: 512px; height: 512px;">    <img src="https://kyu9341.github.io/img/lightcontrasthisto.png" style="width: 512px    ; height: 512px;"></div><p>위의 히스토그램을 보면 알 수 있듯이 최솟값과 최댓값이 스트레칭되어 각각 0과 255를 가지도록 변화한 것을 볼 수 있다.</p><div style="width: 512px; height: 256px;">    <img src="https://kyu9341.github.io/img/cmancontrast.png" style="width: 512px    ; height: 256px;"></div><div style="width: 512px; height: 256px;">    <img src="https://kyu9341.github.io/img/jetcontrast.png" style="width: 512px    ; height: 256px;"></div>위의 영상들은 각각 카메라맨과 제트기 영상에 대하여 콘트라스트 스트레칭을 수행한 결과이다. 카메라맨 영상은 0부터 255까지의 값을 모두 가지고 있어 그 결과가 거의 변한 것이 없으나 제트기 영상은 15부터 231의 값을 가지므로 원 영상보다 선명한 결과를 보여준다. 콘트라스트 스트레칭은 영상이 가지는 그레이 레벨의 값이 0부터 255로 변화되며 영상이 가지는 그레이 레벨 값을 모두 펼쳐주는 역할을 한다.<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">contrastStreching</span><span class="params">(uchar** img, uchar** outimg, <span class="keyword">int</span> X_Size, <span class="keyword">int</span> Y_Size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i, j, histogram[<span class="number">256</span>];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">min</span> = <span class="number">255</span>, <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">uchar LUT[<span class="number">256</span>];</span><br><span class="line"><span class="keyword">double</span> scaleFactor, tmp;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++)</span><br><span class="line">histogram[i] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; Y_Size; i++)</span><br><span class="line"><span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; X_Size; j++)</span><br><span class="line">&#123;</span><br><span class="line">histogram[img[i][j]]++; <span class="comment">// 영상의 히스토그램을 구함</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++) <span class="comment">// 히스토그램의 최솟값을 구함</span></span><br><span class="line"><span class="keyword">if</span> (histogram[i])</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">min</span> = i;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">255</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 히스토그램의 최댓값을 구함</span></span><br><span class="line"><span class="keyword">if</span> (histogram[i])</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">max</span> = i;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">" Low Threshold is %d High Threshold is %d\n"</span>, <span class="built_in">min</span>, <span class="built_in">max</span>);</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="built_in">min</span>; i++)</span><br><span class="line">LUT[i] = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">255</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">LUT[i] = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">scaleFactor = <span class="number">255.0</span> / (<span class="keyword">double</span>)(<span class="built_in">max</span> - <span class="built_in">min</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="built_in">min</span>; i &lt; <span class="built_in">max</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">tmp = (i - <span class="built_in">min</span>) * scaleFactor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (tmp &lt; <span class="number">0</span>) tmp = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (tmp &gt; <span class="number">255</span>) tmp = <span class="number">255</span>;</span><br><span class="line">LUT[i] = (uchar)tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Y_Size; i++)</span><br><span class="line"><span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; X_Size; j++)</span><br><span class="line">outimg[i][j] = LUT[img[i][j]];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>위의 코드는 콘트라스트 스트레칭을 수행하는 함수이며 영상내의 히스토그램을 구해 최솟값과 최댓값을 각각 구해 위의 수식을 적용시키는 구조로 작성되었다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;콘트라스트-스트레칭&quot;&gt;&lt;a href=&quot;#콘트라스트-스트레칭&quot; class=&quot;headerlink&quot; title=&quot;콘트라스트 스트레칭&quot;&gt;&lt;/a&gt;콘트라스트 스트레칭&lt;/h2&gt;&lt;p&gt;콘트라스트 스트레칭은 히스토그램의 분포가 얼마나 넓게 퍼져 있는가에 
-      
-    
-    </summary>
-    
-    
-      <category term="영상처리" scheme="https://kyu9341.github.io/categories/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>디지털 영상처리 - 공간 필터링</title>
     <link href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing9/"/>
     <id>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing9/</id>
@@ -248,6 +224,54 @@
       
       
         &lt;h2 id=&quot;Spatial-Filtering-공간-필터링&quot;&gt;&lt;a href=&quot;#Spatial-Filtering-공간-필터링&quot; class=&quot;headerlink&quot; title=&quot;Spatial Filtering (공간 필터링)&quot;&gt;&lt;/a&gt;Spatial Filt
+      
+    
+    </summary>
+    
+    
+      <category term="영상처리" scheme="https://kyu9341.github.io/categories/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>디지털 영상처리 - 히스토그램</title>
+    <link href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/"/>
+    <id>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/</id>
+    <published>2019-12-01T07:05:53.000Z</published>
+    <updated>2019-12-27T06:41:18.367Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="히스토그램"><a href="#히스토그램" class="headerlink" title="히스토그램"></a>히스토그램</h2><p>영상에서의 히스토그램은 그레이레벨 값 k개의 개수가 영상 전체 안에서 몇 개가 존재하는지를 알려주는 값이다. 즉, 그레이레벨 값 0부터 255까지가 영상 전체에서 몇 개씩 존재하는가를 알려주는 지표 값이다. 히스토그램은 영상의 그레이레벨의 프로파일(profile)을 보여주는 기능을 한다고 생각하면 된다. 그러나 영상의 크기가 다양하기 때문에 개수만으로 표현하는 경우 그 개수의 정확성에 문제가 발생할 수 있으므로 영상전체 화소수로 나누어 확률적인 표현으로 나타낸다. 즉, k번째 개수가 Nk개인 경우 Nk/(Row*Col)와 같이 전체 화소수로 나누어 k 의 그레이 레벨이 갖는 개수를 표현한 것을 히스토그램이라 한다.</p><div style="width: 600px; height: 1000px;">    <img src="https://kyu9341.github.io/img/his.png" style="width: 600px    ; height: 1000px;"></div><p>위의 이미지들은 각각 lena.512의 원본과 각각 gamma collection을 통해 gamma값을 3, 0.45로 지정하여 밝고 어둡게 만든 영상들의 히스토그램이다. 원본의 히스토그램을 보면 0부터 255까지의 값이 존재하나 0과 255의 근처에는 값이 거의 없는 것을 볼 수 있으며 전체적으로 고르게 히스토그램이 분포한 것을 확인할 수 있다. 반면, 밝은 영상에서는 밝은 값들이 많기 때문에 우측으로 치우친 것을 확인할 수 있고 어두운 영상에서는 밝은 값들이 적고 상대적으로 어두운 값들이 많기 때문에 주로 좌측으로 분포한 것을 확인할 수 있다.</p><div style="width: 600px; height: 1000px;">    <img src="https://kyu9341.github.io/img/his1.png" style="width: 600px    ; height: 1000px;"></div><p>위의 이미지들은 각각 카메라맨, 페퍼, 페이스 이미지들과 히스토그램이다. 각각의 이미지와 히스토그램을 보면 이미지의 값들에 따른 히스토그램이 나타나는 것을 알 수 있다. Camera Man의 경우에는 밝은 배경과 어두운 사람의 옷 때문에 밝은 부분의 값과 어두운 부분의 값이 각각 많이 분포해 독특하게 나타나는 것을 볼 수 있다. 이런 영상의 경우에는 전체적인 콘트라스트를 개선하는데 어려움이 존재한다. 다음으로 Pepper는 보는 것과 같이 고르게 분포되어 있는 것을 알 수 있고 Face는 전체적으로 밝은 영상이므로 밝은 부분에 몰려있는 것을 확인 할 수 있다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;히스토그램&quot;&gt;&lt;a href=&quot;#히스토그램&quot; class=&quot;headerlink&quot; title=&quot;히스토그램&quot;&gt;&lt;/a&gt;히스토그램&lt;/h2&gt;&lt;p&gt;영상에서의 히스토그램은 그레이레벨 값 k개의 개수가 영상 전체 안에서 몇 개가 존재하는지를 알려주는 값이
+      
+    
+    </summary>
+    
+    
+      <category term="영상처리" scheme="https://kyu9341.github.io/categories/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>디지털 영상처리 - 콘트라스트 스트레칭(Contrast Streching)</title>
+    <link href="https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing8/"/>
+    <id>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing8/</id>
+    <published>2019-12-01T07:05:53.000Z</published>
+    <updated>2019-12-27T06:41:22.856Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="콘트라스트-스트레칭"><a href="#콘트라스트-스트레칭" class="headerlink" title="콘트라스트 스트레칭"></a>콘트라스트 스트레칭</h2><p>콘트라스트 스트레칭은 히스토그램의 분포가 얼마나 넓게 퍼져 있는가에 따라 인간의 시각 체계가 선명하게 영상을 인식하는 과정에 대한 작업이다. 밝은 화소와 어두운 화소들의 분포가 고르게 퍼져 있어야 인간은 영상을 선명하게 인식하므로 영상의 화소 분포가 좀 더 넓은 영역에 걸쳐서 퍼지도록 스트레칭 시키는 작업이다. 히스토그램 평활화는 히스토그램의 전체적인 분포를 중심으로 동작하나 콘트라스트 스트레칭은 콘트라스트가 너무 높거나 낮은 영상에 대하여 콘트라스트를 넓게 펴주는 작업을 수행하는 히스토그램 평활화의 일종이라고 보면 된다.<br>콘트라스트 스트레칭을 수행하는 수식은 아래와 같이 정의한다.</p><div style="width: 512px; height: 80px;">    <img src="https://kyu9341.github.io/img/contrast.png" style="width: 512px    ; height: 80px;"></div><p>새로운 화소 값은 영상내의 히스토그램을 구한 결과 값에서 가장 큰 값과 가장 작은 값을 구한 후, 기존의 화소 값에서 가장 작은 값을 뺀 결과에 최댓값을 곱해서 구한다. 이 때 최댓값과 최솟값의 범위가 좁을수록 콘트라스트 스트레칭이 잘 일어난다. 콘트라스트 스트레칭은 일반 영상에 적용하는 경우, 즉 최솟값이 0이고 최댓값이 255인 경우 효과를 보기 어려운 기법이다.</p><div style="width: 512px; height: 512px;">    <img src="https://kyu9341.github.io/img/light.png" style="width: 512px    ; height: 512px;"></div><div style="width: 512px; height: 512px;">    <img src="https://kyu9341.github.io/img/lightcontrast.png" style="width: 512px    ; height: 512px;"></div>위의 영상은 밝은 레나 영상에 콘트라스트 스트레칭을 적용한 결과이다. 밝은 레나 영상의 최솟값은 115, 최댓값은 248이다. 최솟값이 큰 값을 가지고 있어 히스토그램이 밝은 영역으로 치우친 영상의 모양으로 콘트라스트 스트레칭 결과 영상이 보기에도 선명하고 좋은 결과를 보여주는 것을 알 수 있다.<div style="width: 512px; height: 512px;">    <img src="https://kyu9341.github.io/img/lightcontrasthisto.png" style="width: 512px    ; height: 512px;"></div><p>위의 히스토그램을 보면 알 수 있듯이 최솟값과 최댓값이 스트레칭되어 각각 0과 255를 가지도록 변화한 것을 볼 수 있다.</p><div style="width: 512px; height: 256px;">    <img src="https://kyu9341.github.io/img/cmancontrast.png" style="width: 512px    ; height: 256px;"></div><div style="width: 512px; height: 256px;">    <img src="https://kyu9341.github.io/img/jetcontrast.png" style="width: 512px    ; height: 256px;"></div>위의 영상들은 각각 카메라맨과 제트기 영상에 대하여 콘트라스트 스트레칭을 수행한 결과이다. 카메라맨 영상은 0부터 255까지의 값을 모두 가지고 있어 그 결과가 거의 변한 것이 없으나 제트기 영상은 15부터 231의 값을 가지므로 원 영상보다 선명한 결과를 보여준다. 콘트라스트 스트레칭은 영상이 가지는 그레이 레벨의 값이 0부터 255로 변화되며 영상이 가지는 그레이 레벨 값을 모두 펼쳐주는 역할을 한다.<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">contrastStreching</span><span class="params">(uchar** img, uchar** outimg, <span class="keyword">int</span> X_Size, <span class="keyword">int</span> Y_Size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i, j, histogram[<span class="number">256</span>];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">min</span> = <span class="number">255</span>, <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">uchar LUT[<span class="number">256</span>];</span><br><span class="line"><span class="keyword">double</span> scaleFactor, tmp;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++)</span><br><span class="line">histogram[i] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; Y_Size; i++)</span><br><span class="line"><span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; X_Size; j++)</span><br><span class="line">&#123;</span><br><span class="line">histogram[img[i][j]]++; <span class="comment">// 영상의 히스토그램을 구함</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++) <span class="comment">// 히스토그램의 최솟값을 구함</span></span><br><span class="line"><span class="keyword">if</span> (histogram[i])</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">min</span> = i;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">255</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 히스토그램의 최댓값을 구함</span></span><br><span class="line"><span class="keyword">if</span> (histogram[i])</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">max</span> = i;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">" Low Threshold is %d High Threshold is %d\n"</span>, <span class="built_in">min</span>, <span class="built_in">max</span>);</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="built_in">min</span>; i++)</span><br><span class="line">LUT[i] = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">255</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">LUT[i] = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">scaleFactor = <span class="number">255.0</span> / (<span class="keyword">double</span>)(<span class="built_in">max</span> - <span class="built_in">min</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="built_in">min</span>; i &lt; <span class="built_in">max</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">tmp = (i - <span class="built_in">min</span>) * scaleFactor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (tmp &lt; <span class="number">0</span>) tmp = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (tmp &gt; <span class="number">255</span>) tmp = <span class="number">255</span>;</span><br><span class="line">LUT[i] = (uchar)tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; Y_Size; i++)</span><br><span class="line"><span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; X_Size; j++)</span><br><span class="line">outimg[i][j] = LUT[img[i][j]];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>위의 코드는 콘트라스트 스트레칭을 수행하는 함수이며 영상내의 히스토그램을 구해 최솟값과 최댓값을 각각 구해 위의 수식을 적용시키는 구조로 작성되었다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;콘트라스트-스트레칭&quot;&gt;&lt;a href=&quot;#콘트라스트-스트레칭&quot; class=&quot;headerlink&quot; title=&quot;콘트라스트 스트레칭&quot;&gt;&lt;/a&gt;콘트라스트 스트레칭&lt;/h2&gt;&lt;p&gt;콘트라스트 스트레칭은 히스토그램의 분포가 얼마나 넓게 퍼져 있는가에 
       
     
     </summary>
@@ -474,30 +498,6 @@
     
     
       <category term="python" scheme="https://kyu9341.github.io/categories/python/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>그리디(Greedy) 알고리즘</title>
-    <link href="https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/"/>
-    <id>https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/</id>
-    <published>2019-10-17T07:22:05.000Z</published>
-    <updated>2019-12-22T03:39:39.745Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="그리디-알고리즘"><a href="#그리디-알고리즘" class="headerlink" title="그리디 알고리즘"></a>그리디 알고리즘</h2><p>그리디 알고리즘이란 탐욕알고리즘 혹은 욕심쟁이 알고리즘이라고도 불리우는데, 미래를 생각하지 않고 각 단계에서 가장 최선의 선택을 하는 기법이다. 이렇게 각 단계에서 최선의 선택을 한 것이 전체적으로도 최선이길 바라는 알고리즘이다.</p><p>그리디 알고리즘은 항상 최적의 결과를 도출하는 것은 아니지만 어느 정도 최적의 해에 근사한 값을 빠르게 구할 수 있다는 장점이 있다. 또한 ‘특정한 상황’에 있어서는 그리디 알고리즘이 최적의 해를 보장할 수도 있다는 점이다.</p><p>그리디 알고리즘의 대표적인 예제는 거스름 돈 문제이다. 우리가 흔히 거스름 돈을 줄 때 가장 적은 양의 화폐를 주는 것이 제일 편하다. 예를 들어 560원을 거슬러 주어야 할 때 10원짜리 56개를 주는 것 보다 500원짜리 1개, 50원짜리 1개, 10원짜리 1개를 주는 것이 더 편하다. 따라서 이런 경우 ‘무조건 더 큰 화폐 단위부터 거슬러 준다.’는 알고리즘만 지키면 최적의 해를 보장할 수 있다.</p><p>이러한 그리디 알고리즘은 기본적으로 무조건 큰 경우대로, 무조건 작은 경우대로, 무조건 긴 경우대로, 무조건 짧은 경우대로 등으로 극단적으로 문제에 접근한다는 점에서 정렬(Sort)기법이 함께 사용되는 경우가 많다.</p><p>다음은 간단하게 돈을 입력받으면 가장 적은 수의 동전으로 바꾸어 주는 문제이다.</p><p>예를 들어 1260원을 입력받았다고 하자. 그럼 먼저 가장 큰 단위인 500원짜리 동전으로 거슬러 줄 수 있는 경우를 구하고 이어 100원, 50원, 10원 순으로 거슬러 줄 수 있는 경우를 구하여 출력하면 된다.</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> money, result = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"money : "</span>);</span><br><span class="line">scanf_s(<span class="string">"%d"</span>, &amp;money);</span><br><span class="line"></span><br><span class="line">result += money / <span class="number">500</span>;</span><br><span class="line">money = money % <span class="number">500</span>;</span><br><span class="line">result += money / <span class="number">100</span>;</span><br><span class="line">money = money % <span class="number">100</span>;</span><br><span class="line">result += money / <span class="number">50</span>;</span><br><span class="line">money = money % <span class="number">50</span>;</span><br><span class="line">result += money / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"동전의 개수 : %d\n"</span>, result);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>위에서 다루어 본 예시와 같이 그리디 알고리즘이 최적의 해를 보장해 주는 경우도 많으나 아쉽게도 최적의 해를 보장하지 못하는 경우가 더 많다. 그럴 때 다이나믹 프로그래밍 등의 기타 알고리즘을 적용해야 하기도 한다.</p><p>다음에 추가로 그리디 알고리즘 예제를 조금 더 풀어보도록 하겠다.</p><p>참조 : <a href="https://blog.naver.com/ndb796/221242106787" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221242106787</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;그리디-알고리즘&quot;&gt;&lt;a href=&quot;#그리디-알고리즘&quot; class=&quot;headerlink&quot; title=&quot;그리디 알고리즘&quot;&gt;&lt;/a&gt;그리디 알고리즘&lt;/h2&gt;&lt;p&gt;그리디 알고리즘이란 탐욕알고리즘 혹은 욕심쟁이 알고리즘이라고도 불리우는데, 미래를 
-      
-    
-    </summary>
-    
-    
-      <category term="algorithm" scheme="https://kyu9341.github.io/categories/algorithm/"/>
     
     
   </entry>
