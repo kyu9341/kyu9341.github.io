@@ -98,13 +98,6 @@
 
                         
                         <li>
-                            <a href="/archives/">Posts</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -113,6 +106,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Posts</a>
                         </li>
                         
                     
@@ -210,7 +210,19 @@
 <li>2와 3을 반복한다.<br>출처 - 위키백과</li>
 </ol>
 </blockquote>
-<p>우선 힙(Heap)이 무엇인지 알아야 한다.</p>
+<p>우선 힙(Heap)이 무엇인지 알아야 한다. 그리고 힙을 알기 전에 이진 트리(Binary Tree)에 대해 알아야 한다. 이진 트리란 컴퓨터 안에서 데이터를 표현할 때 데이터를 각 노드(Node)에 담은 뒤에 노드를 두 개씩 이어 붙이눈 구조이다. 이 때 트리 구조에 맞게 부모 노드에서 자식 노드로 가지가 뻗힌다. 이진 트리는 모든 노드의 자식 노드가 2개 이하인 노드이다.</p>
+<div style="width: 750px; height: 500px;">
+    <img src="https://kyu9341.github.io/img/binarytree.png" style="width: 750px
+    ; height: 500px;">
+</div>
+흔히 위와 같은 구조를 이진 트리라고 한다. **여기서 트리(Tree)** 라는 것은 말 그대로 가지를 뻗어나가는 것처럼 데이터가 서로 연결되어 있다는 것이다. 트리는 그 형태에 따라 종류가 다양한데 여기서는 위와 같은 이진 트리만 알면 된다. 이제 **완전 이진 트리(Complete Binary Tree)** 에 대해 알아보자.
+
+<p>완전 이진 트리는 데이터가 루트(Root)노드부터 시작하여 자식 노드가 왼쪽 자식 노드, 오른쪽 자식 노드로 차근차근 들어가는 구조의 이진 트리이다. 즉, 완전 이진 트리는 이진 트리의 노드가 중간에 비어있지 않고 빽빽히 가득 찬 구조이다.</p>
+<div style="width: 750px; height: 500px;">
+    <img src="https://kyu9341.github.io/img/cbt.png" style="width: 750px
+    ; height: 500px;">
+</div>
+
 <div style="width: 750px; height: 500px;">
     <img src="https://kyu9341.github.io/img/heapsort.png" style="width: 750px
     ; height: 500px;">
