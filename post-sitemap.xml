@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/C-C/2019/10/11/C1/</loc>
+        <lastmod>2019-12-31T05:46:31.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/C-C/2019/10/11/C2/</loc>
+        <lastmod>2019-12-31T05:46:27.022Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
         <lastmod>2019-12-31T05:33:37.741Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -170,22 +186,6 @@
     <url>
         <loc>https://kyu9341.github.io/python/2019/11/10/python7/</loc>
         <lastmod>2019-12-27T06:40:23.877Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/C-C/2019/10/11/C2/</loc>
-        <lastmod>2019-12-27T06:40:09.713Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/C-C/2019/10/11/C1/</loc>
-        <lastmod>2019-12-27T06:40:06.363Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
