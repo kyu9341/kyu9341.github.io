@@ -8,8 +8,16 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmQuickSort/</loc>
-        <lastmod>2019-12-30T08:59:17.594Z</lastmod>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
+        <lastmod>2019-12-31T01:31:27.564Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/</loc>
+        <lastmod>2019-12-31T01:31:25.598Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +25,23 @@
 
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
-        <lastmod>2019-12-29T12:13:26.980Z</lastmod>
+        <lastmod>2019-12-31T01:31:24.807Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
+        <lastmod>2019-12-31T01:31:23.193Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmQuickSort/</loc>
+        <lastmod>2019-12-30T08:59:17.594Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -40,24 +64,8 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
-        <lastmod>2019-12-27T06:41:40.439Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/</loc>
         <lastmod>2019-12-27T06:41:34.830Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
-        <lastmod>2019-12-27T06:41:31.542Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -266,14 +274,6 @@
     <url>
         <loc>https://kyu9341.github.io/django/2019/09/16/djangoCommunity10/</loc>
         <lastmod>2019-12-27T06:39:42.996Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/</loc>
-        <lastmod>2019-12-22T03:39:39.745Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
