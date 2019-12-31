@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
+        <lastmod>2019-12-31T07:36:26.636Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/11/ImageProcessing1/</loc>
         <lastmod>2019-12-31T06:30:37.705Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -42,14 +50,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/</loc>
         <lastmod>2019-12-31T05:33:35.738Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
-        <lastmod>2019-12-31T05:33:32.554Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
