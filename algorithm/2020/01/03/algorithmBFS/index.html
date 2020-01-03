@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          선택정렬(Selection Sort) 알고리즘 - kwon | kwon&#39;s Blog
+          너비 우선 탐색(Breadth First Search, BFS) 알고리즘 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2019/12/21/algorithmselectionsort/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/01/03/algorithmbfs/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/01/03/algorithmBFS/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>선택정렬(Selection Sort) 알고리즘</h1>
+                    <h1>너비 우선 탐색(Breadth First Search, BFS) 알고리즘</h1>
                     <h2 class="subheading">Algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2019-12-21
+                        2020-01-03
                     </span>
                 </div>
             </div>
@@ -200,34 +200,37 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>이제 종강도 했으니 알고리즘 공부를 다시 시작해보려 한다. 유튜버 나동빈님의 강의를 보면서 하나씩 천천히 정리해 나가도록 해보자. 일반적으로 알고리즘을 공부할 때 가장 먼저 풀어보는 문제는 정렬 문제인데, 왜냐면 정렬만큼 알고리즘의 효율성 차이를 극명하게 보여주기 때문이라고 한다. 그래서 여러가지의 정렬 알고리즘을 먼저 배우고 알고리즘의 시간 복잡도에 대해 단계적으로 이해해 보자.</p>
-<h2 id="선택-정렬-Selection-Sort"><a href="#선택-정렬-Selection-Sort" class="headerlink" title="선택 정렬(Selection Sort)"></a>선택 정렬(Selection Sort)</h2><blockquote>
-<h3 id="선택-정렬"><a href="#선택-정렬" class="headerlink" title="선택 정렬"></a>선택 정렬</h3><p>선택 정렬은 제자리 정렬 알고리즘의 하나로, 다음와 같은 순서로 이루어진다.</p>
-<ol>
-<li>주어진 리스트 중에 최소값을 찾는다</li>
-<li>그 값을 맨 앞에 위치한 값과 교체한다.(패스)</li>
-<li>맨 처음 위치를 뺀 나머지 리스트를 같은 방법으로 교체한다.</li>
-</ol>
-<p>출처 - 위키백과</p>
+                <p>드디어 정렬 알고리즘이 끝나고 탐색 알고리즘이다. 이번 포스팅에서는 탐색을 할 때 너비를 우선으로 하여 탐색을 수행하는 탐색 알고리즘에 대해 알아보자.</p>
+<h2 id="너비-우선-탐색-Breadth-First-Search-BFS"><a href="#너비-우선-탐색-Breadth-First-Search-BFS" class="headerlink" title="너비 우선 탐색(Breadth First Search, BFS)"></a>너비 우선 탐색(Breadth First Search, BFS)</h2><blockquote>
+<p>너비 우선 탐색(Breadth-first search, BFS)은 맹목적 탐색방법의 하나로 시작 정점을 방문한 후 시작 정점에 인접한 모든 정점들을 우선 방문하는 방법이다. 더 이상 방문하지 않은 정점이 없을 때까지 방문하지 않은 모든 정점들에 대해서도 너비 우선 검색을 적용한다. OPEN List 는 큐를 사용해야만 레벨 순서대로 접근이 가능하다.<br>출처 : 위키백과</p>
 </blockquote>
-<p>위의 설명처럼 선택 정렬은 가장 작은 것을 선택해서 제일 앞으로 보내는 알고리즘이다. 예를 들어, 3 1 2 5 4 라는 순서의 숫자들을 오름차순으로 정렬한다고 생각해보자. 먼저 리스트의 최솟값을 구하여 가장 앞의 숫자와 위치를 바꾸게 되면 1이 최솟값이므로 3과 자리를 바꾸어 1 3 2 5 4 가 된다. 다음 1을 뺀 나머지의 리스트의 최솟값은 2 이므로 3과 자리를 바꾸어 1 2 3 5 4가 되고, 다음은 3이 최솟값이므로 넘어가서 같은 과정을 반복하면 1 2 3 4 5 로 오름차순 정렬이 끝나게 된다.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, <span class="built_in">min</span>, index, temp; <span class="comment">// min : 최솟값, index : 최솟값의 인덱스</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">10</span>] = &#123; <span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">9</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">min</span> = <span class="number">9999</span>;</span><br><span class="line">		<span class="keyword">for</span> (j = i; j &lt; <span class="number">10</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">array</span>[j] &lt; <span class="built_in">min</span>) <span class="comment">// 최솟값을 구함</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">min</span> = <span class="built_in">array</span>[j];</span><br><span class="line">				index = j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		temp = <span class="built_in">array</span>[i]; <span class="comment">// 최솟값과 자리 바꾸기</span></span><br><span class="line">		<span class="built_in">array</span>[i] = <span class="built_in">min</span>;</span><br><span class="line">		<span class="built_in">array</span>[index] = temp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="built_in">array</span>[j] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"결과 :"</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">array</span>[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>위와 같이 선택정렬을 작성할 수 있다. 또한 아래와 같이 정렬이 진행되는 과정을 확인할 수 있다. 선택 정렬은 앞쪽부터 정렬이 수행되는 것을 확인할 수 있다.</p>
-<div style="width: 250px; height: 200px;">
-    <img src="https://kyu9341.github.io/img/selectionsort.png" style="width: 250px
-    ; height: 200px;">
+<p>너비 우선 탐색은 맹목적인 탐색을 하고자 할 때 사용할 수 있는 탐색 기법이다. 최단 경로를 찾아준다는 점에서 최단길이를 보장해야 할 때 많이 사용된다.</p>
+<h3 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h3><ul>
+<li>BFS는 시작 노드에서 시작해서 거리에 따라 단계별로 탐색한다고 볼 수 있다.</li>
+<li>BFS는 재귀적으로 동작하지 않는다.</li>
+<li>그래프 탐색의 경우 어떤 노드를 방문했었는지 여부를 반드시 검사해야 한다.</li>
+<li>BFS는 방문한 노드들을 차례로 저장한 후 꺼낼 수 있는 자료 구조인 큐(Queue)를 사용한다.</li>
+</ul>
+<p>다음의 그림을 보자</p>
+<div style="width: 400px; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/bfs1.png" style="width: 400px
+    ; height: 400px;">
 </div>
+BFS는 맨 처음에 시작 노드(Start Node)를 큐에 삽입하면서 시작한다. 또한 시작 노드를 방문했다고 **방문 처리** 를 해주도록 한다.
 
+<div style="width: 400px; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/bfs2.png" style="width: 400px
+    ; height: 400px;">
+</div>
+이제 BFS는 다음과 같은 알고리즘에 의해 동작한다.
 
-<p>이제 선택 정렬을 수행하는데에 얼마만큼의 시간이 걸리는지를 시간복잡도로 표현할 수 있는데 계산 방법은 다음과 같다.</p>
-<p> 1 2 3 4 5 6 7 8 9 10 의 10개의 수를 정렬한다고 생각하면</p>
-<p> 10 + 9 + 8 + … + 1 의 수 만큼 비교연산을 수행해야 한다. 즉, 10 * (10 + 1) / 2 = 55</p>
-<p> 이것을 등차수열의 식에 의해 표현하면 <strong>N * (N + 1) / 2</strong> 로 표현할 수 있다. 즉, 이 알고리즘의 수행시간을 앞의 수식처럼 표현할 수가 있다는 것이다. 이때 일반적으로 컴퓨터에서는 2로 나눈다거나 1을 더한다거나 하는 것은 N이 매우 커지는 경우에는 무시할 수 있기 때문에 간단하게 더하거나 나누거나 하는 연산들은 모두 무시를 하게 된다.(가장 큰 차수만 보고 판단) 따라서 위의 수식이 <strong>N * N</strong> 으로 표현 할 수 가있다는 것이다.</p>
-<p> 이것을 O(N * N) =&gt; O(N^2)이라고 표시할 수 있는데 이와 같은 표기법은 특정한 알고리즘의 수행시간을 간략하게 표현하는 방법이며 O(Big-O) 표기법이라 한다.</p>
-<p>일반적으로 정렬 알고리즘에서 N^2의 복잡도는 아주 비효율적이고 느린 속도라고 할 수 있다.</p>
+<ol>
+<li>큐에서 하나의 노드를 꺼낸다.</li>
+<li>해당 노드에 연결된 노드 중 방문하지 않은 노드를 방문하고, 차</li>
+</ol>
+<pre><code class="C++"></code></pre>
 <blockquote>
-<p>참조<br><a href="https://blog.naver.com/ndb796/221226800661" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221226800661</a><br><a href="https://ko.wikipedia.org/wiki/%EC%84%A0%ED%83%9D_%EC%A0%95%EB%A0%AC" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/%EC%84%A0%ED%83%9D_%EC%A0%95%EB%A0%AC</a></p>
+<p>참조<br><a href="https://blog.naver.com/ndb796/221230944971" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221230944971</a><br><a href="https://ko.wikipedia.org/wiki/%EB%84%88%EB%B9%84_%EC%9A%B0%EC%84%A0_%ED%83%90%EC%83%89" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/%EB%84%88%EB%B9%84_%EC%9A%B0%EC%84%A0_%ED%83%90%EC%83%89</a><br><a href="https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html" target="_blank" rel="external nofollow noopener noreferrer">https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html</a></p>
 </blockquote>
 
 
@@ -237,13 +240,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/algorithm/2019/12/21/algorithmBubbleSort/" data-toggle="tooltip" data-placement="top" title="버블정렬(Bubble Sort) 알고리즘">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/영상처리/2019/12/01/ImageProcessing5/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - Add Noise">Next Post &rarr;</a>
+                            <a href="/C-C/2020/01/03/C3/" data-toggle="tooltip" data-placement="top" title="(C++) STL 라이브러리">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -314,8 +313,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/";
-    var disqus_url = "https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/";
+    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/01/03/algorithmBFS/";
+    var disqus_url = "https://kyu9341.github.io/algorithm/2020/01/03/algorithmBFS/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
