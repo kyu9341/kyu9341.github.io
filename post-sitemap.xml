@@ -9,7 +9,95 @@
 
     <url>
         <loc>https://kyu9341.github.io/C-C/2019/10/11/C3/</loc>
-        <lastmod>2020-01-03T01:24:15.088Z</lastmod>
+        <lastmod>2020-01-03T01:37:06.194Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/MachineLearning/2019/11/23/marchinelearning3/</loc>
+        <lastmod>2020-01-03T01:36:21.646Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/MachineLearning/2019/11/24/marchinelearning4/</loc>
+        <lastmod>2020-01-03T01:36:05.794Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/python/2019/10/13/python3/</loc>
+        <lastmod>2020-01-03T01:35:38.009Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/python/2019/10/13/python4/</loc>
+        <lastmod>2020-01-03T01:35:28.129Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/python/2019/10/13/python5/</loc>
+        <lastmod>2020-01-03T01:35:10.335Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/python/2019/10/17/python6/</loc>
+        <lastmod>2020-01-03T01:35:01.362Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/python/2019/11/10/python7/</loc>
+        <lastmod>2020-01-03T01:34:45.572Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
+        <lastmod>2020-01-03T01:34:05.214Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/01/02/algorithmCountingSort/</loc>
+        <lastmod>2020-01-03T01:33:48.615Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/</loc>
+        <lastmod>2020-01-03T01:33:31.303Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
+        <lastmod>2020-01-03T01:33:10.152Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -48,22 +136,6 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/01/02/algorithmCountingSort/</loc>
-        <lastmod>2020-01-02T07:10:24.254Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
-        <lastmod>2019-12-31T07:45:28.344Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/11/ImageProcessing1/</loc>
         <lastmod>2019-12-31T06:30:37.705Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -82,30 +154,6 @@
     <url>
         <loc>https://kyu9341.github.io/C-C/2019/10/11/C2/</loc>
         <lastmod>2019-12-31T05:46:27.022Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/</loc>
-        <lastmod>2019-12-31T05:33:35.738Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
-        <lastmod>2019-12-31T05:33:19.293Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/MachineLearning/2019/11/23/marchinelearning3/</loc>
-        <lastmod>2019-12-28T08:46:08.211Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -160,14 +208,6 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/MachineLearning/2019/11/24/marchinelearning4/</loc>
-        <lastmod>2019-12-27T06:40:58.546Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/22/ImageProcessing3/</loc>
         <lastmod>2019-12-27T06:40:50.772Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -194,14 +234,6 @@
     <url>
         <loc>https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/12/ImageProcessing2/</loc>
         <lastmod>2019-12-27T06:40:31.795Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/python/2019/11/10/python7/</loc>
-        <lastmod>2019-12-27T06:40:23.877Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -296,22 +328,6 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/python/2019/10/17/python6/</loc>
-        <lastmod>2019-10-20T07:09:55.118Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/python/2019/10/13/python5/</loc>
-        <lastmod>2019-10-17T07:36:07.419Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/08/24/algorithm4673/</loc>
         <lastmod>2019-10-17T01:56:23.854Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -330,22 +346,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/10/15/algorithm2748/</loc>
         <lastmod>2019-10-15T07:10:56.314Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/python/2019/10/13/python4/</loc>
-        <lastmod>2019-10-13T06:02:43.062Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/python/2019/10/13/python3/</loc>
-        <lastmod>2019-10-13T06:01:43.266Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

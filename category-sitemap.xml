@@ -9,14 +9,28 @@
 
     <url>
         <loc>https://kyu9341.github.io/categories/C-C/</loc>
-        <lastmod>2020-01-03T01:24:15.088Z</lastmod>
+        <lastmod>2020-01-03T01:37:06.194Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/categories/MachineLearning/</loc>
+        <lastmod>2020-01-03T01:36:21.646Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/categories/python/</loc>
+        <lastmod>2020-01-03T01:35:38.009Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://kyu9341.github.io/categories/algorithm/</loc>
-        <lastmod>2020-01-03T01:21:24.091Z</lastmod>
+        <lastmod>2020-01-03T01:34:05.214Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -24,20 +38,6 @@
     <url>
         <loc>https://kyu9341.github.io/categories/%25EC%2598%2581%25EC%2583%2581%25EC%25B2%2598%25EB%25A6%25AC/</loc>
         <lastmod>2019-12-31T06:30:37.705Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/categories/MachineLearning/</loc>
-        <lastmod>2019-12-28T08:46:08.211Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/categories/python/</loc>
-        <lastmod>2019-12-27T06:40:23.877Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

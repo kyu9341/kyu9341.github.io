@@ -98,7 +98,7 @@
 
                         
                         <li>
-                            <a href="/archives/">Posts</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -112,7 +112,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Posts</a>
                         </li>
                         
                     
@@ -350,8 +350,9 @@
 <p>1 1 1 1 1 1 1 1 2 2 2 2 2 2 3 3 3 3 3 3 3 3 4 4 4 4 5 5 5 5</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> count[<span class="number">6</span>]; <span class="comment">// 정렬할 수의 최댓값 + 1만큼 누적합 배열 할당</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">30</span>] = &#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>,</span><br><span class="line">					  <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>,</span><br><span class="line">					  <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) <span class="comment">// 갯수를 카운트할 배열 초기화</span></span><br><span class="line">		count[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">30</span>; i++) <span class="comment">// 각 크기의 갯수 카운트</span></span><br><span class="line">		count[<span class="built_in">array</span>[i]]++;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) <span class="comment">// 순서대로 갯수만큼 출력</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(count[i] != <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= count[i]; j++)</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>코드도 아주 간결하다. 데이터의 크기가 1부터 5 사이인 점에서 반복 또한 5번만 수행하면 된다. 모든 데이터의 크기 범위를 메모리 상에 표현할 수 있다면 O(N)이라는 압도적인 속도로 정렬을 수행할 수 있다는 것이다. 그러나 Counting Sort는 대부분의 상황에서 엄청난 메모리 낭비를 야기할 수 있다. 예를 들어, 1, 1, 3, 100 의 데이터를 정렬하기 위해서는 누적합 배열의 길이를 101로 잡는 메모리 낭비를 하게 된다. 만약 배열의 최댓값으로 10억이 포함되었다면 엄청난 낭비가 될 것이다. 이러한 문제점 때문에 위와 같이 범위가 특정한 상황에서만 주로 사용이 된다.</p>
-<p>참조 : <a href="https://blog.naver.com/ndb796/221228361368" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221228361368</a></p>
-<p><a href="https://yaboong.github.io/algorithms/2018/03/20/counting-sort/" target="_blank" rel="external nofollow noopener noreferrer">https://yaboong.github.io/algorithms/2018/03/20/counting-sort/</a></p>
+<blockquote>
+<p>참조<br><a href="https://blog.naver.com/ndb796/221228361368" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221228361368</a><br><a href="https://yaboong.github.io/algorithms/2018/03/20/counting-sort/" target="_blank" rel="external nofollow noopener noreferrer">https://yaboong.github.io/algorithms/2018/03/20/counting-sort/</a></p>
+</blockquote>
 
 
                 <hr>
