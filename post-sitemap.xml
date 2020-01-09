@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/01/09/algorithmKruskal/</loc>
+        <lastmod>2020-01-09T12:25:17.315Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/05/algorithmUnion-Find/</loc>
         <lastmod>2020-01-05T08:24:07.874Z</lastmod>
         <changefreq>weekly</changefreq>
