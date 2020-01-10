@@ -319,10 +319,10 @@
 </li>
 </ul>
 <p>이제 첫 번째 간선부터 시작하면</p>
-<ul>
+<h5 id="첫-번째-간선-선택"><a href="#첫-번째-간선-선택" class="headerlink" title="첫 번째 간선 선택"></a>첫 번째 간선 선택</h5><ul>
 <li><p>정렬된 간선 정보</p>
 <ul>
-<li><h6 id="1-7-12"><a href="#1-7-12" class="headerlink" title="(1, 7) [12]"></a>(1, 7) [12]</h6></li>
+<li><strong>(1, 7) [12]</strong></li>
 <li>(4, 7) [13]</li>
 <li>(1, 5) [17]</li>
 <li>(3, 5) [20]</li>
@@ -347,7 +347,6 @@
 <th align="center"><center>5</center></th>
 <th align="center"><center>6</center></th>
 <th align="center"><center>7</center></th>
-<th align="center"><center>8</center></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -359,13 +358,65 @@
 <td align="center">5</td>
 <td align="center">6</td>
 <td align="center">7</td>
-<td align="center">8</td>
 </tr>
 </tbody></table>
+</li>
+<li><p>그래프 상태</p>
   <div style="width: 300px; height: 300px;">
       <img src="https://kyu9341.github.io/img/kruskal3.png" style="width: 300px
       ; height: 300px;">
   </div>
+
+</li>
+</ul>
+<h5 id="두-번째-간선-선택"><a href="#두-번째-간선-선택" class="headerlink" title="두 번째 간선 선택"></a>두 번째 간선 선택</h5><ul>
+<li><p>정렬된 간선 정보</p>
+<ul>
+<li>(1, 7) [12]</li>
+<li><strong>(4, 7) [13]</strong></li>
+<li>(1, 5) [17]</li>
+<li>(3, 5) [20]</li>
+<li>(2, 4) [24]</li>
+<li>(1, 4) [28]</li>
+<li>(3, 6) [37]</li>
+<li>(5, 6) [45]</li>
+<li>(2, 5) [62]</li>
+<li>(1, 2) [67]</li>
+<li>(5, 7) [73]</li>
+</ul>
+</li>
+<li><p>사이클 테이블</p>
+<table>
+<thead>
+<tr>
+<th align="center"><center>노드 번호</center></th>
+<th align="center"><center>1</center></th>
+<th align="center"><center>2</center></th>
+<th align="center"><center>3</center></th>
+<th align="center"><center>4</center></th>
+<th align="center"><center>5</center></th>
+<th align="center"><center>6</center></th>
+<th align="center"><center>7</center></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">부모 노드 번호</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>그래프 상태</p>
+  <div style="width: 300px; height: 300px;">
+      <img src="https://kyu9341.github.io/img/kruskal4.png" style="width: 300px
+      ; height: 300px;">
+  </div>
+
 
 
 </li>
