@@ -271,7 +271,53 @@
     ; height: 600px;">
 </div>
 
-<p>사이클이 발생의 여부는 저번 포스팅의 Union-Find 알고리즘을 적용하여 구할 수 있다. </p>
+<p>사이클이 발생의 여부는 저번 포스팅의 Union-Find 알고리즘을 적용하여 구할 수 있다.</p>
+<p>초기 상태는 다음과 같을 것이다.</p>
+<ul>
+<li><p>정렬된 간선 정보</p>
+<ul>
+<li>(1, 7) [12]</li>
+<li>(4, 7) [13]</li>
+<li>(1, 5) [17]</li>
+<li>(3, 5) [20]</li>
+<li>(2, 4) [24]</li>
+<li>(1, 4) [28]</li>
+<li>(3, 6) [37]</li>
+<li>(5, 6) [45]</li>
+<li>(2, 5) [62]</li>
+<li>(1, 2) [67]</li>
+<li>(5, 7) [73]</li>
+</ul>
+</li>
+<li><p>사이클 테이블</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><center>노드 번호</center></th>
+<th align="center"><center>1</center></th>
+<th align="center"><center>2</center></th>
+<th align="center"><center>3</center></th>
+<th align="center"><center>4</center></th>
+<th align="center"><center>5</center></th>
+<th align="center"><center>6</center></th>
+<th align="center"><center>7</center></th>
+<th align="center"><center>8</center></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">부모 노드 번호</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">8</td>
+</tr>
+</tbody></table>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
  <div style="width: 300px; height: 100px;">
