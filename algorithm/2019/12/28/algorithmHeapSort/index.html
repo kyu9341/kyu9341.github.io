@@ -282,27 +282,27 @@
 </div>
 
 <p>말 그대로 배열에 있는 인덱스가 그대로 차례대로 트리로 표현된 것이다. 위와 같은 상황에서 힙 생성 알고리즘을 적용하여 전체 트리를 힙 구조로 만들면 된다. 이 때 데이터의 갯수가 N개 이므로 전체 트리를 힙 구조로 만드는 복잡도는 O(N*logN)이다.</p>
-<div style="width: 400px; height: 400px;">
-    <img src="https://kyu9341.github.io/img/bt1.png" style="width: 400px
-    ; height: 400px;">
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt1.png" style="width: 490px
+    ; height: 410px;">
 </div>
 
 <p>그래서 결과적으로는 위와 같이 최대 힙이 구성된다. 이제부터 실제로 우리가 원하던 정렬을 직관적으로 수행할 수 있다. 루트(Root)에 있는 값을 가장 뒤쪽으로 보내면서 힙 트리의 크기를 1씩 빼주는 것이다.</p>
-<div style="width: 400px; height: 400px;">
-    <img src="https://kyu9341.github.io/img/bt2.png" style="width: 400px
-    ; height: 400px;">
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt2.png" style="width: 490px
+    ; height: 410px;">
 </div>
 
 <p>위와 같이 9와 6을 바꾼 뒤에 9는 정렬이 완료된 것이므로 빨간색으로 표현한다. 이제 9를 제외하고 나머지 8개 원소를 기준으로 또 힙 생성 알고리즘(Heapify)를 수행한다. 결과는 다음과 같다.</p>
-<div style="width: 400px; height: 400px;">
-    <img src="https://kyu9341.github.io/img/bt3.png" style="width: 400px
-    ; height: 400px;">
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt3.png" style="width: 490px
+    ; height: 410px;">
 </div>
 
 <p>이제 다시 가장 큰 숫자인 8이 루트에 존재한다. 이것을 가장 뒤쪽의 원소와 서로 바꾼다.</p>
-<div style="width: 400px; height: 400px;">
-    <img src="https://kyu9341.github.io/img/bt4.png" style="width: 400px
-    ; height: 400px;">
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt4.png" style="width: 490px
+    ; height: 410px;">
 </div>
 
 <p>그럼 위와 같이 8과 9가 가장 뒤에 배열되어 정렬된 것을 볼 수 있다. 이제 이 과정을 반복하면 된다. 힙 생성 알고리즘의 시간 복잡도는 O(logN)이고 전체 데이터의 갯수가 N개이므로 결과적으로 힙 정렬의 시간 복잡도는 O(N*logN)이라고 할 수 있다.</p>
