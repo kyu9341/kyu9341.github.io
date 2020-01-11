@@ -210,15 +210,15 @@
 <li>그래프 탐색의 경우 어떤 노드를 방문했었는지 여부를 반드시 검사해야 한다.</li>
 </ul>
 <p>다음의 그림을 보자</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/bfs1.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/bfs1.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>DFS는 맨 처음에 시작 노드(Start Node)를 스택에 삽입하면서 시작한다. 또한 시작 노드를 방문했다고 <strong>방문 처리</strong> 를 해주도록 한다.</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/dfs1.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/dfs1.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>이제 BFS는 다음과 같은 알고리즘에 의해 동작한다.</p>
@@ -227,45 +227,45 @@
 <li>최상단 노드에게 방문하지 않은 인접 노드가 있으면 그 노드를 스택에 넣고 방문처리한다. 방문하지 않은 인접 노드가 없으면 스택에서 최상단 노드를 뺀다.</li>
 </ol>
 <p>위의 1번과 2번을 계속해서 반복하면 된다.</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/dfs3.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/dfs3.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>스택에 있던 최상단 노드가 1번 노드이므로 인접한 노드 중 방문하지 않은 2번 노드를 삽입한다.</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/dfs4.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/dfs4.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>이후에 2번 노드의 인접 노드 중 방문하지 않은 노드인 3번 노드를 스택에 삽입한다.</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/dfs5.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/dfs5.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>이어서 3번 노드의 인접 노드 중 방문하지 않은 6번 노드를 스택에 삽입</p>
- <div style="width: 550px; height: 500px;">
-     <img src="https://kyu9341.github.io/img/dfs6.png" style="width: 550px
-     ; height: 500px;">
+ <div style="width: 460px; height: 460px;">
+     <img src="https://kyu9341.github.io/img/dfs6.png" style="width: 460px
+     ; height: 460px;">
  </div>
 
 <p>6번 노드의 인접 노드 중 방문하지 않은 7번 노드를 삽입</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/dfs8.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/dfs8.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>7번 노드, 6번 노드, 3번 노드는 인접 노드를 모두 방문하였기 때문에 스택에서 빠져나오게 된다. 이후에 2번 노드를 보았을 때 인접 노드인 4번 노드를 아직 방문하지 않았으므로 스택에 넣는다.</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/dfs9.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/dfs9.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>결과적으로 4번 노드의 인접 노드인 5번 노드가 스택에 들어가고 이후에 스택에서 하나씩 다 노드들이 빠져나오게 된다. 결과적으로 다음 그림과 같다.</p>
-<div style="width: 550px; height: 500px;">
-    <img src="https://kyu9341.github.io/img/dfs10.png" style="width: 550px
-    ; height: 500px;">
+<div style="width: 460px; height: 460px;">
+    <img src="https://kyu9341.github.io/img/dfs10.png" style="width: 460px
+    ; height: 460px;">
 </div>
 
 <p>따라서 방문 경로는 1 - 2 - 3 - 6 - 7 - 4 - 5 이다.</p>

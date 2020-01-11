@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmBFS/</loc>
+        <lastmod>2020-01-11T06:07:22.564Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmDFS/</loc>
-        <lastmod>2020-01-11T05:48:59.731Z</lastmod>
+        <lastmod>2020-01-11T06:03:32.807Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -26,14 +34,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/09/algorithmKruskal/</loc>
         <lastmod>2020-01-10T08:30:38.949Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmBFS/</loc>
-        <lastmod>2020-01-03T07:13:20.332Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
