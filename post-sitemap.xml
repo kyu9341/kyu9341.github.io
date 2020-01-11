@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/</loc>
+        <lastmod>2020-01-11T14:44:03.097Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
         <lastmod>2020-01-11T13:49:32.832Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -138,14 +146,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
         <lastmod>2020-01-03T01:21:24.091Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/</loc>
-        <lastmod>2020-01-03T01:21:09.360Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
