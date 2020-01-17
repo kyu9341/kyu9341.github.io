@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          kwon | kwon&#39;s Blog
+          (C++) 입력 함수 - cin, cin.get(), getline() - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/posts/page/5/">
+    <link rel="canonical" href="https://kyu9341.github.io/c-c/2020/01/17/c++getline()/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/posts/page/5/">
+    <link rel="canonical" href="https://kyu9341.github.io/C-C/2020/01/17/C++getline()/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -158,7 +158,225 @@
 
 
     <!-- Main Content -->
-    <!-- Default Archive layout, we use archives instead. -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>(C++) 입력 함수 - cin, cin.get(), getline()</h1>
+                    <h2 class="subheading">C/C++</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2020-01-17
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><ul>
+<li><iostream>에 포함되어 있다.</iostream></li>
+<li>표준 입력 버퍼에서 개행 문자를 제외한 값을 가져온다.</li>
+<li>공백이나 개행 입력 시 공백 이전까지의 값만 결과로 받아들인다.</li>
+<li>개행 문자를 입력 버퍼에 남겨둔다.</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 정수</span></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 문자열</span></span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; str;</span><br></pre></td></tr></table></figure>
+<p>위와 같이 사용이 가능하다.<br>이때 hello 같은 문자열이라면 문제 없이 입력을 받지만 Hello World!와 같이 띄어쓰기가 포함된 문장이라면 Hello 까지 밖에 입력이 되지 않을 것이다.<br>cin의 &gt;&gt; 연산자에서는 공백문자에서 입력을 끊기 때문인데, 이러한 문제를 해결하기 위해서 getline()이라는 함수를 사용한다.</p>
+<h2 id="getline"><a href="#getline" class="headerlink" title="getline()"></a>getline()</h2><p>getline()함수는 두 가지가 존재하는데 각가 다른 라이브러리에 존재한다. istream 라이브러리에 속한 cin.getline()함수와 string 라이브러리에 속하는 getline()함수가 있다.</p>
+<ul>
+<li>istream 라이브러리의 cin.getline()<ul>
+<li>n-1개의 문자 개수만큼 읽어와 str에 저장한다. (n번째 문자는 NULL(‘\0’)로 바꾼다.)</li>
+<li>세 번째 인자인 delim은 별도로 지정해주지 않으면 엔터(‘\n’)로 인식한다.</li>
+<li>delim을 지정해주면 그 제한자(delim)문자 직전까지 읽어서 str에 저장한다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span>.getline(<span class="keyword">char</span>* str, streamsize n);</span><br><span class="line"><span class="built_in">cin</span>.getline(<span class="keyword">char</span>* str, streamsize n, <span class="keyword">char</span> dlim);</span><br></pre></td></tr></table></figure>
+<p>cin.getline(변수 주소, 최대 입력 가능 문자수, 종결 문자);</p>
+<p>ex) cin.getline(str, 100);</p>
+<ul>
+<li>string 라이브러리의 getline()<ul>
+<li>최대 문자 수를 입력하지 않아도 됨.</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getline(istream&amp; is, <span class="built_in">string</span> str);</span><br><span class="line">getline(istream&amp; is, <span class="built_in">string</span> str, <span class="keyword">char</span> dlim);</span><br></pre></td></tr></table></figure>
+<p>getline(입력스트림 오브젝트, 문자열을 저장할 string객체, 종결 문자);</p>
+<p>ex) getline(cin, str);</p>
+<h3 id="주의"><a href="#주의" class="headerlink" title="주의"></a>주의</h3><p>getline() 함수를 사용할 때 주의할 점이 있다.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">getline(<span class="built_in">cin</span>, str);</span><br></pre></td></tr></table></figure>
+<p>위와 같은 상황을 보자. 위 코드대로 실행을 하면 n을 입력 받은 후 문자열을 입력받지 않고 바로 다음 코드로 넘어가게 된다. 이유는 버퍼에 정수 값을 입력한 뒤 누른 엔터(‘\n’)가 그대로 남아있어 getline()에 들어가기 때문이다. 이를 해결하기 위해 cin.ignore()라는 함수를 사용할 수 있다.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line"><span class="built_in">cin</span>.ignore();</span><br><span class="line">getline(<span class="built_in">cin</span>, str);</span><br></pre></td></tr></table></figure>
+<p> 위와 같이 변경하면 cin.ingore()가 입력 버퍼의 모든 내용을 제거해주어 getline()이 정상적으로 동작할 수 있다.</p>
+<p> 추가적으로 cin.ignore() 함수에 대해 알아보자면<br> cin.ignore(int n, char dlim);<br> cin.ignore(읽어들일 문자의 개수, 종결 문자);<br> 와 같은 형태로도 사용이 가능하다.</p>
+<h2 id="cin-get"><a href="#cin-get" class="headerlink" title="cin.get()"></a>cin.get()</h2><ul>
+<li>표준 입력 버퍼에서 문자를 하나만 가져온다.</li>
+<li>문자 하나만 입력이 가능하며 공백과 개행도 입력으로 포함한다.</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch1, ch2;</span><br><span class="line">ch1 = <span class="built_in">cin</span>.<span class="built_in">get</span>();</span><br><span class="line">ch2 = <span class="built_in">cin</span>.<span class="built_in">get</span>();</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>참조<br><a href="https://jhnyang.tistory.com/107" target="_blank" rel="external nofollow noopener noreferrer">https://jhnyang.tistory.com/107</a><br><a href="https://luyin.tistory.com/334" target="_blank" rel="external nofollow noopener noreferrer">https://luyin.tistory.com/334</a><br><a href="https://woodforest.tistory.com/168" target="_blank" rel="external nofollow noopener noreferrer">https://woodforest.tistory.com/168</a></p>
+</blockquote>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/C-C/2020/01/12/C++STLsort/" data-toggle="tooltip" data-placement="top" title="(C++) STL sort()함수">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/C-C/2020/01/17/C++getline()/";
+    var disqus_url = "https://kyu9341.github.io/C-C/2020/01/17/C++getline()/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
 
     <!-- Footer -->
     <!-- Footer -->
