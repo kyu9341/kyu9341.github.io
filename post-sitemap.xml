@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/django/2019/09/02/djangoCommunity1/</loc>
+        <lastmod>2020-01-14T14:10:40.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/09/algorithmKruskal/</loc>
         <lastmod>2020-01-12T13:36:20.100Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -282,14 +290,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/08/28/algorithm11729/</loc>
         <lastmod>2019-12-27T06:39:52.076Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/django/2019/09/02/djangoCommunity1/</loc>
-        <lastmod>2019-12-27T06:39:49.895Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
