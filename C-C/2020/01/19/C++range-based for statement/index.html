@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          안드로이드(android) 다이얼로그 띄우기 - kwon | kwon&#39;s Blog
+          (C++) 범위 기반 for문 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/android/2019/10/01/android1/">
+    <link rel="canonical" href="https://kyu9341.github.io/c-c/2020/01/19/c++range-based for statement/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/android/2019/10/01/android1/">
+    <link rel="canonical" href="https://kyu9341.github.io/C-C/2020/01/19/C++range-based for statement/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>안드로이드(android) 다이얼로그 띄우기</h1>
-                    <h2 class="subheading">Android</h2>
+                    <h1>(C++) 범위 기반 for문</h1>
+                    <h2 class="subheading">C/C++</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2019-10-01
+                        2020-01-19
                     </span>
                 </div>
             </div>
@@ -200,8 +200,18 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="다이얼로그-출력"><a href="#다이얼로그-출력" class="headerlink" title="다이얼로그 출력"></a>다이얼로그 출력</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> AlertDialog dialog; <span class="comment">// 알림창</span></span><br><span class="line"></span><br><span class="line">AlertDialog.Builder builder = <span class="keyword">new</span> AlertDialog.Builder(SettingActivity.<span class="keyword">this</span>);</span><br><span class="line">dialog = builder.setMessage(<span class="string">"원하는 메세지 출력."</span>)</span><br><span class="line">        .setPositiveButton(<span class="string">"확인"</span>, <span class="keyword">null</span>)</span><br><span class="line">        .create();</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
-<h3 id="버튼에-리스너-추가"><a href="#버튼에-리스너-추가" class="headerlink" title="버튼에 리스너 추가"></a>버튼에 리스너 추가</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> AlertDialog dialog; <span class="comment">// 알림창</span></span><br><span class="line"></span><br><span class="line">AlertDialog.Builder builder = <span class="keyword">new</span> AlertDialog.Builder(SettingActivity.<span class="keyword">this</span>);</span><br><span class="line">dialog = builder.setMessage(<span class="string">"원하는 메세지 출력."</span>)</span><br><span class="line">        .setPositiveButton(<span class="string">"확인"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</span><br><span class="line">                finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .create();</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+                <h2 id="범위-기반-for문-range-based-for-statement"><a href="#범위-기반-for문-range-based-for-statement" class="headerlink" title="범위 기반 for문 (range-based for statement)"></a>범위 기반 for문 (range-based for statement)</h2><p>일반적인 for문은 다음과 같은 형태이다.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> arr[n] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>하지만 C++ 11에서는 범위기반 for문 이라는 새로운 형태의 루프를 도입하여 더 간결하게 배열 등의 모든 요소를 반복하는 방법을 제공한다.</p>
+<p>범위 기반 for문의 기본 문법은 다음과 같다.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(element_declaration : <span class="built_in">array</span>)</span><br><span class="line">	statement;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 위의 기본 for문을 범위 기반 for문으로 표현하면 다음과 같다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> arr[n] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> x : arr)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 아래는 auto키워드를 이용하여 자동으로 적절한 자료형을 지정함.</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> x : arr)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위와 같이 일반 for문을 간단하게 표현할 수 있다. 위의 방식들은 각 원소의 참조를 x에 값이 복사되어 사용되기 때문에 원본이 훼손되지는 않지만 원소를 수정할 수 없다. 또한 복사하는데 비용도 발생한다.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 아래와 같이 사용하면 arr의 모든 원소는 10으로 변경된다.</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span>&amp; x : arr)</span><br><span class="line">&#123;</span><br><span class="line">	x = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// const로 지정하면 원소를 복사하지 않고 원본도 훼손되지 않기 때문에 자료의 안전성을 갖춘다.</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; x : arr)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>참조<br><a href="https://docs.microsoft.com/ko-kr/cpp/cpp/range-based-for-statement-cpp?view=vs-2019" target="_blank" rel="external nofollow noopener noreferrer">https://docs.microsoft.com/ko-kr/cpp/cpp/range-based-for-statement-cpp?view=vs-2019</a><br><a href="https://boycoding.tistory.com/210" target="_blank" rel="external nofollow noopener noreferrer">https://boycoding.tistory.com/210</a><br><a href="https://blockdmask.tistory.com/319" target="_blank" rel="external nofollow noopener noreferrer">https://blockdmask.tistory.com/319</a></p>
+</blockquote>
 
 
                 <hr>
@@ -210,13 +220,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/C-C/2019/10/11/C1/" data-toggle="tooltip" data-placement="top" title="(C) 포인터 사용법">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/android/2019/10/01/android2/" data-toggle="tooltip" data-placement="top" title="안드로이드(android) Title Bar 지우기">Next Post &rarr;</a>
+                            <a href="/C-C/2020/01/17/C++getline()/" data-toggle="tooltip" data-placement="top" title="(C++) 입력 함수 - cin, cin.get(), getline()">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -287,8 +293,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/android/2019/10/01/android1/";
-    var disqus_url = "https://kyu9341.github.io/android/2019/10/01/android1/";
+    var disqus_identifier = "https://kyu9341.github.io/C-C/2020/01/19/C++range-based%20for%20statement/";
+    var disqus_url = "https://kyu9341.github.io/C-C/2020/01/19/C++range-based%20for%20statement/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
