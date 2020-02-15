@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          백준 1110번 더하기 사이클 - kwon | kwon&#39;s Blog
+          백준 1707번 이분 그래프 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2019/08/20/algorithm1110/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/15/algorithm1707/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2019/08/20/algorithm1110/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/15/algorithm1707/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>백준 1110번 더하기 사이클</h1>
+                    <h1>백준 1707번 이분 그래프</h1>
                     <h2 class="subheading">Baekjoon algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2019-08-20
+                        2020-02-15
                     </span>
                 </div>
             </div>
@@ -200,31 +200,37 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>1110번</p>
-<p><strong>더하기 사이클</strong></p>
-<p><strong>문제</strong></p>
-<p>0보다 크거나 같고, 99보다 작거나 같은 정수가 주어질 때 다음과 같은 연산을 할 수 있다. 먼저 주어진 수가 10보다 작다면 앞에 0을 붙여 두 자리 수로 만들고, 각 자리의 숫자를 더한다. 그 다음, 주어진 수의 가장 오른쪽 자리 수와 앞에서 구한 합의 가장 오른쪽 자리 수를 이어 붙이면 새로운 수를 만들 수 있다. 다음 예를 보자.</p>
-<p>26부터 시작한다. 2+6 = 8이다. 새로운 수는 68이다. 6+8 = 14이다. 새로운 수는 84이다. 8+4 = 12이다. 새로운 수는 42이다. 4+2 = 6이다. 새로운 수는 26이다.</p>
-<p>위의 예는 4번만에 원래 수로 돌아올 수 있다. 따라서 26의 사이클의 길이는 4이다.</p>
-<p>N이 주어졌을 때, N의 사이클의 길이를 구하는 프로그램을 작성하시오.</p>
-<p><strong>입력</strong></p>
-<p>첫째 줄에 N이 주어진다. N은 0보다 크거나 같고, 99보다 작거나 같은 정수이다.</p>
-<p><strong>출력</strong></p>
-<p>첫째 줄에 N의 사이클 길이를 출력한다.</p>
-<p>예제 입력 1</p>
-<p>26</p>
-<p>예제 출력 1</p>
-<p>4</p>
-<p>예제 입력 2</p>
-<p>55</p>
-<p>예제 출력 2</p>
-<p>3</p>
-<p>예제 입력 3</p>
-<p>1</p>
-<p>예제 출력 3</p>
-<p>60</p>
-<p><a href="https://www.acmicpc.net/problem/1110" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/1110</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cycle</span><span class="params">(num)</span>:</span> <span class="comment"># 새로운 수를 구하는 함수</span></span><br><span class="line">    num10 = num // <span class="number">10</span></span><br><span class="line">    num1 = num % <span class="number">10</span></span><br><span class="line">    temp = num10 + num1 <span class="comment"># ex) 26 -&gt; 2+6</span></span><br><span class="line">    temp10 = temp // <span class="number">10</span></span><br><span class="line">    temp1 = temp % <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    result = (str(num1)+str(temp1)) <span class="comment"># ex) 2+6=8 -&gt; 68</span></span><br><span class="line">    result = int(result)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">i=<span class="number">0</span></span><br><span class="line">num = int(input())</span><br><span class="line">n = num</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    temp = cycle(n)</span><br><span class="line">    i = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> num == temp:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    n = cycle(temp)</span><br><span class="line">    i = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> num == n:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(i)</span><br></pre></td></tr></table></figure>
+                <h1 id="Problem-1707"><a href="#Problem-1707" class="headerlink" title="Problem 1707"></a>Problem 1707</h1><h2 id="이분-그래프"><a href="#이분-그래프" class="headerlink" title="이분 그래프"></a>이분 그래프</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>그래프의 정점의 집합을 둘로 분할하여, 각 집합에 속한 정점끼리는 서로 인접하지 않도록 분할할 수 있을 때, 그러한 그래프를 특별히 이분 그래프 (Bipartite Graph) 라 부른다.</p>
+<p>그래프가 입력으로 주어졌을 때, 이 그래프가 이분 그래프인지 아닌지 판별하는 프로그램을 작성하시오.</p>
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>입력은 여러 개의 테스트 케이스로 구성되어 있는데, 첫째 줄에 테스트 케이스의 개수 K(2≤K≤5)가 주어진다. 각 테스트 케이스의 첫째 줄에는 그래프의 정점의 개수 V(1≤V≤20,000)와 간선의 개수 E(1≤E≤200,000)가 빈 칸을 사이에 두고 순서대로 주어진다. 각 정점에는 1부터 V까지 차례로 번호가 붙어 있다. 이어서 둘째 줄부터 E개의 줄에 걸쳐 간선에 대한 정보가 주어지는데, 각 줄에 인접한 두 정점의 번호가 빈 칸을 사이에 두고 주어진다.</p>
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>K개의 줄에 걸쳐 입력으로 주어진 그래프가 이분 그래프이면 YES, 아니면 NO를 순서대로 출력한다.</p>
+<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/1707" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/1707</a></p>
+<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>2<br>3 2<br>1 3<br>2 3<br>4 4<br>1 2<br>2 3<br>3 4<br>4 2</p>
+<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>YES<br>NO</p>
+<h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
+<li>그래프를 다음과 같이 A와 B로 나눌 수 있으면 <strong>이분 그래프</strong> 라고 한다.</li>
+</ul>
+<p><img src="https://github.com/kyu9341/BOJ-Algorithm-Study/blob/master/pictures/bipartite_graph.png" alt="bipartite_graph"></p>
+<ul>
+<li>A에 포함된 정점끼리 연결된 간선이 없음</li>
+<li>B에 포함된 정점끼리 연결된 간선이 없음</li>
+<li>모든 간선의 한 끝 점은 A에, 다른 끝 점은 B에</li>
+</ul>
+<hr>
+<ul>
+<li><p>check배열을 bool타입 대신 int형으로 선언하여 방문하지 않은 노드는 0, 방문한 노드인데 1번 그룹이라면 1, 2번 그룹이라면 2로 저장한다.</p>
+<ul>
+<li>dfs를 통해 탐색을 수행하며 다음 노드로 넘어가면 그룹을 바꿔서 지정해준다. 이때 다음에 방문한 노드가 같은 그룹에 속한 노드라면 이분 그래프가 아니다.</li>
+</ul>
+</li>
+<li><p>dfs에서 다음 노드가 방문하지 않은 노드라면 다음 노드로 재귀 호출하며 현재 1번 그룹이라면 다음은 2번을 넘겨주고 현재 2번이라면 1번을 넘겨준다.</p>
+</li>
+<li><p>다음 노드가 방문을 했던 노드인데 현재 노드와 같은 그룹이라면 이분 그래프가 아니다.</p>
+</li>
+<li><p>각 테스트케이스를 시작할 때마다 인접 노드와 방문 내역을 초기화 해야한다.</p>
+</li>
+</ul>
+<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a[<span class="number">20001</span>];</span><br><span class="line"><span class="keyword">int</span> check[<span class="number">20001</span>] = &#123; <span class="number">0</span> &#125;; <span class="comment">// 0 : 방문 x, 1 : 1번 그룹에 포함, 2 : 2번 그룹에 포함</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> c)</span> <span class="comment">// c : 다음 방문할 노드의 그룹 ( 1 or 2 ) , 이분그래프이면 true, 아니면 false</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	check[node] = c; <span class="comment">// c 그룹 방문 처리</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a[node].<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> next = a[node][i]; <span class="comment">// 다음 노드</span></span><br><span class="line">		<span class="keyword">if</span> (!check[next]) <span class="comment">// 다음 정점을 방문 안했으면 동작</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (!dfs(next, <span class="number">3</span> - c)) <span class="comment">// 다음 노드는 현재 그룹이 1이라면 2, 2라면 1</span></span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// false를 리턴받았으면 false리턴</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (check[next] == check[node]) <span class="comment">// 다음 정점이 이미 방문했던 정점인데 현재 정점과 같은 그룹이면 이분그래프가 아님</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> k; <span class="comment">// testcase</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (k--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v, e;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; v &gt;&gt; e;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= v; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i].<span class="built_in">clear</span>(); <span class="comment">// 인접 노드 초기화</span></span><br><span class="line">			check[i] = <span class="number">0</span>; <span class="comment">// 방문 내역 초기화</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; e; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> n, m;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">			a[n].push_back(m);</span><br><span class="line">			a[m].push_back(n);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">bool</span> ok = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= v; i++) <span class="comment">// 모든 정점을 확인하여 이분 그래프가 아닌 경우가 있는지 확인</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (check[i] == <span class="number">0</span>) <span class="comment">// 아직 방문 안한 노드에 대해서 확인</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (dfs(i, <span class="number">1</span>) == <span class="literal">false</span>)</span><br><span class="line">					ok = <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (ok)</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -233,13 +239,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/algorithm/2019/08/20/algorithm1085/" data-toggle="tooltip" data-placement="top" title="백준 1085번 직사각형에서 탈출">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/python/2019/08/20/python2/" data-toggle="tooltip" data-placement="top" title="파이썬 리스트의 모든 조합 구하기">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/02/06/algorithm10799/" data-toggle="tooltip" data-placement="top" title="백준 10799번 쇠막대기">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -310,8 +312,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/algorithm/2019/08/20/algorithm1110/";
-    var disqus_url = "https://kyu9341.github.io/algorithm/2019/08/20/algorithm1110/";
+    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/02/15/algorithm1707/";
+    var disqus_url = "https://kyu9341.github.io/algorithm/2020/02/15/algorithm1707/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
