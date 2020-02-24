@@ -8,24 +8,40 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/02/06/algorithm6588/</loc>
+        <lastmod>2020-02-24T12:50:06.599Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/02/09/algorithm9095/</loc>
+        <lastmod>2020-02-24T12:49:49.382Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/02/08/algorithm11727/</loc>
+        <lastmod>2020-02-24T12:49:29.302Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/02/09/algorithm11052/</loc>
+        <lastmod>2020-02-24T12:49:15.200Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/02/07/algorithm17103/</loc>
         <lastmod>2020-02-24T12:44:30.163Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/02/06/algorithm1/</loc>
-        <lastmod>2020-02-24T12:43:30.915Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/02/06/algorithm0/</loc>
-        <lastmod>2020-02-24T12:43:30.475Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -50,22 +66,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/02/08/algorithm1676/</loc>
         <lastmod>2020-02-24T12:38:32.055Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/02/06/algorithm6588/</loc>
-        <lastmod>2020-02-24T12:37:06.478Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/02/06/algorithm/</loc>
-        <lastmod>2020-02-24T12:36:19.866Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
