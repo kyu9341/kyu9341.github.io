@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          디지털 영상처리 - 히스토그램 - kwon | kwon&#39;s Blog
+          백준 1935번 후위 표기식 2 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/영상처리/2019/12/01/imageprocessing7/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/06/algorithm1935/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/영상처리/2019/12/01/ImageProcessing7/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/06/algorithm1935/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>디지털 영상처리 - 히스토그램</h1>
-                    <h2 class="subheading">ImageProcessing</h2>
+                    <h1>백준 1935번 후위 표기식 2</h1>
+                    <h2 class="subheading">Baekjoon algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2019-12-01
+                        2020-02-06
                     </span>
                 </div>
             </div>
@@ -200,19 +200,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="히스토그램"><a href="#히스토그램" class="headerlink" title="히스토그램"></a>히스토그램</h2><p>영상에서의 히스토그램은 그레이레벨 값 k개의 개수가 영상 전체 안에서 몇 개가 존재하는지를 알려주는 값이다. 즉, 그레이레벨 값 0부터 255까지가 영상 전체에서 몇 개씩 존재하는가를 알려주는 지표 값이다. 히스토그램은 영상의 그레이레벨의 프로파일(profile)을 보여주는 기능을 한다고 생각하면 된다. 그러나 영상의 크기가 다양하기 때문에 개수만으로 표현하는 경우 그 개수의 정확성에 문제가 발생할 수 있으므로 영상전체 화소수로 나누어 확률적인 표현으로 나타낸다. 즉, k번째 개수가 Nk개인 경우 Nk/(Row*Col)와 같이 전체 화소수로 나누어 k 의 그레이 레벨이 갖는 개수를 표현한 것을 히스토그램이라 한다.</p>
-<div style="width: 600px; height: 1000px;">
-    <img src="https://kyu9341.github.io/img/his.png" style="width: 600px
-    ; height: 1000px;">
-</div>
-
-<p>위의 이미지들은 각각 lena.512의 원본과 각각 gamma collection을 통해 gamma값을 3, 0.45로 지정하여 밝고 어둡게 만든 영상들의 히스토그램이다. 원본의 히스토그램을 보면 0부터 255까지의 값이 존재하나 0과 255의 근처에는 값이 거의 없는 것을 볼 수 있으며 전체적으로 고르게 히스토그램이 분포한 것을 확인할 수 있다. 반면, 밝은 영상에서는 밝은 값들이 많기 때문에 우측으로 치우친 것을 확인할 수 있고 어두운 영상에서는 밝은 값들이 적고 상대적으로 어두운 값들이 많기 때문에 주로 좌측으로 분포한 것을 확인할 수 있다.</p>
-<div style="width: 600px; height: 1000px;">
-    <img src="https://kyu9341.github.io/img/his1.png" style="width: 600px
-    ; height: 1000px;">
-</div>
-
-<p>위의 이미지들은 각각 카메라맨, 페퍼, 페이스 이미지들과 히스토그램이다. 각각의 이미지와 히스토그램을 보면 이미지의 값들에 따른 히스토그램이 나타나는 것을 알 수 있다. Camera Man의 경우에는 밝은 배경과 어두운 사람의 옷 때문에 밝은 부분의 값과 어두운 부분의 값이 각각 많이 분포해 독특하게 나타나는 것을 볼 수 있다. 이런 영상의 경우에는 전체적인 콘트라스트를 개선하는데 어려움이 존재한다. 다음으로 Pepper는 보는 것과 같이 고르게 분포되어 있는 것을 알 수 있고 Face는 전체적으로 밝은 영상이므로 밝은 부분에 몰려있는 것을 확인 할 수 있다.</p>
+                <h1 id="Problem-1935"><a href="#Problem-1935" class="headerlink" title="Problem 1935"></a>Problem 1935</h1><h2 id="후위-표기식-2"><a href="#후위-표기식-2" class="headerlink" title="후위 표기식 2"></a>후위 표기식 2</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>후위 표기식과 각 피연산자에 대응하는 값들이 주어져 있을 때, 그 식을 계산하는 프로그램을 작성하시오.</p>
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 피연산자의 개수(1 ≤ N ≤ 26) 가 주어진다. 그리고 둘째 줄에는 후위 표기식이 주어진다. (여기서 피연산자는 A~Z의 영대문자이며, A부터 순서대로 N개의 영대문자만이 사용되며, 길이는 100을 넘지 않는다) 그리고 셋째 줄부터 N+2번째 줄까지는 각 피연산자에 대응하는 값이 주어진다. (3번째 줄에는 A에 해당하는 값, 4번째 줄에는 B에 해당하는값 , 5번째 줄에는 C …이 주어진다, 그리고 피연산자에 대응 하는 값은 정수이다)</p>
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>계산 결과를 소숫점 둘째 자리까지 출력한다.</p>
+<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/1935" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/1935</a></p>
+<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>5<br>ABC*+DE/-<br>1<br>2<br>3<br>4<br>5</p>
+<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>6.20</p>
+<h3 id="예제-입력-2"><a href="#예제-입력-2" class="headerlink" title="예제 입력 2"></a>예제 입력 2</h3><p>1<br>AA+A+<br>1</p>
+<h3 id="예제-출력-2"><a href="#예제-출력-2" class="headerlink" title="예제 출력 2"></a>예제 출력 2</h3><p>3.00</p>
+<h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
+<li>문자열의 현재 인덱스가 피연산자(영어 대문자)라면 해당 숫자로 변환하여 스택에 push한다.</li>
+<li>연산자인 경우 스택의 가장 위의 두 수를 뽑아 순서를 뒤집어(아래의 숫자가 더 먼저 들어간 수 이므로) 연산 후 다시 push 한다.</li>
+<li>위 과정을 반복 후 스택의 top원소를 소수점 둘째 자리까지만 표기하여 출력</li>
+</ul>
+<h3 id="C-소수점-조정"><a href="#C-소수점-조정" class="headerlink" title="C++ 소수점 조정"></a>C++ 소수점 조정</h3><ul>
+<li>“cout &lt;&lt; fixed”라는 표현은 소숫점 아래 값을 고정하는 표현이다.</li>
+<li>즉, cout &lt;&lt; fixed 이후에 precision(6)을 입력하면 소숫점 아래를 6으로 고정한다.</li>
+<li>precision() -&gt; 자릿수를 조정하는 함수이다.</li>
+</ul>
+<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cal</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b, <span class="keyword">char</span> op)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> str; <span class="comment">// 입력 문자열</span></span><br><span class="line">	<span class="keyword">int</span> n; <span class="comment">// 피연산자 수</span></span><br><span class="line">	<span class="built_in">stack</span>&lt;<span class="keyword">double</span>&gt; s; <span class="comment">// 피연산자를 담을 스택</span></span><br><span class="line">	<span class="keyword">double</span> alphabet[<span class="number">26</span>]; <span class="comment">// 피연산자에 해당하는 숫자를 저장할 배열</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">cin</span>.ignore();</span><br><span class="line">	getline(<span class="built_in">cin</span>, str);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; alphabet[i];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">size</span> = str.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (str[i] &gt;= <span class="string">'A'</span> &amp;&amp; str[i] &lt;= <span class="string">'Z'</span>) <span class="comment">// 피연산자일 경우 숫자로 변환하여 스택에 push</span></span><br><span class="line">		&#123;</span><br><span class="line">			s.push(alphabet[str[i] - <span class="string">'A'</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="comment">// 연산자인 경우 스택의 위의 두 수를 뽑아 순서를 뒤집어 연산 후 다시 push</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> a = s.top();</span><br><span class="line">			s.pop();</span><br><span class="line">			<span class="keyword">double</span> b = s.top();</span><br><span class="line">			s.pop();</span><br><span class="line">			s.push(cal(a, b, str[i]));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; fixed;</span><br><span class="line">	<span class="built_in">cout</span>.precision(<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s.top() &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cal</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b, <span class="keyword">char</span> op)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> res = <span class="number">0.</span>;</span><br><span class="line">	<span class="keyword">switch</span> (op)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">'+'</span>:</span><br><span class="line">		res = b + a;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">		res = b - a;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">'\*'</span>:</span><br><span class="line">		res = b * a;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">'/'</span>:</span><br><span class="line">		res = b / a;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -222,12 +228,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/영상처리/2019/12/01/ImageProcessing8/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - 콘트라스트 스트레칭(Contrast Streching)">&larr; Previous Post</a>
+                            <a href="/algorithm/2020/02/07/algorithm17298/" data-toggle="tooltip" data-placement="top" title="백준 17298번 오큰수">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/영상처리/2019/12/01/ImageProcessing9/" data-toggle="tooltip" data-placement="top" title="디지털 영상처리 - 공간 필터링">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/02/06/algorithm10799/" data-toggle="tooltip" data-placement="top" title="백준 10799번 쇠막대기">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -298,8 +304,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/";
-    var disqus_url = "https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/12/01/ImageProcessing7/";
+    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/02/06/algorithm1935/";
+    var disqus_url = "https://kyu9341.github.io/algorithm/2020/02/06/algorithm1935/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
