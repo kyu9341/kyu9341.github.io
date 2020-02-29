@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          백준 2225번 합분해 - kwon | kwon&#39;s Blog
+          백준 1699번 제곱수의 합 - kwon | kwon&#39;s Blog
         
     </title>
     <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/14/algorithm1699/">
@@ -177,7 +177,7 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>백준 2225번 합분해</h1>
+                    <h1>백준 1699번 제곱수의 합</h1>
                     <h2 class="subheading">Baekjoon algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
@@ -200,27 +200,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Problem-2225"><a href="#Problem-2225" class="headerlink" title="Problem 2225"></a>Problem 2225</h1><h2 id="합분해"><a href="#합분해" class="headerlink" title="합분해"></a>합분해</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>0부터 N까지의 정수 K개를 더해서 그 합이 N이 되는 경우의 수를 구하는 프로그램을 작성하시오.</p>
-<p>덧셈의 순서가 바뀐 경우는 다른 경우로 센다(1+2와 2+1은 서로 다른 경우). 또한 한 개의 수를 여러 번 쓸 수도 있다.</p>
-<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 두 정수 N(1 ≤ N ≤ 200), K(1 ≤ K ≤ 200)가 주어진다.</p>
-<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>첫째 줄에 답을 1,000,000,000으로 나눈 나머지를 출력한다.</p>
-<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/2225" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/2225</a></p>
-<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>20 2</p>
-<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>21</p>
+                <h1 id="Problem-1699"><a href="#Problem-1699" class="headerlink" title="Problem 1699"></a>Problem 1699</h1><h2 id="제곱수의-합"><a href="#제곱수의-합" class="headerlink" title="제곱수의 합"></a>제곱수의 합</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>어떤 자연수 N은 그보다 작거나 같은 제곱수들의 합으로 나타낼 수 있다. 예를 들어 11=3^2+1^2+1^2(3개 항)이다. 이런 표현방법은 여러 가지가 될 수 있는데, 11의 경우 11=2^2+2^2+1^2+1^2+1^2(5개 항)도 가능하다. 이 경우, 수학자 숌크라테스는 “11은 3개 항의 제곱수 합으로 표현할 수 있다.”라고 말한다. 또한 11은 그보다 적은 항의 제곱수 합으로 표현할 수 없으므로, 11을 그 합으로써 표현할 수 있는 제곱수 항의 최소 개수는 3이다.</p>
+<p>주어진 자연수 N을 이렇게 제곱수들의 합으로 표현할 때에 그 항의 최소개수를 구하는 프로그램을 작성하시오.</p>
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 자연수 N이 주어진다. (1 ≤ N ≤ 100,000)</p>
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>주어진 자연수를 제곱수의 합으로 나타낼 때에 그 제곱수 항의 최소 개수를 출력한다.</p>
+<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/1699" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/1699</a></p>
+<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>7</p>
+<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>4</p>
 <h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
-<li>점화식 d[k][N] = 0부터 N까지의 정수 K개를 더해서 그 합이 N이 되는 경우의 수</li>
-<li>o + o + o + … + <strong>L</strong> = N  –&gt; <strong>L</strong> 의 자리에 올 수 있는 수 : 0 ~ N<ul>
-<li>[ N - L ] + <strong>L</strong> = N</li>
-<li>[ k - 1개 ] + 1개 = k<pre><code>- 따라서, d[k - 1][n - L]의 모든 경우에 L을 더해주면 d[k][n]을 구할 수 있다.
-  - 즉, d[k - 1][n - L]의 모든 경우를 합친 수가 d[k][n]의 경우의 수가 되는 것이다.</code></pre></li>
-</ul>
-</li>
-<li>d[k][n] = sum(d[k - 1][n - L])<ul>
-<li>0 &lt;= L &lt;= N</li>
+<li>d[i] = 자연수 i를 제곱수들의 합으로 표현하는 최소 항의 개수<ul>
+<li>o + o + o + … + o = n</li>
+<li>[ n - i^2 ] + i^2 = n<ul>
+<li>d[n] =  n - i^2의 최소 개수 + 1</li>
 </ul>
 </li>
 </ul>
-<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> d[<span class="number">201</span>][<span class="number">201</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mod = <span class="number">1000000000</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, k; <span class="comment">// n이하의 정수 k개를 더해 n을 만드는 경우의 수</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) <span class="comment">// 1개의 정수로 n을 만드는 경우는 모두 1</span></span><br><span class="line">		d[<span class="number">1</span>][i] = <span class="number">1</span>; <span class="comment">// 초기값 설정</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>; l &lt;= j; l++)</span><br><span class="line">			&#123;</span><br><span class="line">				d[i][j] += d[i - <span class="number">1</span>][j - l]; <span class="comment">// d[k][n] = sum(d[k - 1][n - L])</span></span><br><span class="line">				d[i][j] %= mod;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; d[k][n] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>d[n] = min(d[n - i * i]) + 1 // (1 &lt;= i * i &lt;= n) –&gt; (1 &lt;= i &lt;= 루트n)</li>
+</ul>
+<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">// int d[100001];</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; d(n + <span class="number">1</span>);</span><br><span class="line">	<span class="comment">// (n - i^2) + i^2 = n -&gt; d[n] =  n - i^2의 최소 개수 + 1</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		d[i] = i; <span class="comment">// 모두 1^2으로 표현하는 경우가 최대</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j*j &lt;= i; j++) <span class="comment">// d[n] = min(d[n - i*i]) + 1</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (d[i] &gt; d[i - j * j] + <span class="number">1</span>)</span><br><span class="line">				d[i] = d[i - j * j] + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; d[n] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -230,12 +228,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/algorithm/2020/02/15/algorithm2309/" data-toggle="tooltip" data-placement="top" title="백준 2309번 일곱 난쟁이">&larr; Previous Post</a>
+                            <a href="/algorithm/2020/02/14/algorithm1912/" data-toggle="tooltip" data-placement="top" title="백준 1912번 연속합">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/algorithm/2020/02/14/algorithm1912/" data-toggle="tooltip" data-placement="top" title="백준 1912번 연속합">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/02/14/algorithm14002/" data-toggle="tooltip" data-placement="top" title="백준 14002번 가장 긴 증가하는 부분 수열 4 (LIS)">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

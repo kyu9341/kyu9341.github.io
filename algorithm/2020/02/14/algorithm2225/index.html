@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          백준 1912번 연속합 - kwon | kwon&#39;s Blog
+          백준 2225번 합분해 - kwon | kwon&#39;s Blog
         
     </title>
     <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/14/algorithm2225/">
@@ -177,7 +177,7 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>백준 1912번 연속합</h1>
+                    <h1>백준 2225번 합분해</h1>
                     <h2 class="subheading">Baekjoon algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
@@ -200,22 +200,27 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Problem-1912"><a href="#Problem-1912" class="headerlink" title="Problem 1912"></a>Problem 1912</h1><h2 id="연속합"><a href="#연속합" class="headerlink" title="연속합"></a>연속합</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>n개의 정수로 이루어진 임의의 수열이 주어진다. 우리는 이 중 연속된 몇 개의 수를 선택해서 구할 수 있는 합 중 가장 큰 합을 구하려고 한다. 단, 수는 한 개 이상 선택해야 한다.</p>
-<p>예를 들어서 10, -4, 3, 1, 5, 6, -35, 12, 21, -1 이라는 수열이 주어졌다고 하자. 여기서 정답은 12+21인 33이 정답이 된다.</p>
-<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 정수 n(1 ≤ n ≤ 100,000)이 주어지고 둘째 줄에는 n개의 정수로 이루어진 수열이 주어진다. 수는 -1,000보다 크거나 같고, 1,000보다 작거나 같은 정수이다.</p>
-<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>첫째 줄에 답을 출력한다.</p>
-<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/1912" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/1912</a></p>
-<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>10<br>10 -4 3 1 5 6 -35 12 21 -1</p>
-<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>33</p>
+                <h1 id="Problem-2225"><a href="#Problem-2225" class="headerlink" title="Problem 2225"></a>Problem 2225</h1><h2 id="합분해"><a href="#합분해" class="headerlink" title="합분해"></a>합분해</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>0부터 N까지의 정수 K개를 더해서 그 합이 N이 되는 경우의 수를 구하는 프로그램을 작성하시오.</p>
+<p>덧셈의 순서가 바뀐 경우는 다른 경우로 센다(1+2와 2+1은 서로 다른 경우). 또한 한 개의 수를 여러 번 쓸 수도 있다.</p>
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 두 정수 N(1 ≤ N ≤ 200), K(1 ≤ K ≤ 200)가 주어진다.</p>
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>첫째 줄에 답을 1,000,000,000으로 나눈 나머지를 출력한다.</p>
+<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/2225" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/2225</a></p>
+<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>20 2</p>
+<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>21</p>
 <h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
-<li>d[i] = i번째 수로 끝나는 가장 큰 연속합</li>
-<li>d[1] 부터 이전 수까지의 최대 연속합(d[i - 1] + a[i])과 현재 수열의 원소(a[i])와 비교하여 더 큰 값을 d[i]에 저장한다.<ul>
-<li>d[i] = max(d[i-1]+a[i], a[i]) 의 과정을 n까지 반복한다.</li>
+<li>점화식 d[k][N] = 0부터 N까지의 정수 K개를 더해서 그 합이 N이 되는 경우의 수</li>
+<li>o + o + o + … + <strong>L</strong> = N  –&gt; <strong>L</strong> 의 자리에 올 수 있는 수 : 0 ~ N<ul>
+<li>[ N - L ] + <strong>L</strong> = N</li>
+<li>[ k - 1개 ] + 1개 = k<pre><code>- 따라서, d[k - 1][n - L]의 모든 경우에 L을 더해주면 d[k][n]을 구할 수 있다.
+  - 즉, d[k - 1][n - L]의 모든 경우를 합친 수가 d[k][n]의 경우의 수가 되는 것이다.</code></pre></li>
 </ul>
 </li>
-<li>d[i]의 최댓값을 출력한다.</li>
+<li>d[k][n] = sum(d[k - 1][n - L])<ul>
+<li>0 &lt;= L &lt;= N</li>
 </ul>
-<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100001</span>];</span><br><span class="line"><span class="keyword">int</span> d[<span class="number">100001</span>]; <span class="comment">// d[i] = i번째 수로 끝나는 가장 큰 연속합</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">	d[<span class="number">1</span>] = a[<span class="number">1</span>]; <span class="comment">// 초기값 지정</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">max</span> = d[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (a[i] &gt; d[i - <span class="number">1</span>] + a[i]) <span class="comment">// 현재 수열의 값과 이어지는 연속합과의 합과 비교</span></span><br><span class="line">			d[i] = a[i];			<span class="comment">// 더 큰 값을 d[i]에 저장</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			d[i] = d[i - <span class="number">1</span>] + a[i];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (d[i] &gt; <span class="built_in">max</span>)				<span class="comment">// d[i] 의 최댓값이 정답</span></span><br><span class="line">			<span class="built_in">max</span> = d[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> d[<span class="number">201</span>][<span class="number">201</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mod = <span class="number">1000000000</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, k; <span class="comment">// n이하의 정수 k개를 더해 n을 만드는 경우의 수</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) <span class="comment">// 1개의 정수로 n을 만드는 경우는 모두 1</span></span><br><span class="line">		d[<span class="number">1</span>][i] = <span class="number">1</span>; <span class="comment">// 초기값 설정</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>; l &lt;= j; l++)</span><br><span class="line">			&#123;</span><br><span class="line">				d[i][j] += d[i - <span class="number">1</span>][j - l]; <span class="comment">// d[k][n] = sum(d[k - 1][n - L])</span></span><br><span class="line">				d[i][j] %= mod;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; d[k][n] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -225,12 +230,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/algorithm/2020/02/14/algorithm1912/" data-toggle="tooltip" data-placement="top" title="백준 1912번 연속합">&larr; Previous Post</a>
+                            <a href="/algorithm/2020/02/15/algorithm2309/" data-toggle="tooltip" data-placement="top" title="백준 2309번 일곱 난쟁이">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/algorithm/2020/02/14/algorithm14002/" data-toggle="tooltip" data-placement="top" title="백준 14002번 가장 긴 증가하는 부분 수열 4 (LIS)">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/02/14/algorithm1912/" data-toggle="tooltip" data-placement="top" title="백준 1912번 연속합">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
