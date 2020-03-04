@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/02/22/algorithm1074/</loc>
+        <lastmod>2020-03-04T15:55:53.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/03/02/algorithm11047/</loc>
+        <lastmod>2020-03-04T15:53:09.199Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/03/03/algorithm1939/</loc>
         <lastmod>2020-03-03T10:04:49.226Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -50,14 +66,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/03/02/algorithm1992/</loc>
         <lastmod>2020-03-03T09:53:21.379Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/03/02/algorithm1074/</loc>
-        <lastmod>2020-03-03T09:52:11.691Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
