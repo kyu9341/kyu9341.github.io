@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          백준 16929번 Two Dots - kwon | kwon&#39;s Blog
+          백준 4963번 섬의 개수 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/17/algorithm16929/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/23/algorithm4963/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/17/algorithm16929/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/23/algorithm4963/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>백준 16929번 Two Dots</h1>
+                    <h1>백준 4963번 섬의 개수</h1>
                     <h2 class="subheading">Baekjoon algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2020-02-17
+                        2020-02-23
                     </span>
                 </div>
             </div>
@@ -200,55 +200,29 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Problem-16929"><a href="#Problem-16929" class="headerlink" title="Problem 16929"></a>Problem 16929</h1><h2 id="Two-Dots"><a href="#Two-Dots" class="headerlink" title="Two Dots"></a>Two Dots</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>Two Dots는 Playdots, Inc.에서 만든 게임이다. 게임의 기초 단계는 크기가 N×M인 게임판 위에서 진행된다.</p>
-<p>각각의 칸은 색이 칠해진 공이 하나씩 있다. 이 게임의 핵심은 같은 색으로 이루어진 사이클을 찾는 것이다.</p>
-<p>다음은 위의 게임판에서 만들 수 있는 사이클의 예시이다.</p>
-<p>점 k개 d1, d2, …, dk로 이루어진 사이클의 정의는 아래와 같다.</p>
-<ul>
-<li>모든 k개의 점은 서로 다르다.</li>
-<li>k는 4보다 크거나 같다.</li>
-<li>모든 점의 색은 같다.</li>
-<li>모든 1 ≤ i ≤ k-1에 대해서, di와 di+1은 인접하다. 또, dk와 d1도 인접해야 한다. 두 점이 인접하다는 것은 각각의 점이 들어있-는 칸이 변을 공유한다는 의미이다.</li>
-</ul>
-<p>게임판의 상태가 주어졌을 때, 사이클이 존재하는지 아닌지 구해보자.</p>
-<p>2 ≤ N, M ≤ 50</p>
-<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 게임판의 크기 N, M이 주어진다. 둘째 줄부터 N개의 줄에 게임판의 상태가 주어진다. 게임판은 모두 점으로 가득차 있고, 게임판의 상태는 점의 색을 의미한다. 점의 색은 알파벳 대문자 한 글자이다.</p>
-<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>사이클이 존재하는 경우에는 “Yes”, 없는 경우에는 “No”를 출력한다.</p>
-<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/16929" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/16929</a></p>
-<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>3 4<br>AAAA<br>ABCA<br>AAAA</p>
-<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>Yes</p>
-<h3 id="예제-입력-2"><a href="#예제-입력-2" class="headerlink" title="예제 입력 2"></a>예제 입력 2</h3><p>3 4<br>AAAA<br>ABCA<br>AADA</p>
-<h3 id="예제-출력-2"><a href="#예제-출력-2" class="headerlink" title="예제 출력 2"></a>예제 출력 2</h3><p>No</p>
-<h3 id="예제-입력-3"><a href="#예제-입력-3" class="headerlink" title="예제 입력 3"></a>예제 입력 3</h3><p>4 4<br>YYYR<br>BYBY<br>BBBY<br>BBBY</p>
-<h3 id="예제-출력-3"><a href="#예제-출력-3" class="headerlink" title="예제 출력 3"></a>예제 출력 3</h3><p>Yes</p>
-<h3 id="예제-입력-4"><a href="#예제-입력-4" class="headerlink" title="예제 입력 4"></a>예제 입력 4</h3><p>7 6<br>AAAAAB<br>ABBBAB<br>ABAAAB<br>ABABBB<br>ABAAAB<br>ABBBAB<br>AAAAAB</p>
-<h3 id="예제-출력-4"><a href="#예제-출력-4" class="headerlink" title="예제 출력 4"></a>예제 출력 4</h3><p>Yes</p>
-<h3 id="예제-입력-5"><a href="#예제-입력-5" class="headerlink" title="예제 입력 5"></a>예제 입력 5</h3><p>2 13<br>ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ</p>
-<h3 id="예제-출력-5"><a href="#예제-출력-5" class="headerlink" title="예제 출력 5"></a>예제 출력 5</h3><p>No</p>
+                <h1 id="Problem-4963"><a href="#Problem-4963" class="headerlink" title="Problem 4963"></a>Problem 4963</h1><h2 id="섬의-개수"><a href="#섬의-개수" class="headerlink" title="섬의 개수"></a>섬의 개수</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>정사각형으로 이루어져 있는 섬과 바다 지도가 주어진다. 섬의 개수를 세는 프로그램을 작성하시오.</p>
+<p>한 정사각형과 가로, 세로 또는 대각선으로 연결되어 있는 사각형은 걸어갈 수 있는 사각형이다.</p>
+<p>두 정사각형이 같은 섬에 있으려면, 한 정사각형에서 다른 정사각형으로 걸어서 갈 수 있는 경로가 있어야 한다. 지도는 바다로 둘러쌓여 있으며, 지도 밖으로 나갈 수 없다.</p>
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>입력은 여러 개의 테스트 케이스로 이루어져 있다. 각 테스트 케이스의 첫째 줄에는 지도의 너비 w와 높이 h가 주어진다. w와 h는 50보다 작거나 같은 양의 정수이다.</p>
+<p>둘째 줄부터 h개 줄에는 지도가 주어진다. 1은 땅, 0은 바다이다.</p>
+<p>입력의 마지막 줄에는 0이 두 개 주어진다.</p>
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>각 테스트 케이스에 대해서, 섬의 개수를 출력한다.</p>
+<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/4963" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/4963</a></p>
+<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>1 1<br>0<br>2 2<br>0 1<br>1 0<br>3 2<br>1 1 1<br>1 1 1<br>5 4<br>1 0 1 0 0<br>1 0 0 0 0<br>1 0 1 0 1<br>1 0 0 1 0<br>5 4<br>1 1 1 0 1<br>1 0 1 0 1<br>1 0 1 0 1<br>1 0 1 1 1<br>5 5<br>1 0 1 0 1<br>0 0 0 0 0<br>1 0 1 0 1<br>0 0 0 0 0<br>1 0 1 0 1<br>0 0</p>
+<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>0<br>1<br>1<br>3<br>1<br>9</p>
 <h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
-<li><p>문제에서 주어진 조건에 맞는 사이클이 형성되는지 찾는 문제이다. dfs를 통해 해결할 수 있다.</p>
-</li>
-<li><p>방문 여부를 체크할 배열과 탐색을 시작한 점부터 이동한 거리를 나타낼 배열을 선언한다.</p>
-</li>
-<li><p>인접한 같은 색깔의 점인 경우 dfs를 수행한다.</p>
-<ul>
-<li>이때, 사이클을 이루는지 여부를 확인하는 방법은 다음과 같다.<ul>
-<li>cnt변수를 탐색을 진행할 때마다 1씩 증가시킨다.</li>
-<li>처음 방문하게 되는 점의 dist배열에 현재 cnt를 저장한다.</li>
-<li>재귀를 수행할 때 이미 방문했던 노드이며, cnt - dist[x][y] &gt;= 4 인 경우 사이클이 형성된다.</li>
+<li>단지번호 붙이기 문제와 유사하다. dfs 또는 bfs로 구현할 수 있다.<ul>
+<li>결국 연결 요소의 개수를 구하는 문제이다.</li>
 </ul>
 </li>
+<li>dfs로 구현</li>
+<li>이때, 따로 인접 리스트를 만들지 않고 x, y 좌표를 통해 상하좌우로 다음 좌표를 정해 탐색을 수행한다.<ul>
+<li>dx, dy라는 배열에 상하좌우, 대각선으로 이동할 좌표를 기록해 두어 반복문을 통해 다음 좌표를 탐색한다.</li>
 </ul>
 </li>
-<li><p>사이클이 형성되지 않는 경우</p>
-</li>
+<li>현재 위치에서 8방을 탐색하며 다음 좌표가 육지이고 아직 방문하지 않은 경우에 재귀를 수행한다.</li>
 </ul>
-<p><img src="https://kyu9341.github.io/img/cycle2.png" alt="cycle"></p>
-<ul>
-<li>사이클이 형성되는 경우</li>
-</ul>
-<p><img src="https://kyu9341.github.io/img/cycle1.png" alt="cycle"></p>
-<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> color[<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line"><span class="keyword">bool</span> check[<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line"><span class="keyword">int</span> dist[<span class="number">50</span>][<span class="number">50</span>]; <span class="comment">// 시작점부터 이동한 거리</span></span><br><span class="line"><span class="keyword">int</span> dx[] = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span> &#125;;</span><br><span class="line"><span class="keyword">int</span> dy[] = &#123; <span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">int</span> n, m; <span class="comment">// 게임판의 크기</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> cnt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (check[x][y]) <span class="comment">// 이미 방문했던 노드인데</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (cnt - dist[x][y] &gt;= <span class="number">4</span>) <span class="comment">// 이동 횟수에서 현재 위치에 저장된 시작점과의 거리 차가 4 이상 = 싸이클</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	check[x][y] = <span class="literal">true</span>;</span><br><span class="line">	dist[x][y] = cnt; <span class="comment">// 현재 x,y가 시작점에서 몇번 이동했는지 저장, 시작점은 0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> nx = x + dx[i];</span><br><span class="line">		<span class="keyword">int</span> ny = y + dy[i];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (nx &gt;= <span class="number">0</span> &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; nx &lt; n &amp;&amp; ny &lt; m)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (color[nx][ny] == color[x][y]) <span class="comment">// 같은 색깔의 점인 경우(방문여부는 관계x)</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (dfs(nx, ny, cnt + <span class="number">1</span>))</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cin</span>.ignore();</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		getline(<span class="built_in">cin</span>, str);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			color[i][j] = str[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">string</span> ans = <span class="string">"No"</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (check[i][j] == <span class="literal">false</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (dfs(i, j, <span class="number">0</span>))</span><br><span class="line">					ans = <span class="string">"Yes"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line"><span class="keyword">bool</span> check[<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line"><span class="keyword">int</span> dx[] = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span> &#125;; <span class="comment">// 상하좌우 대각선</span></span><br><span class="line"><span class="keyword">int</span> dy[] = &#123; <span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> w, h; <span class="comment">// 너비, 높이</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	check[x][y] = <span class="literal">true</span>; <span class="comment">// 방문 처리</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) <span class="comment">// 상하좌우, 대각선 탐색 (8방)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> nx = x + dx[i]; <span class="comment">// 다음 x좌표</span></span><br><span class="line">		<span class="keyword">int</span> ny = y + dy[i]; <span class="comment">// 다음 y좌표</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (nx &gt;= <span class="number">0</span> &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; nx &lt; h &amp;&amp; ny &lt; w) <span class="comment">// 지도의 범위 내부</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (a[nx][ny] == <span class="number">1</span> &amp;&amp; check[nx][ny] == <span class="literal">false</span>) <span class="comment">// 다음 좌표가 육지이고 방문하지 않았다면</span></span><br><span class="line">			&#123;</span><br><span class="line">				dfs(nx, ny);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios_base::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; w &gt;&gt; h;</span><br><span class="line">		<span class="keyword">if</span> (w == <span class="number">0</span> &amp;&amp; h == <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; i++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w; j++)</span><br><span class="line">				<span class="built_in">cin</span> &gt;&gt; a[i][j];</span><br><span class="line"></span><br><span class="line">		<span class="built_in">memset</span>(check, <span class="literal">false</span>, <span class="keyword">sizeof</span>(check)); <span class="comment">// check 초기화</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>; <span class="comment">// 연결요소의 개수</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; h; x++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> y = <span class="number">0</span>; y &lt; w; y++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (a[x][y] == <span class="number">1</span> &amp;&amp; check[x][y] == <span class="literal">false</span>) <span class="comment">// 현재 좌표가 육지이고 방문하지 않은 경우</span></span><br><span class="line">				&#123;</span><br><span class="line">					count++; <span class="comment">// 연결 요소 카운트</span></span><br><span class="line">					dfs(x, y);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; count &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -258,12 +232,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/algorithm/2020/02/19/algorithm7576/" data-toggle="tooltip" data-placement="top" title="백준 7576번 토마토">&larr; Previous Post</a>
+                            <a href="/algorithm/2020/02/23/algorithm2178/" data-toggle="tooltip" data-placement="top" title="백준 2178번 미로 탐색">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/algorithm/2020/02/15/algorithm1707/" data-toggle="tooltip" data-placement="top" title="백준 1707번 이분 그래프">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/02/22/algorithm11047/" data-toggle="tooltip" data-placement="top" title="백준 11047번 동전">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -334,8 +308,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/02/17/algorithm16929/";
-    var disqus_url = "https://kyu9341.github.io/algorithm/2020/02/17/algorithm16929/";
+    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/02/23/algorithm4963/";
+    var disqus_url = "https://kyu9341.github.io/algorithm/2020/02/23/algorithm4963/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
