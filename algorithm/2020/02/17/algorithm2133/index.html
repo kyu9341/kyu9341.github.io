@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          백준 7576번 토마토 - kwon | kwon&#39;s Blog
+          백준 2133번 타일 채우기 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/19/algorithm7576/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/17/algorithm2133/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/19/algorithm7576/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/02/17/algorithm2133/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>백준 7576번 토마토</h1>
+                    <h1>백준 2133번 타일 채우기</h1>
                     <h2 class="subheading">Baekjoon algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2020-02-19
+                        2020-02-17
                     </span>
                 </div>
             </div>
@@ -200,44 +200,16 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Problem-7576"><a href="#Problem-7576" class="headerlink" title="Problem 7576"></a>Problem 7576</h1><h2 id="토마토"><a href="#토마토" class="headerlink" title="토마토"></a>토마토</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>철수의 토마토 농장에서는 토마토를 보관하는 큰 창고를 가지고 있다. 토마토는 아래의 그림과 같이 격자 모양 상자의 칸에 하나씩 넣어서 창고에 보관한다.</p>
-<p>창고에 보관되는 토마토들 중에는 잘 익은 것도 있지만, 아직 익지 않은 토마토들도 있을 수 있다. 보관 후 하루가 지나면, 익은 토마토들의 인접한 곳에 있는 익지 않은 토마토들은 익은 토마토의 영향을 받아 익게 된다. 하나의 토마토의 인접한 곳은 왼쪽, 오른쪽, 앞, 뒤 네 방향에 있는 토마토를 의미한다. 대각선 방향에 있는 토마토들에게는 영향을 주지 못하며, 토마토가 혼자 저절로 익는 경우는 없다고 가정한다. 철수는 창고에 보관된 토마토들이 며칠이 지나면 다 익게 되는지, 그 최소 일수를 알고 싶어 한다.</p>
-<p>토마토를 창고에 보관하는 격자모양의 상자들의 크기와 익은 토마토들과 익지 않은 토마토들의 정보가 주어졌을 때, 며칠이 지나면 토마토들이 모두 익는지, 그 최소 일수를 구하는 프로그램을 작성하라. 단, 상자의 일부 칸에는 토마토가 들어있지 않을 수도 있다.</p>
-<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫 줄에는 상자의 크기를 나타내는 두 정수 M,N이 주어진다. M은 상자의 가로 칸의 수, N은 상자의 세로 칸의 수를 나타낸다. 단, 2 ≤ M,N ≤ 1,000 이다. 둘째 줄부터는 하나의 상자에 저장된 토마토들의 정보가 주어진다. 즉, 둘째 줄부터 N개의 줄에는 상자에 담긴 토마토의 정보가 주어진다. 하나의 줄에는 상자 가로줄에 들어있는 토마토의 상태가 M개의 정수로 주어진다. 정수 1은 익은 토마토, 정수 0은 익지 않은 토마토, 정수 -1은 토마토가 들어있지 않은 칸을 나타낸다.</p>
-<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>여러분은 토마토가 모두 익을 때까지의 최소 날짜를 출력해야 한다. 만약, 저장될 때부터 모든 토마토가 익어있는 상태이면 0을 출력해야 하고, 토마토가 모두 익지는 못하는 상황이면 -1을 출력해야 한다.</p>
-<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/7576" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/7576</a></p>
-<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>6 4<br>0 0 0 0 0 0<br>0 0 0 0 0 0<br>0 0 0 0 0 0<br>0 0 0 0 0 1</p>
-<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>8</p>
-<h3 id="예제-입력-2"><a href="#예제-입력-2" class="headerlink" title="예제 입력 2"></a>예제 입력 2</h3><p>6 4<br>0 -1 0 0 0 0<br>-1 0 0 0 0 0<br>0 0 0 0 0 0<br>0 0 0 0 0 1</p>
-<h3 id="예제-출력-2"><a href="#예제-출력-2" class="headerlink" title="예제 출력 2"></a>예제 출력 2</h3><p>-1</p>
-<h3 id="예제-입력-3"><a href="#예제-입력-3" class="headerlink" title="예제 입력 3"></a>예제 입력 3</h3><p>6 4<br>1 -1 0 0 0 0<br>0 -1 0 0 0 0<br>0 0 0 0 -1 0<br>0 0 0 0 -1 1</p>
-<h3 id="예제-출력-3"><a href="#예제-출력-3" class="headerlink" title="예제 출력 3"></a>예제 출력 3</h3><p>6</p>
-<h3 id="예제-입력-4"><a href="#예제-입력-4" class="headerlink" title="예제 입력 4"></a>예제 입력 4</h3><p>5 5<br>-1 1 0 0 0<br>0 -1 -1 -1 0<br>0 -1 -1 -1 0<br>0 -1 -1 -1 0<br>0 0 0 0 0</p>
-<h3 id="예제-출력-4"><a href="#예제-출력-4" class="headerlink" title="예제 출력 4"></a>예제 출력 4</h3><p>14</p>
-<h3 id="예제-입력-5"><a href="#예제-입력-5" class="headerlink" title="예제 입력 5"></a>예제 입력 5</h3><p>2 2<br>1 -1<br>-1 1</p>
-<h3 id="예제-출력-5"><a href="#예제-출력-5" class="headerlink" title="예제 출력 5"></a>예제 출력 5</h3><p>0</p>
+                <h1 id="Problem-2133"><a href="#Problem-2133" class="headerlink" title="Problem 2133"></a>Problem 2133</h1><h2 id="타일-채우기"><a href="#타일-채우기" class="headerlink" title="타일 채우기"></a>타일 채우기</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>3×N 크기의 벽을 2×1, 1×2 크기의 타일로 채우는 경우의 수를 구해보자.</p>
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 N(1 ≤ N ≤ 30)이 주어진다.</p>
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>첫째 줄에 경우의 수를 출력한다.</p>
+<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://www.acmicpc.net/problem/2133" target="_blank" rel="external nofollow noopener noreferrer">https://www.acmicpc.net/problem/2133</a></p>
+<h3 id="예제-입력-1"><a href="#예제-입력-1" class="headerlink" title="예제 입력 1"></a>예제 입력 1</h3><p>2</p>
+<h3 id="예제-출력-1"><a href="#예제-출력-1" class="headerlink" title="예제 출력 1"></a>예제 출력 1</h3><p>3</p>
 <h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
-<li><p>토마토가 모두 익을때 까지의 최소 날짜를 구하는 것이므로 bfs를 이용한다.</p>
-<ul>
-<li><p>방문 확인 및 익을 때까지의 날짜를 기록할 배열 d[][] 생성</p>
-<ul>
-<li>d[i][j]를 모두 -1로 초기화 하고, 초기에 익어있는 토마토의 위치에는 0을 넣는다.</li>
-<li>-1로 초기화하는 이유는 모든 토마토가 익을 수 없는 상황을 판별하고 방문 여부를 판단하기 위해서이다.</li>
-<li>익은 토마토에 0을 넣는 이유는 그 위치를 기준으로 다음 토마토가 익을 때 걸리는 시간을 구하기 위해서이다.</li>
+<li>d[n] = d[n - 2] * 3 + d[n - 4] * 2 + d[n - 6] * 2 … (n - 2i) &gt;= 0</li>
 </ul>
-</li>
-<li><p>초기에 익어있는 토마토가 여러 개일 수 있으므로 초기값이 1인 경우 위치를 모두 큐에 push해둔다.</p>
-</li>
-<li><p>처음 익어있는 토마토에서 동시에 탐색을 수행해 위치별로 익는데 걸리는 날짜를 저장한다.(d[x][y])</p>
-</li>
-<li><p>이후 d에 저장된 날짜의 최댓값을 구한다.(모든 토마토가 익는 날짜)</p>
-</li>
-<li><p>a[i][j]가 0이고 d[i][j]가 -1 인 경우가 있다면 모든 토마토가 익을 수 없는 경우이므로 -1 출력</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1001</span>][<span class="number">1001</span>];</span><br><span class="line"><span class="keyword">int</span> d[<span class="number">1001</span>][<span class="number">1001</span>]; <span class="comment">// 익은 토마토에서의 거리(날짜)</span></span><br><span class="line"><span class="keyword">int</span> dx[] = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span> &#125;;</span><br><span class="line"><span class="keyword">int</span> dy[] = &#123; <span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; m &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">queue</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; q;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; a[i][j];</span><br><span class="line">			d[i][j] = <span class="number">-1</span>; <span class="comment">// 토마토가 익지 못하는 상황을 찾기 위해 -1로 초기화(0은 익은 토마토의 초기 위치)</span></span><br><span class="line">			<span class="keyword">if</span> (a[i][j] == <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				q.push(make_pair(i, j)); <span class="comment">// 익은 토마토를 큐에 넣어 bfs의 시작점으로 정한다.</span></span><br><span class="line">				d[i][j] = <span class="number">0</span>; <span class="comment">// 익은 토마토 초기 위치</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x = q.front().first;</span><br><span class="line">		<span class="keyword">int</span> y = q.front().second;</span><br><span class="line">		q.pop();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> nx = x + dx[i];</span><br><span class="line">			<span class="keyword">int</span> ny = y + dy[i];</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (nx &gt;= <span class="number">0</span> &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; nx &lt; n &amp;&amp; ny &lt; m) <span class="comment">// 상자 내부</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (a[nx][ny] == <span class="number">0</span> &amp;&amp; d[nx][ny] == <span class="number">-1</span>) <span class="comment">// 안익은 토마토이고 방문하지 않은 경우</span></span><br><span class="line">				&#123;</span><br><span class="line">					q.push(make_pair(nx, ny));</span><br><span class="line">					d[nx][ny] = d[x][y] + <span class="number">1</span>; <span class="comment">// 토마토의 초기 위치는 0, 다음 위치는 +1</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>; <span class="comment">// 모두 익는 일수</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (ans &lt; d[i][j]) <span class="comment">// 최댓값을 구함(모두 익는 날짜)</span></span><br><span class="line">				ans = d[i][j];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (a[i][j] == <span class="number">0</span> &amp;&amp; d[i][j] == <span class="number">-1</span>) <span class="comment">// 모든 토마토가 익을 수 없는 경우</span></span><br><span class="line">				ans = <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> d[<span class="number">31</span>]; <span class="comment">// d[n] = d[n - 2] * 3 + d[n - 4] * 2 + d[n - 6] * 2 ... (n - 2i) &gt;= 0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">	d[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// 초기값 지정 (마지막 +2 역할)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		d[i] = d[i - <span class="number">2</span>] * <span class="number">3</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">4</span>; j &gt;= <span class="number">0</span>; j -= <span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			d[i] += d[j] * <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; d[n] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -247,12 +219,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/algorithm/2020/02/21/algorithm2667/" data-toggle="tooltip" data-placement="top" title="백준 2667번 단지번호 붙이기">&larr; Previous Post</a>
+                            <a href="/algorithm/2020/02/18/algorithm1149/" data-toggle="tooltip" data-placement="top" title="백준 1149번 RGB거리">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/algorithm/2020/02/19/algorithm17404/" data-toggle="tooltip" data-placement="top" title="백준 17404번 RGB거리 2">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/02/17/algorithm16929/" data-toggle="tooltip" data-placement="top" title="백준 16929번 Two Dots">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -323,8 +295,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/02/19/algorithm7576/";
-    var disqus_url = "https://kyu9341.github.io/algorithm/2020/02/19/algorithm7576/";
+    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/02/17/algorithm2133/";
+    var disqus_url = "https://kyu9341.github.io/algorithm/2020/02/17/algorithm2133/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

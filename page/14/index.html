@@ -16,9 +16,9 @@
           kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/page/12/">
+    <link rel="canonical" href="https://kyu9341.github.io/page/14/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/page/12/">
+    <link rel="canonical" href="https://kyu9341.github.io/page/14/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -195,24 +195,23 @@
 
 <div class="post-preview">
 
-    <a href="/C-C/2019/10/11/C1/">
+    <a href="/algorithm/2019/08/20/algorithm1110/">
         <h2 class="post-title">
-            (C) 포인터 사용법
+            백준 1110번 더하기 사이클
         </h2>
         <h3 class="post-subtitle">
-            C/C++
+            Baekjoon algorithm
         </h3>
         <div class="post-content-preview">
-            이번 학기에 배우는 영상처리에서 C언어를 이용하여 작업을 진행하다가 포인터에 대한 추가적인 이해가 필요하다고 생각되어 내가 C언어에서 부족하다고 생각했던 부분들을 다시 공부해 볼 생각이다. C언어 하면 포인터이기 때문에 포인터의 기초부터 다시 리뷰해보자.
-포인터란?메모리
-
-프로그램이 실행되기 위해 필요한 정보(값)을 저장하는 공간
-1byte(8 bit......
+            1110번
+더하기 사이클
+문제
+0보다 크거나 같고, 99보다 작거나 같은 정수가 주어질 때 다음과 같은 연산을 할 수 있다. 먼저 주어진 수가 10보다 작다면 앞에 0을 붙여 두 자리 수로 만들고, 각 자리의 숫자를 더한다. 그 다음, 주어진 수의 가장 오른쪽 자리 수와 앞에서 구한 합의 가장 오른쪽 자리 수를 이어 붙이면 새로운 수를 만들 수 있다.......
         </div>
     </a>
     <p class="post-meta">
         Posted by kwon on
-        2019-10-11
+        2019-08-20
     </p>
 
 </div>
@@ -220,21 +219,20 @@
 
 <div class="post-preview">
 
-    <a href="/android/2019/10/01/android2/">
+    <a href="/python/2019/08/20/python2/">
         <h2 class="post-title">
-            안드로이드(android) Title Bar 지우기
+            파이썬 리스트의 모든 조합 구하기
         </h2>
         <h3 class="post-subtitle">
-            Android
+            Python
         </h3>
         <div class="post-content-preview">
-            Title Bar 지우기style.xml
-123456789101112&lt;resources&gt;    &lt;!-- Base application theme. --&gt;    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;        &lt;item name=......
+            리스트의 모든 조합 구하기123456789101112131415#중복 허용items = ['1', '2', '3', '4', '5']from itertools import permutationslist(permutations(items, 2))[('1', '2'), ('1', '3'), ('1', '4'), ('1', '5'), ('2', '1'), ......
         </div>
     </a>
     <p class="post-meta">
         Posted by kwon on
-        2019-10-01
+        2019-08-20
     </p>
 
 </div>
@@ -242,20 +240,21 @@
 
 <div class="post-preview">
 
-    <a href="/android/2019/10/01/android1/">
+    <a href="/python/2019/08/19/python1/">
         <h2 class="post-title">
-            안드로이드(android) 다이얼로그 띄우기
+            파이썬 리스트 원소 랜덤추출
         </h2>
         <h3 class="post-subtitle">
-            Android
+            Python
         </h3>
         <div class="post-content-preview">
-            다이얼로그 출력1234567private AlertDialog dialog; // 알림창AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);dialog = builder.setMessage("원하는 메세지 출력.")        .setPositiveButton("확인......
+            리스트 원소 랜덤추출12345678910import random#중복 허용count = 2sampleList = ['a', 'b', 'c', 'd', 'e']print [random.choice(sampleList) for i in range(count)]#중복 허용 Xprint random.sample(sampleList, count)
+...
         </div>
     </a>
     <p class="post-meta">
         Posted by kwon on
-        2019-10-01
+        2019-08-19
     </p>
 
 </div>
@@ -263,162 +262,23 @@
 
 <div class="post-preview">
 
-    <a href="/django/2019/09/16/djangoCommunity10/">
+    <a href="/django/2019/08/19/django1/">
         <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기10 [게시판 만들기2]
+            Django(장고) 가상환경 설정 및 프로젝트 생성
         </h2>
         <h3 class="post-subtitle">
             Django
         </h3>
         <div class="post-content-preview">
-            이번 포스팅에서는 글쓰기 기능과 글 상세보기 기능을 추가해보도록 하겠습니다.
-먼저 templates/board/board_write.html 파일을 생성한 뒤 다음과 같이 작성해주도록 합니다.
-1234567891011121314151617181920212223242526&#123;% raw %&#125;&#123;% extends "./base.htm......
+            가상환경을 사용하는 이유한 컴퓨터에서 여러 프로젝트를 관리할 때 같은 패키지를 사용하는데 버전차이 때문에 계속 패키지를 설치해야함.프로젝트 별로 패키지를 관리하는 공간을 분리 하기 위해 가상환경에서 작업
+사용하고자 하는 디렉토리 생성
+디렉토리로 이동 -&gt; python -m venv myenv(가상환경이름)
+C:\Users\Name\kwon&gt;......
         </div>
     </a>
     <p class="post-meta">
         Posted by kwon on
-        2019-09-16
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/django/2019/09/14/djangoCommunity9/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기9 [게시판 만들기1]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            이번 포스팅에서는 board앱으로 이동해서 게시판을 만들어보도록 하겠습니다.
-먼저 user 앱에서 사용했던 base.html파일을 복사하여 board/templates/board에 붙여넣도록 하겠습니다. 이 후 board_list.html파일 생성하여 base.html상속받아 다음과 같이 작성해보도록 하겠습니다.
-123456789101112131415......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-14
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/django/2019/09/14/djangoCommunity8/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기8 [장고 form 활용하기]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            이번 포스팅에서는 장고의 form을 활용하는 방법에 대해 알아보겠습니다.
-장고의 form은 템플릿 파일의 form태그에 필요한 필드들을 장고에서 관리해주고 만들어주는 기능입니다.
-먼저 login.html로 이동하여 장고 form에서 기본으로 제공해주는 화면으로 변경해보도록 하겠습니다.다음과 같이 현재 두가지의 필드를 지워주도록 합니다.
-12345678......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-14
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/django/2019/09/14/djangoCommunity7/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기7 [로그아웃 기능 및 템플릿 상속받기]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            저번 포스팅에서는 간단한 로그인 기능까지 구현해 보았는데요. 이번에는 간단한 로그아웃 기능과 템플릿의 상속에 대해 알아보겠습니다.
-먼저 간단하게 로그아웃 기능을 구현해보도록 하겠습니다.
-user/views.py 로 이동하여 다음과 같이 로그아웃 함수를 추가해주도록 합니다.
-12345def logout(request):    if request.sess......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-14
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/django/2019/09/09/djangoCommunity6/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기6 [로그인 기능 구현]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            로그인 기능을 구현하기 위해서는 세션에 대해 알아야 합니다. 세션이란, 웹사이트에 로그인을 하고나면 그 사이트에서는 다시 로그인할 필요 없이 여러 페이지의 기능을 이용할 수 있게 하기 위해 사용됩니다.
-일반적으로 웹에서 클라이언트와 서버가 있는데 클라이언트 안에는 쿠키라는게 들어있습니다. 쿠키란 하나의 저장소라고 보시면 되고 클라이언트는 지금 웹사이트......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-09
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/django/2019/09/06/djangoCommunity5/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기5 [이메일 필드 추가 및 부트스트랩 테마 적용]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            이전 포스팅에서 장고의 템플릿과 뷰를 통해 간단한 회원가입 기능까지 구현해 보았습니다.
-이번 포스팅에서는 로그인 기능 구현을 시작하기에 앞서 회원가입 시에 사용자 이메일또한 입력을 받을 수 있도록 변경하고 부트스트랩의 테마를 적용시킨는 방법에 대해 알아보겠습니다.
-먼저 이메일을 필드를 추가하기 위해 user/models.py 로 이동하여 다음과 같이 ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-06
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/django/2019/09/06/djangoCommunity4/">
-        <h2 class="post-title">
-            Django(장고)를 이용한 커뮤니티 만들기4 [템플릿(Template)과 뷰(view)를 이용한 회원가입 기능 구현]
-        </h2>
-        <h3 class="post-subtitle">
-            Django
-        </h3>
-        <div class="post-content-preview">
-            저번 포스팅에서는 Django의 관리자도구를 사용하는 방법을 알아보았습니다.
-이번 포스팅에서는 템플릿(Template)과 뷰(view)를 활용하여 회원가입 기능을 구현해보도록 하겠습니다.
-먼저 템플릿에대해 간단히 알아보고 들어가겠습니다.
-템플릿(Template) 은 View로부터 전달된 데이타를 템플릿에 적용하여 Dynamic 한 웹페이지를 만드는데 ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-09-06
+        2019-08-19
     </p>
 
 </div>
@@ -431,13 +291,9 @@ user/views.py 로 이동하여 다음과 같이 로그아웃 함수를 추가해
 <ul class="pager">
     
         <li class="previous">
-            <a href="/page/11/">&larr; Newer Posts</a>
+            <a href="/page/13/">&larr; Newer Posts</a>
         </li>
     
-    
-        <li class="next">
-            <a href="/page/13/">Older Posts &rarr;</a>
-        </li>
     
 </ul>
 
