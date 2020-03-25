@@ -8,8 +8,16 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/03/25/algorithm15683/</loc>
-        <lastmod>2020-03-24T17:18:00.004Z</lastmod>
+        <loc>https://kyu9341.github.io/algorithm/2020/03/26/algorithm14890/</loc>
+        <lastmod>2020-03-25T17:42:02.468Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/C-C/2020/01/12/C++STLsort/</loc>
+        <lastmod>2020-03-25T10:02:31.998Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +25,15 @@
 
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/03/24/algorithm14500/</loc>
-        <lastmod>2020-03-24T17:02:52.025Z</lastmod>
+        <lastmod>2020-03-25T05:34:58.033Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/03/25/algorithm15683/</loc>
+        <lastmod>2020-03-24T17:18:00.004Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -730,14 +746,6 @@
     <url>
         <loc>https://kyu9341.github.io/C-C/2020/01/17/C++getline()/</loc>
         <lastmod>2020-01-19T00:26:24.422Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/C-C/2020/01/12/C++STLsort/</loc>
-        <lastmod>2020-01-17T14:23:49.032Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
