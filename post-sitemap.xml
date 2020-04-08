@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/04/05/algorithm2357/</loc>
+        <lastmod>2020-04-08T11:41:37.101Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/02/16/algorithm13398/</loc>
         <lastmod>2020-04-06T23:49:46.627Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,14 +34,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/04/05/algorithm13544/</loc>
         <lastmod>2020-04-05T05:04:38.731Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/04/05/algorithm2357/</loc>
-        <lastmod>2020-04-05T05:03:57.243Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
