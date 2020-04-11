@@ -8,15 +8,22 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/categories/algorithm/</loc>
-        <lastmod>2020-04-08T15:30:49.503Z</lastmod>
+        <loc>https://kyu9341.github.io/categories/java/</loc>
+        <lastmod>2020-04-11T02:33:20.527Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/categories/java/</loc>
-        <lastmod>2020-03-30T11:32:38.680Z</lastmod>
+        <loc>https://kyu9341.github.io/categories/error/</loc>
+        <lastmod>2020-04-11T01:35:02.338Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/categories/algorithm/</loc>
+        <lastmod>2020-04-08T15:30:49.503Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
