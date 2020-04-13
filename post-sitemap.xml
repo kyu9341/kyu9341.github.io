@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootHATEOAS/</loc>
+        <lastmod>2020-04-13T01:59:35.214Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootCORS/</loc>
+        <lastmod>2020-04-13T01:57:49.746Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/java/2020/04/12/java_springBootException/</loc>
         <lastmod>2020-04-12T07:21:35.853Z</lastmod>
         <changefreq>weekly</changefreq>

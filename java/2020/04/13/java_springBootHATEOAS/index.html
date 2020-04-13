@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          스프링 부트 - ExceptionHandler - kwon | kwon&#39;s Blog
+          스프링 부트 - HATEOAS(Hypermedia As The Engine Of Application State) - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/java/2020/04/12/java_springbootexception/">
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/04/13/java_springboothateoas/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/java/2020/04/12/java_springBootException/">
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/04/13/java_springBootHATEOAS/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>스프링 부트 - ExceptionHandler</h1>
+                    <h1>스프링 부트 - HATEOAS(Hypermedia As The Engine Of Application State)</h1>
                     <h2 class="subheading">Java</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2020-04-12
+                        2020-04-13
                     </span>
                 </div>
             </div>
@@ -200,86 +200,46 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="스프링-부트-ExceptionHandler"><a href="#스프링-부트-ExceptionHandler" class="headerlink" title="스프링 부트 ExceptionHandler"></a>스프링 부트 ExceptionHandler</h2><ul>
-<li>스프링 부트는 에러 핸들러기 기본적으로 등록이 되어있다.</li>
-<li>스프링 부트가 제공하는 기본 예외 처리기<ul>
-<li>BasicErrorController<ul>
-<li>HTML과 JSON 응답 지원</li>
-</ul>
-</li>
-<li>커스터마이징 방법<ul>
-<li>EroorController구현</li>
+                <h2 id="스프링-부트-HATEOAS-Hypermedia-As-The-Engine-Of-Application-State"><a href="#스프링-부트-HATEOAS-Hypermedia-As-The-Engine-Of-Application-State" class="headerlink" title="스프링 부트 - HATEOAS(Hypermedia As The Engine Of Application State)"></a>스프링 부트 - HATEOAS(Hypermedia As The Engine Of Application State)</h2><ul>
+<li>링크에 사용 가능한 URL을 리소스로 전달하여 client가 참고하여 사용할 수 있도록 하는 것</li>
+<li>HATEOAS는 RESTful API를 사용하는 클라이언트가 전적으로 서버에 의해 동적으로 상호작용을 할 수 있다.<ul>
+<li>클라이언트가 서버에 요청시 서버는 요청에 의존되는 URI를 Response에 포함시켜 반환한다.</li>
 </ul>
 </li>
 </ul>
-</li>
+<h3 id="REST-API"><a href="#REST-API" class="headerlink" title="REST API"></a>REST API</h3><ul>
+<li>REST API는 Representational State Transfer API의 약자로, 간단히 설명하면 웹 애플리케이션이 제공하는 각각의 데이터를 리소스, 즉 자원으로 간주하고 각각의 자원에 고유한 URI(Uniform Resource Identifier)를 할당함으로써 이를 표현하는 API를 정의하기 위한 소프트웨어 아키텍처 스타일이다.</li>
 </ul>
 <hr>
-<h4 id="소스-코드"><a href="#소스-코드" class="headerlink" title="소스 코드"></a>소스 코드</h4><ul>
-<li>SpringbootexceptionApplication.java<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootexceptionApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringbootexceptionApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>SampleException.java<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
 <ul>
-<li><p>AppError.java : Exception발생 시 해당 Exception에 대한 정보를 저장</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppError</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String reason;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getReason</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reason;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setReason</span><span class="params">(String reason)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.reason = reason;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>의존성 추가</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-hateoas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>SampleController.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> SampleException();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(SampleException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> @<span class="title">ResponseBody</span> <span class="title">AppError</span> <span class="title">sampleError</span>(<span class="title">SampleException</span> <span class="title">e</span>)</span>&#123;</span><br><span class="line">        AppError appError = <span class="keyword">new</span> AppError();</span><br><span class="line">        appError.setMessage(<span class="string">"error.app.key"</span>);</span><br><span class="line">        appError.setReason(<span class="string">"IDK IDK IDK"</span>);</span><br><span class="line">        <span class="keyword">return</span> appError;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>/hello 라는 요청이 들어오면 SampleException을 발생시킨다.</p>
-<ul>
-<li>@ExceptionHandler 어노테이션이 해당 예외를 받아서 처리</li>
-</ul>
-</li>
-<li><p>appError객체에 메시지를 넣고 반환한다. (JSON형식)</p>
-</li>
-</ul>
-<div style="width: 400px; height: 120px;">
-    <img src="https://kyu9341.github.io/img/exception1.png" style="width: 400px
-    ; height: 120px;">
-</div>
-- 위와 같이 JSON형태로 반환되는 것을 볼 수 있다.
-
-<h3 id="커스텀-에러-페이지"><a href="#커스텀-에러-페이지" class="headerlink" title="커스텀 에러 페이지"></a>커스텀 에러 페이지</h3><ul>
-<li>상태 코드 값에 따라 에러 페이지 보여줄 수 있다.</li>
-<li>src/main/resources/(static or templates)/error/ 와 같은 경로에 html파일을 작성하면 된다.<ul>
-<li>이때, 404와 같이 파일명이 상태 코드와 같거나 5xx같이 패턴을 맞추어 파일명을 만들어야 한다.</li>
-</ul>
+<li><p>테스트 코드</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">WebMvcTest</span>(<span class="title">SampleController</span>.<span class="title">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">SampleControllerTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MockMvc mockMvc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mockMvc.perform(MockMvcRequestBuilders.get(<span class="string">"/hello"</span>))</span><br><span class="line">                .andDo(print())</span><br><span class="line">                .andExpect(status().isOk())</span><br><span class="line">                .andExpect(jsonPath(<span class="string">"$._links.self"</span>).exists());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>_links</code>는 HEATEOAS를 구현하기 위해 스프링 부트에서 생성한 JSON name이다. 그 뒤의 self는 자기 참조를 뜻하는 것을 JSON을 통해서 나타낸 것이다.</p>
 </li>
 </ul>
 <hr>
 <ul>
-<li>위에서 작성했던 SampleController에서 @ExceptionHandler 부분을 주석으로 변경하여 500번대 에러를 발생시킬 수 있도록 한다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleController</span> </span>&#123;</span><br><span class="line">  <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> SampleException();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*    @ExceptionHandler(SampleException.class)</span></span><br><span class="line"><span class="comment">  public @ResponseBody AppError sampleError(SampleException e)&#123;</span></span><br><span class="line"><span class="comment">      AppError appError = new AppError();</span></span><br><span class="line"><span class="comment">      appError.setMessage("error.app.key");</span></span><br><span class="line"><span class="comment">      appError.setReason("IDK IDK IDK");</span></span><br><span class="line"><span class="comment">      return appError;</span></span><br><span class="line"><span class="comment">  &#125;*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>소스 코드</p>
+</li>
+<li><p><code>DemospringhateoasApplication.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemospringhateoasApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DemospringhateoasApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Hello.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String prefix;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPrefix</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> prefix;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPrefix</span><span class="params">(String prefix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.prefix = prefix;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> prefix+ <span class="string">" "</span> + name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>SampleController.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> EntityModel&lt;Hello&gt; <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Hello hello = <span class="keyword">new</span> Hello();</span><br><span class="line">        hello.setPrefix(<span class="string">"Hey, "</span>);</span><br><span class="line">        hello.setName(<span class="string">"Kwon"</span>);</span><br><span class="line"></span><br><span class="line">        EntityModel&lt;Hello&gt; helloEntityModel = <span class="keyword">new</span> EntityModel&lt;&gt;(hello);</span><br><span class="line">        helloEntityModel.add(linkTo(methodOn(SampleController<span class="class">.<span class="keyword">class</span>).<span class="title">hello</span>()).<span class="title">withSelfRel</span>())</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> helloEntityModel;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>EntityModel 객체에 HATEOAS를 구현하기 위해 <code>/hello</code> URL의 링크 정보를 추가한다.</p>
+</li>
+<li><p>withSelfRel 메소드로 해당 URL이 자기 참조인 것을 나타낸다.</p>
 </li>
 </ul>
-<hr>
+<p><code>Body = {&quot;prefix&quot;:&quot;Hey, &quot;,&quot;name&quot;:&quot;Kwon&quot;,&quot;_links&quot;:{&quot;self&quot;:{&quot;href&quot;:&quot;http://localhost/hello&quot;}}}</code></p>
 <ul>
-<li><p>resources/static/ 의 경로에 다음과 같이 html파일을 작성한다.</p>
-</li>
-<li><p><code>404.html</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>404<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<div style="width: 400px; height: 120px;">
-  <img src="https://kyu9341.github.io/img/exception2.png" style="width: 400px
-  ; height: 120px;">
-</div></li>
-<li><p><code>/</code>에 대한 페이지를 작성하지 않았기 때문에 Not Found(404)에러가 발생하여 404.html이 반환된 것을 확인할 수 있다.</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><code>5xx.html</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>5xx<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<div style="width: 400px; height: 120px;">
-    <img src="https://kyu9341.github.io/img/exception3.png" style="width: 400px
-    ; height: 120px;">
-</div>
-
-<ul>
-<li><code>/hello</code> 요청을 보내면 예외를 발생시키도록 작성해두었으므로 500번대 서버 에러가 발생하여 5xx.html 이 반환된 것을 볼 수 있다.</li>
+<li>테스트를 돌려보면 다음과 같이 추가된 링크 정보가 출력되는 것을 볼 수 있다.</li>
 </ul>
 <blockquote>
 <p>참조<br><a href="https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/dashboard" target="_blank" rel="external nofollow noopener noreferrer">https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/dashboard</a></p>
@@ -293,12 +253,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/java/2020/04/13/java_springBootHATEOAS/" data-toggle="tooltip" data-placement="top" title="스프링 부트 - HATEOAS(Hypermedia As The Engine Of Application State)">&larr; Previous Post</a>
+                            <a href="/java/2020/04/13/java_springBootCORS/" data-toggle="tooltip" data-placement="top" title="스프링 부트 - CORS(Cross-Origin Resource Sharing)">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/java/2020/04/12/java_springBootThymeleaf/" data-toggle="tooltip" data-placement="top" title="스프링 부트 - Thymeleaf, HtmlUnit">Next Post &rarr;</a>
+                            <a href="/java/2020/04/12/java_springBootException/" data-toggle="tooltip" data-placement="top" title="스프링 부트 - ExceptionHandler">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -369,8 +329,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/java/2020/04/12/java_springBootException/";
-    var disqus_url = "https://kyu9341.github.io/java/2020/04/12/java_springBootException/";
+    var disqus_identifier = "https://kyu9341.github.io/java/2020/04/13/java_springBootHATEOAS/";
+    var disqus_url = "https://kyu9341.github.io/java/2020/04/13/java_springBootHATEOAS/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
