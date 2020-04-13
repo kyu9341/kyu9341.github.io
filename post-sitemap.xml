@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootMariaDB/</loc>
+        <lastmod>2020-04-13T13:02:31.576Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootInmemoryDB/</loc>
+        <lastmod>2020-04-13T06:01:33.875Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootCORS/</loc>
         <lastmod>2020-04-13T05:57:05.180Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -42,14 +58,6 @@
     <url>
         <loc>https://kyu9341.github.io/java/2020/04/12/java_springBootException/</loc>
         <lastmod>2020-04-13T05:56:31.861Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootInmemoryDB/</loc>
-        <lastmod>2020-04-13T05:56:10.893Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
