@@ -8,24 +8,8 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootHATEOAS/</loc>
-        <lastmod>2020-04-13T01:59:35.214Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootCORS/</loc>
-        <lastmod>2020-04-13T01:57:49.746Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/java/2020/04/12/java_springBootException/</loc>
-        <lastmod>2020-04-12T07:21:35.853Z</lastmod>
+        <lastmod>2020-04-13T05:57:05.180Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -33,7 +17,39 @@
 
     <url>
         <loc>https://kyu9341.github.io/java/2020/04/12/java_springBootThymeleaf/</loc>
-        <lastmod>2020-04-12T03:45:07.463Z</lastmod>
+        <lastmod>2020-04-13T05:56:49.095Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/04/10/java_springBootStatic/</loc>
+        <lastmod>2020-04-13T05:56:43.945Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootHATEOAS/</loc>
+        <lastmod>2020-04-13T05:56:33.713Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/04/12/java_springBootException/</loc>
+        <lastmod>2020-04-13T05:56:31.861Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/04/13/java_springBootInmemoryDB/</loc>
+        <lastmod>2020-04-13T05:56:10.893Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -42,14 +58,6 @@
     <url>
         <loc>https://kyu9341.github.io/java/2020/04/11/java_springBootIndexFavicon/</loc>
         <lastmod>2020-04-12T03:41:44.745Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/java/2020/04/10/java_springBootStatic/</loc>
-        <lastmod>2020-04-11T02:40:21.406Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
