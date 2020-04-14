@@ -201,7 +201,7 @@
                 post-container">
 
                 <h2 id="스프링-부트-데이터베이스-초기화"><a href="#스프링-부트-데이터베이스-초기화" class="headerlink" title="스프링 부트 - 데이터베이스 초기화"></a>스프링 부트 - 데이터베이스 초기화</h2><h4 id="JPA를-사용한-데이터베이스-초기화"><a href="#JPA를-사용한-데이터베이스-초기화" class="headerlink" title="JPA를 사용한 데이터베이스 초기화"></a>JPA를 사용한 데이터베이스 초기화</h4><ul>
-<li><code>appication.properties</code><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.driverClassName</span>=<span class="string">org.mariadb.jdbc.Driver</span></span><br><span class="line"><span class="comment"># database명이 springboot이다.</span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mariadb://localhost:3307/springboot</span></span><br><span class="line"><span class="comment"># 자신의 userid (루트 계정이라면 root)</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="comment"># 자신의 password</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">asas1207</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.jpa.hibernate.ddl-auto</span>=<span class="string">update</span></span><br><span class="line"><span class="comment"># 기본값 : false</span></span><br><span class="line"><span class="meta">spring.jpa.generate-ddl</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.jpa.show-sql</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure></li>
+<li><code>appication.properties</code><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.driverClassName</span>=<span class="string">org.mariadb.jdbc.Driver</span></span><br><span class="line"><span class="comment"># database명이 springboot이다.</span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mariadb://localhost:3307/springboot</span></span><br><span class="line"><span class="comment"># 자신의 userid (루트 계정이라면 root)</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">userid</span></span><br><span class="line"><span class="comment"># 자신의 password</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">password</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.jpa.hibernate.ddl-auto</span>=<span class="string">update</span></span><br><span class="line"><span class="comment"># 기본값 : false</span></span><br><span class="line"><span class="meta">spring.jpa.generate-ddl</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.jpa.show-sql</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure></li>
 <li><strong>spring.jpa.hibernate.ddl-auto</strong> 의 옵션에는 다음과 같은 값들을 넣을 수 있다.<ul>
 <li><code>update</code> : 기존의 스키마를 유지하며 JPA에 의해 변경된 부분만 추가한다.</li>
 <li><code>validate</code> : 엔티티와 테이블이 정상적으로 매핑되어있는지만 검증한다.</li>
@@ -222,8 +222,10 @@
     <img src="https://kyu9341.github.io/img/dbinit1.png" style="width: 1050px
     ; height: 120px;">
 </div>
-- 기존에 존재하는 테이블이 drop되고 새로운 테이블이 생성되는 것을 볼 수 있다.
 
+<ul>
+<li>기존에 존재하는 테이블이 drop되고 새로운 테이블이 생성되는 것을 볼 수 있다.</li>
+</ul>
 <hr>
 <ul>
 <li><p>서비스 운영 시에는 다음과 같은 설정을 주로 사용한다.</p>
@@ -253,7 +255,7 @@
 
 </li>
 </ul>
-<div style="width: 550px; height: 50px;">
+<div style="width: 600px; height: 80px;">
     <img src="https://kyu9341.github.io/img/dbinit5.png" style="width: 550px; height: 50px;">
 </div>
 
