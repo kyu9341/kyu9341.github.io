@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/java/2020/04/21/java_springBootVaildation/</loc>
+        <lastmod>2020-04-21T07:33:06.909Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/04/21/programmers_42885/</loc>
         <lastmod>2020-04-21T05:43:52.830Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -34,14 +42,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/04/20/programmers_60058/</loc>
         <lastmod>2020-04-21T05:41:47.007Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/java/2020/04/21/java_springBootVaildation/</loc>
-        <lastmod>2020-04-20T16:54:48.413Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
