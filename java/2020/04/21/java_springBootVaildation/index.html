@@ -278,9 +278,10 @@
 </ul>
 </li>
 <li><p><code>@RequiredArgsConstructor</code> : lombok이 제공하는 어노테이션, private final 타입의 맴버 변수의 생성자를 만들어준다.</p>
+<ul>
+<li>다음과 같은 의미<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">SignUpFormValidator</span><span class="params">(AccountRepository accountRepository)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.accountRepository = accountRepository;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 </li>
-<li><p>다음과 같은 의미</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">SignUpFormValidator</span><span class="params">(AccountRepository accountRepository)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.accountRepository = accountRepository;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>(스프링 4.2 이후 어떤 빈이 생성자가 하나이고 그 생성자가 받는 파라미터들이 빈으로 등록이 되어있다면 자동으로 빈을 주입해주기 때문에 @Autowired @Inject 없이도 의존성 주입이 됨.)</p>
 </li>
 </ul>
@@ -299,9 +300,13 @@
 
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/algorithm/2020/04/21/programmers_42885/" data-toggle="tooltip" data-placement="top" title="프로그래머스 - 구명보트">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
-                            <a href="/algorithm/2020/04/19/programmers_42842/" data-toggle="tooltip" data-placement="top" title="프로그래머스 - 카펫">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/04/20/programmers_60058/" data-toggle="tooltip" data-placement="top" title="프로그래머스 - 괄호 변환">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
