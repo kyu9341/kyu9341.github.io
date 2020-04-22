@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          프로그래머스 - 구명보트 - kwon | kwon&#39;s Blog
+          프로그래머스 - 네트워크 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/04/21/programmers_42885/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/04/22/programmers_42888/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/04/21/programmers_42885/">
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/04/22/programmers_42888/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,11 +177,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>프로그래머스 - 구명보트</h1>
+                    <h1>프로그래머스 - 네트워크</h1>
                     <h2 class="subheading">Programmers algorithm</h2>
                     <span class="meta">
                         Posted by kwon on
-                        2020-04-21
+                        2020-04-22
                     </span>
                 </div>
             </div>
@@ -200,29 +200,51 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="프로그래머스-구명보트"><a href="#프로그래머스-구명보트" class="headerlink" title="프로그래머스 - 구명보트"></a>프로그래머스 - 구명보트</h1><h2 id="구명보트"><a href="#구명보트" class="headerlink" title="구명보트"></a>구명보트</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>무인도에 갇힌 사람들을 구명보트를 이용하여 구출하려고 합니다. 구명보트는 작아서 한 번에 최대 2명씩 밖에 탈 수 없고, 무게 제한도 있습니다.</p>
-<p>예를 들어, 사람들의 몸무게가 [70kg, 50kg, 80kg, 50kg]이고 구명보트의 무게 제한이 100kg이라면 2번째 사람과 4번째 사람은 같이 탈 수 있지만 1번째 사람과 3번째 사람의 무게의 합은 150kg이므로 구명보트의 무게 제한을 초과하여 같이 탈 수 없습니다.</p>
-<p>구명보트를 최대한 적게 사용하여 모든 사람을 구출하려고 합니다.</p>
-<p>사람들의 몸무게를 담은 배열 people과 구명보트의 무게 제한 limit가 매개변수로 주어질 때, 모든 사람을 구출하기 위해 필요한 구명보트 개수의 최솟값을 return 하도록 solution 함수를 작성해주세요.</p>
-<h3 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h3><ul>
-<li>무인도에 갇힌 사람은 1명 이상 50,000명 이하입니다.</li>
-<li>각 사람의 몸무게는 40kg 이상 240kg 이하입니다.</li>
-<li>구명보트의 무게 제한은 40kg 이상 240kg 이하입니다.</li>
-<li>구명보트의 무게 제한은 항상 사람들의 몸무게 중 최댓값보다 크게 주어지므로 사람들을 구출할 수 없는 경우는 없습니다.</li>
+                <h1 id="프로그래머스-오픈채팅방"><a href="#프로그래머스-오픈채팅방" class="headerlink" title="프로그래머스 - 오픈채팅방"></a>프로그래머스 - 오픈채팅방</h1><h2 id="오픈채팅방"><a href="#오픈채팅방" class="headerlink" title="오픈채팅방"></a>오픈채팅방</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>카카오톡 오픈채팅방에서는 친구가 아닌 사람들과 대화를 할 수 있는데, 본래 닉네임이 아닌 가상의 닉네임을 사용하여 채팅방에 들어갈 수 있다.</p>
+<p>신입사원인 김크루는 카카오톡 오픈 채팅방을 개설한 사람을 위해, 다양한 사람들이 들어오고, 나가는 것을 지켜볼 수 있는 관리자창을 만들기로 했다. 채팅방에 누군가 들어오면 다음 메시지가 출력된다.</p>
+<p>[닉네임]님이 들어왔습니다.</p>
+<p>채팅방에서 누군가 나가면 다음 메시지가 출력된다.</p>
+<p>[닉네임]님이 나갔습니다.</p>
+<p>채팅방에서 닉네임을 변경하는 방법은 다음과 같이 두 가지이다.</p>
+<ul>
+<li>채팅방을 나간 후, 새로운 닉네임으로 다시 들어간다.</li>
+<li>채팅방에서 닉네임을 변경한다.<br>닉네임을 변경할 때는 기존에 채팅방에 출력되어 있던 메시지의 닉네임도 전부 변경된다.</li>
 </ul>
-<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><p>people    limit    return<br>[70, 50, 80, 50]    100    3<br>[70, 80, 50]    100    3</p>
-<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://programmers.co.kr/learn/courses/30/lessons/42885" target="_blank" rel="external nofollow noopener noreferrer">https://programmers.co.kr/learn/courses/30/lessons/42885</a></p>
-<h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
-<li>사람들의 무게가 담긴 벡터를 내림차순 정렬한다.</li>
-<li>right에 가장 가벼운 사람의 위치를 저장한다.</li>
-<li>남은 사람들 중 가장 무거운 사람을 선택하고 남은 사람들 중 가장 가벼운 사람의 무게를 차례로 누적한다.<ul>
-<li>누적될 무게가 limit보다 작거나 같은 동안 가장 가벼운 사람이 무게를 누적하고 right를 1줄여 다음 가장 가벼운 사람을 찾는다.</li>
+<p>예를 들어, 채팅방에 Muzi와 Prodo라는 닉네임을 사용하는 사람이 순서대로 들어오면 채팅방에는 다음과 같이 메시지가 출력된다.</p>
+<p>Muzi님이 들어왔습니다.<br>Prodo님이 들어왔습니다.</p>
+<p>채팅방에 있던 사람이 나가면 채팅방에는 다음과 같이 메시지가 남는다.</p>
+<p>Muzi님이 들어왔습니다.<br>Prodo님이 들어왔습니다.<br>Muzi님이 나갔습니다.</p>
+<p>Muzi가 나간후 다시 들어올 때, Prodo 라는 닉네임으로 들어올 경우 기존에 채팅방에 남아있던 Muzi도 Prodo로 다음과 같이 변경된다.</p>
+<p>Prodo님이 들어왔습니다.<br>Prodo님이 들어왔습니다.<br>Prodo님이 나갔습니다.<br>Prodo님이 들어왔습니다.</p>
+<p>채팅방은 중복 닉네임을 허용하기 때문에, 현재 채팅방에는 Prodo라는 닉네임을 사용하는 사람이 두 명이 있다. 이제, 채팅방에 두 번째로 들어왔던 Prodo가 Ryan으로 닉네임을 변경하면 채팅방 메시지는 다음과 같이 변경된다.</p>
+<p>Prodo님이 들어왔습니다.<br>Ryan님이 들어왔습니다.<br>Prodo님이 나갔습니다.<br>Prodo님이 들어왔습니다.</p>
+<p>채팅방에 들어오고 나가거나, 닉네임을 변경한 기록이 담긴 문자열 배열 record가 매개변수로 주어질 때, 모든 기록이 처리된 후, 최종적으로 방을 개설한 사람이 보게 되는 메시지를 문자열 배열 형태로 return 하도록 solution 함수를 완성하라.</p>
+<h3 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h3><ul>
+<li>record는 다음과 같은 문자열이 담긴 배열이며, 길이는 1 이상 100,000 이하이다.</li>
+<li>다음은 record에 담긴 문자열에 대한 설명이다.<ul>
+<li>모든 유저는 [유저 아이디]로 구분한다.</li>
+<li>[유저 아이디] 사용자가 [닉네임]으로 채팅방에 입장 - Enter [유저 아이디] [닉네임] (ex. Enter uid1234 Muzi)</li>
+<li>[유저 아이디] 사용자가 채팅방에서 퇴장 - Leave [유저 아이디] (ex. Leave uid1234)</li>
+<li>[유저 아이디] 사용자가 닉네임을 [닉네임]으로 변경 - Change [유저 아이디] [닉네임] (ex. Change uid1234 Muzi)</li>
+<li>첫 단어는 Enter, Leave, Change 중 하나이다.</li>
+<li>각 단어는 공백으로 구분되어 있으며, 알파벳 대문자, 소문자, 숫자로만 이루어져있다.</li>
+<li>유저 아이디와 닉네임은 알파벳 대문자, 소문자를 구별한다.</li>
+<li>유저 아이디와 닉네임의 길이는 1 이상 10 이하이다.</li>
+<li>채팅방에서 나간 유저가 닉네임을 변경하는 등 잘못 된 입력은 주어지지 않는다.</li>
 </ul>
 </li>
-<li>위를 반복하다가 가장 무거운 사람의 인덱스가 더 커진다면 바로 종료하고,</li>
-<li>현재 가장 무거운 사람와 가장 가벼운 사람의 인덱스가 같아지면 마지막 보트를 추가하고 종료한다.</li>
 </ul>
-<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; people, <span class="keyword">int</span> limit)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 내림차순 정렬</span></span><br><span class="line">	sort(people.<span class="built_in">begin</span>(), people.<span class="built_in">end</span>(), greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">	<span class="keyword">int</span> right = people.<span class="built_in">size</span>() - <span class="number">1</span>; <span class="comment">// 가장 가벼운 사람의 위치</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i == right) &#123; <span class="comment">// 같아지는 경우 마지막 보트를 추가하고 종료</span></span><br><span class="line">			answer++;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (i &gt; right) <span class="keyword">break</span>; <span class="comment">// 모든 인원을 태운 경우</span></span><br><span class="line">		<span class="keyword">int</span> sum = people[i]; <span class="comment">// 누적될 무게 초기화</span></span><br><span class="line">		<span class="keyword">while</span> (sum + people[right] &lt;= limit) &#123;</span><br><span class="line">			sum += people[right--]; <span class="comment">// 남은 사람 중 가장 가벼운 사람을 태운다.</span></span><br><span class="line">		&#125;</span><br><span class="line">		answer++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><p>record    result<br>[“Enter uid1234 Muzi”, “Enter uid4567 Prodo”,”Leave uid1234”,”Enter uid1234 Prodo”,”Change uid4567 Ryan”]    [“Prodo님이 들어왔습니다.”, “Ryan님이 들어왔습니다.”, “Prodo님이 나갔습니다.”, “Prodo님이 들어왔습니다.”]</p>
+<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://programmers.co.kr/learn/courses/30/lessons/42888" target="_blank" rel="external nofollow noopener noreferrer">https://programmers.co.kr/learn/courses/30/lessons/42888</a></p>
+<h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
+<li>입력 문자열을 분리하여 맨 앞의 단어에 따라 주어진 조건을 처리한다.<ul>
+<li>Enter인 경우 해쉬맵에 uid를 키값으로 하고 nickname을 벨류값으로 저장하고, check에 true, order에 uid를 넣어 어떤 유저가 들어왔었는지 기록한다.</li>
+<li>Leave인 경우 check에 false, order에 uid를 넣어 어떤 유저가 나갔었는지 기록한다.</li>
+<li>Change인 경우 해쉬 맵의 해당 uid를 키로 하는 벨류 값을 변경한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; solution(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; record) &#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; answer;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; hash_map;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; order;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; record.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">		<span class="built_in">string</span> tmp = <span class="string">""</span>;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; record[i].<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">			<span class="comment">// 띄어쓰기 또는 문자열의 마지막마다 끊어서 저장</span></span><br><span class="line">			<span class="keyword">if</span> (record[i][j] == <span class="string">' '</span> || j == record[i].<span class="built_in">size</span>() - <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (j == record[i].<span class="built_in">size</span>() - <span class="number">1</span>) v.push_back(tmp + record[i][j]);</span><br><span class="line">				<span class="keyword">else</span> v.push_back(tmp);</span><br><span class="line">				tmp = <span class="string">""</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				tmp += record[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (v[<span class="number">0</span>] == <span class="string">"Enter"</span>) &#123; <span class="comment">// Enter</span></span><br><span class="line">			check.push_back(<span class="literal">true</span>);</span><br><span class="line">			order.push_back(v[<span class="number">1</span>]);</span><br><span class="line">			hash_map[v[<span class="number">1</span>]] = v[<span class="number">2</span>]; <span class="comment">// 해쉬맵에 uid를 키값으로 하고 nickname을 벨류값으로 저장</span></span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (v[<span class="number">0</span>] == <span class="string">"Leave"</span>) &#123; <span class="comment">// Leave</span></span><br><span class="line">			check.push_back(<span class="literal">false</span>);</span><br><span class="line">			order.push_back(v[<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123; <span class="comment">// Change</span></span><br><span class="line">			hash_map[v[<span class="number">1</span>]] = v[<span class="number">2</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; order.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">		<span class="built_in">string</span> inout = check[i] == <span class="number">1</span> ? <span class="string">"님이 들어왔습니다."</span> : <span class="string">"님이 나갔습니다."</span>;</span><br><span class="line">		answer.push_back(hash_map[order[i]] + inout);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -231,13 +253,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/algorithm/2020/04/22/programmers_42888/" data-toggle="tooltip" data-placement="top" title="프로그래머스 - 네트워크">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/java/2020/04/21/java_springBootVaildation/" data-toggle="tooltip" data-placement="top" title="스프링 부트 - 유효성 검사">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/04/21/programmers_42885/" data-toggle="tooltip" data-placement="top" title="프로그래머스 - 구명보트">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -308,8 +326,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/04/21/programmers_42885/";
-    var disqus_url = "https://kyu9341.github.io/algorithm/2020/04/21/programmers_42885/";
+    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/04/22/programmers_42888/";
+    var disqus_url = "https://kyu9341.github.io/algorithm/2020/04/22/programmers_42888/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
