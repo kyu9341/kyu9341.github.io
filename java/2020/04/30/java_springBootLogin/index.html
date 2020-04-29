@@ -226,6 +226,7 @@
 <li>익명 사용자인 경우에는 null을, 익명 사용자가 아닌 경우에는 실제 account 객체를 가져온다.</li>
 <li>하지만 지금 로그인 할 때 사용한 Principal에는 Account라는 프로퍼티가 없다.</li>
 <li>따라서 Account라는 프로퍼티를 가지고 있는 중간 역할을 해줄 수 있는 객체가 필요하다.</li>
+<li>핸들러에서 현재 로그인한 유저의 정보가 필요할 때 위와 같이 사용할 수 있다.</li>
 </ul>
 <ul>
 <li><code>UserAccount.java</code> : 스프링 시큐리티가 다루는 유저 정보와 우리의 도메인에서 다루는 유저 정보 사이의 갭을 매꿔주는 일종의 어댑터 역할<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAccount</span> <span class="keyword">extends</span> <span class="title">User</span> </span>&#123; <span class="comment">// 스프링 시큐리티의 User를 상속</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Account account;</span><br><span class="line">    <span class="comment">// 스프링 시큐리티가 다루는 유저 정보를 우리가 가지고 있는 도메인의 유저 정보와 연동</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserAccount</span><span class="params">(Account account)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(account.getNickname(), account.getPassword(), List.of(<span class="keyword">new</span> SimpleGrantedAuthority(<span class="string">"ROLE_USER"</span>)));</span><br><span class="line">        <span class="keyword">this</span>.account = account;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -241,7 +242,10 @@
 <li>스프링 시큐리티 로그인/로그아웃 설정</li>
 <li><code>SecurityConfig.java</code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http.formLogin()</span><br><span class="line">        .loginPage(<span class="string">"/login"</span>)  <span class="comment">// 커스텀한 로그인 페이지를 보여줄 url</span></span><br><span class="line">        .permitAll(); <span class="comment">// 로그인 폼에 대한 접근 권한</span></span><br><span class="line">http.logout()</span><br><span class="line">        .logoutSuccessUrl(<span class="string">"/"</span>); <span class="comment">// 로그아웃 성공 시 이동할 url</span></span><br></pre></td></tr></table></figure></li>
 <li>위와 같이 설정하고 <code>login.html</code>의 form에서 <code>th:action=&quot;@{/login}&quot; method=&quot;post&quot;</code>와 같이 설정한다면 post로 가는 <code>/login</code> 요청을 <code>formLogin</code>을 처리하는 시큐리티가 처리해준다.<ul>
-<li>따로 <code>/login</code> post를 처리하는 핸들러를 만들 필요가 없음.</li>
+<li>따로 <code>/login</code> post를 처리하는 핸들러를 만들 필요가 없음.<ul>
+<li>PasswordEncoder도 Bean으로 등록이 되어있다면 자동으로 사용이 된다. (하나만 있는 경우)</li>
+</ul>
+</li>
 <li>알아서 username과 password를 가지고 로그인을 처리한다. 이 때, 데이터베이스에 저장된 정보를 참조하여 인증을 하여야 하기 때문에 데이터베이스를 조회할 수 있는 <code>UserDetailsService</code>를 구현해야 한다.</li>
 </ul>
 </li>
