@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          프로그래머스 - 크레인 인형뽑기 게임 - kwon | kwon&#39;s Blog
+          제네릭(Generic) [Java] - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/05/08/programmers_64061/">
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/05/08/java_generic/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2020/05/08/programmers_64061/">
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/05/08/java_Generic/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -177,8 +177,8 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>프로그래머스 - 크레인 인형뽑기 게임</h1>
-                    <h2 class="subheading">Programmers algorithm</h2>
+                    <h1>제네릭(Generic) [Java]</h1>
+                    <h2 class="subheading">Java</h2>
                     <span class="meta">
                         Posted by kwon on
                         2020-05-08
@@ -200,34 +200,55 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="프로그래머스-크레인-인형뽑기-게임"><a href="#프로그래머스-크레인-인형뽑기-게임" class="headerlink" title="프로그래머스 - 크레인 인형뽑기 게임"></a>프로그래머스 - 크레인 인형뽑기 게임</h1><h2 id="크레인-인형뽑기-게임"><a href="#크레인-인형뽑기-게임" class="headerlink" title="크레인 인형뽑기 게임"></a>크레인 인형뽑기 게임</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>게임개발자인 죠르디는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.<br>죠르디는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.</p>
-<p>게임 화면은 1 x 1 크기의 칸들로 이루어진 N x N 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 5 x 5 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 1 x 1 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.</p>
-<p>만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 두 개가 없어집니다.</p>
-<p>크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)</p>
-<p>게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.</p>
-<h3 id="제한사항"><a href="#제한사항" class="headerlink" title="[제한사항]"></a>[제한사항]</h3><ul>
-<li>board 배열은 2차원 배열로 크기는 5 x 5 이상 30 x 30 이하입니다.</li>
-<li>board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.<ul>
-<li>0은 빈 칸을 나타냅니다.</li>
-<li>1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.</li>
+                <h2 id="제네릭-Generic-Java"><a href="#제네릭-Generic-Java" class="headerlink" title="제네릭(Generic) [Java]"></a>제네릭(Generic) [Java]</h2><ul>
+<li>제네릭(Generic)은 클래스 내부에서 사용할 데이터 타입을 외부에서 지정하는 기법을 말한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> T info;</span><br><span class="line">&#125;</span><br><span class="line">Person&lt;String&gt; p1 = <span class="keyword">new</span> Person&lt;String&gt;();</span><br><span class="line">Person&lt;StringBuilder&gt; p2 = <span class="keyword">new</span> Person&lt;StringBuilder&gt;();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>위와 같이 사용한다면 외부에서 생성한 객체의 타입을 &lt;&gt;에 정의함으로써 Person클래스의 info라는 필드의 타입이 정의되는 것이다.<ul>
+<li>p1으로 객체를 생성한다면 info의 데이터 타입은 String이 되는 것이고,</li>
+<li>p2로 객체를 생성한다면  info의 데이터 타입은 StringBuilder이 되는 것이다.</li>
 </ul>
 </li>
-<li>moves 배열의 크기는 1 이상 1,000 이하입니다.</li>
-<li>moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.</li>
 </ul>
-<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><p>board    moves    result<br>[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]    [1,5,3,5,1,2,1,4]    4</p>
-<h3 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h3><p><a href="https://programmers.co.kr/learn/courses/30/lessons/64061" target="_blank" rel="external nofollow noopener noreferrer">https://programmers.co.kr/learn/courses/30/lessons/64061</a></p>
-<h3 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h3><ul>
-<li>크레인의 위치를 현재 moves배열의 위치의 맨 위부터 0이 아닌 수를 만날 때까지(인형) 하나씩 내려온다.</li>
-<li>인형을 만난 경우 스택(바구니)에 넣어준다.<ul>
-<li>이 때, 바구니의 맨 위(s.top())에 현재 인형과 같은 인형이 있다면 s.pop()을 하여 두 인형을 제거하고 answer에 2를 누적한다.</li>
-<li>같은 인형이 아니라면 스택에 푸쉬를 한다.</li>
-<li>인형을 뽑은 후에 뽑은 자리는 0으로 바꿔주고 현재 반복문을 나간다.</li>
+<hr>
+<ul>
+<li><t>의 위치에는 레퍼런스 형만 올 수 있고, 기본 데이터 타입((primitive type) =&gt; int, char 등..)은 제네릭으로 사용할 수 없다.(기본 데이터 타입은 객체가 아님)</t></li>
+<li>따라서, 기본 데이터 타입을 객체인 것처럼 만들 수 있는 객체를 제공하는 wrapper 클래스를 사용한다.<ul>
+<li>int -&gt; Integer, double -&gt; Double …와 같이 사용</li>
+<li><code>Integer id = new Integer(1);</code> 와 같이 생성하여 생성자의 매개변수로 넘길 수 있다.</li>
+<li><code>p1.id.intValue()</code>와 같이 wrapper 클래스(Integer)의 메서드를 사용하여 wrapper 클래스가 담고 있는 원시 데이터 타입으로 반환 받을 수 있다.</li>
 </ul>
 </li>
-<li>위의 과정을 반복하여 총 몇 개의 인형이 터졌는지 반환한다.</li>
 </ul>
-<h3 id="코드-설명"><a href="#코드-설명" class="headerlink" title="코드 설명"></a>코드 설명</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; board, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; moves)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; moves.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; board.<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">			<span class="keyword">int</span> now = board[j][moves[i] - <span class="number">1</span>];  <span class="comment">// 집게의 현재 위치</span></span><br><span class="line">			<span class="keyword">if</span> (now != <span class="number">0</span>) &#123; <span class="comment">// 인형을 만난 경우</span></span><br><span class="line">				<span class="keyword">if</span> (!s.empty() &amp;&amp; s.top() == now) &#123; <span class="comment">// 바구니에 같은 인형이 연속으로 담기는 경우</span></span><br><span class="line">					s.pop();</span><br><span class="line">					answer += <span class="number">2</span>; <span class="comment">// 2개 터짐</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					s.push(now);</span><br><span class="line">				&#125;</span><br><span class="line">				board[j][moves[i] - <span class="number">1</span>] = <span class="number">0</span>; <span class="comment">// 인형을 뽑은 자리는 0으로 채움</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="제네릭의-생략"><a href="#제네릭의-생략" class="headerlink" title="제네릭의 생략"></a>제네릭의 생략</h3><ul>
+<li>다음과 같은 경우 제네릭은 생략 가능하다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>, <span class="title">S</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> T info;</span><br><span class="line">    <span class="keyword">public</span> S id;</span><br><span class="line">    Person(T info, S id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.info = info;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        EmployeeInfo ei = <span class="keyword">new</span> EmployeeInfo(<span class="number">1</span>);</span><br><span class="line">        Integer id = <span class="number">10</span>;</span><br><span class="line">        Person p1 = <span class="keyword">new</span> Person(ei, id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>이 경우, 이미 ei와 id의 타입을 자바가 알고 있기 때문에 제네릭을 생략할 수 있다.</li>
+</ul>
+<h3 id="제네릭의-제한"><a href="#제네릭의-제한" class="headerlink" title="제네릭의 제한"></a>제네릭의 제한</h3><ul>
+<li><code>&lt;T extends Info&gt;</code>와 같은 형태로 사용<ul>
+<li><code>Info</code>클래스 또는 인터페이스를 상속받는 클래스의 데이터 타입인 경우로 제한한다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getLevel</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmployeeInfo</span> <span class="keyword">extends</span> <span class="title">Info</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> rank;</span><br><span class="line">    EmployeeInfo(<span class="keyword">int</span> rank)&#123;</span><br><span class="line">       <span class="keyword">this</span>.rank = rank;</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLevel</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.rank;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Info</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> T info;</span><br><span class="line">    Person(T info)&#123;</span><br><span class="line">       <span class="keyword">this</span>.info = info;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Person&lt;EmployeeInfo&gt; p1 = <span class="keyword">new</span> Person&lt;EmployeeInfo&gt;(<span class="keyword">new</span> EmployeeInfo(<span class="number">1</span>));</span><br><span class="line">        Person&lt;String&gt; p2 = <span class="keyword">new</span> Person&lt;String&gt;(<span class="string">"부장"</span>); <span class="comment">// 이 경우에는 에러</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>Person&lt;EmployeeInfo&gt; p1 = new Person&lt;EmployeeInfo&gt;(new EmployeeInfo(1));</code>와 같이 <code>Info</code>를 상속받는 <code>EmployeeInfo</code>타입인 경우에는 정상적으로 사용이 가능하지만</li>
+<li><code>Person&lt;String&gt; p2 = new Person&lt;String&gt;(&quot;부장&quot;);</code>와 같이 <code>String</code>타입인 경우 에러가 발생하게 된다.</li>
+<li>즉, <code>class Person&lt;T extends Info&gt;{</code>에서 T에는 Info 클래스 혹은 그 자식만이 올 수 있다.</li>
+<li><code>abstract class Info{</code> 같은 경우 추상 클래스가 아니라 일반 클래스 혹인 인터페이스인 경우에도 동일하다.<ul>
+<li><code>Info</code>가 인터페이스라고 해서 <code>T extends Info&gt;</code>의 부분이 implements로 변한다거나 하지는 않는다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="제네릭의-장점"><a href="#제네릭의-장점" class="headerlink" title="제네릭의 장점"></a>제네릭의 장점</h3><ul>
+<li>타입 안정성을 제공한다.(의도하지 않은 타입의 객체를 저장하는 것을 막고, 저장된 객체를 꺼내올 때 원래의 타입과 다른 타입으로 형변환하여 발생할 수 있는 오류를 줄인다.)</li>
+<li>타입체크와 형변환을 생략할 수 있으므로 코드가 간결해진다.<ul>
+<li>다룰 객체의 타입을 미리 명시함으로써 형변환을 하지 않아도 되도록 하는 것이다.</li>
+<li>기존에는 다양한 종류의 타입을 다루는 메서드의 매개변수나 리턴 타입으로 Object타입의 참조 변수를 많이 사용했고, 그로 인해 형변환이 불가피했지만, 이젠 Object타입 대신 원하는 타입을 지정해주기만 하면 되는 것이다.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>참조<br><a href="https://devbox.tistory.com/entry/Java-%EC%A0%9C%EB%84%A4%EB%A6%AD" target="_blank" rel="external nofollow noopener noreferrer">https://devbox.tistory.com/entry/Java-%EC%A0%9C%EB%84%A4%EB%A6%AD</a><br><a href="https://www.youtube.com/watch?v=YUinFIexEQ4" target="_blank" rel="external nofollow noopener noreferrer">https://www.youtube.com/watch?v=YUinFIexEQ4</a></p>
+</blockquote>
 
 
                 <hr>
@@ -236,13 +257,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/java/2020/05/08/java_Generic/" data-toggle="tooltip" data-placement="top" title="제네릭(Generic) [Java]">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/algorithm/2020/05/06/algorithm17144/" data-toggle="tooltip" data-placement="top" title="백준 17144번 미세먼지 안녕!">Next Post &rarr;</a>
+                            <a href="/algorithm/2020/05/08/programmers_64061/" data-toggle="tooltip" data-placement="top" title="프로그래머스 - 크레인 인형뽑기 게임">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -313,8 +330,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "kyu9341-github-io";
-    var disqus_identifier = "https://kyu9341.github.io/algorithm/2020/05/08/programmers_64061/";
-    var disqus_url = "https://kyu9341.github.io/algorithm/2020/05/08/programmers_64061/";
+    var disqus_identifier = "https://kyu9341.github.io/java/2020/05/08/java_Generic/";
+    var disqus_url = "https://kyu9341.github.io/java/2020/05/08/java_Generic/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
