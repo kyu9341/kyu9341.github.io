@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          kwon | kwon&#39;s Blog
+          Spring - IoC 컨테이너, DI - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/page/21/">
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/05/13/java_spring_ioc_di/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/page/21/">
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -158,384 +158,160 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>kwon&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">개발 블로그</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Spring - IoC 컨테이너, DI</h1>
+                    <h2 class="subheading">Spring</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2020-05-13
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-<div class="post-preview">
-
-    <a href="/algorithm/2019/12/21/algorithmBubbleSort/">
-        <h2 class="post-title">
-            버블정렬(Bubble Sort) 알고리즘
-        </h2>
-        <h3 class="post-subtitle">
-            Algorithm
-        </h3>
-        <div class="post-content-preview">
-            저번 포스팅에서는 선택정렬에 대해 공부해보았고 이번에는 버블 정렬에 대해 알아보겠다. 마찬가지로 일련의 숫자들을 오름차순으로 정렬하는 문제이다.
-버블 정렬
-거품 정렬(Bubble sort)은 두 인접한 원소를 검사하여 정렬하는 방법이다. 시간 복잡도가 O(n^2)로 상당히 느리지만, 코드가 단순하기 때문에 자주 사용된다. 원소의 이동이 거품이 수면으로......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-12-21
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/algorithm/2019/12/21/algorithmSelectionSort/">
-        <h2 class="post-title">
-            선택정렬(Selection Sort) 알고리즘
-        </h2>
-        <h3 class="post-subtitle">
-            Algorithm
-        </h3>
-        <div class="post-content-preview">
-            이제 종강도 했으니 알고리즘 공부를 다시 시작해보려 한다. 유튜버 나동빈님의 강의를 보면서 하나씩 천천히 정리해 나가도록 해보자. 일반적으로 알고리즘을 공부할 때 가장 먼저 풀어보는 문제는 정렬 문제인데, 왜냐면 정렬만큼 알고리즘의 효율성 차이를 극명하게 보여주기 때문이라고 한다. 그래서 여러가지의 정렬 알고리즘을 먼저 배우고 알고리즘의 시간 복잡도에......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-12-21
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/영상처리/2019/12/01/ImageProcessing5/">
-        <h2 class="post-title">
-            디지털 영상처리 - Add Noise
-        </h2>
-        <h3 class="post-subtitle">
-            ImageProcessing
-        </h3>
-        <div class="post-content-preview">
-            Add Noise1234567891011121314151617181920212223242526272829303132333435363738394041424344454647double uniform()&#123;	return((double)(rand() &amp; RAND_MAX) / RAND_MAX - 0.5);&#125;double gaussian()......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-12-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/영상처리/2019/12/01/ImageProcessing6/">
-        <h2 class="post-title">
-            디지털 영상처리 - 부분 Mosaic
-        </h2>
-        <h3 class="post-subtitle">
-            ImageProcessing
-        </h3>
-        <div class="post-content-preview">
-            논리 연산영상을 처리하기 위하여 단순하게 수를 더하거나 빼는 연산만을 수행하는 것이 아니라 영상에 대하여 논리적인 연산을 수행하여 원하는 결과를 얻을 수 있다.
-1234567891011121314151617void Circle(uchar** Result, int Row, int Col, double diameter) // 원하는 반지름의 크기로 원 생......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-12-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/영상처리/2019/12/01/ImageProcessing7/">
-        <h2 class="post-title">
-            디지털 영상처리 - 히스토그램
-        </h2>
-        <h3 class="post-subtitle">
-            ImageProcessing
-        </h3>
-        <div class="post-content-preview">
-            히스토그램영상에서의 히스토그램은 그레이레벨 값 k개의 개수가 영상 전체 안에서 몇 개가 존재하는지를 알려주는 값이다. 즉, 그레이레벨 값 0부터 255까지가 영상 전체에서 몇 개씩 존재하는가를 알려주는 지표 값이다. 히스토그램은 영상의 그레이레벨의 프로파일(profile)을 보여주는 기능을 한다고 생각하면 된다. 그러나 영상의 크기가 다양하기 때문에 ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-12-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/영상처리/2019/12/01/ImageProcessing8/">
-        <h2 class="post-title">
-            디지털 영상처리 - 콘트라스트 스트레칭(Contrast Streching)
-        </h2>
-        <h3 class="post-subtitle">
-            ImageProcessing
-        </h3>
-        <div class="post-content-preview">
-            콘트라스트 스트레칭콘트라스트 스트레칭은 히스토그램의 분포가 얼마나 넓게 퍼져 있는가에 따라 인간의 시각 체계가 선명하게 영상을 인식하는 과정에 대한 작업이다. 밝은 화소와 어두운 화소들의 분포가 고르게 퍼져 있어야 인간은 영상을 선명하게 인식하므로 영상의 화소 분포가 좀 더 넓은 영역에 걸쳐서 퍼지도록 스트레칭 시키는 작업이다. 히스토그램 평활화는 히......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-12-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/영상처리/2019/12/01/ImageProcessing9/">
-        <h2 class="post-title">
-            디지털 영상처리 - 공간 필터링
-        </h2>
-        <h3 class="post-subtitle">
-            ImageProcessing
-        </h3>
-        <div class="post-content-preview">
-            Spatial Filtering (공간 필터링)영상처리에서 필터링은 영상 내에서 특별히 원하는 성분을 추출해내는 과정에 대한 용어이다. 필터링은 크게 두 가지로 나뉘는데 하나는 저주파 필터링이고 하나는 고주파 필터링이다. 필터링의 용어는 모두 주파수 영역에서 다루는 용어를 그대로 사용한다. 공간필터링이라는 용어는 영상을 입력으로 하여 출력을 영상으로 ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-12-01
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/영상처리/2019/11/29/ImageProcessing4/">
-        <h2 class="post-title">
-            디지털 영상처리 - Bit Plane
-        </h2>
-        <h3 class="post-subtitle">
-            ImageProcessing
-        </h3>
-        <div class="post-content-preview">
-            Bit Plane표준 디지털 영상은 8bits로 구성되어 0부터 255까지의 값을 가지고 있는 구조이다. 256레벨의 그레이 스케일 값이라고 표현하기도 하는데 이진영상을 위에서 구성한 것과 같이 각 bit위치에서의 영상을 독립된 영상으로 표현하는 방법을 알아본다. 영상은 8개의 bit plane으로 구성되어 있으며 최상위 비트가 1인 경우 128보다 ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-11-29
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/MachineLearning/2019/11/24/marchinelearning4/">
-        <h2 class="post-title">
-            ICT멘토링 딥러닝 교육 2일차
-        </h2>
-        <h3 class="post-subtitle">
-            Machine Learning
-        </h3>
-        <div class="post-content-preview">
-            이번에는 둘째 날 배운 내용을 리뷰해보겠다. 둘째 날에는 이미지 분류 이론, Azure Cloud GPU활용, Cifar10 이미지 분류에 대해서 배웠다.
-Convolutional Neural Network(CNN)딥러닝이나 머신러닝 관련 자료들을 보면 자주 등장하던 CNN이다. 주로 이미지를 학습시킨다고 하면 제일 먼저 떠오르는 단어이다.
-CNN(합......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-11-24
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/MachineLearning/2019/11/23/marchinelearning3/">
-        <h2 class="post-title">
-            ICT멘토링 딥러닝 교육 1일차
-        </h2>
-        <h3 class="post-subtitle">
-            Machine Learning
-        </h3>
-        <div class="post-content-preview">
-            저번주에 한이음에서 주최한 머신러닝 ICT멘토링 AI머신러닝(기초) 교육에 이어 이번에는 AI딥러닝 교육에 참가하게 되었다. 이번주도 토일 10:00 ~ 18:00까지 진행되는데 첫째 날은 딥러닝 이론, 케라스, Azure Cloud 설정, MLP 설정에 대해 배웠다.
-딥러닝이란?Deep Learning = Deep Neural Network = Ar......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by kwon on
-        2019-11-23
-    </p>
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-        <li class="previous">
-            <a href="/page/20/">&larr; Newer Posts</a>
-        </li>
-    
-    
-        <li class="next">
-            <a href="/page/22/">Older Posts &rarr;</a>
-        </li>
-    
+                <h2 id="Spring-IoC-컨테이너-DI"><a href="#Spring-IoC-컨테이너-DI" class="headerlink" title="Spring - IoC 컨테이너, DI"></a>Spring - IoC 컨테이너, DI</h2><h3 id="IoC-Inversion-of-Control-제어의-역전"><a href="#IoC-Inversion-of-Control-제어의-역전" class="headerlink" title="IoC(Inversion of Control - 제어의 역전)"></a>IoC(Inversion of Control - 제어의 역전)</h3><ul>
+<li><p>Inversion of Control : 의존 관계 주입(Dependency Injection)이라고도 하며, 어떤 객체가 사용하는 의존 객체를 직접 만들어 사용하는게 아니라, 주입 받아 사용하는 방법을 말함.</p>
+<ul>
+<li>작업을 수행하는 쪽에서 Object를 생성하는 제어 흐름의 개념을 거꾸로 뒤집는다.</li>
+<li>IoC 에서는 Object가 자신이 사용할 Object를 생성하거나 선택하지 않는다.</li>
+<li>또한 Object는 자신이 어떻게 생성되고 어떻게 사용되는지 알 수 없다.</li>
+<li>모든 Object는 제어 권한을 위임받는 특별한 Object에 의해서 만들어지고 사용된다.</li>
 </ul>
+</li>
+<li><p>제어의 역전이란 객체의 생성에서부터 생명주기의 관리까지 모든 객체애 대한 제어권이 바뀌었다는 것을 의미한다.</p>
+</li>
+<li><p>스프링이 모든 의존성 객체를 스프링이 실행될 때 다 만들어 주고 필요한 곳에 주입시켜줌으로써 Bean들은 싱글톤 패턴의 틀징을 가지며, 제어의 흐름을 사용자가 컨트롤하는 것이 아니라 스프링에게 맡겨 작업을 처리하게 된다.</p>
+</li>
+<li><p>목적</p>
+<ul>
+<li>객체 의존관계의 결합도를 낮추고 유지보수성을 향상시키기 위해</li>
+</ul>
+</li>
+</ul>
+<h3 id="IoC-구현-방법"><a href="#IoC-구현-방법" class="headerlink" title="IoC 구현 방법"></a>IoC 구현 방법</h3><h4 id="DL-Dependency-Lookup-의존성-검색"><a href="#DL-Dependency-Lookup-의존성-검색" class="headerlink" title="DL(Dependency Lookup) - 의존성 검색"></a>DL(Dependency Lookup) - 의존성 검색</h4><ul>
+<li>저장소에 저장되어 있는 빈(Bean)에 접근하기 위해 개발자들이 컨테이너에서 제공하는 API를 이용하여 사용하고자 하는 빈을 Lookup하는 것<h4 id="DI-Dependency-Injection-의존성-주입"><a href="#DI-Dependency-Injection-의존성-주입" class="headerlink" title="DI(Dependency Injection) - 의존성 주입"></a>DI(Dependency Injection) - 의존성 주입</h4></li>
+<li>각 계층 사이, 각 클래스 사이에 필요로 하는 의존 관계를 빈 설정 정보를 바탕으로 컨테이너가 자동으로 연결해주는 것</li>
+<li>DL을 사용하면 컨테이너의 종속성이 생기게 되는데 이를 줄이기 위해 DI를 사용한다.<ul>
+<li>Setter Injection : setter를 이용하여 클래스 사이의 의존 관계를 연결<ul>
+<li>객체를 생성 후 의존성을 삽입하는 방식이기 때문에 구현 시 좀 더 유연하게 사용 가능</li>
+<li>setter를 통하여 필요한 값이 할당되기 전까지는 객체를 사용할 수 없다.</li>
+</ul>
+</li>
+<li>Constructor Injection : 생성자를 이용하여 클래스 사이의 의존 관계를 연결<ul>
+<li>생성자에 파라미터를 지정함으로써 생성하고자 하는 객체가 필요로 하는 것을 명확하게 알 수 있다.</li>
+<li>setter메서드를 사용하지 않으므로 간단하게 필드를 불변 값으로 지정이 가능하다.</li>
+<li>생성자의 파라미터가 많을 경우 코드가 복잡해 보일 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="컨테이너란"><a href="#컨테이너란" class="headerlink" title="컨테이너란?"></a>컨테이너란?</h3><ul>
+<li>컨테이너는 보통 인스턴스의 생명주기를 관리하며, 생성된 인스턴스들에게 추가적인 기능을 제공하는 것이다.</li>
+<li>컨테이너는 적절한 설정만 되어있다면 작성된 코드를 스스로 참조한 뒤 알아서 객체의 생성과 소멸을 컨트롤해준다.</li>
+</ul>
+<h4 id="BeanFactory-빈팩토리"><a href="#BeanFactory-빈팩토리" class="headerlink" title="BeanFactory (빈팩토리)"></a>BeanFactory (빈팩토리)</h4><ul>
+<li>애플리케이션 컴포넌트의 중앙 저장소, 스프링의 IoC를 담당하는 핵심 컨테이너.</li>
+<li>빈 설정 소스로부터 빈 정의를 읽어들이고, 빈을 구성하고 제공한다.</li>
+</ul>
+<h4 id="ApplicationContext-애플리케이션-컨텍스트"><a href="#ApplicationContext-애플리케이션-컨텍스트" class="headerlink" title="ApplicationContext (애플리케이션 컨텍스트)"></a>ApplicationContext (애플리케이션 컨텍스트)</h4><ul>
+<li>BeanFactory기능에 다양한 추가기능을 제공한다. (BeanFactory를 상속)<ul>
+<li>국제화가 지원되는 텍스트 메시지 관리 기능</li>
+<li>이벤트 발행 기능</li>
+<li>리소스 로딩 기능</li>
+</ul>
+</li>
+<li>대부분의 경우 BeanFactory보다는 ApplicationContext을 주로 사용한다.</li>
+</ul>
+<h4 id="빈-Bean-스프링-빈"><a href="#빈-Bean-스프링-빈" class="headerlink" title="빈(Bean) - 스프링 빈"></a>빈(Bean) - 스프링 빈</h4><ul>
+<li>스프링 IoC 컨테이너가 관리하는 객체</li>
+<li>스프링에서 제어권을 가지고 직접 만들고 관계를 부여하는 오브젝트</li>
+<li>여러 annotation을 사용하여 일반적인 객체를 Bean으로 등록할 수 있고, Bean에 등록된 객체들을 쉽게 주입받아 사용 가능하다.</li>
+<li>의존성 주입을 하기 위해서는 Bean으로 등록되어야 한다. (의존성 주입은 Bean끼리만 가능하다.)</li>
+<li>라이프사이클 인터페이스를 이용 가능하다.</li>
+</ul>
+<blockquote>
+<p>참조<br><a href="https://www.inflearn.com/course/spring-framework_core/dashboard" target="_blank" rel="external nofollow noopener noreferrer">https://www.inflearn.com/course/spring-framework_core/dashboard</a><br><a href="https://limmmee.tistory.com/13" target="_blank" rel="external nofollow noopener noreferrer">https://limmmee.tistory.com/13</a><br><a href="https://isstory83.tistory.com/91" target="_blank" rel="external nofollow noopener noreferrer">https://isstory83.tistory.com/91</a></p>
+</blockquote>
 
 
+                <hr>
 
-                <!-- 如果开启评论功能 -->
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/algorithm/2020/05/12/algorithm2665/" data-toggle="tooltip" data-placement="top" title="백준 2665번 미로만들기">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+                       
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="//img/avatar.jpg">
-                        
-
-                        
-                            <p>kwon</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -558,9 +334,66 @@ CNN(합......
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/";
+    var disqus_url = "https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
