@@ -223,7 +223,7 @@
 <li><p>문제는, 여기서 다시 인증을 시도할 때, username에 nickname를 넣었으므로 nickname를 가지고 <code>loadUserByUsername</code>메소드로 가 인증을 시도한다.</p>
 <ul>
 <li>이 때, 위의 메소드를 보면 파라미터로 String email을 받는데, 이 email이라는 변수에 nickname이 들어와서 인증을 시도하게 된다.</li>
-<li>하지만, 이메일만으로 accountRepository를 검색해보기 때문에 account 객체를 찾지 못하게 되어 재인증이 실패하게 되는 것이다.</li>
+<li>하지만, 이메일만으로 <code>accountRepository</code>를 검색해보기 때문에 account 객체를 찾지 못하게 되어 재인증이 실패하게 되는 것이다.</li>
 </ul>
 </li>
 <li><p>따라서, 이 문제를 해결하기 위해서는 두 가지 방법이 있다.</p>
