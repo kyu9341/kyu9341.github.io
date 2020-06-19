@@ -209,16 +209,16 @@
 </li>
 <li><p><code>HandlerInterceptor</code>의 메서드는 아래의 세 가지가 있다.</p>
 <ul>
-<li><code>boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</code><ul>
+<li><strong>boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</strong><ul>
 <li><code>Controller</code>실행 직전에 동작을 하며, 반환 값에 따라 진행 여부를 결정한다.</li>
 </ul>
 </li>
-<li><code>void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</code><ul>
+<li><strong>void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</strong><ul>
 <li><code>Conroller</code>진입 후 view가 렌더링 되기 전에 수행을 한다.</li>
 <li><code>modelAndView</code>를 사용하여 <code>model</code>에 데이터를 추가하는 조작이 가능하다.</li>
 </ul>
 </li>
-<li><code>void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</code><ul>
+<li><strong>void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</strong><ul>
 <li><code>Conroller</code>진입 후 view가 렌더링 된 이후에 마지막으로 실행이 되는 메서드이다.</li>
 </ul>
 </li>
@@ -237,7 +237,7 @@
 <li><p>알림이 있는 경우 true, 없는 경우 false를 모델에 넣어준다.</p>
 </li>
 </ul>
-<ul>
+<h4 id="HandlerInterceptor-적용하기"><a href="#HandlerInterceptor-적용하기" class="headerlink" title="HandlerInterceptor 적용하기"></a>HandlerInterceptor 적용하기</h4><ul>
 <li><p>이제 작성한 <code>HandlerInterceptor</code>를 실제로 적용하기 위한 설정을 해주어야 한다.</p>
 </li>
 <li><p><code>WebMvcConfigurer</code>를 구현한 클래스를 작성하여 <code>addInterceptors</code>메서드에 해당 인터셉터를 등록하면 된다.</p>
