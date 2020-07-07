@@ -211,8 +211,16 @@
 <h5 id="DAO"><a href="#DAO" class="headerlink" title="DAO"></a>DAO</h5><ul>
 <li>DB를 사용해 데이터를 조회하거나 조작하는 기능을 전담하도록 만든 객체</li>
 </ul>
+<hr>
+<ul>
+<li>View Layer와 DB Layer의 역할 분리를 철저하게 하는 것이 좋다.</li>
+<li>실제로 Controller에서 결괏값으로 여러 테이블을 조인해서 줘야 할 경우가 빈번하므로 Entity 클래스 만으로 표현하기가 어려운 경우가 많다.</li>
+<li>Entity 클래스와 Controller에서 쓸 Dto는 분리해서 사용해야 한다.</li>
+</ul>
 <h3 id="스프링-웹-계층"><a href="#스프링-웹-계층" class="headerlink" title="스프링 웹 계층"></a>스프링 웹 계층</h3><ul>
-<li>스프링 부트와 AWS로 혼자 구현하는 웹 서비스 참조<br><img src="Untitled%205ad811e968b448aab19617b216587f3d/Untitled.png" alt="Untitled%205ad811e968b448aab19617b216587f3d/Untitled.png"></li>
+<li>스프링 부트와 AWS로 혼자 구현하는 웹 서비스 참조<img src="https://kyu9341.github.io/img/springLayer.png" alt="vs_write" width height>
+
+</li>
 </ul>
 <h3 id="Web-Layer"><a href="#Web-Layer" class="headerlink" title="Web Layer"></a>Web Layer</h3><ul>
 <li>흔히 사용하는 컨트롤러와 뷰 템플릿 영역이다.</li>
@@ -240,19 +248,13 @@
 <li>다만, 무조건 데이터베이스의 테이블과 관계가 있어야 하는 것은 아니다.</li>
 <li>VO처럼 값 객체들도 이 영역에 해당한다.</li>
 </ul>
-<hr>
-<ul>
-<li>View Layer와 DB Layer의 역할 분리를 철저하게 하는 것이 좋다.</li>
-<li>실제로 Controller에서 결괏값으로 여러 테이블을 조인해서 줘야 할 경우가 빈번하므로 Entity 클래스 만으로 표현하기가 어려운 경우가 많다.</li>
-<li>Entity 클래스와 Controller에서 쓸 Dto는 분리해서 사용해야 한다.</li>
-</ul>
 <h3 id="왜-비즈니스-로직을-도메인-계층에-작성하는가"><a href="#왜-비즈니스-로직을-도메인-계층에-작성하는가" class="headerlink" title="왜 비즈니스 로직을 도메인 계층에 작성하는가"></a>왜 비즈니스 로직을 도메인 계층에 작성하는가</h3><ul>
 <li>Service Layer는 다양한 Model(Domain)을 읽어 제공한다. 복잡한 서비스는 더 많은 Model을 읽어 서비스를 제공하기 때문에 Service 로직의 복잡도가 매우 높아진다.</li>
 <li>이런 로직의 복잡도를 낮추기 위해 최대한 비즈니스 로직을 Model(Domain)쪽으로 이동시킨다.</li>
 <li>복잡도를 낮춤으로써 유지보수와 테스트하기 쉬운 코드가 생기고 결국엔 유연한 Software를 얻을 수 있다.</li>
 </ul>
 <hr>
-<ul>
+<h3 id="Service-Layer-작성-시-주의사항"><a href="#Service-Layer-작성-시-주의사항" class="headerlink" title="Service Layer 작성 시 주의사항"></a>Service Layer 작성 시 주의사항</h3><ul>
 <li>Service는 다른 Service를 조합하거나 DAO를 연결하는 역할을 수행.</li>
 <li>Service는 가볍게, Service에 핵심 비즈니스 로직을 구현하기 보다는 로직의 상태값을 가지고 있는 모델이 담당해야 한다.</li>
 <li>Service에서 Service를 참조 가능하나 계층 구조가 명확해야한다. (순환참조를 방지하기 위해서)</li>
