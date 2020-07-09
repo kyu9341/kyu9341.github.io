@@ -8,8 +8,24 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/java/2020/07/07/java_springBoot_Layer/</loc>
-        <lastmod>2020-07-08T13:10:23.983Z</lastmod>
+        <loc>https://kyu9341.github.io/algorithm/2020/07/07/algorithm2812/</loc>
+        <lastmod>2020-07-09T12:22:17.306Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/07/07/algorithm1062/</loc>
+        <lastmod>2020-07-09T08:51:01.578Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/07/08/java_springBoot_Layer/</loc>
+        <lastmod>2020-07-09T08:50:50.603Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
