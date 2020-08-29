@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="DccZuuiZ9TibZPtIaFy53R0h-H4tYt01uuNFgpAariI">
+    <meta name="naver-site-verification" content="5e23bdf515b07e9f67d160f17584530e5971e0ab">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/K2.png">
+    <title>
+        
+          Spring - IoC 컨테이너, DI - kwon | kwon&#39;s Blog
+        
+    </title>
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/05/13/java_spring_ioc_di/">
+
+    <link rel="canonical" href="https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script data-ad-client="ca-pub-8978187582935973" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="kwon's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">kwon&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Posts</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
+                        
+                    </div>
+                    <h1>Spring - IoC 컨테이너, DI</h1>
+                    <h2 class="subheading">Spring</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2020-05-13
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="Spring-IoC-컨테이너-DI"><a href="#Spring-IoC-컨테이너-DI" class="headerlink" title="Spring - IoC 컨테이너, DI"></a>Spring - IoC 컨테이너, DI</h2><h3 id="IoC-Inversion-of-Control-제어의-역전"><a href="#IoC-Inversion-of-Control-제어의-역전" class="headerlink" title="IoC(Inversion of Control - 제어의 역전)"></a>IoC(Inversion of Control - 제어의 역전)</h3><ul>
+<li><p>Inversion of Control : 의존 관계 주입(Dependency Injection)이라고도 하며, 어떤 객체가 사용하는 의존 객체를 직접 만들어 사용하는게 아니라, 주입 받아 사용하는 방법을 말함.</p>
+<ul>
+<li>작업을 수행하는 쪽에서 Object를 생성하는 제어 흐름의 개념을 거꾸로 뒤집는다.</li>
+<li>IoC 에서는 Object가 자신이 사용할 Object를 생성하거나 선택하지 않는다.</li>
+<li>또한 Object는 자신이 어떻게 생성되고 어떻게 사용되는지 알 수 없다.</li>
+<li>모든 Object는 제어 권한을 위임받는 특별한 Object에 의해서 만들어지고 사용된다.</li>
+</ul>
+</li>
+<li><p>제어의 역전이란 객체의 생성에서부터 생명주기의 관리까지 모든 객체애 대한 제어권이 바뀌었다는 것을 의미한다.</p>
+</li>
+<li><p>스프링이 모든 의존성 객체를 스프링이 실행될 때 다 만들어 주고 필요한 곳에 주입시켜줌으로써 Bean들은 싱글톤 패턴의 틀징을 가지며, 제어의 흐름을 사용자가 컨트롤하는 것이 아니라 스프링에게 맡겨 작업을 처리하게 된다.</p>
+</li>
+<li><p>목적</p>
+<ul>
+<li>객체 의존관계의 결합도를 낮추고 유지보수성을 향상시키기 위해</li>
+</ul>
+</li>
+</ul>
+<h3 id="IoC-구현-방법"><a href="#IoC-구현-방법" class="headerlink" title="IoC 구현 방법"></a>IoC 구현 방법</h3><h4 id="DL-Dependency-Lookup-의존성-검색"><a href="#DL-Dependency-Lookup-의존성-검색" class="headerlink" title="DL(Dependency Lookup) - 의존성 검색"></a>DL(Dependency Lookup) - 의존성 검색</h4><ul>
+<li>저장소에 저장되어 있는 빈(Bean)에 접근하기 위해 개발자들이 컨테이너에서 제공하는 API를 이용하여 사용하고자 하는 빈을 Lookup하는 것<h4 id="DI-Dependency-Injection-의존성-주입"><a href="#DI-Dependency-Injection-의존성-주입" class="headerlink" title="DI(Dependency Injection) - 의존성 주입"></a>DI(Dependency Injection) - 의존성 주입</h4></li>
+<li>각 계층 사이, 각 클래스 사이에 필요로 하는 의존 관계를 빈 설정 정보를 바탕으로 컨테이너가 자동으로 연결해주는 것</li>
+<li>DL을 사용하면 컨테이너의 종속성이 생기게 되는데 이를 줄이기 위해 DI를 사용한다.<ul>
+<li>Setter Injection : setter를 이용하여 클래스 사이의 의존 관계를 연결<ul>
+<li>객체를 생성 후 의존성을 삽입하는 방식이기 때문에 구현 시 좀 더 유연하게 사용 가능</li>
+<li>setter를 통하여 필요한 값이 할당되기 전까지는 객체를 사용할 수 없다.</li>
+</ul>
+</li>
+<li>Constructor Injection : 생성자를 이용하여 클래스 사이의 의존 관계를 연결<ul>
+<li>생성자에 파라미터를 지정함으로써 생성하고자 하는 객체가 필요로 하는 것을 명확하게 알 수 있다.</li>
+<li>setter메서드를 사용하지 않으므로 간단하게 필드를 불변 값으로 지정이 가능하다.</li>
+<li>생성자의 파라미터가 많을 경우 코드가 복잡해 보일 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="컨테이너란"><a href="#컨테이너란" class="headerlink" title="컨테이너란?"></a>컨테이너란?</h3><ul>
+<li>컨테이너는 보통 인스턴스의 생명주기를 관리하며, 생성된 인스턴스들에게 추가적인 기능을 제공하는 것이다.</li>
+<li>컨테이너는 적절한 설정만 되어있다면 작성된 코드를 스스로 참조한 뒤 알아서 객체의 생성과 소멸을 컨트롤해준다.</li>
+</ul>
+<h4 id="BeanFactory-빈팩토리"><a href="#BeanFactory-빈팩토리" class="headerlink" title="BeanFactory (빈팩토리)"></a>BeanFactory (빈팩토리)</h4><ul>
+<li>애플리케이션 컴포넌트의 중앙 저장소, 스프링의 IoC를 담당하는 핵심 컨테이너.</li>
+<li>빈 설정 소스로부터 빈 정의를 읽어들이고, 빈을 구성하고 제공한다.</li>
+</ul>
+<h4 id="ApplicationContext-애플리케이션-컨텍스트"><a href="#ApplicationContext-애플리케이션-컨텍스트" class="headerlink" title="ApplicationContext (애플리케이션 컨텍스트)"></a>ApplicationContext (애플리케이션 컨텍스트)</h4><ul>
+<li>BeanFactory기능에 다양한 추가기능을 제공한다. (BeanFactory를 상속)<ul>
+<li>국제화가 지원되는 텍스트 메시지 관리 기능</li>
+<li>이벤트 발행 기능</li>
+<li>리소스 로딩 기능</li>
+</ul>
+</li>
+<li>대부분의 경우 BeanFactory보다는 ApplicationContext을 주로 사용한다.</li>
+</ul>
+<h4 id="빈-Bean-스프링-빈"><a href="#빈-Bean-스프링-빈" class="headerlink" title="빈(Bean) - 스프링 빈"></a>빈(Bean) - 스프링 빈</h4><ul>
+<li>스프링 IoC 컨테이너가 관리하는 객체</li>
+<li>스프링에서 제어권을 가지고 직접 만들고 관계를 부여하는 오브젝트</li>
+<li>여러 annotation을 사용하여 일반적인 객체를 Bean으로 등록할 수 있고, Bean에 등록된 객체들을 쉽게 주입받아 사용 가능하다.</li>
+<li>의존성 주입을 하기 위해서는 Bean으로 등록되어야 한다. (의존성 주입은 Bean끼리만 가능하다.)</li>
+<li>라이프사이클 인터페이스를 이용 가능하다.</li>
+</ul>
+<blockquote>
+<p>참조<br><a href="https://www.inflearn.com/course/spring-framework_core/dashboard" target="_blank" rel="external nofollow noopener noreferrer">https://www.inflearn.com/course/spring-framework_core/dashboard</a><br><a href="https://limmmee.tistory.com/13" target="_blank" rel="external nofollow noopener noreferrer">https://limmmee.tistory.com/13</a><br><a href="https://isstory83.tistory.com/91" target="_blank" rel="external nofollow noopener noreferrer">https://isstory83.tistory.com/91</a></p>
+</blockquote>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/algorithm/2020/05/15/algorithm1753/" data-toggle="tooltip" data-placement="top" title="백준 1753번 최단경로">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/algorithm/2020/05/12/algorithm2665/" data-toggle="tooltip" data-placement="top" title="백준 2665번 미로만들기">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/";
+    var disqus_url = "https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; kwon&#39;s Blog 2020 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://kyu9341.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-146069634-1';
+    var _gaDomain = 'kyu9341.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5e97324669e9320caac3e37c/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+
+</html>

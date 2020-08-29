@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="DccZuuiZ9TibZPtIaFy53R0h-H4tYt01uuNFgpAariI">
+    <meta name="naver-site-verification" content="5e23bdf515b07e9f67d160f17584530e5971e0ab">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/K2.png">
+    <title>
+        
+          힙 정렬(Heap Sort) 알고리즘 - kwon | kwon&#39;s Blog
+        
+    </title>
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2019/12/28/algorithmheapsort/">
+
+    <link rel="canonical" href="https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script data-ad-client="ca-pub-8978187582935973" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="kwon's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">kwon&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Posts</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+                        
+                    </div>
+                    <h1>힙 정렬(Heap Sort) 알고리즘</h1>
+                    <h2 class="subheading">Algorithm</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2019-12-28
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>이번 포스팅에서는 <strong>힙 정렬(Heap Sort)</strong> 에 대해 알아보겠다. 힙 정렬은 병합 정렬과 퀵 정렬만큼 빠른 정렬 알고리즘이다. 또한 고급 프로그래밍 기법으로 갈수록 힙(Heap)의 개념이 자주 등장하기 때문에 반드시 알고 넘어가야 하는 정렬 알고리즘이라고 한다. 힙 정렬은 힙 트리 구조(Heap Tree Structure)를 이용하는 정렬 방법이다.</p>
+<h2 id="힙-정렬-Heap-Sort"><a href="#힙-정렬-Heap-Sort" class="headerlink" title="힙 정렬(Heap Sort)"></a>힙 정렬(Heap Sort)</h2><blockquote>
+<p>힙 정렬(Heapsort)이란 최대 힙 트리나 최소 힙 트리를 구성해 정렬을 하는 방법으로서, 내림차순 정렬을 위해서는 최대 힙을 구성하고 오름차순 정렬을 위해서는 최소 힙을 구성하면 된다. 최대 힙을 구성하여 정렬하는 방법은 아래 예와 같다.</p>
+<ol>
+<li>n개의 노드에 대한 완전 이진 트리를 구성한다. 이때 루트 노드부터 부모노드, 왼쪽 자식노드, 오른쪽 자식노드 순으로 구성한다.</li>
+<li>최대 힙을 구성한다. 최대 힙이란 부모노드가 자식노드보다 큰 트리를 말하는데, 단말 노드를 자식노드로 가진 부모노드부터 구성하며 아래부터 루트까지 올라오며 순차적으로 만들어 갈 수 있다.</li>
+<li>가장 큰 수(루트에 위치)를 가장 작은 수와 교환한다.</li>
+<li>2와 3을 반복한다.<br>출처 - 위키백과</li>
+</ol>
+</blockquote>
+<p>우선 힙(Heap)이 무엇인지 알아야 한다. 그리고 힙을 알기 전에 이진 트리(Binary Tree)에 대해 알아야 한다. 이진 트리란 컴퓨터 안에서 데이터를 표현할 때 데이터를 각 노드(Node)에 담은 뒤에 노드를 두 개씩 이어 붙이눈 구조이다. 이 때 트리 구조에 맞게 부모 노드에서 자식 노드로 가지가 뻗힌다. 이진 트리는 모든 노드의 자식 노드가 2개 이하인 노드이다.</p>
+<ul>
+<li><strong>이진 트리</strong> : 모든 노드의 자식 노드가 2개 이하인 트리 구조<div style="width: 380px; height: 380px;">
+  <img src="https://kyu9341.github.io/img/binarytree.png" style="width: 380px
+  ; height: 380px;">
+</div>
+
+</li>
+</ul>
+<p>흔히 위와 같은 구조를 이진 트리라고 한다. <strong>여기서 트리(Tree)</strong> 라는 것은 말 그대로 가지를 뻗어나가는 것처럼 데이터가 서로 연결되어 있다는 것이다. 트리는 그 형태에 따라 종류가 다양한데 여기서는 위와 같은 이진 트리만 알면 된다. 이제 <strong>완전 이진 트리(Complete Binary Tree)</strong> 에 대해 알아보자.</p>
+<p>완전 이진 트리는 데이터가 루트(Root)노드부터 시작하여 자식 노드가 왼쪽 자식 노드, 오른쪽 자식 노드로 차근차근 들어가는 구조의 이진 트리이다. 즉, 완전 이진 트리는 이진 트리의 노드가 중간에 비어있지 않고 빽빽히 가득 찬 구조이다.</p>
+<div style="width: 350px; height: 350px;">
+    <img src="https://kyu9341.github.io/img/cbt.png" style="width: 350px
+    ; height: 350px;">
+</div>
+
+<p>이제 <strong>힙(Geap)</strong> 에 대해 알아보자. 힙은 최솟값이나 최댓값을 빠르게 찾아내기 위해 완전 이진 트리를 기반으로 하는 트리이다. 힙에는 최대 힙과 최소 힙이 존재하는데 최대 힙은 부모 노드가 자식 노드보다 큰 힙이며 최소 힙은 부모 노드가 자식 노드보다 작은 힙이다.</p>
+<div style="width: 900px; height: 400px;">
+    <img src="https://kyu9341.github.io/img/heap.png" style="width: 900px
+    ; height: 400px;">
+</div>
+
+<p>힙은 위와 같은 구조이며 일단 힙 정렬을 하기 위해서는 정해진 데이터를 힙 구조를 가지도록 만들어야 한다.</p>
+<div style="width: 510px; height: 480px;">
+    <img src="https://kyu9341.github.io/img/heap1.png" style="width: 510px
+    ; height: 480px;">
+</div>
+
+<p>힙 정렬을 수행하기 위해서는 <strong>힙 생성 알고리즘(Heapify Algorithm)</strong> 을 사용한다. 힙 생성 알고리즘은 특정한 하나의 노드에 대해서 수행하는 것이다. 또한 ‘하나의 노드를 제외하고는 최대 힙이 구성되어 있는 상태를 가정한다는 특징’이 있다. 위의 트리에서 5만 최대 힙 정렬을 수행해주면 전체 트리가 최대 힙 구조로 형성되는 상태이다.</p>
+<p>힙 생성 알고리즘은 <strong>특정한 노드의 두 자식 중에서 더 큰 자식과 자신의 위치를 바꾸는 알고리즘</strong> 이다. 또한 위치를 바꾼 뒤에도 여전히 자식이 존재하는 경우 자식이 더이상 존재하지 않을때 까지 자식 중에서 더 큰 자식과 자신의 위치를 바꾸어야 한다. 즉, 위에서 5의 자식인 7과 4 중에서 더 큰 자식인 7과 5의 위치를 바꾸어 주면 된다. 바꾼 결과는 아래와 같다.</p>
+<div style="width: 400px; height: 440px;">
+    <img src="https://kyu9341.github.io/img/heap2.png" style="width: 400px
+    ; height: 440px;">
+</div>
+
+<p>위와 같이 힙 생성 알고리즘은 전체 트리를 힙 구조를 가지도록 만든다는 점에서 굉장히 중요한 알고리즘이다. 이러한 힙 생성 알고리즘의 시간 복잡도는 몇일까? 한 번 자식 노드로 내려갈 때마다 노드의 갯수가 2배씩 증가한다는 점에서 O(logN)이다. 예를 들어 데이터의 갯수가 1024개라면 10번 정도만 내려가도 된다는 뜻이다.</p>
+<p>이제 예시를 보며 실제 힙 정렬 과정을 수행해보자.</p>
+<p>7 6 5 8 3 5 9 1 6</p>
+<p>위의 데이터를 오름차순으로 정렬한다고 해보자. 기본적으로 이진 트리를 표현하는 가장 쉬운 방법은 배열에 그대로 삽입하는 것이다. 현재 정렬할 데이터의 갯수가 9개이기 때문에 인덱스 0붙터 8까지 차례로 담아주면 된다.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><center>0</center></th>
+<th align="center"><center>1</center></th>
+<th align="center"><center>2</center></th>
+<th align="center"><center>3</center></th>
+<th align="center"><center>4</center></th>
+<th align="center"><center>5</center></th>
+<th align="center"><center>6</center></th>
+<th align="center"><center>7</center></th>
+<th align="center"><center>8</center></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">7</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">8</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">9</td>
+<td align="center">1</td>
+<td align="center">6</td>
+</tr>
+</tbody></table>
+<p>다시 말해 완전 이진 트리에 삽입이 되는 순서대로 인덱스를 붙여주는 것이다. 위 배열을 완전 이진 트리 형태로 출력하면 다음과 같다.</p>
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt.png" style="width: 490px
+    ; height: 410px;">
+</div>
+
+<p>말 그대로 배열에 있는 인덱스가 그대로 차례대로 트리로 표현된 것이다. 위와 같은 상황에서 힙 생성 알고리즘을 적용하여 전체 트리를 힙 구조로 만들면 된다. 이 때 데이터의 갯수가 N개 이므로 전체 트리를 힙 구조로 만드는 복잡도는 O(N*logN)이다.</p>
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt1.png" style="width: 490px
+    ; height: 410px;">
+</div>
+
+<p>그래서 결과적으로는 위와 같이 최대 힙이 구성된다. 이제부터 실제로 우리가 원하던 정렬을 직관적으로 수행할 수 있다. 루트(Root)에 있는 값을 가장 뒤쪽으로 보내면서 힙 트리의 크기를 1씩 빼주는 것이다.</p>
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt2.png" style="width: 490px
+    ; height: 410px;">
+</div>
+
+<p>위와 같이 9와 6을 바꾼 뒤에 9는 정렬이 완료된 것이므로 빨간색으로 표현한다. 이제 9를 제외하고 나머지 8개 원소를 기준으로 또 힙 생성 알고리즘(Heapify)를 수행한다. 결과는 다음과 같다.</p>
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt3.png" style="width: 490px
+    ; height: 410px;">
+</div>
+
+<p>이제 다시 가장 큰 숫자인 8이 루트에 존재한다. 이것을 가장 뒤쪽의 원소와 서로 바꾼다.</p>
+<div style="width: 490px; height: 410px;">
+    <img src="https://kyu9341.github.io/img/bt4.png" style="width: 490px
+    ; height: 410px;">
+</div>
+
+<p>그럼 위와 같이 8과 9가 가장 뒤에 배열되어 정렬된 것을 볼 수 있다. 이제 이 과정을 반복하면 된다. 힙 생성 알고리즘의 시간 복잡도는 O(logN)이고 전체 데이터의 갯수가 N개이므로 결과적으로 힙 정렬의 시간 복잡도는 O(N*logN)이라고 할 수 있다.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> number = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">int</span> heap[number] = &#123; <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">6</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printArray</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> <span class="comment">// 배열 출력 함수</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">	printArray(heap, number);</span><br><span class="line">	<span class="comment">// 전체 트리 구조를 최대 힙 구조로 바꾼다.</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; number; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> c = i;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> root = (c - <span class="number">1</span>) / <span class="number">2</span>; <span class="comment">// 자기 자신의 부모를 의미</span></span><br><span class="line">			<span class="keyword">if</span> (heap[root] &lt; heap[c]) <span class="comment">// 부모보다 자식이 크다면 위치를 바꿈</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> temp = heap[root];</span><br><span class="line">				heap[root] = heap[c];</span><br><span class="line">				heap[c] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">			c = root; <span class="comment">// 부모의 인덱스로 변환하여 0이 될때까지 올라감</span></span><br><span class="line">		&#125; <span class="keyword">while</span> (c != <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	printArray(heap, number);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 크기를 줄여가며 반복적으로 힙을 구성</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = number - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 마지막 인덱스부터 시작</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 가장 큰 값을 맨 뒤로 보냄</span></span><br><span class="line">		<span class="keyword">int</span> temp = heap[<span class="number">0</span>];</span><br><span class="line">		heap[<span class="number">0</span>] = heap[i];</span><br><span class="line">		heap[i] = temp;</span><br><span class="line">		<span class="keyword">int</span> root = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			c = <span class="number">2</span> * root + <span class="number">1</span>;</span><br><span class="line">			<span class="comment">// 자식 중에 더 큰 값 찾기</span></span><br><span class="line">			<span class="comment">// 옆의 값과 비교하여 더 큰 값의 인덱스를 c에 지정</span></span><br><span class="line">			<span class="keyword">if</span> (heap[c] &lt; heap[c + <span class="number">1</span>] &amp;&amp; c &lt; i - <span class="number">1</span>) <span class="comment">// 범위를 넘지 않는 한에서</span></span><br><span class="line">				c++;</span><br><span class="line">			<span class="comment">// 루트보다 자식이 더 크다면 교환</span></span><br><span class="line">			<span class="keyword">if</span> (heap[root] &lt; heap[c] &amp;&amp; c &lt; i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> temp = heap[root];</span><br><span class="line">				heap[root] = heap[c];</span><br><span class="line">				heap[c] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">			root = c; <span class="comment">// 자식의 인덱스로 변환하여 정렬되지 않은 마지막 인덱스까지 진행</span></span><br><span class="line">		&#125; <span class="keyword">while</span> (c &lt; i); <span class="comment">// 정렬된 인덱스 전까지 반복</span></span><br><span class="line">		printArray(heap, number);</span><br><span class="line">	&#125;</span><br><span class="line">	printArray(heap, number);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>최대 힙을 이용하여 위와 같이 힙 정렬을 작성할 수 있으며 진행 과정은 다음과 같다.</p>
+<div style="width: 200px; height: 200px;">
+    <img src="https://kyu9341.github.io/img/heapsort.png" style="width: 200px
+    ; height: 200px;">
+</div>
+
+<p>힙 정렬은 병합 정렬과 다르게 별도로 추가적인 배열이 필요하지 않다는 점에서 메모리 측면에서 매우 효율적이다. 또한 항상 O(N*logN)을 보장할 수 있다는 점에서 아주 강력한 알고리즘이다. 하지만 단순히 속도만 놓고 비교하면 퀵 정렬이 평균적으로 더 빠르기 때문에 힙 정렬이 일반적으로 많이 사용되지는 않는다고 한다.</p>
+<blockquote>
+<p>참조<br><a href="https://blog.naver.com/ndb796/221228342808" target="_blank" rel="external nofollow noopener noreferrer">https://blog.naver.com/ndb796/221228342808</a><br><a href="https://ko.wikipedia.org/wiki/%ED%9E%99_%EC%A0%95%EB%A0%AC" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/%ED%9E%99_%EC%A0%95%EB%A0%AC</a><br><a href="https://gmlwjd9405.github.io/2018/05/10/algorithm-heap-sort.html" target="_blank" rel="external nofollow noopener noreferrer">https://gmlwjd9405.github.io/2018/05/10/algorithm-heap-sort.html</a></p>
+</blockquote>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/algorithm/2020/01/02/algorithmCountingSort/" data-toggle="tooltip" data-placement="top" title="계수 정렬(Counting Sort) 알고리즘">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/algorithm/2019/12/27/algorithmMergeSort/" data-toggle="tooltip" data-placement="top" title="병합 정렬(Merge Sort) 알고리즘">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/";
+    var disqus_url = "https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; kwon&#39;s Blog 2020 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://kyu9341.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-146069634-1';
+    var _gaDomain = 'kyu9341.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5e97324669e9320caac3e37c/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+
+</html>
