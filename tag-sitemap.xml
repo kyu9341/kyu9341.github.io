@@ -4,7 +4,14 @@
 
     <url>
         <loc>https://kyu9341.github.io/tags/NPM/</loc>
-        <lastmod>2020-08-29T17:04:41.886Z</lastmod>
+        <lastmod>2020-08-30T16:53:06.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/tags/JavaScript/</loc>
+        <lastmod>2020-08-30T16:53:06.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -61,13 +68,6 @@
     <url>
         <loc>https://kyu9341.github.io/tags/Android/</loc>
         <lastmod>2020-08-28T02:14:04.092Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/tags/JavaScript/</loc>
-        <lastmod>2020-08-28T02:14:04.063Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
