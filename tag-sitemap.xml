@@ -3,14 +3,21 @@
 
 
     <url>
-        <loc>https://kyu9341.github.io/tags/NPM/</loc>
-        <lastmod>2020-08-30T16:53:06.478Z</lastmod>
+        <loc>https://kyu9341.github.io/tags/Express/</loc>
+        <lastmod>2020-09-12T12:58:46.970Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://kyu9341.github.io/tags/JavaScript/</loc>
+        <lastmod>2020-09-12T12:58:46.970Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/tags/NPM/</loc>
         <lastmod>2020-08-30T16:53:06.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
