@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          About - kwon | kwon&#39;s Blog
+          kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/about/">
+    <link rel="canonical" href="https://kyu9341.github.io/categories/boostcamp/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/about/">
+    <link rel="canonical" href="https://kyu9341.github.io/categories/BoostCamp/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -158,265 +158,90 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>About</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">kwon yeongeon</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+    <!-- Default Archive layout, we use archives instead. -->
+---
+title: Archive
+layout: default
+description: keep hungry keep foolish
+header-img: "img/tag-bg.jpg"
+---
 
-
+<!--
+Credits: this page shamelessly borrowed a lot from:
+https://github.com/kitian616/jekyll-TeXt-theme
+-->
+<!-- Page Header -->
+{% include intro-header.html type='page' short=true %}
 
 <!-- Main Content -->
 <div class="container">
-    <div class="row">
-        
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<!-- Tags (as filter) -->
+			<div id="tag_cloud" class="tags tags-sup js-tags">
+				<a class="tag-button--all" data-encode>
+					Show All
+					<sup>{{site.posts.size}}</sup>
+				</a>
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+				{% capture tags %}
+				{% for tag in site.tags %}
+				<a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" data-encode="{{ tag[0] | strip | url_encode }}" class="tag-button" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+					{{ tag[0] }}
+					<sup>{{tag[1].size}}</sup>
+				</a>__SEPERATOR__
+				{% endfor %}
+				{% endcapture %}
+        {{ tags | split:'__SEPERATOR__' | sort }}
+			</div>
 
-                <h2 id="권영언"><a href="#권영언" class="headerlink" title="권영언"></a><strong>권영언</strong></h2><p>개인 개발 블로그</p>
-<p>깃허브 주소 <a href="https://github.com/kyu9341" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/kyu9341</a></p>
-
-
-                <!-- 如果开启评论功能 -->
-                
-                    <hr>
-
-                    
-
-                    
-                    <!-- disqus 评论框 start -->
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                    <!-- disqus 评论框 end -->
-                    
+            <!-- Article List -->
+			<div class="mini-post-list js-result d-none">
+			{%- assign _sorted_list = site.posts -%}
+			{%- assign _sorted_list = _sorted_list | sort: 'date' -%}
+			{%- assign _sorted_list = _sorted_list | reverse -%}
 
 
-                    
+			{%- for _article in _sorted_list -%}
+				{%- assign _tags = '' -%}
+				{%- for _tag in _article.tags -%}
+					{%- assign _tag_encode = _tag | strip | url_encode -%}
+					{%- if forloop.last -%}
+						{%- assign _tags = _tags | append: _tag_encode -%}
+					{%- else -%}
+						{%- assign _tags = _tags | append: _tag_encode | append: ',' -%}
+					{%- endif -%}
+				{%- endfor -%}
 
-                    
-                    <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES * * */
-                        var disqus_shortname = "kyu9341-github-io";
-                        var disqus_identifier = "https://kyu9341.github.io/about/index.html";
-                        var disqus_url = "https://kyu9341.github.io/about/index.html";
+			{% comment %} group by year {% endcomment %}
+			{%- assign _currentdate = _article.date | date: '%Y' -%}
+			{%- if _currentdate != _date -%}
+				{%- unless forloop.first -%}{%- endunless -%}
+				<section>
+				<span class="fa listing-seperator">
+					<span class="tag-text">{{ _currentdate }}</span>
+				</span>
+				{%- assign _date = _currentdate -%}
+			{%- endif -%}
 
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-
-
-                    </script>
-                    <!-- disqus 公共JS代码 end -->
-                    
-
-
-
-                
-
-            </div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            
-                            <a href="/tags/#C/C++" title="C/C++" rel="6">C/C++</a>
-                            
-                        
-                            
-                            <a href="/tags/#DataBase" title="DataBase" rel="2">DataBase</a>
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#영상처리" title="영상처리" rel="9">영상처리</a>
-                            
-                        
-                            
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="6">JavaScript</a>
-                            
-                        
-                            
-                            <a href="/tags/#Algorithm" title="Algorithm" rel="192">Algorithm</a>
-                            
-                        
-                            
-                            <a href="/tags/#Android" title="Android" rel="2">Android</a>
-                            
-                        
-                            
-                            <a href="/tags/#Django" title="Django" rel="11">Django</a>
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#Java" title="Java" rel="3">Java</a>
-                            
-                        
-                            
-                            <a href="/tags/#Spring" title="Spring" rel="20">Spring</a>
-                            
-                        
-                            
-                            <a href="/tags/#MachineLearning" title="MachineLearning" rel="4">MachineLearning</a>
-                            
-                        
-                            
-                            <a href="/tags/#Python" title="Python" rel="7">Python</a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/img/K2.png">
-                        
-
-                        
-                            <p>kwon</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
-                    
-                        <li><a href="#" target="_blank">Foo</a></li>
-                    
-                        <li><a href="#" target="_blank">Bar</a></li>
-                    
-                        <li><a href="#" target="_blank">Example Friends</a></li>
-                    
-                        <li><a href="#" target="_blank">It helps SEO</a></li>
-                    
-                </ul>
-                
-            </div>
-        
-    </div>
+				<div class="post-preview item" data-tags="{{ _tags }}">
+				    <a href="{{ _article.url | prepend: site.baseurl }}">
+				        <h2 class="post-title">
+                            {{ _article.title }}
+				        </h2>
+				        {% if _article.subtitle %}
+				        <h3 class="post-subtitle">
+				            {{ _article.subtitle }}
+				        </h3>
+				        {% endif %}
+				    </a>
+					<hr>
+				</div>
+			{%- if forloop.last -%}</section>{%- endif -%}
+			{% endfor %}
+			</div>
+		</div>
+	</div>
 </div>
 
 
