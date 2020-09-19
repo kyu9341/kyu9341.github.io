@@ -8,6 +8,13 @@
     </url>
     
     <url>
+        <loc>https://kyu9341.github.io/about/</loc>
+        <lastmod>2020-09-19T15:09:26.225Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>https://kyu9341.github.io/tags/</loc>
         <lastmod>2020-08-28T02:14:04.330Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,13 +24,6 @@
     <url>
         <loc>https://kyu9341.github.io/archives/</loc>
         <lastmod>2020-08-28T02:14:04.104Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://kyu9341.github.io/about/</loc>
-        <lastmod>2020-08-28T02:14:04.103Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
