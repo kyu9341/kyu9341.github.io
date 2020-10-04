@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          About - kwon | kwon&#39;s Blog
+          프로세스 - 프로세스 메모리 구조 - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/about/">
+    <link rel="canonical" href="https://kyu9341.github.io/운영체제/2020/10/04/os_process_structure/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/about/">
+    <link rel="canonical" href="https://kyu9341.github.io/운영체제/2020/10/04/OS_Process_Structure/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -158,254 +158,123 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>About</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">kwon yeongeon</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#운영체제" title="운영체제">운영체제</a>
+                        
+                    </div>
+                    <h1>프로세스 - 프로세스 메모리 구조</h1>
+                    <h2 class="subheading">OS</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2020-10-04
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-                <h2 id="권영언"><a href="#권영언" class="headerlink" title="권영언"></a><strong>권영언</strong></h2><p>개인 개발 블로그</p>
+                <h2 id="프로세스란"><a href="#프로세스란" class="headerlink" title="프로세스란?"></a>프로세스란?</h2><p>프로세스란 운영체제 입장에서 하나의 작업 단위이며, 컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램을 말한다.</p>
+<h3 id="프로그램과-프로세스"><a href="#프로그램과-프로세스" class="headerlink" title="프로그램과 프로세스"></a>프로그램과 프로세스</h3><p>프로그램은 일반적으로 하드 디스크 등의 보조기억장치에 저장된 실행 코드를 뜻하고, 프로세스는 프로그램을 구동하여 프로그램 자체와 프로그램의 상태가 메모리 상에서 실행되는 작업 단위를 지칭한다. 즉, 실행 중인 프로그램을 뜻한다. 예를 들어, 하나의 프로그램을 여러 번 구동하면 여러 개의 프로세스가 메모리 상에서 실행되는 것이다.</p>
+<h3 id="시분할-방식"><a href="#시분할-방식" class="headerlink" title="시분할 방식"></a>시분할 방식</h3><p>하나의 cpu(프로세서)는 한 순간에 하나의 프로세스만 실행할 수 있다. 그럼에도 여러 프로세스를 동시에 실행시킬 수 있는 것은 cpu가 처리하는 시간을 잘게 쪼개 여러 프로세스에 배분하는 방식으로 동작하기 때문이다.</p>
+<hr>
+<h2 id="프로세스-메모리-구조"><a href="#프로세스-메모리-구조" class="headerlink" title="프로세스 메모리 구조"></a>프로세스 메모리 구조</h2><p>UNIX 시스템은 실행 중인 프로세스에게 4GB의 가상 메모리 공간을 할당하는데, 상위 1GB는 커널이, 하위 3GB는 사용자 프로그램이 차지한다.</p>
+<p><img src="https://user-images.githubusercontent.com/49153756/95016525-769c2780-068e-11eb-9c04-22da6a232278.png" alt="image"></p>
+<h3 id="stack-영역"><a href="#stack-영역" class="headerlink" title="stack 영역"></a>stack 영역</h3><p>프로그램이 자동으로 사용하는 메모리 영역으로 함수 호출과 관계되는 지역변수와 매개변수가 저장된다. 함수 호출 시 생성되며, 함수가 끝나면 반환된다. stack 사이즈는 각 프로세스마다 할당되지만 프로세스가 메모리에 로드될 때 stack 사이즈가 고정되어 있어 런타임 시 stack 사이즈를 바꿀 수 없다. 명령 실행 시 자동으로 증가 또는 감소하기 때문에 보통 메모리의 마지막 번지를 지정한다.</p>
+<h3 id="heap-영역"><a href="#heap-영역" class="headerlink" title="heap 영역"></a>heap 영역</h3><p>필요에 의해 메모리를 동적으로 할당할 때 사용하는 메모리 영역으로 동적 메모리 영역이라고 부른다. C 에서 <code>malloc()</code> <code>calloc()</code> 등의 함수를 사용하여 메모리 크기를 할당할 수 있으며, 메모리 주소 값에 의해서만 참조되고 사용되는 영역이다.</p>
 <ul>
-<li>2020 부스트캠프 5기 챌린지<ul>
-<li>2020/07 ~ 2020/08</li>
+<li>위의 stack과 heap영역은 사실 같은 공간을 공유한다. heap이 메모리의 낮은 주소부터 할당되면 stack은 높은 주소부터 할당되는 식이다. 그래서 각 영역이 상대 공간을 침범하는 일이 발생할 수 있는데 이를 각각 <code>stack overflow</code>, <code>heap overflow</code> 라고 한다.</li>
 </ul>
-</li>
-<li>2020 부스트캠프 5기 멤버쉽<ul>
-<li>2020/09 ~ </li>
+<h3 id="Data-영역-BSS-GVAR"><a href="#Data-영역-BSS-GVAR" class="headerlink" title="Data 영역 (BSS, GVAR)"></a>Data 영역 (BSS, GVAR)</h3><p>프로그램이 실행될 때 생성되고 프로그램이 종료되면 시스템에 반환되며, 전역변수, 정적변수, 배열, 구조체 등이 저장된다. Data 영역은 다시 <code>BSS</code> 영역과 <code>Data(GVAR)</code> 영역으로 나누어지는데, 초기화된 데이터는 Data 영역에 저장되고, 초기화되지 않은 데이터는 BSS 영역에 저장된다.</p>
+<ul>
+<li>BSS, Data로 구분하는 이유?</li>
 </ul>
-</li>
-</ul>
-<p>깃허브 주소 <a href="https://github.com/kyu9341" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/kyu9341</a></p>
+<p>초기화 된 데이터는 초기 값을 저장해야 하므로 Data 영역에 저장되어 rom 에 저장된다. 하지만 초기화 되지 않은 데이터 까지 rom 에 저장되면 큰 size의 rom이 필요하므로 구분한다. ( 초기화 되지 않은 데이터는 ram에 저장)</p>
+<h3 id="Text-Code-영역"><a href="#Text-Code-영역" class="headerlink" title="Text (Code) 영역"></a>Text (Code) 영역</h3><p>코드 자체를 구성하는 메모리 영역으로 Hex 파일이나 Bin 파일 메모리이다. 프로그램 명령이 위치하는 곳으로 기계어로 제어되는 메모리 영역이다.</p>
+<hr>
+<blockquote>
+<p>참조<br>운영체제 10판<br>process<br><a href="https://ko.wikipedia.org/wiki/프로세스" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/프로세스</a><br><a href="https://recorda.tistory.com/entry/20160503프로세스-메모리-구조" target="_blank" rel="external nofollow noopener noreferrer">https://recorda.tistory.com/entry/20160503프로세스-메모리-구조</a><br><a href="https://bnzn2426.tistory.com/56?category=778369" target="_blank" rel="external nofollow noopener noreferrer">https://bnzn2426.tistory.com/56?category=778369</a><br><a href="https://inuplace.tistory.com/290?category=884574" target="_blank" rel="external nofollow noopener noreferrer">https://inuplace.tistory.com/290?category=884574</a><br><a href="https://jwprogramming.tistory.com/16" target="_blank" rel="external nofollow noopener noreferrer">https://jwprogramming.tistory.com/16</a><br><a href="https://bowbowbow.tistory.com/16" target="_blank" rel="external nofollow noopener noreferrer">https://bowbowbow.tistory.com/16</a><br><a href="https://www.programmersought.com/article/98613694619/" target="_blank" rel="external nofollow noopener noreferrer">https://www.programmersought.com/article/98613694619/</a><br><a href="https://m.blog.naver.com/PostView.nhn?blogId=ryutuna&amp;logNo=100188393620&amp;proxyReferer=https:%2F%2Frecorda.tistory.com%2Fentry%2F20160503프로세스-메모리-구조" target="_blank" rel="external nofollow noopener noreferrer">https://m.blog.naver.com/PostView.nhn?blogId=ryutuna&amp;logNo=100188393620&amp;proxyReferer=https:%2F%2Frecorda.tistory.com%2Fentry%2F20160503프로세스-메모리-구조</a><br><a href="http://tcpschool.com/c/c_memory_structure" target="_blank" rel="external nofollow noopener noreferrer">http://tcpschool.com/c/c_memory_structure</a></p>
+</blockquote>
 
 
-                <!-- 如果开启评论功能 -->
+                <hr>
+
                 
-                    <hr>
 
+                <ul class="pager">
                     
-
+                        <li class="previous">
+                            <a href="/운영체제/2020/10/04/OS_Process_Context_Switching/" data-toggle="tooltip" data-placement="top" title="프로세스 - Context Switching">&larr; Previous Post</a>
+                        </li>
                     
-                    <!-- disqus 评论框 start -->
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                    <!-- disqus 评论框 end -->
                     
-
-
+                        <li class="next">
+                            <a href="/Express/2020/09/12/JavaScript_express_middleware/" data-toggle="tooltip" data-placement="top" title="Express - 미들웨어">Next Post &rarr;</a>
+                        </li>
                     
+                </ul>
 
-                    
-                    <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES * * */
-                        var disqus_shortname = "kyu9341-github-io";
-                        var disqus_identifier = "https://kyu9341.github.io/about/index.html";
-                        var disqus_url = "https://kyu9341.github.io/about/index.html";
+                
 
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-
-
-                    </script>
-                    <!-- disqus 公共JS代码 end -->
-                    
-
-
-
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
-                            
-                            <a href="/tags/#C/C++" title="C/C++" rel="6">C/C++</a>
-                            
-                        
-                            
-                            <a href="/tags/#DataBase" title="DataBase" rel="2">DataBase</a>
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#영상처리" title="영상처리" rel="9">영상처리</a>
-                            
-                        
-                            
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="6">JavaScript</a>
-                            
-                        
-                            
-                            <a href="/tags/#Algorithm" title="Algorithm" rel="192">Algorithm</a>
-                            
-                        
-                            
-                            <a href="/tags/#Android" title="Android" rel="2">Android</a>
-                            
-                        
-                            
-                            <a href="/tags/#Django" title="Django" rel="11">Django</a>
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#Java" title="Java" rel="3">Java</a>
-                            
-                        
-                            
-                            <a href="/tags/#Spring" title="Spring" rel="20">Spring</a>
-                            
-                        
-                            
-                            <a href="/tags/#MachineLearning" title="MachineLearning" rel="4">MachineLearning</a>
-                            
-                        
-                            
-                            <a href="/tags/#Python" title="Python" rel="7">Python</a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#운영체제" title="운영체제" rel="2">운영체제</a>
-                            
+                       
+                          <a class="tag" href="/tags/#운영체제" title="운영체제">운영체제</a>
                         
                     </div>
                 </section>
                 
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/img/K2.png">
-                        
-
-                        
-                            <p>kwon</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
 
                 <!-- Friends Blog -->
                 
@@ -429,9 +298,66 @@
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2020/10/04/OS_Process_Structure/";
+    var disqus_url = "https://kyu9341.github.io/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2020/10/04/OS_Process_Structure/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->

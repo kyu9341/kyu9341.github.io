@@ -13,12 +13,12 @@
     <link rel="shortcut icon" href="/img/K2.png">
     <title>
         
-          About - kwon | kwon&#39;s Blog
+          프로세스 - Context Switching - kwon | kwon&#39;s Blog
         
     </title>
-    <link rel="canonical" href="https://kyu9341.github.io/about/">
+    <link rel="canonical" href="https://kyu9341.github.io/운영체제/2020/10/04/os_process_context_switching/">
 
-    <link rel="canonical" href="https://kyu9341.github.io/about/">
+    <link rel="canonical" href="https://kyu9341.github.io/운영체제/2020/10/04/OS_Process_Context_Switching/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -158,254 +158,141 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>About</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">kwon yeongeon</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#운영체제" title="운영체제">운영체제</a>
+                        
+                    </div>
+                    <h1>프로세스 - Context Switching</h1>
+                    <h2 class="subheading">OS</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2020-10-04
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-                <h2 id="권영언"><a href="#권영언" class="headerlink" title="권영언"></a><strong>권영언</strong></h2><p>개인 개발 블로그</p>
+                <h2 id="Context-Switching"><a href="#Context-Switching" class="headerlink" title="Context Switching"></a>Context Switching</h2><p>멀티 프로세스 환경에서 CPU가 어떤 하나의 프로세스를 실행하고 있는 상태에서 인터럽트 요청에 의해 다음 우선 순위의 프로세스가 실행되어야 할 때 기존의 프로세스의 상태 또는 레지스터 값(Context)을 저장하고 CPU가 다음 프로세스를 수행하도록 새로운 프로세스의 상태 또는 레지스터 값(Context)을 교체하는 작업을 <code>Context Switching</code>이라 한다.</p>
+<h3 id="Intterupt-인터럽트"><a href="#Intterupt-인터럽트" class="headerlink" title="Intterupt(인터럽트)"></a>Intterupt(인터럽트)</h3><p>인터럽트는 CPU가 프로그램을 실행하고 있을 때, 실행 중인 프로그램 외부에서 예외 상황이 발생하여 처리가 필요한 경우 CPU에게 알려 예외 상황을 처리할 수 있도록 하는 것이다.</p>
 <ul>
-<li>2020 부스트캠프 5기 챌린지<ul>
-<li>2020/07 ~ 2020/08</li>
+<li><strong><code>Context Switching</code> 을 위한 인터럽트 종류</strong><ul>
+<li><code>I/O request</code> : 입출력 요청</li>
+<li><code>time slice expired</code> : CPU 사용시간이 만료</li>
+<li><code>fork a child</code> : 자식 프로세스 생성</li>
+<li><code>wait for an interrupt</code> : 인터럽트 처리 대기</li>
 </ul>
 </li>
-<li>2020 부스트캠프 5기 멤버쉽<ul>
-<li>2020/09 ~ </li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/49153756/95016480-389f0380-068e-11eb-93c0-0da3b80b5f57.png" alt="image"></p>
+<p>위 이미지는 공룡책에서 나오는 <code>Context Switching</code> 에 대한 이미지이다. <code>P0</code> 가 실행 중인데, <code>intterupt</code> 가 발생했다. 그럼 현재 실행 중이었던 <code>P0</code> 의 정보들(<code>PC(Program Counter)</code>, <code>SP(Stack Pointer)</code> 등의 레지스스터 정보)을 해당 프로세스의 <code>PCB</code> (여기서는 <code>PCB0</code>)에 저장한다.  그리고 <code>P1</code> 을 실행시키기 위해 <code>PCB1</code> 에 저장되어 있던 <code>P1</code> 의 정보를 가져와 프로세스를 실행시킨다.</p>
+<p>이 때, <code>Context Switching</code> 이 진행되는 동안 CPU는 아무 일도 하지 못하기 때문에 <code>Context Switching</code> 이 잦아지면 <code>overhead</code>가 많이 발생하게 되어 효율이 떨어질 수 있다.</p>
+<p>[ <code>Context Switching</code> 에서 <code>overhead</code> :  <code>Context Switching</code> 에 걸린 시간과 메모리 ]</p>
+<p><strong>그렇다면 이렇게 <code>overhead</code> 가 발생하게 되는데도 <code>Context Switching</code> 을 하는 이유는 뭘까?</strong></p>
+<p>→ 프로세스 수행 중 <code>I/O 이벤트</code> 가 발생해 <code>waiting</code> 상태로 전환시키는 경우, CPU가 아무런 일을 하지 않아 발생하는 낭비보다 <code>overhead</code> 가 발생하더라도 <code>Context Switching</code> 을 통해 다른 프로세스를 실행시키는 것이 더 효율적이기 때문이다.</p>
+<h2 id="PCB-프로세스-제어-블록"><a href="#PCB-프로세스-제어-블록" class="headerlink" title="PCB(프로세스 제어 블록)"></a>PCB(프로세스 제어 블록)</h2><ul>
+<li>운영체제가 프로세스를 제어하기 위해 정보를 저장하는 자료구조이다.</li>
+<li>프로세스 상태 관리와 <code>Context Switching</code>을 위해 필요하다.</li>
+<li>모든 프로세스는 고유의 PCB를 가지며, 프로세스 생성 시 PCB가 생성되고 주기억장치에 유지되다가 프로세스가 완료되면 PCB는 제거된다.</li>
+</ul>
+<p><strong>PCB에서 유지되는 정보</strong></p>
+<ul>
+<li>PID : 운영체제가 각 프로세스를 식별하기 위해 부여된 프로세스 식별번호</li>
+<li>프로세스 상태 : 준비, 대기, 실행 등의 상태 정보</li>
+<li>PC(프로그램 카운터) : CPU가 다음에 실행할 명령어를 가리키는 값</li>
+<li>Priority (스케줄링 우선순위) : 운영체제가 여러 개의 프로세스가 CPU에서 실행되는 순서를 결정하는 것을 스케줄링이라 하는데, 이 스케줄링에서의 우선순위 정보</li>
+<li>CPU 레지스터 및 일반 레지스터</li>
+<li>메모리 관리 정보 : 해당 프로세스의 주소 공간 등의 정보</li>
+<li>입출력 상태 정보 : 프로세스에 할당된 입출력 장치 목록, 열린 파일 목록 등</li>
+<li>계정 정보 : CPU 사용 시간, 실제 사용된 시간 등</li>
+<li>포인터<ul>
+<li>부모 프로세스와 자식 프로세스에 대한 포인터</li>
+<li>프로세스가 위치한 메모리 주소에 대한 포인터</li>
+<li>할당된 자원에 대한 포인터</li>
 </ul>
 </li>
 </ul>
-<p>깃허브 주소 <a href="https://github.com/kyu9341" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/kyu9341</a></p>
+<hr>
+<blockquote>
+<p>참조<br>운영체제 10판<br>process<br><a href="https://ko.wikipedia.org/wiki/프로세스" target="_blank" rel="external nofollow noopener noreferrer">https://ko.wikipedia.org/wiki/프로세스</a><br><a href="https://recorda.tistory.com/entry/20160503프로세스-메모리-구조" target="_blank" rel="external nofollow noopener noreferrer">https://recorda.tistory.com/entry/20160503프로세스-메모리-구조</a><br><a href="https://bnzn2426.tistory.com/56?category=778369" target="_blank" rel="external nofollow noopener noreferrer">https://bnzn2426.tistory.com/56?category=778369</a><br><a href="https://inuplace.tistory.com/290?category=884574" target="_blank" rel="external nofollow noopener noreferrer">https://inuplace.tistory.com/290?category=884574</a><br><a href="https://jwprogramming.tistory.com/16" target="_blank" rel="external nofollow noopener noreferrer">https://jwprogramming.tistory.com/16</a><br><a href="https://bowbowbow.tistory.com/16" target="_blank" rel="external nofollow noopener noreferrer">https://bowbowbow.tistory.com/16</a><br><a href="https://www.programmersought.com/article/98613694619/" target="_blank" rel="external nofollow noopener noreferrer">https://www.programmersought.com/article/98613694619/</a><br><a href="https://m.blog.naver.com/PostView.nhn?blogId=ryutuna&amp;logNo=100188393620&amp;proxyReferer=https:%2F%2Frecorda.tistory.com%2Fentry%2F20160503프로세스-메모리-구조" target="_blank" rel="external nofollow noopener noreferrer">https://m.blog.naver.com/PostView.nhn?blogId=ryutuna&amp;logNo=100188393620&amp;proxyReferer=https:%2F%2Frecorda.tistory.com%2Fentry%2F20160503프로세스-메모리-구조</a><br><a href="http://tcpschool.com/c/c_memory_structure" target="_blank" rel="external nofollow noopener noreferrer">http://tcpschool.com/c/c_memory_structure</a><br>Context Switching<br><a href="https://jeong-pro.tistory.com/93" target="_blank" rel="external nofollow noopener noreferrer">https://jeong-pro.tistory.com/93</a><br><a href="https://velog.io/@jacob0122/Context-Switching" target="_blank" rel="external nofollow noopener noreferrer">https://velog.io/@jacob0122/Context-Switching</a><br><a href="https://jhnyang.tistory.com/33" target="_blank" rel="external nofollow noopener noreferrer">https://jhnyang.tistory.com/33</a><br><a href="https://jins-dev.tistory.com/entry/컨텍스트-스위치Context-Switching-에-대한-정리" target="_blank" rel="external nofollow noopener noreferrer">https://jins-dev.tistory.com/entry/컨텍스트-스위치Context-Switching-에-대한-정리</a><br><a href="https://velog.io/@adam2/%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8" target="_blank" rel="external nofollow noopener noreferrer">https://velog.io/@adam2/%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8</a></p>
+</blockquote>
 
 
-                <!-- 如果开启评论功能 -->
+                <hr>
+
                 
-                    <hr>
 
+                <ul class="pager">
                     
-
                     
-                    <!-- disqus 评论框 start -->
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                    <!-- disqus 评论框 end -->
+                        <li class="next">
+                            <a href="/운영체제/2020/10/04/OS_Process_Structure/" data-toggle="tooltip" data-placement="top" title="프로세스 - 프로세스 메모리 구조">Next Post &rarr;</a>
+                        </li>
                     
+                </ul>
 
+                
 
-                    
-
-                    
-                    <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES * * */
-                        var disqus_shortname = "kyu9341-github-io";
-                        var disqus_identifier = "https://kyu9341.github.io/about/index.html";
-                        var disqus_url = "https://kyu9341.github.io/about/index.html";
-
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-
-
-                    </script>
-                    <!-- disqus 公共JS代码 end -->
-                    
-
-
-
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
-                            
-                            <a href="/tags/#C/C++" title="C/C++" rel="6">C/C++</a>
-                            
-                        
-                            
-                            <a href="/tags/#DataBase" title="DataBase" rel="2">DataBase</a>
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#영상처리" title="영상처리" rel="9">영상처리</a>
-                            
-                        
-                            
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="6">JavaScript</a>
-                            
-                        
-                            
-                            <a href="/tags/#Algorithm" title="Algorithm" rel="192">Algorithm</a>
-                            
-                        
-                            
-                            <a href="/tags/#Android" title="Android" rel="2">Android</a>
-                            
-                        
-                            
-                            <a href="/tags/#Django" title="Django" rel="11">Django</a>
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#Java" title="Java" rel="3">Java</a>
-                            
-                        
-                            
-                            <a href="/tags/#Spring" title="Spring" rel="20">Spring</a>
-                            
-                        
-                            
-                            <a href="/tags/#MachineLearning" title="MachineLearning" rel="4">MachineLearning</a>
-                            
-                        
-                            
-                            <a href="/tags/#Python" title="Python" rel="7">Python</a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#운영체제" title="운영체제" rel="2">운영체제</a>
-                            
+                       
+                          <a class="tag" href="/tags/#운영체제" title="운영체제">운영체제</a>
                         
                     </div>
                 </section>
                 
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/img/K2.png">
-                        
-
-                        
-                            <p>kwon</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
 
                 <!-- Friends Blog -->
                 
@@ -429,9 +316,66 @@
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2020/10/04/OS_Process_Context_Switching/";
+    var disqus_url = "https://kyu9341.github.io/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2020/10/04/OS_Process_Context_Switching/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
