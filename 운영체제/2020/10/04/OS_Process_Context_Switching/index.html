@@ -214,18 +214,16 @@
 </li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/49153756/95016480-389f0380-068e-11eb-93c0-0da3b80b5f57.png" alt="image"></p>
-<p>위 이미지는 공룡책에서 나오는 <code>Context Switching</code> 에 대한 이미지이다. <code>P0</code> 가 실행 중인데, <code>intterupt</code> 가 발생했다. 그럼 현재 실행 중이었던 <code>P0</code> 의 정보들(<code>PC(Program Counter)</code>, <code>SP(Stack Pointer)</code> 등의 레지스스터 정보)을 해당 프로세스의 <code>PCB</code> (여기서는 <code>PCB0</code>)에 저장한다.  그리고 <code>P1</code> 을 실행시키기 위해 <code>PCB1</code> 에 저장되어 있던 <code>P1</code> 의 정보를 가져와 프로세스를 실행시킨다.</p>
+<p>위 이미지는 공룡책에서 나오는 <code>Context Switching</code> 에 대한 이미지이다. <code>P0</code> 가 실행 중인데,<code>intterupt</code> 가 발생했다. 그럼 현재 실행 중이었던 <code>P0</code> 의 정보들(<code>PC(Program Counter)</code>, <code>SP(Stack Pointer)</code> 등의 레지스스터 정보)을 해당 프로세스의 <code>PCB</code> (여기서는 <code>PCB0</code>)에 저장한다.  그리고 <code>P1</code> 을 실행시키기 위해 <code>PCB1</code> 에 저장되어 있던 <code>P1</code> 의 정보를 가져와 프로세스를 실행시킨다.</p>
 <p>이 때, <code>Context Switching</code> 이 진행되는 동안 CPU는 아무 일도 하지 못하기 때문에 <code>Context Switching</code> 이 잦아지면 <code>overhead</code>가 많이 발생하게 되어 효율이 떨어질 수 있다.</p>
 <p>[ <code>Context Switching</code> 에서 <code>overhead</code> :  <code>Context Switching</code> 에 걸린 시간과 메모리 ]</p>
-<p><strong>그렇다면 이렇게 <code>overhead</code> 가 발생하게 되는데도 <code>Context Switching</code> 을 하는 이유는 뭘까?</strong></p>
-<p>→ 프로세스 수행 중 <code>I/O 이벤트</code> 가 발생해 <code>waiting</code> 상태로 전환시키는 경우, CPU가 아무런 일을 하지 않아 발생하는 낭비보다 <code>overhead</code> 가 발생하더라도 <code>Context Switching</code> 을 통해 다른 프로세스를 실행시키는 것이 더 효율적이기 때문이다.</p>
-<h2 id="PCB-프로세스-제어-블록"><a href="#PCB-프로세스-제어-블록" class="headerlink" title="PCB(프로세스 제어 블록)"></a>PCB(프로세스 제어 블록)</h2><ul>
+<p><strong>그렇다면 이렇게 <code>overhead</code> 가 발생하게 되는데도 <code>Context Switching</code> 을 하는 이유는 뭘까?</strong><br>→ 프로세스 수행 중 <code>I/O 이벤트</code> 가 발생해 <code>waiting</code> 상태로 전환시키는 경우, CPU가 아무런 일을 하지 않아 발생하는 낭비보다 <code>overhead</code> 가 발생하더라도 <code>Context Switching</code> 을 통해 다른 프로세스를 실행시키는 것이 더 효율적이기 때문이다.</p>
+<h3 id="PCB-프로세스-제어-블록"><a href="#PCB-프로세스-제어-블록" class="headerlink" title="PCB(프로세스 제어 블록)"></a>PCB(프로세스 제어 블록)</h3><ul>
 <li>운영체제가 프로세스를 제어하기 위해 정보를 저장하는 자료구조이다.</li>
 <li>프로세스 상태 관리와 <code>Context Switching</code>을 위해 필요하다.</li>
 <li>모든 프로세스는 고유의 PCB를 가지며, 프로세스 생성 시 PCB가 생성되고 주기억장치에 유지되다가 프로세스가 완료되면 PCB는 제거된다.</li>
 </ul>
-<p><strong>PCB에서 유지되는 정보</strong></p>
-<ul>
+<h4 id="PCB에서-유지되는-정보"><a href="#PCB에서-유지되는-정보" class="headerlink" title="PCB에서 유지되는 정보"></a>PCB에서 유지되는 정보</h4><ul>
 <li>PID : 운영체제가 각 프로세스를 식별하기 위해 부여된 프로세스 식별번호</li>
 <li>프로세스 상태 : 준비, 대기, 실행 등의 상태 정보</li>
 <li>PC(프로그램 카운터) : CPU가 다음에 실행할 명령어를 가리키는 값</li>

@@ -215,9 +215,11 @@
 </ul>
 <h3 id="Data-영역-BSS-GVAR"><a href="#Data-영역-BSS-GVAR" class="headerlink" title="Data 영역 (BSS, GVAR)"></a>Data 영역 (BSS, GVAR)</h3><p>프로그램이 실행될 때 생성되고 프로그램이 종료되면 시스템에 반환되며, 전역변수, 정적변수, 배열, 구조체 등이 저장된다. Data 영역은 다시 <code>BSS</code> 영역과 <code>Data(GVAR)</code> 영역으로 나누어지는데, 초기화된 데이터는 Data 영역에 저장되고, 초기화되지 않은 데이터는 BSS 영역에 저장된다.</p>
 <ul>
-<li>BSS, Data로 구분하는 이유?</li>
+<li><code>BSS</code>영역, <code>Data</code>영역을 구분하는 이유?<ul>
+<li>초기화 된 데이터는 초기 값을 저장해야 하므로 Data 영역에 저장되어 rom에 저장된다. 하지만 초기화 되지 않은 데이터 까지 rom에 저장되면 큰 size의 rom이 필요하므로 구분한다. ( 초기화 되지 않은 데이터는 ram에 저장)</li>
 </ul>
-<p>초기화 된 데이터는 초기 값을 저장해야 하므로 Data 영역에 저장되어 rom 에 저장된다. 하지만 초기화 되지 않은 데이터 까지 rom 에 저장되면 큰 size의 rom이 필요하므로 구분한다. ( 초기화 되지 않은 데이터는 ram에 저장)</p>
+</li>
+</ul>
 <h3 id="Text-Code-영역"><a href="#Text-Code-영역" class="headerlink" title="Text (Code) 영역"></a>Text (Code) 영역</h3><p>코드 자체를 구성하는 메모리 영역으로 Hex 파일이나 Bin 파일 메모리이다. 프로그램 명령이 위치하는 곳으로 기계어로 제어되는 메모리 영역이다.</p>
 <hr>
 <blockquote>
