@@ -277,8 +277,8 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url, &#123;</span><br><span class="line">    method,</span><br><span class="line">    mode: <span class="string">"cors"</span>,</span><br><span class="line">    credentials: <span class="string">"include"</span>,</span><br><span class="line">    headers,</span><br><span class="line">    body,</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 
 <p>위와 같이 <code>fetch API</code> 의 옵션에 <code>include</code> 를 설정해주면 해당 <code>url</code> 에 해당하는 쿠키를 함께 보낼 수 있게 된다.  이 경우에 정상적으로 응답을 받기 위해서는 서버 측에서 응답 헤더로 <code>Access-Control-Allow-Credentials</code> 에 <code>true</code> 값을 넣어주어야 한다. 그렇지 않으면 브라우저는 응답을 거부해 버린다.</p>
-<p>또한, <code>include</code> 옵션인 경우 어떤 <code>Origin</code> 에서 어떤 요청이 왔는지에 대한 정보를 서버가 신뢰하기 위해서   <code>Access-Control-Allow-Origin</code> 에 와일드 카드인 <code>*</code> 를 사용할 수 없고, 명시적으로 허용할 <code>Origin</code> 의 정보를 넣어주어야 한다.</p>
 <p><img src="https://user-images.githubusercontent.com/49153756/97022531-30e8c580-158f-11eb-8e36-5c72558845e6.png" alt="credentialed"></p>
+<p>또한, <code>include</code> 옵션인 경우 어떤 <code>Origin</code> 에서 어떤 요청이 왔는지에 대한 정보를 서버가 신뢰하기 위해서   <code>Access-Control-Allow-Origin</code> 에 와일드 카드인 <code>*</code> 를 사용할 수 없고, 명시적으로 허용할 <code>Origin</code> 의 정보를 넣어주어야 한다.</p>
 <p><code>Express</code> 의 경우 서버 측에서 다음과 같이 설정할 수 있다. (<code>cors</code> 미들웨어를 사용)</p>
 <ul>
 <li><a href="https://github.com/expressjs/cors" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/expressjs/cors</a></li>
