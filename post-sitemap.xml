@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
+        <lastmod>2020-12-23T15:15:05.456Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/WEB/2020/10/24/WEB_CORS/</loc>
         <lastmod>2020-10-23T17:53:19.568Z</lastmod>
         <changefreq>weekly</changefreq>
