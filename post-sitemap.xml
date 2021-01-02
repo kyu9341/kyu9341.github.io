@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/BoostCamp/2020/12/31/BoostCamp_MemberShip_review/</loc>
+        <lastmod>2021-01-02T18:46:06.594Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/</loc>
+        <lastmod>2021-01-02T17:49:22.937Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/BoostCamp/2020/08/30/BoostCamp_Challenge_review%20copy/</loc>
+        <lastmod>2021-01-01T18:17:25.104Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
         <lastmod>2020-12-23T17:03:04.836Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -34,14 +58,6 @@
     <url>
         <loc>https://kyu9341.github.io/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2020/10/04/OS_Process_Context_Switching/</loc>
         <lastmod>2020-10-04T13:46:38.014Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/BoostCamp/2020/08/30/BoostCamp_Challenge_review/</loc>
-        <lastmod>2020-09-13T16:27:45.729Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -313,14 +329,6 @@
 
     <url>
         <loc>https://kyu9341.github.io/java/2020/07/08/java_springBoot_Layer/</loc>
-        <lastmod>2020-08-28T02:14:04.098Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/</loc>
         <lastmod>2020-08-28T02:14:04.098Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

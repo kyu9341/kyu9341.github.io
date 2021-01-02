@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://kyu9341.github.io/tags/BoostCamp/</loc>
+        <lastmod>2021-01-02T18:46:06.594Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/tags/Spring/</loc>
+        <lastmod>2021-01-02T17:49:22.937Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/tags/JavaScript/</loc>
         <lastmod>2020-12-23T17:03:04.836Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,13 +33,6 @@
     <url>
         <loc>https://kyu9341.github.io/tags/%25EC%259A%25B4%25EC%2598%2581%25EC%25B2%25B4%25EC%25A0%259C/</loc>
         <lastmod>2020-10-23T16:16:16.063Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/tags/BoostCamp/</loc>
-        <lastmod>2020-09-13T16:27:45.729Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -61,13 +68,6 @@
     <url>
         <loc>https://kyu9341.github.io/tags/MachineLearning/</loc>
         <lastmod>2020-08-28T02:14:04.099Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/tags/Spring/</loc>
-        <lastmod>2020-08-28T02:14:04.098Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
