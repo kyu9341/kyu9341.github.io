@@ -8,8 +8,16 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/BoostCamp/2020/12/31/BoostCamp_MemberShip_review/</loc>
-        <lastmod>2021-01-02T18:48:37.205Z</lastmod>
+        <loc>https://kyu9341.github.io/boostcamp/2020/12/31/BoostCamp_MemberShip_review/</loc>
+        <lastmod>2021-01-03T05:26:23.314Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/boostcamp/2020/08/30/BoostCamp_Challenge_review%20copy/</loc>
+        <lastmod>2021-01-03T05:26:12.424Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,14 +26,6 @@
     <url>
         <loc>https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/</loc>
         <lastmod>2021-01-02T17:49:22.937Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/BoostCamp/2020/08/30/BoostCamp_Challenge_review%20copy/</loc>
-        <lastmod>2021-01-01T18:17:25.104Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
