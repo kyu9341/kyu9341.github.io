@@ -8,6 +8,38 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmQuickSort/</loc>
+        <lastmod>2021-01-07T07:36:53.874Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
+        <lastmod>2021-01-07T07:28:48.019Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/</loc>
+        <lastmod>2021-01-07T06:31:45.784Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
+        <lastmod>2021-01-07T05:50:57.441Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/BoostCamp/2020/12/31/BoostCamp_MemberShip_review/</loc>
         <lastmod>2021-01-03T17:35:50.777Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -632,30 +664,6 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmQuickSort/</loc>
-        <lastmod>2020-08-28T02:14:04.091Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/</loc>
-        <lastmod>2020-08-28T02:14:04.091Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
-        <lastmod>2020-08-28T02:14:04.090Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/09/algorithmKruskal/</loc>
         <lastmod>2020-08-28T02:14:04.090Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -721,14 +729,6 @@
 
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmBFS/</loc>
-        <lastmod>2020-08-28T02:14:04.088Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
         <lastmod>2020-08-28T02:14:04.088Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
