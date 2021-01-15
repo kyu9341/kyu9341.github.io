@@ -9,23 +9,7 @@
 
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmQuickSort/</loc>
-        <lastmod>2021-01-07T07:36:53.874Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
-        <lastmod>2021-01-07T07:28:48.019Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/</loc>
-        <lastmod>2021-01-07T06:31:45.784Z</lastmod>
+        <lastmod>2021-01-15T11:06:02.295Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -33,7 +17,23 @@
 
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
-        <lastmod>2021-01-07T05:50:57.441Z</lastmod>
+        <lastmod>2021-01-15T11:05:07.240Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
+        <lastmod>2021-01-15T11:03:28.685Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/</loc>
+        <lastmod>2021-01-15T11:02:49.210Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
