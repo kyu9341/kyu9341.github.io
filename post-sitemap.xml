@@ -8,8 +8,32 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
+        <lastmod>2021-01-15T16:33:12.538Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
+        <lastmod>2021-01-15T11:32:59.933Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/</loc>
+        <lastmod>2021-01-15T11:32:52.111Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmQuickSort/</loc>
-        <lastmod>2021-01-15T11:06:02.295Z</lastmod>
+        <lastmod>2021-01-15T11:32:42.662Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,22 +42,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmBubbleSort/</loc>
         <lastmod>2021-01-15T11:05:07.240Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/22/algorithmInsertionSort/</loc>
-        <lastmod>2021-01-15T11:03:28.685Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/21/algorithmSelectionSort/</loc>
-        <lastmod>2021-01-15T11:02:49.210Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -697,14 +705,6 @@
 
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmDFS/</loc>
-        <lastmod>2020-08-28T02:14:04.089Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
         <lastmod>2020-08-28T02:14:04.089Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
