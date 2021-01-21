@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/</loc>
+        <lastmod>2021-01-21T16:56:27.830Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmDFS/</loc>
+        <lastmod>2021-01-21T08:39:51.443Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
+        <lastmod>2021-01-17T18:19:42.241Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
         <lastmod>2021-01-15T16:33:12.538Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,14 +90,6 @@
     <url>
         <loc>https://kyu9341.github.io/java/2020/05/13/java_spring_IOC_DI/</loc>
         <lastmod>2021-01-02T17:49:22.937Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
-        <lastmod>2020-12-23T17:03:04.836Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -680,14 +696,6 @@
     </url>
 
     <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/</loc>
-        <lastmod>2020-08-28T02:14:04.090Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/02/algorithmCountingSort/</loc>
         <lastmod>2020-08-28T02:14:04.089Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -697,14 +705,6 @@
 
     <url>
         <loc>https://kyu9341.github.io/algorithm/2019/10/17/algorithmGreedy/</loc>
-        <lastmod>2020-08-28T02:14:04.089Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmDFS/</loc>
         <lastmod>2020-08-28T02:14:04.089Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
