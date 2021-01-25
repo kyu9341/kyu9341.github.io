@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
+        <lastmod>2021-01-25T14:58:53.188Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/algorithm/2019/12/27/algorithmMergeSort/</loc>
         <lastmod>2021-01-21T16:56:27.830Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,14 +34,6 @@
     <url>
         <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
         <lastmod>2021-01-17T18:19:42.241Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/algorithm/2019/12/28/algorithmHeapSort/</loc>
-        <lastmod>2021-01-15T16:33:12.538Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
