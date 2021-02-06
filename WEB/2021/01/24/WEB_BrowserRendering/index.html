@@ -207,7 +207,10 @@
 <li>이 두개를 합쳐서 실제로 웹 브라우저에 보여져야할 요소를 표현한 <strong>렌더 트리</strong>를 만든다.</li>
 <li>이 렌더 트리를 기준으로 <strong>레이아웃을 배치</strong>하고 <strong>색을 칠하는 등의 작업</strong>을 한다.</li>
 </ul>
-<h2 id="Critical-Rendering-Path-브라우저가-하나의-화면을-나타내는-과정"><a href="#Critical-Rendering-Path-브라우저가-하나의-화면을-나타내는-과정" class="headerlink" title="Critical Rendering Path (브라우저가 하나의 화면을 나타내는 과정)"></a>Critical Rendering Path (브라우저가 하나의 화면을 나타내는 과정)</h2><ol>
+<h2 id="Critical-Rendering-Path"><a href="#Critical-Rendering-Path" class="headerlink" title="Critical Rendering Path"></a>Critical Rendering Path</h2><ul>
+<li>브라우저가 하나의 화면을 나타내는 과정</li>
+</ul>
+<ol>
 <li>HTML데이터를 파싱한다.</li>
 <li>파싱한 결과로 DOM Tree를 만든다.</li>
 <li>파싱 중 CSS파일 링크를 만나면 CSS파일을 요청해서 받고, CSS 파일을 읽어 CSSOM(CSS Object Model)을 만든다.</li>
@@ -228,6 +231,7 @@
 <p><code>width:100%</code>인 상태에서 브라우저를 리사이즈하면, Render Tree는 변경되지 않고 Layout 이후 과정만 다시 거치게 된다.</p>
 <h3 id="6-Paint"><a href="#6-Paint" class="headerlink" title="6. Paint"></a><strong>6. Paint</strong></h3><p><code>Layout</code>과정을 거쳐 계산을 마치면, 실제 그리는 작업(Paint)을 수행한다. 실제로 픽셀이 화면에 그려지며, 만약 <code>Render Layer</code>가 2개 이상이면 각각의 Layer를 그린 뒤 하나의 이미지로 <code>Composite</code>하는 과정을 거친 뒤 브라우저에 실제로 그려지게 된다.</p>
 <p>색이 바뀐다거나 노드의 스타일이 바뀌는 걸로는 <code>Layout</code> 과정을 거치지 않고 <code>Paint</code>만 일어난다.</p>
+<hr>
 <h3 id="Reflow"><a href="#Reflow" class="headerlink" title="Reflow"></a>Reflow</h3><p><code>height</code>, <code>width</code>, <code>left</code>, <code>top</code>, <code>font-size</code>, <code>line-height</code> 등의 속성이 변경되는 경우 발생하며, 변경이 필요한 렌더 트리에 대한 유효성 확인 작업과 함께 <strong>노드의 크기와 위치를 다시 계산</strong>한다. 좀 더 정확하게는 노드의 크기 또는 위치가 바뀌어 현재 레이아웃에 영향을 미쳐 배치를 다시 해야 할 때 <code>Reflow</code>가 발생한다.</p>
 <p>특정 요소에 <code>Reflow</code>가 발생하면 요소의 DOM 구조에 따라 자식 요소와 부모 요소 역시 다시 계산될 수 있으며, 경우에 따라서는 문서 전체에 <code>Reflow</code>가 발생할 수도 있다.</p>
 <h3 id="Repaint"><a href="#Repaint" class="headerlink" title="Repaint"></a>Repaint</h3><p>변경 영역의 결과를 표현하기 위해 화면이 업데이트되는 것을 의미한다.(<code>Reflow</code>만 수행되면 실제 화면에 반영되지 않는다.) <strong><code>Reflow</code>가 발생하거나 배경색 변경 등의 단순한 스타일 변경과 같은 작업이 발생하는 경우에 발생한다.</strong> 간단하게는 화면을 변경해야 할 때 발생한다고 생각하면 된다. 이러한 작업을 <code>Repaint</code> 또는 <code>Redraw</code>라고 한다.</p>
