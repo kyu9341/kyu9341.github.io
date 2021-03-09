@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
+        <lastmod>2021-03-09T14:16:47.739Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/WEB/2020/10/24/WEB_CORS/</loc>
         <lastmod>2021-02-16T13:59:02.419Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -50,14 +58,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/01/03/algorithmDFS/</loc>
         <lastmod>2021-01-21T08:39:51.443Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
-        <lastmod>2021-01-17T18:19:42.241Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
