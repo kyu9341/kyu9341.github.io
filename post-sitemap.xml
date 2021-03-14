@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/JavaScript/2021/03/14/JavaScript_freeze_seal/</loc>
+        <lastmod>2021-03-14T13:55:02.420Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/JavaScript/2020/12/24/JavaScript_this/</loc>
-        <lastmod>2021-03-09T14:16:47.739Z</lastmod>
+        <lastmod>2021-03-09T14:20:02.019Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

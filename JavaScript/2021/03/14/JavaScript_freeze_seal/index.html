@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="DccZuuiZ9TibZPtIaFy53R0h-H4tYt01uuNFgpAariI">
+    <meta name="naver-site-verification" content="5e23bdf515b07e9f67d160f17584530e5971e0ab">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/K2.png">
+    <title>
+        
+          자바스크립트(JavaScript) - 객체를 immutable하게 만드는 방법들 - kwon | kwon&#39;s Blog
+        
+    </title>
+    <link rel="canonical" href="https://kyu9341.github.io/javascript/2021/03/14/javascript_freeze_seal/">
+
+    <link rel="canonical" href="https://kyu9341.github.io/JavaScript/2021/03/14/JavaScript_freeze_seal/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script data-ad-client="ca-pub-8978187582935973" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="kwon's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">kwon&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Posts</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                    <h1>자바스크립트(JavaScript) - 객체를 immutable하게 만드는 방법들</h1>
+                    <h2 class="subheading">JavaScript</h2>
+                    <span class="meta">
+                        Posted by kwon on
+                        2021-03-14
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="객체를-immutable-하게-만드는-방법"><a href="#객체를-immutable-하게-만드는-방법" class="headerlink" title="객체를 immutable 하게 만드는 방법"></a>객체를 <code>immutable</code> 하게 만드는 방법</h1><p>객체를 변경 할 수 없게 만드는 방법에는 대표적으로 <code>Object.freeze()</code>가 있다. 하지만, 이 방법 외에도 몇 가지 방법들이 있다.</p>
+<ul>
+<li><p><code>const</code> vs <code>Object.freeze()</code></p>
+<ul>
+<li><code>immutable</code>한 상태를 만드는 방법은 <code>const</code>와 <code>Object.freeze()</code>가 있는데 둘의 차이를 살펴보면 아래와 같다.</li>
+</ul>
+</li>
+<li><p><code>const</code> : 참조값을 못 바꾸게 함 (객체 내부의 프로퍼티의 값은 변경이 가능)</p>
+</li>
+<li><p><code>Object.freeze()</code> : 값 자체를 못 바꾸게 함 (참조 값을 재할당 가능)</p>
+</li>
+<li><p>위의 두 방법을 같이 사용하면 되지만, <code>Nested Object</code>는 까지는 변경을 막지 못함 -&gt; <code>deep freeze</code>로 해결 가능</p>
+</li>
+</ul>
+<p>조금 더 자세히, 다양한 방법에 대해 알아보자.</p>
+<h3 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external nofollow noopener noreferrer"><code>Object.defineProperty()</code></a></h3><ul>
+<li><code>Object</code> 객체의 <code>static method</code>로 객체에 직접 새로운 속성을 정의하거나, 이미 존재하는 속성을 수정하고, 그 객체를 반환한다.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(obj, prop, descriptor);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>obj</code> : 속성을 정의할 객체</li>
+<li><code>prop</code> : 새로 정의하거나 수정할 속성</li>
+<li><code>descriptor</code> : 새로 정의하거나 수정할 속성을 기술하는 객체</li>
+</ul>
+<h4 id="descriptor-객체에-포함되는-속성"><a href="#descriptor-객체에-포함되는-속성" class="headerlink" title="descriptor 객체에 포함되는 속성"></a><strong><code>descriptor</code></strong> 객체에 포함되는 속성</h4><ul>
+<li><strong><code>configurable</code></strong> : 해당 속성의 값을 변경할 수 있고, 대상 객체에서 삭제할 수도 있다면 <code>true</code><ul>
+<li>→ <code>false</code>가 된다면 <code>configurable</code>과 <code>enumerable</code>의 플래그를 수정할 수 없고, <code>writable: false</code>의 경우 <code>true</code>로 바꿀 수 없다. (<code>true → false</code>는 가능) <code>value</code>는 변경이 가능.</li>
+<li>즉, 해당 속성의 설정 값을 변경할 수 있는지를 관리하는 속성이다.</li>
+<li>기본값 : <code>false</code></li>
+</ul>
+</li>
+<li><strong><code>enumerable</code></strong> : 해당 속성이 대상 객체의 속성 열거 시 노출된다면 <code>true</code><ul>
+<li>기본값 : <code>false</code></li>
+</ul>
+</li>
+<li><strong><code>value</code></strong> : 속성에 연관된 값. 아무 유효한 JavaScript 값(숫자, 객체, 함수 등)이나 가능<ul>
+<li>기본값 : <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined" target="_blank" rel="external nofollow noopener noreferrer"><code>undefined</code></a></li>
+</ul>
+</li>
+<li><strong><code>writable</code></strong> : <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Assignment_Operators" target="_blank" rel="external nofollow noopener noreferrer">할당 연산자(<code>=</code>)</a>로 속성의 값을 바꿀 수 있다면 <code>true</code><ul>
+<li>기본값 : <code>false</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor"></a><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" target="_blank" rel="external nofollow noopener noreferrer"><code>Object.getOwnPropertyDescriptor</code></a></h4><ul>
+<li>객체의 해당 속성의 <code>descriptor</code>를 확인 할 수 있다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user1 = &#123;</span><br><span class="line">  name: <span class="string">'kwon'</span>,</span><br><span class="line">  age: <span class="number">26</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(user1, <span class="string">'age'</span>));</span><br><span class="line"><span class="comment">// &#123; value: 26, writable: true, enumerable: true, configurable: true &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions" target="_blank" rel="external nofollow noopener noreferrer"><code>Object.preventExtensions()</code></a></h3><ul>
+<li>자바스크립트의 모든 객체는 <code>[[Extensible]]</code> 이라는 숨겨진 속성을 가지고 있는데, 이 속성의 값이 <code>false</code>면 객체에 속성을 추가하는 것이 불가능하다. (기본값 : <code>true</code>)</li>
+<li>이 속성을 <code>false</code>로 변경하는 메소드가 <code>Object.preventExtensions(obj)</code>이다.<ul>
+<li>객체의 <code>[[Extensible]]</code> 속성은 <code>Object.isExtensible(obj)</code>라는 메소드로 확인할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>개체의 기존 속성을 변경할 수 있음</li>
+<li><strong>새로운 속성 추가 방지</strong></li>
+</ol>
+<ul>
+<li><code>[[Extensible]]</code> 속성을 <code>false</code> 로 변경한다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user1 = &#123;</span><br><span class="line">  name: <span class="string">'kwon'</span>,</span><br><span class="line">  age: <span class="number">26</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Extensible : '</span>, <span class="built_in">Object</span>.isExtensible(user1));</span><br><span class="line"><span class="comment">// 출력 : Extensible :  true</span></span><br><span class="line"><span class="built_in">Object</span>.preventExtensions(user1);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Extensible : '</span>, <span class="built_in">Object</span>.isExtensible(user1));</span><br><span class="line"><span class="comment">// 출력 : Extensible :  false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(user1, <span class="string">'address'</span>, &#123;</span><br><span class="line">  value: <span class="string">'Seoul'</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// TypeError: Cannot define property address, object is not extensible</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Object.preventExtensions(user1)</code> 을 통해 내부의 <code>Extensible</code> 속성이 <code>false</code>로 변경된 모습을 볼 수 있고, 이후에 <code>Object.defineProperty()</code>로 새로운 속성을 추가하려고 하면 위와 같은 에러를 발생시키게 된다.</p>
+<h3 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/seal" target="_blank" rel="external nofollow noopener noreferrer"><code>Object.seal()</code></a></h3><ol>
+<li>개체의 기존 속성을 변경할 수 있음</li>
+<li><strong>새로운 속성 추가 방지</strong></li>
+<li><strong>기존 속성 제거 허용 안함</strong></li>
+</ol>
+<ul>
+<li><code>[[Extensible]]</code> 속성을 <code>false</code> 로 변경한다.</li>
+<li>모든 프로퍼티의 <code>configurable</code> 속성을 <code>false</code> 로 변경한다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user1 = &#123;</span><br><span class="line">  name: <span class="string">'kwon'</span>,</span><br><span class="line">  age: <span class="number">26</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(user1, <span class="string">'age'</span>));</span><br><span class="line"><span class="comment">// 출력 : &#123; value: 26, writable: true, enumerable: true, configurable: true &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Extensible : '</span>, <span class="built_in">Object</span>.isExtensible(user1));</span><br><span class="line"><span class="comment">// 출력 : Extensible :  true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> user1.name; <span class="comment">// name 속성이 삭제됨</span></span><br><span class="line"><span class="built_in">console</span>.log(user1); <span class="comment">// &#123; age: 26 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.seal(user1);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(user1, <span class="string">'age'</span>));</span><br><span class="line"><span class="comment">// 출력 : &#123; value: 26, writable: true, enumerable: true, configurable: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Extensible : '</span>, <span class="built_in">Object</span>.isExtensible(user1));</span><br><span class="line"><span class="comment">// 출력 : Extensible :  false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> user1.age; <span class="comment">// 삭제가 안됨</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user1); <span class="comment">// &#123; age: 26 &#125;</span></span><br><span class="line"></span><br><span class="line">user1.age = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user1); <span class="comment">// &#123; age: 30 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Object.seal()</code>이 적용된 이후 <code>Extensible</code>과 <code>configurable</code>이 모두 <code>false</code>로 변경된 것을 확인할 수 있다. 또한, <code>delete</code> 연산자를 통해 <code>user1</code>의 <code>name</code>과 <code>age</code>를 각각 <code>Object.seal()</code> 이전, 이후에 삭제를 시도한 모습인데, <code>Object.seal()</code> 이전에 수행된 <code>name</code> 속성은 삭제된 반면, 이후에 실행된 <code>age</code> 속성은 삭제되지 않은 것을 볼 수 있다.</p>
+<p>하지만 <code>Object.seal()</code> 이후에도 <code>writable</code> 속성이 <code>true</code>인 경우에는 객체의 속성은 변경이 가능하다.</p>
+<h3 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze" target="_blank" rel="external nofollow noopener noreferrer"><code>Object.freeze()</code></a></h3><ul>
+<li>객체를 불변하게 만드는 가장 강력한 방법이다.</li>
+</ul>
+<ol>
+<li><strong>새로운 속성 추가 방지</strong></li>
+<li><strong>기존 속성 제거를 허용하지 않음</strong></li>
+<li><strong>속성을 변경할 수 없음</strong> (<code>depth</code> 1단계만)</li>
+<li>자식 개체의 속성을 수정할 수 있음</li>
+</ol>
+<ul>
+<li><code>[[Extensible]]</code> 속성을 <code>false</code> 로 변경한다.</li>
+<li>모든 프로퍼티의 <code>configurable</code> 속성을 <code>false</code> 로 변경한다.</li>
+<li>모든 프로퍼티의 <code>writable</code> 속성을 <code>false</code> 로 변경한다.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user1 = &#123;</span><br><span class="line">  name: <span class="string">'kwon'</span>,</span><br><span class="line">  age: <span class="number">26</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(user1, <span class="string">'age'</span>));</span><br><span class="line"><span class="comment">// 출력 : &#123; value: 26, writable: true, enumerable: true, configurable: true &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Extensible : '</span>, <span class="built_in">Object</span>.isExtensible(user1));</span><br><span class="line"><span class="comment">// 출력 : Extensible :  true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> user1.name; <span class="comment">// name 속성이 삭제됨</span></span><br><span class="line"><span class="built_in">console</span>.log(user1); <span class="comment">// &#123; age: 26 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.freeze(user1);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(user1, <span class="string">'age'</span>));</span><br><span class="line"><span class="comment">// 출력 : &#123; value: 26, writable: false, enumerable: true, configurable: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Extensible : '</span>, <span class="built_in">Object</span>.isExtensible(user1));</span><br><span class="line"><span class="comment">// 출력 : Extensible :  false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> user1.age; <span class="comment">// 삭제가 안됨</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user1); <span class="comment">// &#123; age: 26 &#125;</span></span><br><span class="line"></span><br><span class="line">user1.age = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user1); <span class="comment">// &#123; age: 26 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Object.seal()</code>과는 다르게 <code>Object.freeze()</code>를 수행하고 나면, <code>writable</code>이 <code>false</code>로 변경되고 이후 객체의 속성을 수정해도 변경되지 않는 것을 볼 수 있다.</p>
+<p>또한, <code>Object.freeze()</code> 는 <code>Object.defineProperty()</code> 와 <code>Object.preventExtensions()</code> 로 구현이 가능하다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _freeze = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys(obj).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">      configurable: <span class="literal">false</span>,</span><br><span class="line">      writable: <span class="literal">false</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.preventExtensions(obj);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external nofollow noopener noreferrer"><code>Object.defineProperty()</code></a> 를 통해 <code>writable</code>속성과 <code>configurable</code>속성을 <code>false</code> 로 변경하고, <code>Object.preventExtensions()</code> 를 통해 <code>[[Extensible]]</code> 속성을 <code>false</code> 로 변경하면 된다.</p>
+<p>하지만, <code>Object.freeze()</code>만으로는 객체 내부의 객체까지는 변경을 막을 수 없다. 이를 막으려면 <code>deepFreeze</code>를 구현해야 하는데, 아래와 같은 방법으로 구현할 수 있다.</p>
+<h3 id="deepFreeze"><a href="#deepFreeze" class="headerlink" title="deepFreeze"></a><code>deepFreeze</code></h3><ul>
+<li><code>Object.freeze()</code> 사용</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> deepFreeze = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (obj === <span class="literal">null</span> || <span class="keyword">typeof</span> obj !== <span class="string">'object'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.keys(obj).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">    deepFreeze(obj[key]);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Object.defineProperty() + Object.preventExtensions()</code> 사용</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> deepFreeze = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (obj === <span class="literal">null</span> || <span class="keyword">typeof</span> obj !== <span class="string">'object'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.keys(obj).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">      configurable: <span class="literal">false</span>,</span><br><span class="line">      writable: <span class="literal">false</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    deepFreeze(obj[key]);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.preventExtensions(obj);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="비교"><a href="#비교" class="headerlink" title="비교"></a>비교</h3><ul>
+<li>각각의 <code>static method</code>를 적용한 뒤에 객체의 상태가 어떻게 되는지 비교한 표이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">기능</th>
+<th align="center"><code>default</code></th>
+<th align="center"><code>preventExtensions</code></th>
+<th align="center"><code>seal</code></th>
+<th align="center"><code>freeze</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">새로운 속성 추가(<code>[[Extensible]]</code>)</td>
+<td align="center">⭕️</td>
+<td align="center">⭕️</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr>
+<td align="center">기존 속성 삭제(<code>configurable</code>)</td>
+<td align="center">⭕️</td>
+<td align="center">⭕️</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr>
+<td align="center">기존 속성 변경(<code>writable</code>)</td>
+<td align="center">⭕️</td>
+<td align="center">⭕️</td>
+<td align="center">⭕️</td>
+<td align="center">❌</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p>참조</p>
+<p><a href="https://stackoverflow.com/questions/6281314/object-preventextensions-actually-allows-mutation-of-proto" target="_blank" rel="external nofollow noopener noreferrer">https://stackoverflow.com/questions/6281314/object-preventextensions-actually-allows-mutation-of-proto</a></p>
+<p><a href="https://velog.io/@kdo0129/%EA%B0%9D%EC%B2%B4-%EC%9E%A0%EA%B7%B8%EA%B8%B0" target="_blank" rel="external nofollow noopener noreferrer">https://velog.io/@kdo0129/객체-잠그기</a></p>
+<p><a href="https://medium.com/@nlfernando11/object-freeze-vs-object-seal-vs-object-preventextensions-251ee99d0c47" target="_blank" rel="external nofollow noopener noreferrer">https://medium.com/@nlfernando11/object-freeze-vs-object-seal-vs-object-preventextensions-251ee99d0c47</a></p>
+<p><a href="https://medium.com/javascript-in-plain-english/object-freeze-vs-object-seal-vs-object-preventextensions-e78ef3a24201" target="_blank" rel="external nofollow noopener noreferrer">https://medium.com/javascript-in-plain-english/object-freeze-vs-object-seal-vs-object-preventextensions-e78ef3a24201</a></p>
+<p><a href="https://til.cybertec-postgresql.com/post/2019-10-11-Object-preventExtension-vs-seal-vs-freeze/" target="_blank" rel="external nofollow noopener noreferrer">https://til.cybertec-postgresql.com/post/2019-10-11-Object-preventExtension-vs-seal-vs-freeze/</a></p>
+<p><a href="https://ko.javascript.info/property-descriptors" target="_blank" rel="external nofollow noopener noreferrer">https://ko.javascript.info/property-descriptors</a></p>
+<p><a href="https://helloworldjavascript.net/pages/240-object-in-depth.html" target="_blank" rel="external nofollow noopener noreferrer">https://helloworldjavascript.net/pages/240-object-in-depth.html</a></p>
+</blockquote>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/WEB/2021/02/03/WEB_GPU/" data-toggle="tooltip" data-placement="top" title="WEB - 하드웨어 가속">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "kyu9341-github-io";
+    var disqus_identifier = "https://kyu9341.github.io/JavaScript/2021/03/14/JavaScript_freeze_seal/";
+    var disqus_url = "https://kyu9341.github.io/JavaScript/2021/03/14/JavaScript_freeze_seal/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Demonbane_x" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Demonbane" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/demonbane.cn" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/kyu9341" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354" rel="external nofollow noopener noreferrer">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; kwon&#39;s Blog 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="external nofollow noopener noreferrer">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="external nofollow noopener noreferrer">Kaijun</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://kyu9341.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-146069634-1';
+    var _gaDomain = 'kyu9341.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://kyu9341.github.io/img/icon_wechat.png" width="0" height="0">
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5e97324669e9320caac3e37c/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+
+</html>
