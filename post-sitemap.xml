@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kyu9341.github.io/JavaScript/2020/08/02/JavaScript_promise/</loc>
+        <lastmod>2021-04-06T16:20:54.070Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kyu9341.github.io/JavaScript/2021/03/14/JavaScript_freeze_seal/</loc>
         <lastmod>2021-03-14T13:55:02.420Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1970,14 +1978,6 @@
     <url>
         <loc>https://kyu9341.github.io/algorithm/2020/02/16/algorithm11054/</loc>
         <lastmod>2020-08-28T02:14:04.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kyu9341.github.io/JavaScript/2020/08/02/JavaScript_promise/</loc>
-        <lastmod>2020-08-28T02:14:04.063Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
